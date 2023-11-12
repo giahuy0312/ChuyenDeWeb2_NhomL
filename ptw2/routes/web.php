@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,11 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('index');
 });
+// Login - Register
 Route::get('/login-register', function () {
     return view('login-register');
 });
-Route::get('/cart', function () {
-    return view('cart');
-});
+
+// Order
+Route::resource('order', OrderController::class);
+Route::delete('/order/delete/{$order}','OrderController@delete');

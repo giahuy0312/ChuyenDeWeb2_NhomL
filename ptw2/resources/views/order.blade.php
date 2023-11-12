@@ -17,6 +17,8 @@
 </div>
 <!--// Breadcrumb Area -->
 
+<?php $orderDetails = DB::table('order_product')->get(); ?>
+
 <!-- Page Content -->
 <main class="page-content">
 
@@ -38,56 +40,54 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <a href="product-details.html" class="tm-cart-productimage">
-                                    <img src="{{ asset('images/products') }}/product-image-1-thumb.jpg"
-                                        alt="product image">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="product-details.html" class="tm-cart-productname">Stylist
-                                    daimond
-                                    earring</a>
-                            </td>
-                            <td class="tm-cart-price">$75.00</td>
-                            <td>
-                                <div class="tm-quantitybox">
-                                    <input type="text" value="1">
-                                </div>
-                            </td>
-                            <td>
-                                <span class="tm-cart-totalprice">$75.00</span>
-                            </td>
-                            <td>
-                                <button class="tm-cart-removeproduct"><i class="ion-close"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="product-details.html" class="tm-cart-productimage">
-                                    <img src="{{ asset('images/products') }}/product-image-2-thumb.jpg"
-                                        alt="product image">
-                                </a>
-                            </td>
-                            <td>
-                                <a href="product-details.html" class="tm-cart-productname">Stylist
-                                    daimond
-                                    earring</a>
-                            </td>
-                            <td class="tm-cart-price">$75.00</td>
-                            <td>
-                                <div class="tm-quantitybox">
-                                    <input type="text" value="1">
-                                </div>
-                            </td>
-                            <td>
-                                <span class="tm-cart-totalprice">$75.00</span>
-                            </td>
-                            <td>
-                                <button class="tm-cart-removeproduct"><i class="ion-close"></i></button>
-                            </td>
-                        </tr>
+                        @foreach ($orders as $order)
+                            @if ($order->user_id == 1)
+                                @if ($order->order_status == 0)
+                                    @foreach ($order->products as $product)
+                                        <tr>
+                                            <td>
+                                                <a href="{{-- {{ route('products.show', $product->id) }} --}}#" class="tm-cart-productimage">
+                                                    <img src="{{ asset('images/products') }}/{{ $product->image }}"
+                                                        alt="{{ $product->image }}">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="{{-- {{ route('products.show', $product->id) }} --}}#"
+                                                    class="tm-cart-productname">{{ $product->name }}</a>
+                                            </td>
+                                            <td class="tm-cart-price">{{ $product->price }} ₫</td>
+                                            <td>
+                                                <div class="tm-quantitybox">
+                                                    @foreach ($orderDetails as $orderdetail)
+                                                        @if ($orderdetail->product_id == $product->id && $orderdetail->order_id == $order->id)
+                                                            <input type="text" value="{{ $orderdetail->quality }}"
+                                                                id="quality" name="quality">
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="tm-cart-totalprice">{{ $product->price }} ₫</span>
+                                                <input type="hidden" value="{{ $product->price }}" id="product_price"
+                                                    name="product_price">
+                                            </td>
+                                            <td>
+                                                <form action="{{ url('/order/' . $order->id) }}" method="POST"
+                                                    class="d-inline-block">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <input type="hidden" value="{{ $product->id }}" id="product_id"
+                                                        name="product_id">
+                                                    <button onclick="return confirm('Bạn có muốn xóa hay không?')"
+                                                        type="submit" id="{{ $order->id }}"
+                                                        class="tm-cart-removeproduct"><i class="ion-close"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
+                            @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -103,8 +103,7 @@
                         </div>
                         <form action="#" class="tm-cart-coupon">
                             <label for="coupon-field">Have a coupon code?</label>
-                            <input type="text" id="coupon-field" placeholder="Enter coupon code"
-                                required="required">
+                            <input type="text" id="coupon-field" placeholder="Enter coupon code" required="required">
                             <button type="submit" class="tm-button">Submit</button>
                         </form>
                     </div>

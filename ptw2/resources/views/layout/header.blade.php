@@ -19,7 +19,7 @@
                             <ul>
                                 <li><a href="my-account.html">My Account</a></li>
                                 <li><a href="{{ url('login-register') }}">Login/Register</a></li>
-                                <li><a href="{{ url('cart') }}">Shopping Cart</a></li>
+                                <li><a href="{{ url('order') }}">Shopping Cart</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
                                 <li><a href="checkout.html">Checkout</a></li>
                             </ul>
@@ -72,7 +72,7 @@
                 <div class="col-lg-3 col-6 order-2 order-lg-3">
                     <ul class="tm-header-icons">
                         <li><a href="wishlist.html"><i class="ion-android-favorite-outline"></i><span>0</span></a></li>
-                        <li><a href="{{ url('cart') }}"><i class="ion-bag"></i><span>0</span></a></li>
+                        <li><a href="{{ url('order') }}"><i class="ion-bag"></i><span>0</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                             </li>
                             <li><a href="#">Others</a>
                                 <ul>
-                                    <li><a href="{{ url('cart') }}">Shopping Cart</a></li>
+                                    <li><a href="{{ url('order') }}">Shopping Cart</a></li>
                                     <li><a href="wishlist.html">Wishlist</a></li>
                                     <li><a href="checkout.html">Checkout</a></li>
                                     <li><a href="my-account.html">My Account</a></li>
