@@ -4,187 +4,14 @@
     <!-- Wrapper -->
     <div id="wrapper" class="wrapper">
 
-        <!-- Header -->
-        <div class="tm-header tm-header-sticky">
-
-            <!-- Header Top Area -->
-            <div class="tm-header-toparea bg-black">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-8 col-12">
-                            <ul class="tm-header-info">
-                                <li><a href="tel:18883456789"><i class="ion-ios-telephone"></i>1-888-345-6789</a></li>
-                                <li><a href="mailto:contact@example.com"><i
-                                            class="ion-android-mail"></i>contact@example.com</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="tm-header-options">
-                                <div class="tm-dropdown tm-header-links">
-                                    <button>My Account</button>
-                                    <ul>
-                                        <li><a href="my-account.html">My Account</a></li>
-                                        <li><a href="login-register.html">Login/Register</a></li>
-                                        <li><a href="cart.html">Shopping Cart</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                    </ul>
-                                </div>
-                                <div class="tm-dropdown tm-header-currency">
-                                    <button>USD</button>
-                                    <ul>
-                                        <li><a href="#">USD</a></li>
-                                        <li><a href="#">EUR</a></li>
-                                        <li><a href="#">JPY</a></li>
-                                        <li><a href="#">GBP</a></li>
-                                    </ul>
-                                </div>
-                                <div class="tm-dropdown tm-header-language">
-                                    <button><img src="assets/images/flag-english.png" alt="language">English</button>
-                                    <ul>
-                                        <li><a href="#"><img src="assets/images/flag-english.png"
-                                                    alt="language">English</a></li>
-                                        <li><a href="#"><img src="assets/images/flag-spain.png"
-                                                    alt="language">Spanish</a></li>
-                                        <li><a href="#"><img src="assets/images/flag-russian.png"
-                                                    alt="language">Russian</a></li>
-                                        <li><a href="#"><img src="assets/images/flag-french.png"
-                                                    alt="language">French</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--// Header Top Area -->
-
-            <!-- Header Middle Area -->
-            <div class="tm-header-middlearea bg-white">
-                <div class="container">
-                    <div class="tm-mobilenav"></div>
-                    <div class="row align-items-center">
-                        <div class="col-lg-3 col-6 order-1 order-lg-1">
-                            <a href="index.html" class="tm-header-logo">
-                                <img src="assets/images/logo.png" alt="surose">
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-12 order-3 order-lg-2">
-                            <form class="tm-header-search">
-                                <input type="text" placeholder="Search product...">
-                                <button><i class="ion-android-search"></i></button>
-                            </form>
-                        </div>
-                        <div class="col-lg-3 col-6 order-2 order-lg-3">
-                            <ul class="tm-header-icons">
-                                <li><a href="wishlist.html"><i
-                                            class="ion-android-favorite-outline"></i><span>0</span></a></li>
-                                <li><a href="cart.html"><i class="ion-bag"></i><span>0</span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--// Header Middle Area -->
-
-            <!-- Header Bottom Area -->
-            <div class="tm-header-bottomarea bg-white">
-                <div class="container">
-                    <nav class="tm-header-nav">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li class="tm-header-nav-dropdown"><a href="products.html">Shop</a>
-                                <ul>
-                                    <li><a href="products.html">Products</a></li>
-                                    <li><a href="products-leftsidebar.html">Products Left Sidebar</a></li>
-                                    <li><a href="products-nosidebar.html">Products Without Sidebar</a></li>
-                                    <li><a href="products-4-column.html">Products 4 Column</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="product-details-leftsidebar.html">Product Details Left Sidebar</a></li>
-                                    <li><a href="product-details-nosidebar.html">Product Details Without Sidebar</a>
-                                    </li>
-                                    <li><a href="#">Others</a>
-                                        <ul>
-                                            <li><a href="cart.html">Shopping Cart</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
-                                            <li><a href="login-register.html">Login / Register</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="tm-header-nav-megamenu"><a href="index.html">Pages</a>
-
-                                <ul>
-                                    <li><a href="shop.html">Common Pages</a>
-                                        <ul>
-                                            <li><a href="index.html">Homepage</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="portfolios.html">Portfolios</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Blog Pages</a>
-                                        <ul>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-leftsidebar.html">Blog Left Sidebar</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                            <li><a href="blog-details-leftsidebar.html">Blog Details Left Sidebar</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Shop Pages</a>
-                                        <ul>
-                                            <li><a href="products.html">Products</a></li>
-                                            <li><a href="products-leftsidebar.html">Products Left Sidebar</a></li>
-                                            <li><a href="products-nosidebar.html">Products Without Sidebar</a></li>
-                                            <li><a href="products-4-column.html">Products 4 Column</a></li>
-                                            <li><a href="product-details.html">Product Details</a></li>
-                                            <li><a href="product-details-leftsidebar.html">Product Details Left
-                                                    Sidebar</a></li>
-                                            <li><a href="product-details-nosidebar.html">Product Details Without
-                                                    Sidebar</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Shop Related Pages</a>
-                                        <ul>
-                                            <li><a href="cart.html">Shopping Cart</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
-                                            <li><a href="login-register.html">Login / Register</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-
-                            </li>
-                            <li class="tm-header-nav-dropdown"><a href="blog.html">Blog</a>
-                                <ul>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-leftsidebar.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                    <li><a href="blog-details-leftsidebar.html">Blog Details Left Sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!--// Header Bottom Area -->
-
-        </div>
-        <!--// Header -->
+        @include('layout.header')
 
         <!-- Heroslider Area -->
         <div class="tm-heroslider-area bg-grey">
             <div class="tm-heroslider-slider">
 
                 <!-- Heroslider Item -->
-                <div class="tm-heroslider" data-bgimage="assets/images/heoslider-image-1.jpg">
+                <div class="tm-heroslider" data-bgimage="{{ asset('images') }}/heoslider-image-1.jpg">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-7 col-md-8 col-12">
@@ -203,7 +30,7 @@
                 <!--// Heroslider Item -->
 
                 <!-- Heroslider Item -->
-                <div class="tm-heroslider" data-bgimage="assets/images/heoslider-image-2.jpg">
+                <div class="tm-heroslider" data-bgimage="{{ asset('images') }}/heoslider-image-2.jpg">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-7 col-md-8 col-12">
@@ -237,7 +64,7 @@
                         <div class="col-lg-4 mt-30">
                             <div class="tm-feature">
                                 <span class="tm-feature-icon">
-                                    <img src="assets/images/icons/icon-free-shipping.png" alt="free shipping">
+                                    <img src="{{ asset('images/icons/icon-free-shipping.png') }}" alt="free shipping">
                                 </span>
                                 <div class="tm-feature-content">
                                     <h6>Free Shipping</h6>
@@ -251,7 +78,7 @@
                         <div class="col-lg-4 mt-30">
                             <div class="tm-feature">
                                 <span class="tm-feature-icon">
-                                    <img src="assets/images/icons/icon-fast-delivery.png" alt="fast delivery">
+                                    <img src="{{ asset('images/icons/icon-fast-delivery.png') }}" alt="fast delivery">
                                 </span>
                                 <div class="tm-feature-content">
                                     <h6>Fast Delivery</h6>
@@ -265,7 +92,7 @@
                         <div class="col-lg-4 mt-30">
                             <div class="tm-feature">
                                 <span class="tm-feature-icon">
-                                    <img src="assets/images/icons/icon-247-support.png" alt="24/7 Support">
+                                    <img src="{{ asset('images/icons/icon-247-support.png') }}" alt="24/7 Support">
                                 </span>
                                 <div class="tm-feature-content">
                                     <h6>24/7 Support</h6>
@@ -299,8 +126,8 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-1.jpg" alt="product image">
-                                        <img src="assets/images/products/product-image-2.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-1.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-2.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -348,7 +175,7 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-3.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-3.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -395,8 +222,8 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-4.jpg" alt="product image">
-                                        <img src="assets/images/products/product-image-5.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-4.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-5.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -443,7 +270,7 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-6.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-6.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -490,8 +317,8 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-7.jpg" alt="product image">
-                                        <img src="assets/images/products/product-image-8.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-7.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-8.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -539,7 +366,7 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-9.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-9.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -586,8 +413,8 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-10.jpg" alt="product image">
-                                        <img src="assets/images/products/product-image-1.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-10.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-1.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -634,7 +461,7 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-12.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-12.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -689,7 +516,7 @@
                         <!-- Single Banner -->
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-30">
                             <a href="#" class="tm-banner tm-scrollanim">
-                                <img src="assets/images/banner-image-1.jpg" alt="banner image">
+                                <img src="{{ asset('images') }}/banner-image-1.jpg" alt="banner image">
                             </a>
                         </div>
                         <!--// Single Banner -->
@@ -697,7 +524,7 @@
                         <!-- Single Banner -->
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-30">
                             <a href="#" class="tm-banner tm-scrollanim">
-                                <img src="assets/images/banner-image-2.jpg" alt="banner image">
+                                <img src="{{ asset('images') }}/banner-image-2.jpg" alt="banner image">
                             </a>
                         </div>
                         <!--// Single Banner -->
@@ -705,7 +532,7 @@
                         <!-- Single Banner -->
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-30">
                             <a href="#" class="tm-banner tm-scrollanim">
-                                <img src="assets/images/banner-image-3.jpg" alt="banner image">
+                                <img src="{{ asset('images') }}/banner-image-3.jpg" alt="banner image">
                             </a>
                         </div>
                         <!--// Single Banner -->
@@ -734,8 +561,8 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-4.jpg" alt="product image">
-                                        <img src="assets/images/products/product-image-5.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-4.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-5.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -783,7 +610,7 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-6.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-6.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -830,8 +657,8 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-7.jpg" alt="product image">
-                                        <img src="assets/images/products/product-image-8.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-7.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-8.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -879,7 +706,7 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-9.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-9.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -926,7 +753,7 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-10.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-10.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -974,7 +801,7 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-11.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-11.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -1021,8 +848,8 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-12.jpg" alt="product image">
-                                        <img src="assets/images/products/product-image-1.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-12.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-1.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -1066,7 +893,7 @@
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
                                     <div class="tm-product-images">
-                                        <img src="assets/images/products/product-image-2.jpg" alt="product image">
+                                        <img src="{{ asset('images/products') }}/product-image-2.jpg" alt="product image">
                                     </div>
                                     <ul class="tm-product-actions">
                                         <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
@@ -1130,7 +957,7 @@
                         </div>
                         <div class="col-lg-6 col-12 order-1 order-lg-2">
                             <div class="tm-offer-image">
-                                <img class="tm-offer" src="assets/images/offer-image-1.png" alt="offer image">
+                                <img class="tm-offer" src="{{ asset('images') }}/offer-image-1.png" alt="offer image">
                             </div>
                         </div>
                     </div>
@@ -1157,7 +984,7 @@
                             <div class="tm-blog tm-scrollanim">
                                 <div class="tm-blog-topside">
                                     <div class="tm-blog-thumb">
-                                        <img src="assets/images/blog/blog-image-1.jpg" alt="blog image">
+                                        <img src="{{ asset('images/blog') }}/blog-image-1.jpg" alt="blog image">
                                     </div>
                                     <span class="tm-blog-metahighlight"><span>Apr</span>17</span>
                                 </div>
@@ -1182,7 +1009,7 @@
                             <div class="tm-blog tm-scrollanim">
                                 <div class="tm-blog-topside">
                                     <div class="tm-blog-thumb">
-                                        <img src="assets/images/blog/blog-image-2.jpg" alt="blog image">
+                                        <img src="{{ asset('images/blog') }}/blog-image-2.jpg" alt="blog image">
                                     </div>
                                     <span class="tm-blog-metahighlight"><span>Apr</span>17</span>
                                 </div>
@@ -1207,7 +1034,7 @@
                             <div class="tm-blog tm-scrollanim">
                                 <div class="tm-blog-topside">
                                     <div class="tm-blog-thumb">
-                                        <img src="assets/images/blog/blog-image-3.jpg" alt="blog image">
+                                        <img src="{{ asset('images/blog') }}/blog-image-3.jpg" alt="blog image">
                                     </div>
                                     <span class="tm-blog-metahighlight"><span>Apr</span>17</span>
                                 </div>
@@ -1233,7 +1060,7 @@
                             <div class="tm-blog tm-scrollanim">
                                 <div class="tm-blog-topside">
                                     <div class="tm-blog-thumb">
-                                        <img src="assets/images/blog/blog-image-4.jpg" alt="blog image">
+                                        <img src="{{ asset('images/blog') }}/blog-image-4.jpg" alt="blog image">
                                     </div>
                                     <span class="tm-blog-metahighlight"><span>Apr</span>17</span>
                                 </div>
@@ -1259,7 +1086,7 @@
                             <div class="tm-blog tm-scrollanim">
                                 <div class="tm-blog-topside">
                                     <div class="tm-blog-thumb">
-                                        <img src="assets/images/blog/blog-image-5.jpg" alt="blog image">
+                                        <img src="{{ asset('images/blog') }}/blog-image-5.jpg" alt="blog image">
                                     </div>
                                     <span class="tm-blog-metahighlight"><span>Apr</span>17</span>
                                 </div>
@@ -1288,12 +1115,12 @@
             <!-- Brand Logos -->
             <div class="tm-section tm-brandlogo-area tm-padding-section bg-grey">
                 <div class="container">
-                    <div class="row tm-brandlogo-slider">
+                    <div class="row tm-brandlogo-slider" style="height:100px">
 
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-1.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-1.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1301,7 +1128,7 @@
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-2.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-2.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1309,7 +1136,7 @@
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-3.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-3.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1317,7 +1144,7 @@
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-4.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-4.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1325,7 +1152,7 @@
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-5.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-5.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1333,7 +1160,7 @@
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-1.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-1.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1341,7 +1168,7 @@
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-2.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-2.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1349,7 +1176,7 @@
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-3.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-3.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1357,7 +1184,7 @@
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-4.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-4.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1365,7 +1192,7 @@
                         <!-- Brang Logo Single -->
                         <div class="col-12 tm-brandlogo">
                             <a href="#">
-                                <img src="assets/images/brandlogo-5.png" alt="brand-logo">
+                                <img src="{{ asset('images/brandlogo-5.png') }}" alt="brand-logo">
                             </a>
                         </div>
                         <!--// Brang Logo Single -->
@@ -1378,112 +1205,7 @@
         </main>
         <!--// Page Content -->
 
-        <!-- Footer -->
-        <div class="tm-footer">
-
-            <!-- Instagram Photos -->
-            <ul id="instafeed" class="tm-instaphotos"></ul>
-            <!--// Instagram Photos -->
-
-            <!-- Footer Top Area -->
-            <div class="tm-footer-toparea tm-padding-section">
-                <div class="container">
-                    <div class="widgets widgets-footer row">
-
-                        <!-- Single Widget -->
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="single-widget widget-info">
-                                <a class="widget-info-logo" href="index.html"><img src="assets/images/logo.png"
-                                        alt="logo"></a>
-                                <p>Lorem ipsum dolor sit amet, consect etur adipiscing elit.</p>
-                                <ul>
-                                    <li><b>Address :</b>2726 Avenue Papineau Montreal, QC, Canada</li>
-                                    <li><b>Phone :</b><a href="tel:+18009156270">1-800-915-6270</a></li>
-                                    <li><b>Email :</b><a href="mailto:info@example.com">info@example.com</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--// Single Widget -->
-
-                        <!-- Single Widget -->
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="single-widget widget-quicklinks">
-                                <h6 class="widget-title">Useful Link</h6>
-                                <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Delivery Info</a></li>
-                                    <li><a href="#">Privacy & Policy</a></li>
-                                    <li><a href="#">Returns & Refunds</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--// Single Widget -->
-
-                        <!-- Single Widget -->
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="single-widget widget-quicklinks">
-                                <h6 class="widget-title">My Account</h6>
-                                <ul>
-                                    <li><a href="my-account.html">My account</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="#">Newsletter</a></li>
-                                    <li><a href="#">Check out</a></li>
-                                    <li><a href="#">Frequently Questions</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--// Single Widget -->
-
-                        <!-- Single Widget -->
-                        <div class="col-lg-3 col-md-6 col-12">
-                            <div class="single-widget widget-newsletter">
-                                <h6 class="widget-title">Join Our Newsletter</h6>
-                                <p>Get Business news, tip and solutions to
-                                    your problems from our experts.</p>
-                                <form id="tm-mailchimp-form" class="widget-newsletter-form">
-                                    <input id="mc-email" type="text" placeholder="Enter email address">
-                                    <button id="mc-submit" type="submit" class="tm-button">Subscribe Now
-                                        <b></b></button>
-                                </form>
-                                <!-- Mailchimp Alerts -->
-                                <div class="tm-mailchimp-alerts">
-                                    <div class="tm-mailchimp-submitting"></div>
-                                    <div class="mailchimp-success"></div>
-                                    <div class="tm-mailchimp-error"></div>
-                                </div>
-                                <!--// Mailchimp Alerts -->
-                            </div>
-                        </div>
-                        <!--// Single Widget -->
-
-                    </div>
-                </div>
-            </div>
-            <!--// Footer Top Area -->
-
-            <!-- Footer Bottom Area -->
-            <div class="tm-footer-bottomarea">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-7">
-                            <p class="tm-footer-copyright">©
-                                2019. Designed by <a href="https://thememarch.com">ThemeMarch</a></p>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="tm-footer-payment">
-                                <img src="assets/images/payment-methods.png" alt="payment methods">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--// Footer Bottom Area -->
-
-        </div>
-        <!--// Footer -->
+        @include('layout.footer')
 
         <!-- Product Quickview -->
         <div class="tm-product-quickview" id="tm-product-quickview">
@@ -1499,53 +1221,53 @@
                                         <div class="tm-prodetails-images">
                                             <div class="tm-prodetails-largeimages">
                                                 <div class="tm-prodetails-largeimage">
-                                                    <img src="assets/images/products/product-image-1.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-1.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-largeimage">
-                                                    <img src="assets/images/products/product-image-2.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-2.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-largeimage">
-                                                    <img src="assets/images/products/product-image-3.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-3.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-largeimage">
-                                                    <img src="assets/images/products/product-image-4.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-4.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-largeimage">
-                                                    <img src="assets/images/products/product-image-6.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-6.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-largeimage">
-                                                    <img src="assets/images/products/product-image-6.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-6.jpg"
                                                         alt="product image">
                                                 </div>
                                             </div>
                                             <div class="tm-prodetails-thumbnails">
                                                 <div class="tm-prodetails-thumbnail">
-                                                    <img src="assets/images/products/product-image-1-thumb.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-1-thumb.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-thumbnail">
-                                                    <img src="assets/images/products/product-image-2-thumb.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-2-thumb.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-thumbnail">
-                                                    <img src="assets/images/products/product-image-3-thumb.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-3-thumb.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-thumbnail">
-                                                    <img src="assets/images/products/product-image-4-thumb.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-4-thumb.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-thumbnail">
-                                                    <img src="assets/images/products/product-image-5-thumb.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-5-thumb.jpg"
                                                         alt="product image">
                                                 </div>
                                                 <div class="tm-prodetails-thumbnail">
-                                                    <img src="assets/images/products/product-image-6-thumb.jpg"
+                                                    <img src="{{ asset('images/products') }}/product-image-6-thumb.jpg"
                                                         alt="product image">
                                                 </div>
                                             </div>
