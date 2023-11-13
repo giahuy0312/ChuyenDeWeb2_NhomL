@@ -29,6 +29,16 @@
             <!-- Shopping Cart Table -->
             <div class="tm-cart-table table-responsive">
                 <table class="table table-bordered mb-0">
+                    @if ($success = Session::get('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ $success }}
+                        </div>
+                    @endif
+                    @if ($error = Session::get('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ $error }}
+                        </div>
+                    @endif
                     <thead>
                         <tr>
                             <th class="tm-cart-col-image" scope="col">Image</th>
@@ -40,13 +50,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                            $total = 0;
-                            $subtotal = 0;
-                            $quality = 0;
-                            $id_order = 0;
+                        <?php
+                        $total = 0;
+                        $subtotal = 0;
+                        $quality = 0;
+                        $id_order = 0;
                         ?>
-                        <form action="{{ url('/order/' . 2) }}" method="POST" class="d-inline-block" id="update-cart" enctype="multipart/form-data">
+                        <form action="{{ url('/order/' . 2) }}" method="POST" class="d-inline-block" id="update-cart"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             @foreach ($orders as $order)
@@ -73,17 +84,22 @@
                                                     <a href="{{-- {{ route('products.show', $product->id) }} --}}#"
                                                         class="tm-cart-productname">{{ $product->name }}</a>
                                                 </td>
-                                                <td class="tm-cart-price">{{ number_format($product->price,2,",",".") }} ₫</td>
+                                                <td class="tm-cart-price">{{ number_format($product->price, 2, ',', '.') }}
+                                                    ₫</td>
                                                 <td>
                                                     <div class="tm-quantitybox">
-                                                        <input type="text" value="{{ $quality }}" id="{{ $product->id }}" name="id_{{ $product->id }}">
+                                                        <input type="text" value="{{ $quality }}"
+                                                            id="{{ $product->id }}" name="id_{{ $product->id }}">
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <span class="tm-cart-totalprice">{{ number_format($subtotal,2,",",".") }} ₫</span>
+                                                    <span
+                                                        class="tm-cart-totalprice">{{ number_format($subtotal, 2, ',', '.') }}
+                                                        ₫</span>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ url('/order/' . $order->id . '/product/' . $product->id . '/token=' . csrf_token()) }}" class="tm-cart-removeproduct"><i class="ion-close"></i></a>
+                                                    <a onclick="return confirm('Bạn có muốn xóa hay không?')" href="{{ url('/order/' . $order->id . '/product/' . $product->id . '/token=' . csrf_token()) }}"
+                                                        class="tm-cart-removeproduct"><i class="ion-close"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -118,7 +134,7 @@
                                     <tbody>
                                         <tr class="tm-cart-pricebox-subtotal">
                                             <td>Cart Subtotal</td>
-                                            <td>{{ number_format($total,2,",",".") }} ₫</td>
+                                            <td>{{ number_format($total, 2, ',', '.') }} ₫</td>
                                         </tr>
                                         <tr class="tm-cart-pricebox-shipping">
                                             <td>(-) Promotion</td>
@@ -126,7 +142,7 @@
                                         </tr>
                                         <tr class="tm-cart-pricebox-total">
                                             <td>Total</td>
-                                            <td>{{ number_format($total,2,",",".") }} ₫</td>
+                                            <td>{{ number_format($total, 2, ',', '.') }} ₫</td>
                                         </tr>
                                     </tbody>
                                 </table>

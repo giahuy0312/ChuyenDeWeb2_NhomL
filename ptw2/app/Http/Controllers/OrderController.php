@@ -54,12 +54,24 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $order = Order::find($order->id);
-        $products = $order->Products()->select('id')->get();
+        $products = $order->Products()->get();
+        $total = 0;
+        $subtotal = 0;
         foreach ($products as $product) {
             $product_id = "id_".$product->id;
-            $order->Products()->where('product_id', $product->id)->update(['quality' => $request->$product_id]);
+            $product_price = $product->price;
+            $quality = $request->$product_id;
+            // $total += $product_price * $quality;
+            if ($quality == 0) {
+                return redirect()->back()->with('error','Số lượng sản phẩm ko được bằng 0');
+            }
+            $subtotal = $product_price * $quality;
+            $order->Products()->where('product_id', $product->id)->update(
+                ['quality' => $quality, 'sub_total' => $subtotal]
+            );
         }
-        return redirect()->back();
+        // echo $subtotal;
+        return redirect()->back()->with('success','Sửa thành công');
     }
 
     /**
