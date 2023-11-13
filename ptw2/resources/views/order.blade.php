@@ -40,10 +40,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                            $total = 0;
+                            $subtotal = 0;
+                            $quality = 0;
+                        ?>
                         @foreach ($orders as $order)
                             @if ($order->user_id == 1)
                                 @if ($order->order_status == 0)
                                     @foreach ($order->products as $product)
+                                        <?php $price = $product->price; ?>
+                                        @foreach ($orderDetails as $orderdetail)
+                                            @if ($orderdetail->product_id == $product->id && $orderdetail->order_id == $order->id)
+                                                <?php $quality = $orderdetail->quality; ?>
+                                                <?php $subtotal = $price * $quality; ?>
+                                                <?php $total += $subtotal; ?>
+                                            @endif
+                                        @endforeach
                                         <tr>
                                             <td>
                                                 <a href="{{-- {{ route('products.show', $product->id) }} --}}#" class="tm-cart-productimage">
@@ -58,18 +71,12 @@
                                             <td class="tm-cart-price">{{ $product->price }} ₫</td>
                                             <td>
                                                 <div class="tm-quantitybox">
-                                                    @foreach ($orderDetails as $orderdetail)
-                                                        @if ($orderdetail->product_id == $product->id && $orderdetail->order_id == $order->id)
-                                                            <input type="text" value="{{ $orderdetail->quality }}"
-                                                                id="quality" name="quality">
-                                                        @endif
-                                                    @endforeach
+                                                    <input type="text" value="{{ $quality }}" id="quality"
+                                                        name="quality">
                                                 </div>
                                             </td>
                                             <td>
-                                                <span class="tm-cart-totalprice">{{ $product->price }} ₫</span>
-                                                <input type="hidden" value="{{ $product->price }}" id="product_price"
-                                                    name="product_price">
+                                                <span class="tm-cart-totalprice">{{ $subtotal }} ₫</span>
                                             </td>
                                             <td>
                                                 <form action="{{ url('/order/' . $order->id) }}" method="POST"
@@ -115,15 +122,15 @@
                                     <tbody>
                                         <tr class="tm-cart-pricebox-subtotal">
                                             <td>Cart Subtotal</td>
-                                            <td>$175.00</td>
+                                            <td>{{ $total }} ₫</td>
                                         </tr>
                                         <tr class="tm-cart-pricebox-shipping">
-                                            <td>(+) Shipping Charge</td>
-                                            <td>$15.00</td>
+                                            <td>(-) Promotion</td>
+                                            <td>0 ₫</td>
                                         </tr>
                                         <tr class="tm-cart-pricebox-total">
                                             <td>Total</td>
-                                            <td>$190.00</td>
+                                            <td>{{ $total }} ₫</td>
                                         </tr>
                                     </tbody>
                                 </table>
