@@ -27,4 +27,9 @@ Route::get('/login-register', function () {
 
 // Order
 Route::resource('order', OrderController::class);
-Route::delete('/order/delete/{$order}','OrderController@delete');
+// Route::get('/order/delete/{$order}/{$product}', [OrderController::class, "test"])->name('remove-order');
+// Route::get('/order/delete/{$order}/product/{$product}', [OrderController::class, "delete"]);
+Route::get('/order/{order}/product/{product}', [OrderController::class, 'destroy']);
+// Route::get('/order/update/{$order}','OrderController@update');
+// Route::post('/order/update/{$order}','OrderController@update');
+// Route::post('SaveAll','OrderController@SaveAll');

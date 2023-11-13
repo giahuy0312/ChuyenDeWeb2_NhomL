@@ -45,7 +45,7 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        echo 'test';
     }
 
     /**
@@ -74,17 +74,18 @@ class OrderController extends Controller
         // $product->quantity = $request->quantity;
         // $product->save();
         // $product->categories()->sync($request->input('categories'));
-        // return redirect()->route('products.index')
-        //                  ->with('success','Sửa thành công');
+        // return redirect()->route('order')->with('success','Sửa thành công');
+        dd($request->data);
+        return redirect()->route('order');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Order $order)
+    public function destroy($order, $product)
     {
-        $order = Order::find($order->id);
-        $order->Products()->where('product_id', $request->product_id)->delete();
+        $order_id = Order::find($order);
+        $order_id->Products()->where('product_id', $product)->delete();
         return redirect()->back();
     }
 }
