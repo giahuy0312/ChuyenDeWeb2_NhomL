@@ -91,7 +91,7 @@
                                                         type="submit" id="{{ $order->id }}"
                                                         class="tm-cart-removeproduct"><i class="ion-close"></i></button>
                                                 </form> --}}
-                                                <a href="{{ url('/order/' . $order->id . '/product/' . $product->id) }}" class="tm-cart-removeproduct"><i class="ion-close"></i></a>
+                                                <a href="{{ url('/order/' . $order->id . '/product/' . $product->id . '/token=' . csrf_token()) }}" class="tm-cart-removeproduct"><i class="ion-close"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach

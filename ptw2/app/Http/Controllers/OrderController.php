@@ -82,10 +82,14 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($order, $product)
+    public function destroy($order, $product, $csrf)
     {
-        $order_id = Order::find($order);
-        $order_id->Products()->where('product_id', $product)->delete();
+        if ($csrf = csrf_token()) {
+            $order_id = Order::find($order);
+            $order_id->Products()->where('product_id', $product)->delete();
+        } else {
+            
+        }
         return redirect()->back();
     }
 }
