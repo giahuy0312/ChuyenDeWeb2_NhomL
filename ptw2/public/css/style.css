@@ -7011,6 +7011,8 @@ button.tm-videobutton img {
 }
 .mainUser .info p i{
   padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 14px;
 }
 /* End css User */
 .tm-myaccount-dashboard, .tm-myaccount-address {

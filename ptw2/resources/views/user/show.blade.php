@@ -9,7 +9,7 @@
             <!-- Logo -->
             <div class="col-3">
                 <div class="titleLogo"><a href="">
-                        <img src="/../images/Logo.png" alt="" style="width: 150px; height: 170px;">
+                <img src="{{ asset('images/logo.png') }}" alt="" style="width: 150px; height: 170px;">
                     </a>
                 </div>
                 <!-- Menu User -->
@@ -18,7 +18,7 @@
                     <p><a href=""> Thông tin tài khoản </a></p>
                     <p><a href=""> Mã giảm giá </a></p>
                     <p><a href=""> Lịch sử mua hàng </a></p>
-                    <p><img src="/../images/logout.png" alt=""><a href="" style="color:red"> Đăng xuất </a></p>
+                    <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="" style="color:red"> Đăng xuất </a></p>
                 </div>
             </div>
             <!-- Indexing -->
@@ -29,8 +29,7 @@
 
                 <div class="infoUser row">
                     <div class="col">
-                        <h3 class="pt-4"><img src="/../images/user.png" alt=""> <span class="ps-4"> <?php  ?>
-                                {{ $user->name }} </h3></span>
+                        <h3 class="pt-4"><img src="{{ asset('images/user.png') }}" alt=""> <span class="ps-4"> {{ $user->name }} </h3></span>
                     </div>
                     <div class="col">
                         <h3 style="padding-left:80px; padding-top:50px;margin-left:-55px">Mã khách hàng: {{ $user->id }}
