@@ -73,7 +73,7 @@
 
                     <div class="row">
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <a href="{{ url('user/edit/1') }}" class="btn btn-primary">Edit</a>
                         </div>
                     </div>
                     </form>
