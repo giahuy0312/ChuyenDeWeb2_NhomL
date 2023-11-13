@@ -45,38 +45,21 @@ class OrderController extends Controller
      */
     public function edit(string $id)
     {
-        echo 'test';
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, Order $order)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'price' => 'required',
-        //     'description' => 'required',
-        //     'photo' => 'required',
-        //     'quantity' => 'required'
-        // ]);
-        // $file = $request->file('photo');
-        // if($request->hasFile('photo'))
-        // {
-        //     $path = 'image-product';
-        //     $fileName = $file->getClientOriginalName();
-        //     $file->move($path,$fileName);
-        //     $product->photo = $fileName;
-        // }
-        // $product->name = $request->name;
-        // $product->price = $request->price;
-        // $product->description = $request->description;
-        // $product->quantity = $request->quantity;
-        // $product->save();
-        // $product->categories()->sync($request->input('categories'));
-        // return redirect()->route('order')->with('success','Sửa thành công');
-        dd($request->data);
-        return redirect()->route('order');
+        $order = Order::find($order->id);
+        $products = $order->Products()->select('id')->get();
+        foreach ($products as $product) {
+            $product_id = "id_".$product->id;
+            $order->Products()->where('product_id', $product->id)->update(['quality' => $request->$product_id]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -87,8 +70,6 @@ class OrderController extends Controller
         if ($csrf = csrf_token()) {
             $order_id = Order::find($order);
             $order_id->Products()->where('product_id', $product)->delete();
-        } else {
-            
         }
         return redirect()->back();
     }
