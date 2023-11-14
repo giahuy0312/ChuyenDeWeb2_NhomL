@@ -7009,11 +7009,20 @@ button.tm-videobutton img {
     padding-left: 10px;
     padding-top: 5px;
 }
+.mainUser .info input{
+  height:40px;
+  width: 400px;
+  background-size:22px 30px;
+  background-repeat: no-repeat;
+   background-position: center left 20px ;
+  padding-left:55px;
+}
 .mainUser .info p i{
   padding-right: 10px;
   padding-left: 10px;
   padding-top: 14px;
 }
+/* End css Show User */
 /* End css User */
 .tm-myaccount-dashboard, .tm-myaccount-address {
   border: 1px solid #ebebeb;
