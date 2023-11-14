@@ -72,6 +72,10 @@ class PromotionController extends Controller
         }
         $orders = Order::all();
         $promotion = Promotion::query()->where('name','LIKE','%'.$keyword.'%')->get();
+        if ($promotion == '[]') {
+            return redirect()->back()->with('error','Bạn đã nhập sai mã ưu đãi');
+        }
+
         return view('order',['orders' => $orders, 'promotion' => $promotion]);
     }
 }
