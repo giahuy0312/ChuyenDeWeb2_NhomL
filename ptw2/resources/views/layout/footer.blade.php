@@ -1,3 +1,5 @@
+<script src="https://kit.fontawesome.com/67ff6e11b9.js" crossorigin="anonymous"></script>
+
 <!-- Footer -->
 <div class="tm-footer">
 
@@ -44,9 +46,9 @@
                 <!-- Single Widget -->
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="single-widget widget-quicklinks">
-                        <h6 class="widget-title">My Account</h6>
+                        <h6 class="widget-title">My account</h6>
                         <ul>
-                            <li><a href="my-account.html">My account</a></li>
+                            <li><a href="{{ url('user/1') }}">My account</a></li>
                             <li><a href="cart.html">Cart</a></li>
                             <li><a href="wishlist.html">Wishlist</a></li>
                             <li><a href="#">Newsletter</a></li>

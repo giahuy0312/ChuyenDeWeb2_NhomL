@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/67ff6e11b9.js" crossorigin="anonymous"></script>
 <!-- Header -->
 <div class="tm-header tm-header-sticky">
 
@@ -15,9 +16,9 @@
                 <div class="col-lg-4 col-12">
                     <div class="tm-header-options">
                         <div class="tm-dropdown tm-header-links">
-                            <button>My Account</button>
+                            <button><i class="fa-regular fa-user"></i></button>
                             <ul>
-                                <li><a href="my-account.html">My Account</a></li>
+                                <li><a href="{{ url('user/1') }}">My Account</a></li>
                                 <li><a href="{{ url('login-register') }}">Login/Register</a></li>
                                 <li><a href="cart.html">Shopping Cart</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
