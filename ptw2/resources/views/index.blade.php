@@ -11,15 +11,12 @@
             <div class="tm-heroslider-slider">
 
                 <!-- Heroslider Item -->
-                <div class="tm-heroslider" data-bgimage="{{ asset('images') }}/heoslider-image-1.jpg">
-                    <div class="container">
+                <div class="tm-heroslider" data-bgimage="{{ asset('images') }}/banner.png" style="height: 295px;">
+                    <div class="container" style="margin-top: 180px;">
                         <div class="row align-items-center">
                             <div class="col-lg-7 col-md-8 col-12">
                                 <div class="tm-heroslider-contentwrapper">
                                     <div class="tm-heroslider-content">
-                                        <h1>Woman’s Jewellery Collection</h1>
-                                        <p>Jewellery may be made from a wide range of materials. Jewellery has been
-                                            made to adorn nearly every body part from hairpins to toe.</p>
                                         <a href="products.html" class="tm-button">Shop Now</a>
                                     </div>
                                 </div>
@@ -30,15 +27,12 @@
                 <!--// Heroslider Item -->
 
                 <!-- Heroslider Item -->
-                <div class="tm-heroslider" data-bgimage="{{ asset('images') }}/heoslider-image-2.jpg">
-                    <div class="container">
+                <div class="tm-heroslider" data-bgimage="{{ asset('images') }}/banner1.png" style="height: 295px;">
+                    <div class="container" style="margin-top: 180px;">
                         <div class="row align-items-center">
                             <div class="col-lg-7 col-md-8 col-12">
                                 <div class="tm-heroslider-contentwrapper">
                                     <div class="tm-heroslider-content">
-                                        <h1>Woman’s Jewellery Collection</h1>
-                                        <p>Jewellery may be made from a wide range of materials. Jewellery has been
-                                            made to adorn nearly every body part from hairpins to toe.</p>
                                         <a href="products.html" class="tm-button">Shop Now</a>
                                     </div>
                                 </div>
@@ -54,58 +48,6 @@
 
         <!-- Page Content -->
         <main class="page-content">
-
-            <!-- Features Area -->
-            <div class="tm-section tm-feature-area bg-grey">
-                <div class="container">
-                    <div class="row mt-30-reverse">
-
-                        <!-- Single Feature -->
-                        <div class="col-lg-4 mt-30">
-                            <div class="tm-feature">
-                                <span class="tm-feature-icon">
-                                    <img src="{{ asset('images/icons/icon-free-shipping.png') }}" alt="free shipping">
-                                </span>
-                                <div class="tm-feature-content">
-                                    <h6>Free Shipping</h6>
-                                    <p>We provide free shipping for all order over $200.00</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--// Single Feature -->
-
-                        <!-- Single Feature -->
-                        <div class="col-lg-4 mt-30">
-                            <div class="tm-feature">
-                                <span class="tm-feature-icon">
-                                    <img src="{{ asset('images/icons/icon-fast-delivery.png') }}" alt="fast delivery">
-                                </span>
-                                <div class="tm-feature-content">
-                                    <h6>Fast Delivery</h6>
-                                    <p>We always deliver our customers very quickly.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--// Single Feature -->
-
-                        <!-- Single Feature -->
-                        <div class="col-lg-4 mt-30">
-                            <div class="tm-feature">
-                                <span class="tm-feature-icon">
-                                    <img src="{{ asset('images/icons/icon-247-support.png') }}" alt="24/7 Support">
-                                </span>
-                                <div class="tm-feature-content">
-                                    <h6>24/7 Support</h6>
-                                    <p>We provide support to our customers within 24 hours. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--// Single Feature -->
-
-                    </div>
-                </div>
-            </div>
-            <!--// Features Area -->
 
             <!-- Popular Products Area -->
             <div id="tm-popular-products-area" class="tm-section tm-popular-products-area tm-padding-section bg-white">
