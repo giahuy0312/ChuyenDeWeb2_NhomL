@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PromotionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,6 @@ Route::get('/login-register', function () {
 // Order
 Route::resource('order', OrderController::class);
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
+
+// Promotion
+Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');

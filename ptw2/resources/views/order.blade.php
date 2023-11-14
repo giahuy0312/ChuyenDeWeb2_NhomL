@@ -21,7 +21,7 @@
 @foreach ($orders as $order)
     @if ($order->user_id == 1)
         @if ($order->order_status == 0)
-         <?php $order_id = $order->id ?>
+            <?php $order_id = $order->id; ?>
         @endif
     @endif
 @endforeach
@@ -62,6 +62,7 @@
                         $subtotal = 0;
                         $quality = 0;
                         $id_order = 0;
+                        $promotion_amount = 0;
                         ?>
                         <form action="{{ url('/order/' . $order_id) }}" method="POST" class="d-inline-block"
                             id="update-cart" enctype="multipart/form-data">
@@ -131,9 +132,10 @@
                             <a href="#" class="tm-button">Continue Shopping</a>
                             <button type="submit" form="update-cart" class="tm-button">Update Cart</button>
                         </div>
-                        <form action="#" class="tm-cart-coupon">
+                        <form action="{{ route('promotion.search') }}" class="tm-cart-coupon">
                             <label for="coupon-field">Have a coupon code?</label>
-                            <input type="text" id="coupon-field" placeholder="Enter coupon code" required="required">
+                            <input type="text" id="coupon-field" placeholder="Enter coupon code" required="required"
+                                maxlength="6" name="keyword" id="keyword">
                             <button type="submit" class="tm-button">Submit</button>
                         </form>
                     </div>
@@ -149,11 +151,22 @@
                                         </tr>
                                         <tr class="tm-cart-pricebox-shipping">
                                             <td>(-) Promotion</td>
-                                            <td>0 ₫</td>
+                                            @if (url()->current() == 'http://127.0.0.1:8000/order')
+                                                <td>{{ $promotion_amount }} ₫</td>
+                                            @else
+                                                @if ($promotion != '[]')
+                                                    @foreach ($promotion as $item)
+                                                        <?php $promotion_amount = $item->amount; ?>
+                                                        <td>{{ number_format($item->amount, 2, ',', '.') }} ₫</td>
+                                                    @endforeach
+                                                @else
+                                                    <td>{{ $promotion_amount }} ₫</td>
+                                                @endif
+                                            @endif
                                         </tr>
                                         <tr class="tm-cart-pricebox-total">
                                             <td>Total</td>
-                                            <td>{{ number_format($total, 2, ',', '.') }} ₫</td>
+                                            <td>{{ number_format($total - $promotion_amount, 2, ',', '.') }} ₫</td>
                                         </tr>
                                     </tbody>
                                 </table>

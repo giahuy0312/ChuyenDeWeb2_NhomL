@@ -101,5 +101,12 @@ class DatabaseSeeder extends Seeder
             'unit_price' => 80000,
             'sub_total' => 80000,
         ]);
+
+        DB::table('promotions')->insert([
+            'name' => '123456',
+            'start_date' => '2023-11-14',
+            'end_date' => '2023-11-14',
+            'amount' => 10000,
+        ]);
     }
 }
