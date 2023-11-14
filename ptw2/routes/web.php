@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,12 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/home', function () {
     return view('index');
 });
-Route::get('/index', function () {
-    return view('index');
+route::group(['middleware' => 'guest'], function () {
+    //lấy dũ liệu từ login
+    route::get('/login', [UserController::class, 'login'])->name('login');
+    route::post('/login', [UserController::class, 'loginpost'])->name('loginpost');
+    //lấy dữ liệu từ register
+    route::get('/register', [UserController::class, 'register'])->name('register');
+    route::post('/register', [UserController::class, 'registerpost'])->name('registerpost');
 });
-Route::get('/login-register', function () {
-    return view('login-register');
+
+Route::group(['middleware' => 'auth'], function () {
+    route::get('/home', [HomeController::class, 'index'])->name('home');
 });
+route::get('/logout', [UserController::class, 'logout'])->name('logout');
