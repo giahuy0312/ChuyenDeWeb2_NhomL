@@ -1,75 +1,81 @@
-<div class="container">
+
+<div class="mainEdit container ">
     <!-- Indexing -->
-    <div class="col-9" style="padding-top: 50px;">
-        <div class="title"><a href="">Trang Chủ </a> <span class="px-3"> > <span class="px-3 fs-3"> Thông tin tài
-                    khoản</span></span></div>
-        <!-- infoUser basic -->
-
-        <div class="infoUser row">
-            <div class="col">
-                <h3 class="pt-4"><img src="/../images/user.png" alt=""> <span> {{ $user->name }} </h3></span>
+    <div class="row">
+        <div class="col-9" style="padding-top: 50px;">
+            <div class="title">
+                <a href="{{ url('index')}}">Trang Chủ </a> <span class="px-3 fs-3"> Edit User</span>
             </div>
-            <div class="col">
-                <h3 style="padding-top:50px;">Mã khách hàng: {{ $user->id }}</h3>
+        </div>
+    </div>
+            <!-- infoUser basic -->
+        
+            <div class="infoUser row pt-3">
+                <div class="col">
+                    <h3 style="padding-left:240px"><img src="{{ asset('images/user.png') }}" alt=""> {{ $user->name }}  </h3> 
+                </div>
+                <div class="col pt-4">
+                   <h3>Mã khách hàng: {{ $user->id }} </h3>
+                </div>
             </div>
-
             <!-- form info detail -->
             <form action="{{ route('user.update', $user->id) }}" method="post">
                 @csrf
                 @method('PUT')
-                <div class="row ps-3 pt-4">
-                    <div class="col info">
+                <div class="row">
+                    <div class="info-left col ">
                         <label for="username">Username</label> <br>
-                        <input type="text" name="username" size="30" maxlength="50" required
-                            style="background-image: url(/images/user.png);  background-size:35px 25px;background-position: left center 5px; background-repeat: no-repeat;padding-left:40px"
+                        <input type="text" name="username"  maxlength="50" required
+                            style="background-image: url({{ asset('images/user.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->username }}"> <br> <br>
                         <label for="name">Họ tên</label> <br>
-                        <input type="fullname" name="name" size="30" maxlength="50" required
-                            style="background-image: url(/images/user.png);  background-size:35px 25px;background-position: left center 5px; background-repeat: no-repeat;padding-left:40px"
+                        <input type="fullname" name="name"  maxlength="50" 
+                            style="background-image: url({{ asset('images/user.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->name }}"><br> <br>
                         <label for="phone">Số điện thoại</label> <br>
-                        <input type="tel" name="phone" size="30" pattern="\d{10}" required
-                            style="background-image: url(/images/phone.png); background-size:45px 25px; background-position: left center 3px; background-repeat: no-repeat;padding-left:40px"
+                        <input type="tel" name="phone" pattern="\d{10}" 
+                            style="background-image: url({{ asset('images/phone.png') }});background-size:32px 45px;"
                             class="border border-dark rounded-pill" value="{{ $user->phone }}"> <br> <br>
                         <label for="address">Địa chỉ</label> <br>
-                        <input type="text" name="address" size="30"
-                            style="background-image: url(/images/address.png); background-size:35px 20px; background-position: left 5px; background-repeat: no-repeat;padding-left:40px"
-                            class="border border-dark rounded-pill" value="{{ $user->address }}">
+                        <input type="text" name="address" 
+                            style="background-image: url({{ asset('images/address.png') }}) ;background-size:30px 25px;"
+                            class="border border-dark rounded-pill" value="{{ $user->address }}">  <br><br>
                     </div>
 
-                    <div class="col info">
-                        <label for="password">Password</label> <br>
-                        <input type="password" name="password" size="30" maxlength="20" required
-                            style="background-image: url(/images/pass.png); background-size:25px 25px; background-position: left center 5px; background-repeat: no-repeat;padding-left:40px"
+                    <div class="info-right col ">
+                        <label for="password" >Password</label> <br>
+                        <input type="password" name="password"  maxlength="20" required
+                            style="background-image: url({{ asset('images/pass.png') }}) ;background-size:23px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->password }}"> <br> <br>
                         <label for="email">Email</label> <br>
-                        <input type="email" name="email" size="30" maxlength="50" required
-                            style="background-image: url(/images/email.png); background-size:20px 25px; background-position: left center 5px; background-repeat: no-repeat;padding-left:40px"
+                        <input type="email" name="email"  maxlength="50" required
+                            style="background-image: url({{ asset('images/email.png') }});background-size:23px 25px;"
                             class="border border-dark rounded-pill" value="{{ $user->email }}"> <br> <br>
                         <label for="DOB">Ngày sinh</label> <br>
-                        <input type="date" name="DOB" style="width: 317px; height:28px"
+                        <input type="date" name="DOB" style="background-image: url({{ asset('images/DOB.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->DOB }}"> <br> <br>
                         <label for="gender">Giới tính</label> <br>
-                        <select name="gender" style="width: 317px; height:28px" class="border border-dark rounded-pill">
+
+                        <select name="gender" style="background-image: url({{ asset('images/gender.png') }});background-size:23px 25px;"
+                             class="border border-dark rounded-pill">
                             <option value="{{ $user->gender }}">{{ $user->gender }}</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
                         </select>
+
                     </div>
                 </div>
-                <br>
-
-                <div class="row">
-                    <div class="col text-center">
-                        <button type="submit" class="btn btn-primary">Edit</button>
-                    </div>
+                <div class="row text-center">
+                    <div class="col">
+                    <button type="submit" class="btn text-white">Save</button>
+                    <a href="{{ url('user/1')}}" class="btn btn-primary text-white"  style="width:100px;">Cancel</a>
+                      </div>
                 </div>
             </form>
 
         </div>
     </div>
-
 </div>
 
 

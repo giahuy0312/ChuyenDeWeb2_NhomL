@@ -26,5 +26,5 @@ Route::get('/login-register', function () {
 });
 //route User
 Route::resource('user', UserController::class);
-Route::get('user/{id}', [UserController::class, 'show'])->name('user.show');
-Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');

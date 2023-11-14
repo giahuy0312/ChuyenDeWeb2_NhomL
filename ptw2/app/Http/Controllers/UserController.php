@@ -43,21 +43,16 @@ class UserController extends Controller
              abort(404);
         }
         return view('user.show', ['user' => $user]);
-        // $customers = $order->customers()->get();
-        // return view('customer.index', ['order' => $order,'customers' => $customers]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
+        $user = User::find($user->id);
 
-        if (!$user) {
-            abort(404);
-        }
-        return view('user.show', ['user' => $user]);
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -65,13 +60,15 @@ class UserController extends Controller
      */
     public function update(Request $request,  User $user)
     {
-        $request->validate([
-            'password' =>'required|min:5|max:20',
-            'username' => 'required',
-            'name' => 'required',
-            'phone' =>'required',
-            'email' => 'required',
-        ]);
+        $user = User::find($user->id);
+
+        // $request->validate([
+        //     'username' => 'required',
+        //     'name' => 'required',
+        //     'password' =>'required|min:5|max:20',
+        //     'phone' =>'required',
+        //     'email' => 'required'
+        // ]);
     
         $user->username = $request->username;
         $user->name = $request->name;
@@ -83,14 +80,14 @@ class UserController extends Controller
         $user->gender = $request->gender;
         $user->save();
     
-        $user = User::find($user->id);
+       
 
         return redirect()->route('user.show', ['user' => $user->id]);
 
         // Passing the customer ID as a query string parameter
-        $user = User::find($user->id);
-
+       
         return redirect()->route('user.show')->with('user', $user->id);
+
     }
 
     /**
