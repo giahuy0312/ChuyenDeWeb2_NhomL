@@ -99,7 +99,7 @@
                                                 </td>
                                                 <td>
                                                     <a onclick="return confirm('Bạn có muốn xóa hay không?')" href="{{ url('/order/' . $order->id . '/product/' . $product->id . '/token=' . csrf_token()) }}"
-                                                        class="tm-cart-removeproduct"><i class="ion-close"></i></a>
+                                                        class="tm-cart-removeproduct" style="padding: 0 30px; color: inherit;"><i class="ion-close"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

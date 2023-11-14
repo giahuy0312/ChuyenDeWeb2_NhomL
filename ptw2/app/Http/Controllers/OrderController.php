@@ -62,13 +62,14 @@ class OrderController extends Controller
             $product_price = $product->price;
             $quality = $request->$product_id;
             // $total += $product_price * $quality;
-            if ($quality == 0) {
+            if (is_numeric($quality) == 0 || $quality <= 0) {
                 return redirect()->back()->with('error','Số lượng sản phẩm ko được bằng 0');
             }
             $subtotal = $product_price * $quality;
             $order->Products()->where('product_id', $product->id)->update(
                 ['quality' => $quality, 'sub_total' => $subtotal]
             );
+
         }
         // echo $subtotal;
         return redirect()->back()->with('success','Sửa thành công');
