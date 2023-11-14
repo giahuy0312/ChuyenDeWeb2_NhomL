@@ -18,6 +18,13 @@
 <!--// Breadcrumb Area -->
 
 <?php $orderDetails = DB::table('order_product')->get(); ?>
+@foreach ($orders as $order)
+    @if ($order->user_id == 1)
+        @if ($order->order_status == 0)
+         <?php $order_id = $order->id ?>
+        @endif
+    @endif
+@endforeach
 
 <!-- Page Content -->
 <main class="page-content">
@@ -56,8 +63,8 @@
                         $quality = 0;
                         $id_order = 0;
                         ?>
-                        <form action="{{ url('/order/' . 2) }}" method="POST" class="d-inline-block" id="update-cart"
-                            enctype="multipart/form-data">
+                        <form action="{{ url('/order/' . $order_id) }}" method="POST" class="d-inline-block"
+                            id="update-cart" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             @foreach ($orders as $order)
@@ -84,7 +91,8 @@
                                                     <a href="{{-- {{ route('products.show', $product->id) }} --}}#"
                                                         class="tm-cart-productname">{{ $product->name }}</a>
                                                 </td>
-                                                <td class="tm-cart-price">{{ number_format($product->price, 2, ',', '.') }}
+                                                <td class="tm-cart-price">
+                                                    {{ number_format($product->price, 2, ',', '.') }}
                                                     ₫</td>
                                                 <td>
                                                     <div class="tm-quantitybox">
@@ -98,8 +106,11 @@
                                                         ₫</span>
                                                 </td>
                                                 <td>
-                                                    <a onclick="return confirm('Bạn có muốn xóa hay không?')" href="{{ url('/order/' . $order->id . '/product/' . $product->id . '/token=' . csrf_token()) }}"
-                                                        class="tm-cart-removeproduct" style="padding: 0 30px; color: inherit;"><i class="ion-close"></i></a>
+                                                    <a onclick="return confirm('Bạn có muốn xóa hay không?')"
+                                                        href="{{ url('/order/' . $order->id . '/product/' . $product->id . '/token=' . csrf_token()) }}"
+                                                        class="tm-cart-removeproduct"
+                                                        style="padding: 0 30px; color: inherit;"><i
+                                                            class="ion-close"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -13,6 +15,13 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
+        // $products = Product::all();
+        // foreach ($orders as $order) {
+        //     if ($order->order_status == 0) {
+        //         return view('order', ['orders' => $orders, 'products' => $products]);
+        //         echo $order;
+        //     }
+        // }
         return view('order', ['orders' => $orders]);
     }
 
@@ -66,8 +75,8 @@ class OrderController extends Controller
                 return redirect()->back()->with('error','Số lượng sản phẩm ko được bằng 0');
             }
             $subtotal = $product_price * $quality;
-            $order->Products()->where('product_id', $product->id)->update(
-                ['quality' => $quality, 'sub_total' => $subtotal]
+            DB::table('order_product')->where([['product_id', $product->id],['order_id', $order->id]])->update(
+                ['quality' => $quality, 'sub_total' => $subtotal, 'updated_at' => now()]
             );
 
         }
