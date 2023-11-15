@@ -28,7 +28,6 @@
             @endforeach
           </tbody>
         </table>
-        {{ $categories->links('admin.custompagination') }}
       </div>
     </div>
   </div>

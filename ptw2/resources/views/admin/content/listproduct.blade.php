@@ -34,12 +34,7 @@
             <td>{{$product->product_description}}</td>
             <td>{{$product->product_price}}</td>
             <td>{{$product->product_size}}</td>
-                <ul>
-                    @foreach($product->categories as $category)
-                        <li>{{ $category->category_name }}</li>
-                    @endforeach
-                </ul>
-
+            <td>{{$product->category_id}}</td>
             <td class="btncn">
               <a href="{{route('getdataedt',$product->id)}}" >Edit</a>
               <a href="{{route('deleteproduct',$product->id)}}">Delete</a>
@@ -48,7 +43,6 @@
           @endforeach
         </tbody>
       </table>
-      {{ $products->links('admin.custompagination') }}
     </div>
   </div>
 </div>
