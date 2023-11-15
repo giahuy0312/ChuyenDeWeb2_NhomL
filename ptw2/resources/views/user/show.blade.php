@@ -8,7 +8,7 @@
         <div class="row">
             <!-- Logo -->
             <div class="col-3">
-                <div class="titleLogo"><a href="">
+                <div class="titleLogo"><a href="{{ url('index')}}">
                 <img src="{{ asset('images/logo.png') }}" alt="" style="width: 150px; height: 170px;">
                     </a>
                 </div>
@@ -38,42 +38,36 @@
 
                     <!-- form info detail -->
 
-                    <div class="row ps-3 pt-4">
+                    <div class="row pt-4">
                         <div class="col info">
                             <label for="username">Username</label> <br>
-                            <p class="border border-dark rounded-pill"><i
-                                    class="fa-light fa-user fa-xl"></i>{{ $user->username }} </p>
+                            <p class="border border-dark rounded-pill">
+                                <i class="fa-light fa-user fa-xl"></i>{{ $user->username }} </p>
                             <label for="name">Họ tên</label> <br>
-                            <p class="border border-dark rounded-pill"><i
-                                    class="fa-light fa-user fa-xl"></i>{{ $user->name }}</p>
+                            <p class="border border-dark rounded-pill">
+                                <i class="fa-light fa-user fa-xl"></i>{{ $user->name }}</p>
                             <label for="phone">Số điện thoại</label> <br>
-                            <p class="border border-dark rounded-pill"><i
-                                    class="fa-light fa-phone-volume fa-lg"></i>{{ $user->phone }} </p>
-                            <label for="address">Địa chỉ</label> <br>
-                            <p class="border border-dark rounded-pill"><i
-                                    class="fa-sharp fa-light fa-location-dot fa-xl"></i> {{ $user->address }}</p>
+                            <p class="border border-dark rounded-pill">
+                                <i class="fa-light fa-phone-volume fa-lg"></i>{{ $user->phone }} </p>
                         </div>
 
                         <div class="col info">
-                            <label for="password">Password</label> <br>
-                            <input type="password" name="password" class="border border-dark rounded-pill"   
-                                style="background-image: url({{ asset('images/pass.png') }});" size="20" maxlength="50" value=" {{ ($user->password) }}" disabled> <br>
-                            <label for="email" style="padding-top:15px">Email</label> <br>
-                            <p class="border border-dark rounded-pill"><i
-                                    class="fa-light fa-envelope fa-xl"></i></i>{{ $user->email }} </p>
+                            <label for="email">Email</label> <br>
+                            <p class="border border-dark rounded-pill">
+                                <i class="fa-light fa-envelope fa-xl"></i>{{ $user->email }} </p>
                             <label for="DOB">Ngày sinh</label> <br>
-                            <p class="border border-dark rounded-pill"><i
-                                    class="fa-light fa-calendar-days fa-xl"></i>{{ $user->DOB }} </p>
+                            <p class="border border-dark rounded-pill">
+                                <i class="fa-light fa-calendar-days fa-xl"></i>{{ $user->DOB }} </p>
                             <label for="gender">Giới tính</label> <br>
-                            <p class="border border-dark rounded-pill"><i
-                                    class="fa-light fa-venus-mars fa-lg"></i></i>{{ $user->gender }} </p>
+                            <p class="border border-dark rounded-pill" >
+                                <i class="fa-light fa-venus-mars fa-lg"></i>{{ $user->gender }} </p>
                         </div>
                     </div>
                     <br>
 
                     <div class="row">
                         <div class="col text-center">
-                            <a href="{{ url('user/edit/1') }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ url('user/edit/'. $_SESSION['userID']) }}" class="btn btn-primary">Edit</a>
                         </div>
                     </div>
                     </form>

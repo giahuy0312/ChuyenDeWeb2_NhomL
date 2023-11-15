@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="info-left col ">
                         <label for="username">Username</label> <br>
-                        <input type="text" name="username"  maxlength="50" required
+                        <input type="text" name="username"  maxlength="20" required
                             style="background-image: url({{ asset('images/user.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->username }}"> <br> <br>
                         <label for="name">Họ tên</label> <br>
@@ -36,17 +36,10 @@
                         <input type="tel" name="phone" pattern="\d{10}" 
                             style="background-image: url({{ asset('images/phone.png') }});background-size:32px 45px;"
                             class="border border-dark rounded-pill" value="{{ $user->phone }}"> <br> <br>
-                        <label for="address">Địa chỉ</label> <br>
-                        <input type="text" name="address" 
-                            style="background-image: url({{ asset('images/address.png') }}) ;background-size:30px 25px;"
-                            class="border border-dark rounded-pill" value="{{ $user->address }}">  <br><br>
+                       
                     </div>
 
                     <div class="info-right col ">
-                        <label for="password" >Password</label> <br>
-                        <input type="password" name="password"  maxlength="20" required
-                            style="background-image: url({{ asset('images/pass.png') }}) ;background-size:23px 30px;"
-                            class="border border-dark rounded-pill" value="{{ $user->password }}"> <br> <br>
                         <label for="email">Email</label> <br>
                         <input type="email" name="email"  maxlength="50" required
                             style="background-image: url({{ asset('images/email.png') }});background-size:23px 25px;"
@@ -59,9 +52,9 @@
                         <select name="gender" style="background-image: url({{ asset('images/gender.png') }});background-size:23px 25px;"
                              class="border border-dark rounded-pill">
                             <option value="{{ $user->gender }}">{{ $user->gender }}</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
                         </select>
 
                     </div>
@@ -69,7 +62,7 @@
                 <div class="row text-center">
                     <div class="col">
                     <button type="submit" class="btn text-white">Save</button>
-                    <a href="{{ url('user/1')}}" class="btn btn-primary text-white"  style="width:100px;">Cancel</a>
+                    <a href="{{ url('user/'. $_SESSION['userID'])}}" class="btn btn-primary text-white"  style="width:100px;">Cancel</a>
                       </div>
                 </div>
             </form>

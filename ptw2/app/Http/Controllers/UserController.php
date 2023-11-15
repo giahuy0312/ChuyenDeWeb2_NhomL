@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+session_start();
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -37,8 +38,7 @@ class UserController extends Controller
 
     public function show($id)
     {
-        
-        $user = User::find($id);
+        $user = User::find($_SESSION['userID']);
          if (!$user) {
              abort(404);
         }
@@ -50,8 +50,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $user = User::find($user->id);
-
+        $user = User::find($_SESSION['userID']);
+        if (!$user) {
+            abort(404);
+        }
         return view('user.edit', ['user' => $user]);
     }
 
@@ -60,33 +62,23 @@ class UserController extends Controller
      */
     public function update(Request $request,  User $user)
     {
-        $user = User::find($user->id);
-
-        // $request->validate([
-        //     'username' => 'required',
-        //     'name' => 'required',
-        //     'password' =>'required|min:5|max:20',
-        //     'phone' =>'required',
-        //     'email' => 'required'
-        // ]);
-    
-        $user->username = $request->username;
-        $user->name = $request->name;
-        $user->phone = $request->phone;
-        $user->address = $request->address;
-        $user->password = $request->password;
-        $user->email = $request->email;
-        $user->DOB = $request->DOB;
-        $user->gender = $request->gender;
+        $user = User::find($_SESSION['userID']);
+      
+        $request->validate([
+            'username' => 'required|min:5|max:10',
+            'name' => 'required|min:5|max:10',
+            'phone' => 'required|max:10',
+            'email' => 'required',
+        ]);
+     
+        $user->username = ($request-> username);
+        $user->name = ($request->name);
+        $user->phone = ($request->phone);
+        $user->email = ($request->email);
+        $user->DOB = ($request->DOB);
+        $user->gender = ($request->gender);
         $user->save();
-    
-       
-
         return redirect()->route('user.show', ['user' => $user->id]);
-
-        // Passing the customer ID as a query string parameter
-       
-        return redirect()->route('user.show')->with('user', $user->id);
 
     }
 

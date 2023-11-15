@@ -1,6 +1,9 @@
 @extends('layout.main')
 
 @section('content')
+<?php session_start();
+$_SESSION["userID"] = "1";
+?>
     <!-- Wrapper -->
     <div id="wrapper" class="wrapper">
 
