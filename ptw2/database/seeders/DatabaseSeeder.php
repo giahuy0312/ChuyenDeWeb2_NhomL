@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,5 +18,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        DB::table('users')->insert([
+            'id' =>'1',
+            'password' =>'123456789',
+            'username' => 'Nguyen van a',
+            'name' => 'vana',
+            'phone' => '0919191919',
+            'email' => 'vana@gmail.com',
+        ]);
     }
 }

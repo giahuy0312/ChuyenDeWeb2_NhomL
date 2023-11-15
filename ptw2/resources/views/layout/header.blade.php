@@ -18,7 +18,7 @@
                         <div class="tm-dropdown tm-header-links">
                             <button><i class="fa-regular fa-user"></i></button>
                             <ul>
-                                <li><a href="{{ url('user/1') }}">My Account</a></li>
+                                <li><a href="{{ url('user/'. $_SESSION['userID']) }}">My Account</a></li>
                                 <li><a href="{{ url('login-register') }}">Login/Register</a></li>
                                 <li><a href="cart.html">Shopping Cart</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
