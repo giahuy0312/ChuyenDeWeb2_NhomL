@@ -68,7 +68,8 @@ class UserController extends Controller
             'username' => 'required|min:5|max:10',
             'name' => 'required|min:5|max:10',
             'phone' => 'required|min:10|max:10',
-            'email' => 'required',
+            'email' => 'required|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
+            'DOB' => 'nullable|date'
         ]);
      
         $user->username = ($request-> username);
@@ -76,7 +77,10 @@ class UserController extends Controller
         $user->phone = ($request->phone);
         $user->email = ($request->email);
         $user->DOB = ($request->DOB);
-        $user->gender = ($request->gender);
+
+        if($request->gender == "Male" || $request->gender == "Female" || $request->gender =="Other"){
+            $user->gender = $request->gender;
+        };
         $user->save();
         return redirect()->route('user.show', ['user' => $user->id]);
 
