@@ -40,7 +40,6 @@ class ProductController extends Controller
         $file->move($path, $fileName);
         $product = new Product($request->all());
         $product->product_image = $fileName;
-        $product->categories()->attach($request->input('categories'));
         $product->save();
         return redirect("listproduct");
     }
@@ -60,9 +59,9 @@ class ProductController extends Controller
 
     public function getDataEdit($id)
     {
-        $categories = Category::all();
-        $product = Product::find($id);
-        return view('products.edit',['product' => $product,'categories' => $categories]);
+        $getData = DB::table('products')->select('*')->where('id', $id)->get();
+        $categories = DB::table('categories')->select('*')->get();
+        return view('admin.content.editproduct', ['getDataProductById' => $getData, 'categories' => $categories]);
     }
 
     public function updateProduct(Request $request)
