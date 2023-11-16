@@ -4,6 +4,9 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PromotionController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +46,13 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/index',[ProductController::class, 'getAllProducts'])->name('index');
 Route::get('/home',[ProductController::class, 'getAllProducts'])->name('index');
 Route::get('/',[ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/', function () {
+    return view('index');
+});
+
+// Order
+Route::resource('order', OrderController::class);
+Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
+
+// Promotion
+Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');

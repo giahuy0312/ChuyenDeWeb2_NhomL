@@ -16,4 +16,13 @@ class Product extends Model
         'material',
         'image'
     ];
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+    }
+    public function promotions()
+    {
+        return $this->belongsTo(Promotion::class);
+    }
 }
