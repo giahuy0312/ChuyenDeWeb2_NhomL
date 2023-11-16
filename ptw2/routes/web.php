@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PromotionController;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,27 @@ use App\Http\Controllers\PromotionController;
 // Route::get('/', function () {
 //     return view('index');
 // });
+Route::get('/admin', function () {
+    return view('admin.main');
+});
+
+// Product
+Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
+Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
+Route::post('customproduct', [ProductController::class, 'customProduct'])->name('registerproduct.custom');
+Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name('getdataedt');
+Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
+Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
+// Category
+Route::get('listcategory', [CategoryController::class, 'listCategory'])->name('listcategory');
+Route::get('addcategory', [CategoryController::class, 'addCategory'])->name('addcategory');
+Route::post('customcategory', [CategoryController::class, 'customCategory'])->name('customcategory.custom');
+Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
+Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
+Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
+
+//---------
+
 // Route::get('/index', function () {
 //     return view('index');
 // });

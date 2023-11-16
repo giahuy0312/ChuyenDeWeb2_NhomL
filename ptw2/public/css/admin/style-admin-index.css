@@ -1,0 +1,27 @@
+table {
+   width: 800px;
+  }
+  
+  th, td {
+    border: 1px solid black;
+    padding: 5px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .btnthem{
+    
+  }
+  .btnthem a {
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #C55656;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+  }
+  .btncn a {
+    text-decoration: none;
+    padding: 10px;
+  }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('size');
             $table->string('material');
             $table->string('image');
+            $table->integer('category_id');
             $table->timestamps();
             });
     }
