@@ -14,15 +14,18 @@
 
                             </div>
                             <div class="form-group mb-3">
+                                <label for="product_name" class="form-label">Tên</label>
                                 <input type="text" placeholder="Name" id="product_name" value="{{$getDataProductById[0]->product_name}}" class="form-control" name="product_name" required autofocus>
                                 @if ($errors->has('product_name'))
                                 <span class="text-danger">{{ $errors->first('product_name') }}</span>
                                 @endif
                             </div>
                             <div class="form-group mb-3">
+                                <label for="product_description" class="form-label">Thông tin</label>
                                 <input type="text" placeholder="Description" id="product_description" value="{{$getDataProductById[0]->product_description}}" class="form-control" name="product_description" required autofocus>
                             </div>
                             <div class="form-group mb-3">
+                                <label for="category_id" class="form-label">Danh mục</label>
                                 <select name="category_id" id="category_id" class="form-control custom-select">
                                     <option selected disabled>Select one</option>
                                     @foreach ($categories as $value)
@@ -44,13 +47,15 @@
                                 </select>
                             </div>
                             <div class="form-group mb-3">
+                                <label for="product_price" class="form-label">Giá</label>
                                 <input type="text" placeholder="Price" value="{{$getDataProductById[0]->product_price}}" id="product_price" class="form-control" name="product_price" required autofocus>
                             </div>
                             <div class="form-group mb-3">
+                                <label for="product_size" class="form-label">Kích thước</label>
                                 <input type="text" placeholder="Size" value="{{$getDataProductById[0]->product_size}}" id="product_size" class="form-control" name="product_size" required autofocus>
                             </div>
                             <div class="mb-3">
-                                <label for="product_image" class="form-label">Photo</label>
+                                <label for="product_image" class="form-label">Hình ảnh</label>
                                 <input type="file" class="form-control" id="product_image" name="product_image">
                                 <img src="{{URL::asset('uploads')}}/{{$getDataProductById[0]->product_image}}" alt="" width="50">
                             </div>
