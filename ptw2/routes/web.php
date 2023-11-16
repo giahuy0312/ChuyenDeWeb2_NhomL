@@ -16,12 +16,12 @@ use App\Http\Controllers\HomeController;
 */
 
 // Home
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('/index', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+// Route::get('/index', function () {
+//     return view('index');
+// });
 // Route::group(['middleware' => 'auth'], function () {
 //     Route::get('/home', [HomeController::class, 'index'])->name('home');
 // });
@@ -41,4 +41,5 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 //Hien thi san pham trang index
 Route::get('/index',[ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/home',[ProductController::class, 'getAllProducts'])->name('index');
 Route::get('/',[ProductController::class, 'getAllProducts'])->name('index');
