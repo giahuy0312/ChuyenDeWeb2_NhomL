@@ -39,29 +39,28 @@
                         <div class="tm-form-inner">
                             <div class="tm-form-field">
                                 <label for="register-username">Username</label>
-                                <input type="text" name="name" id="register-username" required="required"
-                                    value="{{old('name')}}">
+                                <input type="text" name="name" id="register-username" required="required" value="{{old('name')}}">
                                 @error('name')
                                 <p style="color: red;">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="tm-form-field">
                                 <label for="register-email">Email address</label>
-                                <input type="email" name="email" id="register-email" required="required"
-                                    value="{{old('email')}}">
+                                <input type="email" name="email" id="register-email" required="required" value="{{old('email')}}">
+                                @error('email')
+                                <p style="color: red;">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="tm-form-field">
                                 <label for="register-password">Password</label>
-                                <input type="password" name="password" id="register-password" required="required"
-                                    value="{{old('password')}}">
+                                <input type="password" name="password" id="register-password" required="required" value="{{old('password')}}">
                                 @error('password')
                                 <p style="color: red;">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="tm-form-field">
                                 <label for="register-password">Confirm Password</label>
-                                <input type="password" name="password_confirmation" id="confirm-password"
-                                    required="required" value="{{old('password')}}">
+                                <input type="password" name="password_confirmation" id="confirm-password" required="required" value="{{old('password')}}">
                                 @error('password_confirmation')
                                 <p style="color: red;">{{$message}}</p>
                                 @enderror
@@ -96,19 +95,19 @@
 </main>
 <!--// Page Content -->
 <script>
-const checkbox = document.getElementById('register-pass-show');
-const passwordInput = document.getElementById('register-password');
-const confirmpasswordInput = document.getElementById('confirm-password');
+    const checkbox = document.getElementById('register-pass-show');
+    const passwordInput = document.getElementById('register-password');
+    const confirmpasswordInput = document.getElementById('confirm-password');
 
-checkbox.addEventListener('change', () => {
-    if (checkbox.checked) {
-        passwordInput.type = 'text';
-        confirmpasswordInput.type = 'text';
-    } else {
-        passwordInput.type = 'password';
-        confirmpasswordInput.type = 'password';
-    }
-});
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            passwordInput.type = 'text';
+            confirmpasswordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+            confirmpasswordInput.type = 'password';
+        }
+    });
 </script>
 
 @include('layout.footer')
