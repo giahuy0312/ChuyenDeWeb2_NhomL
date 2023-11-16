@@ -54,7 +54,7 @@
                                 <img src="{{URL::asset('uploads')}}/{{$getDataProductById[0]->product_image}}" alt="" width="50">
                             </div>
                             <div class="d-grid mx-auto">
-                                <button type="submit" class="btn btn-dark btn-block">Lưu Thay Đổi</button>
+                                <button type="submit" class="btn btn-dark btn-block"> Lưu Thay Đổi </button>
                             </div>
                         </form>
                     </div>

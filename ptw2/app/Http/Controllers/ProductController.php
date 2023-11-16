@@ -60,9 +60,9 @@ class ProductController extends Controller
 
     public function getDataEdit($id)
     {
-        $categories = Category::all();
-        $product = Product::find($id);
-        return view('products.edit',['product' => $product,'categories' => $categories]);
+        $getData = DB::table('products')->select('*')->where('id', $id)->get();
+        $categories = DB::table('categories')->select('*')->get();
+        return view('admin.content.editproduct', ['getDataProductById' => $getData, 'categories' => $categories, 'size' => $size]);
     }
 
     public function updateProduct(Request $request)
