@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
@@ -14,23 +15,30 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-
+// Home
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/home', function () {
+Route::get('/index', function () {
     return view('index');
 });
-route::group(['middleware' => 'guest'], function () {
+// Route::group(['middleware' => 'auth'], function () {
+//     Route::get('/home', [HomeController::class, 'index'])->name('home');
+// });
+
+// Login - register
+Route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
-    route::get('/login', [UserController::class, 'login'])->name('login');
-    route::post('/login', [UserController::class, 'loginpost'])->name('loginpost');
+    Route::get('/login', [UserController::class, 'login'])->name('login');
+    Route::post('/login', [UserController::class, 'loginpost'])->name('loginpost');
     //lấy dữ liệu từ register
-    route::get('/register', [UserController::class, 'register'])->name('register');
-    route::post('/register', [UserController::class, 'registerpost'])->name('registerpost');
+    Route::get('/register', [UserController::class, 'register'])->name('register');
+    Route::post('/register', [UserController::class, 'registerpost'])->name('registerpost');
 });
 
-Route::group(['middleware' => 'auth'], function () {
-    route::get('/home', [HomeController::class, 'index'])->name('home');
-});
-route::get('/logout', [UserController::class, 'logout'])->name('logout');
+// Logout
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+//Hien thi san pham trang index
+Route::get('/index',[ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/',[ProductController::class, 'getAllProducts'])->name('index');
