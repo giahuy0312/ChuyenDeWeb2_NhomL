@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('product_material');
             $table->string('product_image');
             $table->integer('category_id');
-            $table->foreign('category_id')->references('category_id')->on('categories')->onDelete('cascade');
             $table->timestamps();
             });
     }

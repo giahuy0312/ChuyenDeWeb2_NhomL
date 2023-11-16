@@ -1,19 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\VoucherController;
-use App\Http\Controllers\CustomAuthController;
-use App\Http\Controllers\GoogleController;
- use App\Http\Controllers\FacebookController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ShopController;
-use App\Http\Controllers\ProductDetailController;
-use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
-use App\Http\Controllers\LangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +32,7 @@ Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name
 Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
 Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
 Route::get('searchproduct', [ProductController::class, 'searchProduct'])->name('searchproduct');
-Route::get('searchproductuser', [ProductController::class, 'searchProductUser'])->name('searchproductuser');;
+
 
 //--------------
 
@@ -70,19 +60,6 @@ Route::post('customcategory', [CategoryController::class, 'customCategory'])->na
 Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
 Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
-Route::get('searchcategory', [CategoryController::class, 'searchCategory'])->name('searchcategory');
-//---------
 
-// Login, logout, registration
-Route::get('login', [CustomAuthController::class, 'showFormLogin'])->name('login');
-Route::post('submit-login', [CustomAuthController::class, 'submitLogin'])->name('submit-login');
-Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
-Route::get('registration', [CustomAuthController::class, 'showFormRegistration'])->name('registration');
-Route::post('submit-registration', [CustomAuthController::class, 'submitRegistration'])->name('submit-registration');
-//-----------
-
-// detail
-//Route::get('/detail', [ProductDetailController::class, 'getProductById'])->name('detail');
-Route::get('/detail/{id}', [ProductDetailController::class, 'getRelatedProducts'])->name('detail');
 //---------
 
