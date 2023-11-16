@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ForgetpasswordManager;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +14,6 @@ use App\Http\Controllers\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 
 Route::get('/home', function () {
     return view('index');
@@ -31,3 +31,14 @@ Route::group(['middleware' => 'auth'], function () {
     route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 route::get('/logout', [UserController::class, 'logout'])->name('logout');
+//forget password
+route::get('/forgetpassword', [ForgetpasswordManager::class, 'forgetpassword'])
+    ->name('forget.password');
+route::post('/forgetpassword', [ForgetpasswordManager::class, 'forgetpasswordpost'])
+    ->name('forget.password.post');
+//reset password
+Route::get('/resetpasssword/{token}', [ForgetpasswordManager::class, 'resetPasssword'])
+    ->name('reset.passsword');
+// Route::get('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])->name('reset.passsword.post');
+Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])
+    ->name('reset.passsword.post');

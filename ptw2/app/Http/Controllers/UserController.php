@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,10 @@ class UserController extends Controller
             ];
 
             if (Auth::attempt($credetail)) {
-                return redirect('/index')->with('success', 'Login successfully');
+                session_start();
+                $user = Auth::user();
+                $_SESSION['user_id'] = csrf_token() . $user->id;
+                return redirect('/home')->with('success', 'Login successfully');
             } else {
                 return back()->with('error', 'Email or Password incorrect');
             }
@@ -69,7 +73,7 @@ class UserController extends Controller
     {
         $rules = [
             'name' => 'required|min:5',
-            'email' => 'required',
+            'email' => 'required|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/',
             'password' => 'required|regex:/^(?=.*[A-Z])(?=.*[@!#&])[A-Za-z0-9@!#&]{8,50}$/',
             'password_confirmation' => 'required|same:password',
         ];
