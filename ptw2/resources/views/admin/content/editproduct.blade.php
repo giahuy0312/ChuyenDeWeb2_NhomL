@@ -38,10 +38,8 @@
                                 <label for="product_materiall">Vật liệu</label>
                                 <select class ="form-control" name="product_material">
                                     <option selected value="{{$getDataProductById[0]->product_material}}">{{$getDataProductById[0]->product_material}}</option>
-                                        <option value="14k">14k</option>
-                                        <option value="18k">18k</option>
-                                        <option value="Platinum">Platinum</option>
-                                  
+                                    <option value="18k">18k</option>
+                                    <option value="Platinum">Platinum</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
