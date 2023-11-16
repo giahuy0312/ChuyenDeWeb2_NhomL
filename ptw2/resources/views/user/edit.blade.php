@@ -33,7 +33,7 @@
                             style="background-image: url({{ asset('images/user.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->name }}"><br> <br>
                         <label for="phone">Số điện thoại</label> <br>
-                        <input type="tel" name="phone" pattern="\d{10}" 
+                        <input type="tel" name="phone" pattern="0\d{9}" 
                             style="background-image: url({{ asset('images/phone.png') }});background-size:32px 45px;"
                             class="border border-dark rounded-pill" value="{{ $user->phone }}"> <br> <br>
                        

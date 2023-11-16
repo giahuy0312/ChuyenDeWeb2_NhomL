@@ -46,11 +46,9 @@ class UserController extends Controller
                 return view('user.show', ['user' => $user]);
             }
         }
-        $user = User::find($_SESSION['user_id']);
-        if (!$user) {
-            abort(404);
-        }
+     
         abort(404);
+        
     }
 
     /**
@@ -65,11 +63,9 @@ class UserController extends Controller
                 return view('user.edit', ['user' => $user]);
             }
         }
-        $user = User::find($_SESSION['user_id']);
-        if (!$user) {
+       
             abort(404);
-        }
-        abort(404);
+        
         // return view('user.edit', ['user' => $user]);
     }
 
@@ -85,8 +81,8 @@ class UserController extends Controller
                 // return view('user.show', ['user' => $user]);
             }
         }
-        $user = User::find($_SESSION['user_id']);
-        if (!$user) {
+       
+        else  {
             abort(404);
         }
         // abort(404);
@@ -94,6 +90,7 @@ class UserController extends Controller
         $request->validate([
             'username' => 'required|min:5|max:10',
             'name' => 'required|min:5|max:10',
+            'phone' =>'nullable|min:10|max:10',
             'email' => 'required|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
             'DOB' => 'nullable|date'
         ]);
@@ -216,4 +213,6 @@ class UserController extends Controller
             return back()->withErrors($user->getErrors());
         }
     }
+    
+    
 }

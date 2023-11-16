@@ -18,7 +18,7 @@
                     <p><a href=""> Thông tin tài khoản </a></p>
                     <p><a href=""> Mã giảm giá </a></p>
                     <p><a href=""> Lịch sử mua hàng </a></p>
-                    <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="" style="color:red"> Đăng xuất </a></p>
+                    <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="{{ route('logout') }}" style="color:red"> Đăng xuất </a></p>
                 </div>
             </div>
             <!-- Indexing -->

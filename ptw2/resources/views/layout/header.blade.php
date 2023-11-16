@@ -21,8 +21,7 @@
                                 @if (Route::has('login'))
                                     @auth
                                         @if (!isset($_SESSION))
-                                            <?php session_start();                                       
-                                            ?>
+                                            <?php session_start(); ?>
                                             <li>{{ $_SESSION['user_id'] }}</li>
                                         @endif
                                         @if (isset($_SESSION['user_id']))
