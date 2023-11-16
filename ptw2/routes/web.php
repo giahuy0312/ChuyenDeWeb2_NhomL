@@ -18,12 +18,7 @@ use Laravel\Socialite\Facades\Socialite;
 Route::get('/admin', function () {
     return view('admin.main');
 });
-Route::get('/logadmin', function () {
-    return view('admin.adminlogin');
-});
-Route::get('/addproduct', function () {
-    return view('admin.content.addproduct');
-});
+
 // Product
 Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
 Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
@@ -31,28 +26,6 @@ Route::post('customproduct', [ProductController::class, 'customProduct'])->name(
 Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name('getdataedt');
 Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
 Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
-Route::get('searchproduct', [ProductController::class, 'searchProduct'])->name('searchproduct');
-
-
-//--------------
-
-
-
-Route::get('/checkout', function () {
-    return view('checkout');
-});
-Route::get('/wishlist', function () {
-    return view('wishlist');
-});
-
-Route::get('/test', function () {
-    return view('test');
-});
-
-
-                  
-
-
 // Category
 Route::get('listcategory', [CategoryController::class, 'listCategory'])->name('listcategory');
 Route::get('addcategory', [CategoryController::class, 'addCategory'])->name('addcategory');
@@ -63,3 +36,12 @@ Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'
 
 //---------
 
+// Route::get('/index', function () {
+//     return view('index');
+// });
+Route::get('/login-register', function () {
+    return view('login-register');
+});
+//Hien thi san pham trang index
+Route::get('/index',[ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/',[ProductController::class, 'getAllProducts'])->name('index');
