@@ -7,8 +7,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-8 col-12">
                     <ul class="tm-header-info">
-                        <li><a href="tel:123456789"><i class="ion-ios-telephone"></i>1-888-345-6789</a></li>
-                        <li><a href="mailto:contact@example.com"><i class="ion-android-mail"></i>contact@example.com</a>
+                        <li><a href="tel:123456789"><i class="ion-ios-telephone"></i>1900 111 999 </a></li>
+                        <li><a href="mailto:contact@example.com"><i class="ion-android-mail"></i>Luxury</a>
                         </li>
                     </ul>
                 </div>
@@ -95,84 +95,9 @@
         <div class="container">
             <nav class="tm-header-nav">
                 <ul>
-                    <li><a href="{{ url('/index') }}">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li class="tm-header-nav-dropdown"><a href="products.html">Shop</a>
-                        <ul>
-                            <li><a href="products.html">Products</a></li>
-                            <li><a href="products-leftsidebar.html">Products Left Sidebar</a></li>
-                            <li><a href="products-nosidebar.html">Products Without Sidebar</a></li>
-                            <li><a href="products-4-column.html">Products 4 Column</a></li>
-                            <li><a href="product-details.html">Product Details</a></li>
-                            <li><a href="product-details-leftsidebar.html">Product Details Left Sidebar</a></li>
-                            <li><a href="product-details-nosidebar.html">Product Details Without Sidebar</a>
-                            </li>
-                            <li><a href="#">Others</a>
-                                <ul>
-                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="login-register.html">Login / Register</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="tm-header-nav-megamenu"><a href="index.html">Pages</a>
-
-                        <ul>
-                            <li><a href="shop.html">Common Pages</a>
-                                <ul>
-                                    <li><a href="index.html">Homepage</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="portfolios.html">Portfolios</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Blog Pages</a>
-                                <ul>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-leftsidebar.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                    <li><a href="blog-details-leftsidebar.html">Blog Details Left Sidebar</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Shop Pages</a>
-                                <ul>
-                                    <li><a href="products.html">Products</a></li>
-                                    <li><a href="products-leftsidebar.html">Products Left Sidebar</a></li>
-                                    <li><a href="products-nosidebar.html">Products Without Sidebar</a></li>
-                                    <li><a href="products-4-column.html">Products 4 Column</a></li>
-                                    <li><a href="product-details.html">Product Details</a></li>
-                                    <li><a href="product-details-leftsidebar.html">Product Details Left
-                                            Sidebar</a></li>
-                                    <li><a href="product-details-nosidebar.html">Product Details Without
-                                            Sidebar</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Shop Related Pages</a>
-                                <ul>
-                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="login-register.html">Login / Register</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-
-                    </li>
-                    <li class="tm-header-nav-dropdown"><a href="blog.html">Blog</a>
-                        <ul>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="blog-leftsidebar.html">Blog Left Sidebar</a></li>
-                            <li><a href="blog-details.html">Blog Details</a></li>
-                            <li><a href="blog-details-leftsidebar.html">Blog Details Left Sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="{{ url('/index') }}">Trang Chủ</a></li>
+                    <li><a href="#">Nhẫn Cưới</a></li>
+                    <li><a href="#">Nhẫn Cầu hôn</a></li>
                 </ul>
             </nav>
         </div>
