@@ -12,15 +12,15 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group mb-3">
-                                        <label for="product_name">Tên Sản Phẩm</label>
-                                        <input type="text" placeholder="Name" id="product_name" class="form-control" name="product_name" required autofocus>
-                                        @if ($errors->has('product_name'))
-                                        <span class="text-danger">{{ $errors->first('product_name') }}</span>
+                                        <label for="name">Tên Sản Phẩm</label>
+                                        <input type="text" placeholder="Name" id="name" class="form-control" name="name" required autofocus>
+                                        @if ($errors->has('name'))
+                                        <span class="text-danger">{{ $errors->first('name') }}</span>
                                         @endif
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="product_description">Mô tả Sản Phẩm</label>
-                                        <textarea class ="form-control" name="product_description" id="product_description" cols="30" rows="10" placeholder="Input description" ></textarea>
+                                        <label for="description">Mô tả Sản Phẩm</label>
+                                        <textarea class ="form-control" name="description" id="description" cols="30" rows="10" placeholder="Input description" ></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -34,8 +34,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <li><label for="product_material">Vật Liệu Sản Phẩm</label></li>
-                                        <li> <select class ="form-control custom-select" name="product_material">
+                                        <li><label for="material">Vật Liệu Sản Phẩm</label></li>
+                                        <li> <select class ="form-control custom-select" name="material">
                                             <option selected disabled>Select one</option>
                                             <option value="14k">14k</option>
                                             <option value="18k">18k</option>
@@ -43,16 +43,16 @@
                                         </select></li>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="product_price">Giá Sản Phẩm</label>
-                                        <input type="text" placeholder="Price" id="product_price" class="form-control" name="product_price" required autofocus>
+                                        <label for="price">Giá Sản Phẩm</label>
+                                        <input type="text" placeholder="Price" id="price" class="form-control" name="price" required autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <label for="product_size">Kích thước Sản Phẩm</label>
-                                        <input class ="form-control" name="product_size" id="product_size" placeholder="Input size">
+                                        <label for="size">Kích thước Sản Phẩm</label>
+                                        <input class ="form-control" name="size" id="size" placeholder="Input size">
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label for="product_image">Ảnh Sản Phẩm</label>
-                                        <input type="file" name="product_image" id="product_image" accept="image/*" class="form-control-file" required>
+                                        <label for="image">Ảnh Sản Phẩm</label>
+                                        <input type="file" name="image" id="image" accept="image/*" class="form-control-file" required>
                                     </div>
                                 </div>
                             </div>
