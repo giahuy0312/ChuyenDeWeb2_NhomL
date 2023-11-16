@@ -43,7 +43,10 @@
                         <input type="text" name="token" hidden value="{{$token}}">
                         <div class="tm-form-field">
                             <label for="login-password">Email</label>
-                            <input type="email" name="email" required="required">
+                            <input type="email" name="email" required="required" value="{{old('email')}}">
+                            @error('email')
+                            <p style="color: red;">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="tm-form-field">
                             <label for="register-password">Password</label>
