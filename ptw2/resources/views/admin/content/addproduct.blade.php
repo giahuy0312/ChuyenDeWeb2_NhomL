@@ -12,7 +12,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <div class="form-group mb-3">
-                                        <label for="category_id">Tên Sản Phẩm</label>
+                                        <label for="product_name">Tên Sản Phẩm</label>
                                         <input type="text" placeholder="Name" id="product_name" class="form-control" name="product_name" required autofocus>
                                         @if ($errors->has('product_name'))
                                         <span class="text-danger">{{ $errors->first('product_name') }}</span>
