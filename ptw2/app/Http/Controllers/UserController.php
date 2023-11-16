@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function login(Request $request)
+    public function login(User $user)
     {
         return view("login");
     }
@@ -48,6 +48,9 @@ class UserController extends Controller
         if (filled($credetail)) {
             // Kiểm tra xem người dùng có hợp lệ hay không
             if (Auth::attempt($credetail)) {
+                session_start();
+                $user = Auth::user();
+                $_SESSION['user_id'] =  csrf_token() . $user->id;
                 return redirect('/home')->with('success', 'Login successfully');
             } else {
                 return back()->with('error', 'Email or Password incorrect');
