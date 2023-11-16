@@ -67,7 +67,7 @@
 
                     <div class="row">
                         <div class="col text-center">
-                            <a href="{{ url('user/edit/'. $_SESSION['userID']) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ url('user/edit/'. $_SESSION['user_id']) }}" class="btn btn-primary">Edit</a>
                         </div>
                     </div>
                     </form>

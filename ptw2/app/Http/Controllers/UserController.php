@@ -2,7 +2,6 @@
 
 
 namespace App\Http\Controllers;
-session_start();
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -40,11 +39,18 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = User::find($_SESSION['userID']);
-         if (!$user) {
-             abort(404);
+        // session_start();
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['user_id'] == $id) {
+                $user = User::find($_SESSION['user_id']);
+                return view('user.show', ['user' => $user]);
+            }
         }
-        return view('user.show', ['user' => $user]);
+        $user = User::find($_SESSION['user_id']);
+        if (!$user) {
+            abort(404);
+        }
+        abort(404);
     }
 
     /**
@@ -52,11 +58,19 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $user = User::find($_SESSION['userID']);
+        // session_start();
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['user_id'] == $user->id) {
+                $user = User::find($_SESSION['user_id']);
+                return view('user.edit', ['user' => $user]);
+            }
+        }
+        $user = User::find($_SESSION['user_id']);
         if (!$user) {
             abort(404);
         }
-        return view('user.edit', ['user' => $user]);
+        abort(404);
+        // return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -64,12 +78,22 @@ class UserController extends Controller
      */
     public function update(Request $request,  User $user)
     {
-        $user = User::find($_SESSION['userID']);
+        // session_start();
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['user_id'] == $user->id) {
+                $user = User::find($_SESSION['user_id']);
+                // return view('user.show', ['user' => $user]);
+            }
+        }
+        $user = User::find($_SESSION['user_id']);
+        if (!$user) {
+            abort(404);
+        }
+        // abort(404);
       
         $request->validate([
             'username' => 'required|min:5|max:10',
             'name' => 'required|min:5|max:10',
-            'phone' => 'required|min:10|max:10',
             'email' => 'required|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
             'DOB' => 'nullable|date'
         ]);
@@ -102,7 +126,8 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         if (Auth::logout()) {
-
+            session_start();
+            session_destroy();
             return redirect('/login');
         }
         return redirect('/home');
@@ -134,9 +159,11 @@ class UserController extends Controller
         if (filled($credetail)) {
             // Kiểm tra xem người dùng có hợp lệ hay không
             if (Auth::attempt($credetail)) {
-                session_start();
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
                 $user = Auth::user();
-                $_SESSION['user_id'] =  csrf_token() . $user->id;
+                $_SESSION['user_id'] =  $user->id;
                 return redirect('/home')->with('success', 'Login successfully');
             } else {
                 return back()->with('error', 'Email or Password incorrect');

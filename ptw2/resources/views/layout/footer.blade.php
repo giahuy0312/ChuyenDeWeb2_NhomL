@@ -48,7 +48,9 @@
                     <div class="single-widget widget-quicklinks">
                         <h6 class="widget-title">My account</h6>
                         <ul>
-                            <li><a href="{{ url('user/'. $_SESSION['userID']) }}">My account</a></li>
+                            @if (isset($_SESSION['user_id']))           
+                                <li><a href="{{ url('user/'. $_SESSION['user_id']) }}">My account</a></li>
+                            @endif
                             <li><a href="cart.html">Cart</a></li>
                             <li><a href="wishlist.html">Wishlist</a></li>
                             <li><a href="#">Newsletter</a></li>

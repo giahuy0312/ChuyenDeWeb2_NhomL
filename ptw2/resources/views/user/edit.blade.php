@@ -62,7 +62,7 @@
                 <div class="row text-center">
                     <div class="col">
                     <button type="submit" class="btn text-white">Save</button>
-                    <a href="{{ url('user/'. $_SESSION['userID'])}}" class="btn btn-primary text-white"  style="width:100px;">Cancel</a>
+                    <a href="{{ url('user/'. $_SESSION['user_id'])}}" class="btn btn-primary text-white"  style="width:100px;">Cancel</a>
                       </div>
                 </div>
             </form>

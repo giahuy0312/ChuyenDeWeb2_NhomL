@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
-use App\Models\Users;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +14,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-
-Route::get('/home', function () {
-    return view('index');
-});
+session_start();
+if (isset($_SESSION['user_id'])) {
+    Route::get('/home', function () {
+        return view('index');
+    });
+}
 route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
     route::get('/login', [UserController::class, 'login'])->name('login');

@@ -18,18 +18,25 @@
                         <div class="tm-dropdown tm-header-links">
                             <button><i class="fa-regular fa-user"></i></button>
                             <ul>
-                                <li><a href="{{ url('user/'. $_SESSION['userID']) }}">My Account</a></li>
                                 @if (Route::has('login'))
-                                @auth
-                                <li> <a href="{{ route('logout') }}">
-                                        Logout
-                                    </a></li>
-                                @else
-                                <li><a href="{{ route('login') }}">Login</a></li>
-                                @if (Route::has('register'))
-                                <li><a href="{{ route('register') }}">Register</a></li>
-                                @endif
-                                @endauth
+                                    @auth
+                                        @if (!isset($_SESSION))
+                                            <?php session_start();                                       
+                                            ?>
+                                            <li>{{ $_SESSION['user_id'] }}</li>
+                                        @endif
+                                        @if (isset($_SESSION['user_id']))
+                                            <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">My Account</a></li>
+                                            @endif
+                                            <li> <a href="{{ route('logout') }}">
+                                                    Logout
+                                                </a></li>
+                                    @else
+                                        <li><a href="{{ route('login') }}">Login</a></li>
+                                        @if (Route::has('register'))
+                                            <li><a href="{{ route('register') }}">Register</a></li>
+                                        @endif
+                                    @endauth
                                 @endif
 
 
@@ -51,10 +58,14 @@
                         <div class="tm-dropdown tm-header-language">
                             <button><img src="{{ asset('images/flag-english.png') }}" alt="language">English</button>
                             <ul>
-                                <li><a href="#"><img src="{{ asset('images/flag-english.png') }}" alt="language">English</a></li>
-                                <li><a href="#"><img src="{{ asset('images/flag-spain.png') }}" alt="language">Spanish</a></li>
-                                <li><a href="#"><img src="{{ asset('images/flag-russian.png') }}" alt="language">Russian</a></li>
-                                <li><a href="#"><img src="{{ asset('images/flag-french.png') }}" alt="language">French</a></li>
+                                <li><a href="#"><img src="{{ asset('images/flag-english.png') }}"
+                                            alt="language">English</a></li>
+                                <li><a href="#"><img src="{{ asset('images/flag-spain.png') }}"
+                                            alt="language">Spanish</a></li>
+                                <li><a href="#"><img src="{{ asset('images/flag-russian.png') }}"
+                                            alt="language">Russian</a></li>
+                                <li><a href="#"><img src="{{ asset('images/flag-french.png') }}"
+                                            alt="language">French</a></li>
                             </ul>
                         </div>
                     </div>
