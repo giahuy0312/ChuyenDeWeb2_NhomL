@@ -122,7 +122,7 @@
                 <div class="row tm-products-slider">
 
                     <!-- Single Product -->
-                    @foreach($products as $product)
+                    {{-- @foreach($products as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                         <div class="tm-product tm-scrollanim">
                             <div class="tm-product-topside">
@@ -155,7 +155,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @endforeach --}}
                     <!--// Single Product -->
 
                 </div>
@@ -179,13 +179,13 @@
                 </div>
                 <div class="row mt-30-reverse">
                     <!-- Single Banner -->
-                    @for ($i = 0; $i < 3; $i++)
+                    {{-- @for ($i = 0; $i < 3; $i++)
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-30">
                         <a href="#" class="tm-banner tm-scrollanim">
                             <img src="{{ asset('images/image-products') }}/{{$products[$i]->image}}" alt="banner image">
                         </a>
                     </div>
-                    @endfor
+                    @endfor --}}
                     <!--// Single Banner -->
                 </div>
             </div>
@@ -207,7 +207,7 @@
                 <div class="row mt-50-reverse">
 
                     <!-- Single Product -->
-                    @foreach($products as $product)
+                    {{-- @foreach($products as $product)
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mt-50">
                         <div class="tm-product tm-scrollanim">
                             <div class="tm-product-topside">
@@ -245,7 +245,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @endforeach --}}
                     <!--// Single Product -->
                 </div>
                 <div class="tm-product-loadmore text-center mt-50">
@@ -274,7 +274,7 @@
                 <div class="row tm-blog-slider">
 
                     <!-- Blog Single Item -->
-                    @foreach($products as $product)
+                    {{-- @foreach($products as $product)
                     <div class="col-lg-4 col-md-6">
                         <div class="tm-blog tm-scrollanim">
                             <div class="tm-blog-topside">
@@ -295,7 +295,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @endforeach --}}
                     <!--// Blog Single Item -->
 
                 </div>
@@ -309,13 +309,13 @@
                 <div class="row tm-brandlogo-slider" style="height:100px">
 
                     <!-- Brang Logo Single -->
-                    @foreach($products as $product)
+                    {{-- @foreach($products as $product)
                     <div class="col-12 tm-brandlogo" style="height: 240px;">
                         <a href="#">
                             <img src="{{ asset('images/image-products') }}/{{$product->image}}" alt="brand-logo">
                         </a>
                     </div>
-                    @endforeach
+                    @endforeach --}}
                     <!--// Brang Logo Single -->
 
                 </div>
