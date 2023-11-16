@@ -30,7 +30,7 @@ class ProductController extends Controller
             'category_id' => 'required',
         ]);
         $file = $request->file('image');
-        $path = 'uploads';
+        $path = 'images/image-products';
         $fileName = $file->getClientOriginalName();
         $file->move($path, $fileName);
         $product = new Product($request->all());

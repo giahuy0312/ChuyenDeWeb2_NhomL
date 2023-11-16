@@ -30,7 +30,7 @@
           <tr>
            
             <td>{{$product->name}}</td>
-            <td><img src="{{URL::asset('uploads')}}/{{$product->image}}" alt="" width="50px" height="50px"></td>
+            <td><img src="{{URL::asset('images/image-products')}}/{{$product->image}}" alt="" width="50px" height="50px"></td>
             <td>{{$product->description}}</td>
             <td>{{$product->price}}</td>
             <td>{{$product->size}}</td>
