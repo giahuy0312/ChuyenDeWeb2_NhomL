@@ -26,20 +26,20 @@ class ProductController extends Controller
     {
         
         $request->validate([
-            'product_name' => 'required',
-            'product_description' => 'required',
-            'product_price' => 'required|numeric',
-            'product_size' => 'required',
-            'product_material' => 'required|in:14k,18k,Platinum',
-            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'size' => 'required',
+            'material' => 'required|in:14k,18k,Platinum',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
             'category_id' => 'required',
         ]);
-        $file = $request->file('product_image');
+        $file = $request->file('image');
         $path = 'uploads';
         $fileName = $file->getClientOriginalName();
         $file->move($path, $fileName);
         $product = new Product($request->all());
-        $product->product_image = $fileName;
+        $product->image = $fileName;
         $product->save();
         return redirect("listproduct");
     }
@@ -47,13 +47,13 @@ class ProductController extends Controller
     public function createProduct(array $data)
     {
         return Product::create([
-            'product_name' => $data['product_name'],
-            'product_description' => $data['roduct_description'],
-            'product_price' => $data['product_price'],
-            'product_size' => $data['product_size'],
-            'product_material' => $data['product_material'],
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'price' => $data['price'],
+            'size' => $data['size'],
+            'material' => $data['material'],
             'category_id' => $data['category_id'],
-            'product_image' => $data['product_image'],
+            'image' => $data['image'],
         ]);
     }
 
@@ -66,19 +66,18 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
-        $file = $request->file('product_image');
+        $file = $request->file('image');
         $path = 'uploads';
         $fileName = $file->getClientOriginalName();
         $file->move($path, $fileName);
-
         $updateData = DB::table('products')->where('id', $request->id)->update([
-            'product_name' => $request->product_name,
-            'product_description' => $request->product_description,
-            'product_price' => $request->product_price,
-            'product_size' => $request->product_size,
-            'product_material' => $request->product_material,
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'size' => $request->size,
+            'material' => $request->material,
             'category_id' => $request->category_id,
-            'product_image' => $fileName,
+            'image' => $fileName,
             
         ]);
         

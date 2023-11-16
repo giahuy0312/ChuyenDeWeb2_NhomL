@@ -29,11 +29,11 @@
           @foreach($products as $product)
           <tr>
            
-            <td>{{$product->product_name}}</td>
-            <td><img src="{{URL::asset('uploads')}}/{{$product->product_image}}" alt="" width="50px" height="50px"></td>
-            <td>{{$product->product_description}}</td>
-            <td>{{$product->product_price}}</td>
-            <td>{{$product->product_size}}</td>
+            <td>{{$product->name}}</td>
+            <td><img src="{{URL::asset('uploads')}}/{{$product->image}}" alt="" width="50px" height="50px"></td>
+            <td>{{$product->description}}</td>
+            <td>{{$product->price}}</td>
+            <td>{{$product->size}}</td>
             <td>{{$product->category_id}}</td>
             <td class="btncn">
               <a href="{{route('getdataedt',$product->id)}}" >Edit</a>
