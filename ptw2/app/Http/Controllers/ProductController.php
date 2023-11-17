@@ -36,7 +36,8 @@ class ProductController extends Controller
             'name.required' => 'Vui lòng nhập tên sản phẩm',
             'name.min' => 'Tên sản phẩm phải có ít nhất 10 ký tự',
             'name.max' => 'Tên sản phẩm không được vượt quá 50 ký tự',
-        
+            'name.regex'=>'Tên không được chứa ký tự đặc biệt',
+
             'description.required' => 'Vui lòng nhập mô tả sản phẩm',
             'description.min' => 'Mô tả sản phẩm phải có ít nhất 1 ký tự',
             'description.max' => 'Mô tả sản phẩm không được vượt quá 255 ký tự',
