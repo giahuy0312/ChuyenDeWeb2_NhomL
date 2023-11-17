@@ -23,7 +23,7 @@
             </div>
             <!-- Indexing -->
             <div class="col-9" style="padding-top: 50px;">
-                <div class="title"><a href="{{ url('index')}}">Trang Chủ </a> <span class="px-3 fs-3"> <span class="p-2">></span> Thông
+                <div class="title"><a href="{{ url('home')}}">Trang Chủ </a> <span class="px-3 fs-3"> <span class="p-2">></span> Thông
                         tin tài khoản</span></div>
                 <!-- infoUser basic -->
 

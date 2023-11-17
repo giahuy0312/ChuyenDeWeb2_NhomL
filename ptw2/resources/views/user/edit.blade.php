@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-9" style="padding-top: 50px;">
             <div class="title">
-                <a href="{{ url('index')}}">Trang Chủ </a> <span class="px-3 fs-3"> Edit User</span>
+                <a href="{{ url('home')}}">Trang Chủ </a> <span class="px-3 fs-3"> Edit User</span>
             </div>
         </div>
     </div>
