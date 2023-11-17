@@ -44,6 +44,9 @@ class UserController extends Controller
         if (isset($_SESSION['user_id'])) {
             if ($_SESSION['user_id'] == $id) {
                 $user = User::find($_SESSION['user_id']);
+                if(!$user){
+                    abort(404);  
+                }
                 return view('user.show', ['user' => $user]);
             }
         }
@@ -61,6 +64,9 @@ class UserController extends Controller
         if (isset($_SESSION['user_id'])) {
             if ($_SESSION['user_id'] == $user->id) {
                 $user = User::find($_SESSION['user_id']);
+                if(!$user){
+                    abort(404);  
+                }
                 return view('user.edit', ['user' => $user]);
             }
         }
