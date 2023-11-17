@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/67ff6e11b9.js" crossorigin="anonymous"></script>
 <!-- Header -->
 <div class="tm-header tm-header-sticky">
 
@@ -15,20 +16,26 @@
                 <div class="col-lg-4 col-12">
                     <div class="tm-header-options">
                         <div class="tm-dropdown tm-header-links">
-                            <button>My Account</button>
+                            <button><i class="fa-regular fa-user"></i></button>
                             <ul>
-                                <li><a href="my-account.html">My Account</a></li>
                                 @if (Route::has('login'))
-                                @auth
-                                <li> <a href="{{ route('logout') }}">
-                                        Logout
-                                    </a></li>
-                                @else
-                                <li><a href="{{ route('login') }}">Login</a></li>
-                                @if (Route::has('register'))
-                                <li><a href="{{ route('register') }}">Register</a></li>
-                                @endif
-                                @endauth
+                                    @auth
+                                        @if (!isset($_SESSION))
+                                            <?php session_start(); ?>
+                                            <li>{{ $_SESSION['user_id'] }}</li>
+                                        @endif
+                                        @if (isset($_SESSION['user_id']))
+                                            <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">My Account</a></li>
+                                            @endif
+                                            <li> <a href="{{ route('logout') }}">
+                                                    Logout
+                                                </a></li>
+                                    @else
+                                        <li><a href="{{ route('login') }}">Login</a></li>
+                                        @if (Route::has('register'))
+                                            <li><a href="{{ route('register') }}">Register</a></li>
+                                        @endif
+                                    @endauth
                                 @endif
                                 <li><a href="{{ url('order') }}">Shopping Cart</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
@@ -97,7 +104,7 @@
         <div class="container">
             <nav class="tm-header-nav">
                 <ul>
-                    <li><a href="{{ url('/index') }}">Trang Chủ</a></li>
+                    <li><a href="{{ url('/home') }}">Trang Chủ</a></li>
                     <li><a href="#">Nhẫn Cưới</a></li>
                     <li><a href="#">Nhẫn Cầu hôn</a></li>
                 </ul>

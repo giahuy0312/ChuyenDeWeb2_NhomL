@@ -21,14 +21,16 @@ use App\Http\Controllers\ForgetpasswordManager;
 
 
 // Home
-// Route::get('/', function () {
-//     return view('index');
-// });
+session_start();
+if (isset($_SESSION['user_id'])) {
+    //Hien thi san pham trang index
+    Route::get('/index', [ProductController::class, 'getAllProducts'])->name('index');
+}
+Route::get('/home', [ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
+
 Route::get('/admin', function () {
     return view('admin.main');
-});
-Route::get('/home', function () {
-    return view('index');
 });
 
 // Product
@@ -46,17 +48,8 @@ Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEdit
 Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
 
-//---------
-
-// Route::get('/index', function () {
-//     return view('index');
-// });
-// Route::group(['middleware' => 'auth'], function () {
-//     Route::get('/home', [HomeController::class, 'index'])->name('home');
-// });
-
 // Login - register
-Route::group(['middleware' => 'guest'], function () {
+route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
     Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::post('/login', [UserController::class, 'loginpost'])->name('loginpost');
@@ -68,17 +61,20 @@ Route::group(['middleware' => 'guest'], function () {
 // Logout
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
-//Hien thi san pham trang index
-Route::get('/index', [ProductController::class, 'getAllProducts'])->name('index');
-Route::get('/home', [ProductController::class, 'getAllProducts'])->name('index');
-Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
-
 // Order
-Route::resource('order', OrderController::class);
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('order', OrderController::class);
+});
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
+
+
+//route User
+Route::resource('user', UserController::class);
+Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 route::get('/logout', [UserController::class, 'logout'])->name('logout');
 //forget password
 route::get('/forgetpassword', [ForgetpasswordManager::class, 'forgetpassword'])

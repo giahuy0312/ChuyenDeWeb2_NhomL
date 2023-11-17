@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 use Illuminate\Support\Facades\DB;
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -178,6 +176,15 @@ class DatabaseSeeder extends Seeder
             'start_date' => '2023-11-14',
             'end_date' => '2023-11-14',
             'amount' => 10000,
+        ]);
+
+        DB::table('users')->insert([
+            'id' =>'1',
+            'password' =>'123456789',
+            'username' => 'Nguyen van a',
+            'name' => 'vana',
+            'phone' => '0919191919',
+            'email' => 'vana@gmail.com',
         ]);
     }
 }

@@ -5,7 +5,7 @@
     <div id="wrapper" class="wrapper">
 
         @include('layout.header')
-
+        
         <!-- Heroslider Area -->
         <div class="tm-heroslider-area bg-grey">
             <div class="tm-heroslider-slider">
