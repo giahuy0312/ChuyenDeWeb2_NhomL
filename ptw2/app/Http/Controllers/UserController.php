@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function login(Request $request)
+    public function login(User $user)
     {
         return view("login");
     }
@@ -27,26 +27,39 @@ class UserController extends Controller
     public function loginpost(Request $request)
     {
         $rules = [
-            'email' => 'required|max:50',
+
+            'email' => 'required|min:10|max:50|regex:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/',
             'password' => 'required|regex:/^(?=.*[A-Z])(?=.*[@!#&])[A-Za-z0-9@!#&]{8,50}$/',
         ];
         $message = [
-            'required' => ':attribute bắt buộc phải nhập',
-            'regex' => ':attribute  Sai',
+
+            'required' => ':attribute bắt buộc phải nhập.',
+            'min:10' => ':attribute không được nhập dưới 10 ký tự.',
+            'max:50' => ':attribute không được nhập trên 50 ký tự.',
+
+            'email' => [
+                'regex' => ':attribute sai định đạng email'
+            ],
+            'password' => [
+                'regex' => [
+                    'message' => ':attribute phải có ít nhất một ký đặc biệt(!,#,@) và 1 chữ in Hoa(A-Z), tối thiểu 8 ký tự và tối đa 50 ký tự '
+                ]
+            ]
         ];
         $attribute = [
             'email' => 'Email',
             'password' => 'Mật khẩu',
 
         ];
-        $credetail = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-        ];
+
         $validator = Validator::make($request->all(), $rules, $message, $attribute);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
+        $credetail = [
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+        ];
         if (filled($credetail)) {
             // Kiểm tra xem người dùng có hợp lệ hay không
             if (Auth::attempt($credetail)) {
@@ -71,18 +84,27 @@ class UserController extends Controller
     {
         $rules = [
             'name' => 'required|min:5|max:50',
-            'email' => 'required|max:50',
+            'email' => 'required|min:10|max:50|regex:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/',
             'password' => 'required|regex:/^(?=.*[A-Z])(?=.*[@!#&])[A-Za-z0-9@!#&]{8,50}$/',
             'password_confirmation' => 'required|same:password',
         ];
         $message = [
-            'required' => ':attribute bắt buộc phải nhập',
-            'min' => ':attribute không được nhập dưới 5 ký tự ',
-            'max' => ':attribute không được nhập trên 50 ký tự ',
-            'regex' => ':attribute phải có ít nhất một ký đặc biệt(!,#,@) và 1 chữ in Hoa(A-Z), tối thiểu 8 ký tự và tối đa 50 ký tự ',
+
+            'required' => ':attribute bắt buộc phải nhập.',
+            'min:10' => ':attribute không được nhập dưới 5 ký tự.',
+            'max:50' => ':attribute không được nhập trên 50 ký tự.',
             'same' => 'Mật khẩu không khớp',
+            'email' => [
+                'regex' => ':attribute sai định đạng email'
+            ],
+            'password' => [
+                'regex' => [
+                    'message' => ':attribute phải có ít nhất một ký đặc biệt(!,#,@) và 1 chữ in Hoa(A-Z), tối thiểu 8 ký tự và tối đa 50 ký tự '
+                ]
+            ]
         ];
         $attribute = [
+            'email' => 'Email',
             'name' => 'Tên người dùng',
             'password' => 'Mật khẩu',
             'password_confirmation' => 'Mật khẩu',
