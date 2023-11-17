@@ -136,36 +136,36 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('order_product')->insert([
-            'product_id' => 1,
             'order_id' => 1,
+            'product_id' => 1,
             'quality' => 10,
             'unit_price' => 40000,
             'sub_total' => 40000,
         ]);
         DB::table('order_product')->insert([
-            'product_id' => 2,
             'order_id' => 1,
+            'product_id' => 2,
             'quality' => 30,
             'unit_price' => 60000,
             'sub_total' => 60000,
         ]);
         DB::table('order_product')->insert([
-            'product_id' => 3,
             'order_id' => 1,
+            'product_id' => 3,
             'quality' => 20,
             'unit_price' => 80000,
             'sub_total' => 80000,
         ]);
         DB::table('order_product')->insert([
-            'product_id' => 2,
             'order_id' => 2,
+            'product_id' => 2,
             'quality' => 30,
             'unit_price' => 60000,
             'sub_total' => 60000,
         ]);
         DB::table('order_product')->insert([
-            'product_id' => 1,
             'order_id' => 2,
+            'product_id' => 1,
             'quality' => 20,
             'unit_price' => 80000,
             'sub_total' => 80000,
@@ -180,11 +180,11 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'id' =>'1',
-            'password' =>'123456789',
+            'password' =>Bcrypt('123456789@H'),
             'username' => 'Nguyen van a',
             'name' => 'vana',
             'phone' => '0919191919',
-            'email' => 'vana@gmail.com',
+            'email' => '123456789@gmail.com',
         ]);
     }
 }

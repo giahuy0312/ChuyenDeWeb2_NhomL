@@ -30,7 +30,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -38,7 +38,30 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!isset($_SESSION['user_id'])) {
+            return redirect('/home');
+        }
+        $orders = Order::all();
+        $product = Product::find($request->product);
+        foreach ($orders as $order) {
+            if ($order->user_id == $_SESSION['user_id']) {
+                if ($order->order_status == 0) {
+                    
+                    $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
+                    DB::table('order_product')->where([['product_id', $product->id],['order_id', $order->id]])->update(
+                        ['quality' => +1],[ 'sub_total' => $product->price, 'updated_at' => now()]
+                    );
+                    return redirect()->back();
+                }
+            }
+        }
+        $order = new Order();
+        $order->user_id = $_SESSION['user_id'];
+        $order->order_status = 0;
+        $order->order_total = $product->price;
+        $order->save();
+        $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
+        return redirect()->back();
     }
 
     /**
