@@ -26,6 +26,7 @@ use App\Http\Controllers\ForgetpasswordManager;
 // });
 Route::get('/admin', function () {
     return view('admin.main');
+});
 Route::get('/home', function () {
     return view('index');
 });
@@ -68,9 +69,9 @@ Route::group(['middleware' => 'guest'], function () {
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 //Hien thi san pham trang index
-Route::get('/index',[ProductController::class, 'getAllProducts'])->name('index');
-Route::get('/home',[ProductController::class, 'getAllProducts'])->name('index');
-Route::get('/',[ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/index', [ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/home', [ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
 Route::get('/', function () {
     return view('index');
 });

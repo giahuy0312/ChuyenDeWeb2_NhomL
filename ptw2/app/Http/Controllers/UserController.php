@@ -27,10 +27,8 @@ class UserController extends Controller
     public function loginpost(Request $request)
     {
         $rules = [
-
-            'email' => 'required|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}{,50}$/',
+            'email' => 'required|max:50',
             'password' => 'required|regex:/^(?=.*[A-Z])(?=.*[@!#&])[A-Za-z0-9@!#&]{8,50}$/',
-
         ];
         $message = [
             'required' => ':attribute bắt buộc phải nhập',
@@ -41,14 +39,14 @@ class UserController extends Controller
             'password' => 'Mật khẩu',
 
         ];
-        $validator = Validator::make($request->all(), $rules, $message, $attribute);
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
-        }
         $credetail = [
             'email' => $request->input('email'),
             'password' => $request->input('password'),
         ];
+        $validator = Validator::make($request->all(), $rules, $message, $attribute);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
         if (filled($credetail)) {
             // Kiểm tra xem người dùng có hợp lệ hay không
             if (Auth::attempt($credetail)) {
