@@ -23,8 +23,8 @@ class ProductController extends Controller
     public function customProduct(Request $request)
     {
        $requied = [
-        'name' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/u', 'min:10', 'max:50'],
-        'description' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/u', 'min:1', 'max:255'],
+        'name' => ['required', 'regex:/^[\p{L}\s]+$/u', 'min:10', 'max:50'],
+        'description' => ['required', 'min:1', 'max:255'],
         'price' => ['required', 'numeric', 'min:1', 'max:9999999.99'],
         'size' => ['required', 'numeric', 'min:1', 'max:100'],
         'material' => ['required', Rule::in(['14k', '18k', 'Platinum'])],
