@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('order_product', function (Blueprint $table) {
-            $table->integer('product_id');
             $table->integer('order_id');
+            $table->integer('product_id');
             $table->primary(['product_id', 'order_id']);
             $table->integer('quality');
             $table->double('unit_price');

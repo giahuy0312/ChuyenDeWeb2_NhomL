@@ -38,34 +38,30 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // echo $request->product;
-        // $orders = Order::all();
+        if (!isset($_SESSION['user_id'])) {
+            return redirect('/home');
+        }
+        $orders = Order::all();
         $product = Product::find($request->product);
-        // $order_id = 0;          
-        // foreach ($orders as $order) {
-        //     if ($order->user_id == 2) {
-        //         if ($order->order_status != 0) {
-        //             $order_id = $order->id;
-        //         }
-        //     }
-        // }
+        foreach ($orders as $order) {
+            if ($order->user_id == $_SESSION['user_id']) {
+                if ($order->order_status == 0) {
+                    
+                    $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
+                    DB::table('order_product')->where([['product_id', $product->id],['order_id', $order->id]])->update(
+                        ['quality' => +1],[ 'sub_total' => $product->price, 'updated_at' => now()]
+                    );
+                    return redirect()->back();
+                }
+            }
+        }
         $order = new Order();
-        $order->user_id = 2;
+        $order->user_id = $_SESSION['user_id'];
         $order->order_status = 0;
         $order->order_total = $product->price;
-        // echo $order->id;
-        // echo $order->user_id;
-        $order->products()->attach('quality' , $request->product);
         $order->save();
-        // Order::create([
-        //     'user_id' => 2,
-        //     'order_status' => 0,
-        //     'created_at' => now(),
-        //     'updated_at' => now()
-        // ]);
-        // DB::table('order_product')->create(
-        //     ['quality' => 1, 'product_id' => $request->product, 'created_at' => now(), 'updated_at' => now()]
-        // );
+        $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
+        return redirect()->back();
     }
 
     /**
