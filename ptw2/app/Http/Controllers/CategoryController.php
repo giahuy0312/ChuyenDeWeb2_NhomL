@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Hash;
-use Session;
-use App\Models\User;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -21,9 +17,22 @@ class CategoryController extends Controller
     }   
     public function customCategory(Request $request)
     {
-        $request->validate([
-            'category_name' => 'required',
-        ]);
+        $required = [
+            'category_name' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/u', 'min:1', 'max:50'],
+        ];
+        $messages = [
+            'category_name.required' => 'Vui lòng nhập tên danh mục',
+            'category_name.min' => 'Tên danh mục phải có ít nhất 1 ký tự',
+            'category_name.max' => 'Tên danh mục không được vượt quá 50 ký tự',
+            'category_name.regex'=>'Tên danh mục không được chứa ký tự đặc biệt',
+        ];
+        $attribute = [
+            'category_name' => 'Tên danh mục'
+        ];
+        $validator = Validator::make($request->all(), $required, $messages,$attribute);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
         $category = new Category($request->all());
         $category->save();
         return redirect("listcategory");
