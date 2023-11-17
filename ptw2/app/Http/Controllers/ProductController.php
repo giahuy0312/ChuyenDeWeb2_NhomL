@@ -6,6 +6,9 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
 
 //Unknow
 class ProductController extends Controller
@@ -19,16 +22,49 @@ class ProductController extends Controller
 
     public function customProduct(Request $request)
     {
+       $requied = [
+        'name' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/u', 'min:10', 'max:50'],
+        'description' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/u', 'min:1', 'max:255'],
+        'price' => ['required', 'numeric', 'min:1', 'max:9999999.99'],
+        'size' => ['required', 'numeric', 'min:1', 'max:100'],
+        'material' => ['required', Rule::in(['14k', '18k', 'Platinum'])],
+        'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
+        'category_id' => 'required',
+        ];
         
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
-            'size' => 'required',
-            'material' => 'required|in:14k,18k,Platinum',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
-            'category_id' => 'required',
-        ]);
+        $messages = [
+            'name.required' => 'Vui lòng nhập tên sản phẩm',
+            'name.min' => 'Tên sản phẩm phải có ít nhất 10 ký tự',
+            'name.max' => 'Tên sản phẩm không được vượt quá 50 ký tự',
+        
+            'description.required' => 'Vui lòng nhập mô tả sản phẩm',
+            'description.min' => 'Mô tả sản phẩm phải có ít nhất 1 ký tự',
+            'description.max' => 'Mô tả sản phẩm không được vượt quá 255 ký tự',
+        
+            'price.required' => 'Vui lòng nhập giá sản phẩm',
+            'price.numeric' => 'Giá sản phẩm phải là một số hợp lệ',
+            'price.min' => 'Giá sản phẩm phải ít nhất là 1',
+            'price.max' => 'Giá sản phẩm không được vượt quá 9,999,999.99',
+        
+            'size.required' => 'Vui lòng nhập kích thước sản phẩm',
+            'size.numeric' => 'Kích thước sản phẩm phải là một số hợp lệ',
+            'size.min' => 'Kích thước sản phẩm phải ít nhất là 1',
+            'size.max' => 'Kích thước sản phẩm không được vượt quá 100',
+        
+            'material.required' => 'Vui lòng chọn chất liệu sản phẩm',
+            'material.in' => 'Chất liệu sản phẩm phải là một trong những lựa chọn sau: 14k, 18k, Platinum',
+        
+            'image.required' => 'Vui lòng tải lên hình ảnh sản phẩm',
+            'image.image' => 'Tệp được tải lên phải là hình ảnh',
+            'image.mimes' => 'Hình ảnh sản phẩm phải ở một trong các định dạng sau: jpeg, png, jpg, gif',
+        
+            'category_id.required' => 'Vui lòng chọn danh mục sản phẩm',
+        ];
+        $validator = Validator::make($request->all(), $requied, $messages);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        
         $file = $request->file('image');
         $path = 'images/image-products';
         $fileName = $file->getClientOriginalName();
