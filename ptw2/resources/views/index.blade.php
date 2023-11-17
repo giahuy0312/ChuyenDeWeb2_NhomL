@@ -132,7 +132,13 @@
                                                     alt="product image">
                                             </div>
                                             <ul class="tm-product-actions">
-                                                <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
+                                                <form action="{{ route('order.store') }}" method="POST"
+                                                    enctype="multipart/form-data" class="d-inline-block">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $product->id }}" name="product" id="product">
+                                                    <li><button type="submit"><i
+                                                                class="ion-android-cart"></i> Add to cart</button></li>
+                                                </form>
                                                 <li><button data-fancybox data-src="#tm-product-quickview"><i
                                                             class="ion-eye"></i></button></li>
                                                 <li><a href="#"><i class="ion-heart"></i></a></li>

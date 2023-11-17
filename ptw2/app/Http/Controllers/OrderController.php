@@ -30,7 +30,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -38,7 +38,34 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // echo $request->product;
+        // $orders = Order::all();
+        $product = Product::find($request->product);
+        // $order_id = 0;          
+        // foreach ($orders as $order) {
+        //     if ($order->user_id == 2) {
+        //         if ($order->order_status != 0) {
+        //             $order_id = $order->id;
+        //         }
+        //     }
+        // }
+        $order = new Order();
+        $order->user_id = 2;
+        $order->order_status = 0;
+        $order->order_total = $product->price;
+        // echo $order->id;
+        // echo $order->user_id;
+        $order->products()->attach('quality' , $request->product);
+        $order->save();
+        // Order::create([
+        //     'user_id' => 2,
+        //     'order_status' => 0,
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
+        // DB::table('order_product')->create(
+        //     ['quality' => 1, 'product_id' => $request->product, 'created_at' => now(), 'updated_at' => now()]
+        // );
     }
 
     /**

@@ -18,6 +18,7 @@
 <!--// Breadcrumb Area -->
 
 <?php $orderDetails = DB::table('order_product')->get(); ?>
+<?php $order_id = 0 ?>
 @foreach ($orders as $order)
     @if ($order->user_id == 1)
         @if ($order->order_status == 0)
@@ -84,7 +85,7 @@
                                             <tr>
                                                 <td>
                                                     <a href="{{-- {{ route('products.show', $product->id) }} --}}#" class="tm-cart-productimage">
-                                                        <img src="{{ asset('images/products') }}/{{ $product->image }}"
+                                                        <img src="{{ asset('images/image-products') }}/{{ $product->image }}"
                                                             alt="{{ $product->image }}">
                                                     </a>
                                                 </td>
