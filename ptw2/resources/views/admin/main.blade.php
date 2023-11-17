@@ -12,6 +12,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    
+    <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Web Awesome"
+      href="/css/app-wa-02670e9412103b5852dcbe140d278c49.css?vsn=d"
+    >
+
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
+      >
+
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css"
+      >
+
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css"
+      >
+
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
+      >
+
 </head>
 
 <body>
@@ -26,10 +54,12 @@
                         </a>
                     </div>
                     <div class="logo"><a href="/">Luxury Administrator</a></div>
-                    <div class="welcome">
-                        <li class="WAdmin">Chào mừng <strong>admin</strong></li>
+                    <div class="headerAdmin">
+                        <li style="">Chào mừng: <strong style="  box-sizing: border-box;
+                            padding: 20px;
+                            border-right: 1px solid black;" >admin</strong></li>
                         <li><a href=""><span>Thay đổi mật khẩu</span></a></li>
-                        <li><a href=""><img class="img-fluid" src="{{asset('images/admin/Thoat.png')}}" alt=""><span>Thoát</span></a></li>
+                        <li><a href=""><i class="fa-sharp fa-regular fa-arrow-right-from-bracket fa-2xl pe-2"  style="color:red"></i><span>Thoát</span></a></li>
                     </div>
                     </p>
 
@@ -50,7 +80,7 @@
                         <li> <a href=""> <span> Khách hàng </span> </a> </li>
                         <li> <a href="{{route('listcategory')}}"> <span> Danh mục sản phẩm </span> </a> </li>
                     </ul>
-                    <div id="sidebar-collapse"><i class="icon-double-angle-left"></i></div>
+               
                 </div>
             </div>
             <div class="col-md-9">

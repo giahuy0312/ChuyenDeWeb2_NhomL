@@ -26,6 +26,7 @@ Route::post('customproduct', [ProductController::class, 'customProduct'])->name(
 Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name('getdataedt');
 Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
 Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
+Route::get('getProducts', [ProductController::class, 'index'])->name('getProducts');
 // Category
 Route::get('listcategory', [CategoryController::class, 'listCategory'])->name('listcategory');
 Route::get('addcategory', [CategoryController::class, 'addCategory'])->name('addcategory');
