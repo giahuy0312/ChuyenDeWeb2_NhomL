@@ -6953,6 +6953,122 @@ button.tm-videobutton img {
 /**
  * My Account
  */
+ /* 
+ CSS Show User
+ */
+
+/* CSS main */
+.mainUser {
+  padding-top: 80px;
+  color: black !important;
+}
+
+/* css logo */
+
+.mainUser .titleLogo {
+  width: 210px;
+  padding-left: 30px;
+  padding-bottom: 7px;
+  border-bottom: solid 1px black;
+}
+
+/* css menuUser */
+.mainUser .menuUser img {
+  margin-left: -7px;
+  margin-top: -3px;
+  width: 40px;
+  height: 40px;
+
+}
+.mainUser .menuUser p a {
+  text-decoration: none;
+  color: black;
+}
+
+
+/* css title */
+
+.mainUser .title {
+
+  width: auto;
+  padding-left: 30px;
+  padding-bottom: 7px;
+  border-bottom: solid 1px black;
+}
+.mainUser .title a {
+  color: blue;
+  font-size: 25px;
+  text-decoration: none;
+  position: relative;
+  padding-left: 10px;
+}
+/* css info detail */
+.mainUser .info p{
+    width: 400px;
+    height: 40px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.mainUser .info input{
+  height:40px;
+  width: 400px;
+  background-size:22px 30px;
+  background-repeat: no-repeat;
+   background-position: center left 20px ;
+  padding-left:55px;
+}
+.mainUser .info p i{
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 14px;
+}
+/* End css Show User */
+
+
+/* Css edit user */
+
+.mainEdit .title {
+
+  width: 350px;
+  padding-left: 30px;
+  padding-bottom: 7px;
+  border-bottom: solid 1px black;
+}
+.mainEdit .title a {
+  color: blue;
+  font-size: 25px;
+  text-decoration: none;
+  position: relative;
+  padding-left: 10px;
+}
+.mainEdit form input{
+    width: 317px; height:35px;
+    background-repeat: no-repeat;
+    background-position: center left 10px ;
+    padding-left:50px;
+}
+.mainEdit form select{
+  width: 317px;
+   height:35px;
+  background-repeat: no-repeat;
+  background-position: center left 10px ;
+  padding-left:50px;
+}
+
+.mainEdit .info-left input{
+  float: right;
+  margin-bottom: 26px;
+}
+
+.mainEdit .info-left label{
+  padding-left: 260px;
+}
+.mainEdit form button{
+  width:100px;
+  height:38px;
+  background-color:#0d6efd;
+}
+/* end css edit user */
 .tm-myaccount-dashboard, .tm-myaccount-address {
   border: 1px solid #ebebeb;
   padding: 30px;

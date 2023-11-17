@@ -1,7 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -10,6 +10,113 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {
+
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+
+    public function show($id)
+    {
+        // session_start();
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['user_id'] == $id) {
+                $user = User::find($_SESSION['user_id']);
+                return view('user.show', ['user' => $user]);
+            }
+        }
+     
+        abort(404);
+        
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(User $user)
+    {
+        // session_start();
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['user_id'] == $user->id) {
+                $user = User::find($_SESSION['user_id']);
+                return view('user.edit', ['user' => $user]);
+            }
+        }
+       
+            abort(404);
+        
+        // return view('user.edit', ['user' => $user]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request,  User $user)
+    {
+        // session_start();
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['user_id'] == $user->id) {
+                $user = User::find($_SESSION['user_id']);
+                // return view('user.show', ['user' => $user]);
+            }
+        }
+       
+        else  {
+            abort(404);
+        }
+        // abort(404);
+      
+        $request->validate([
+            'username' => 'required|min:5|max:10',
+            'name' => 'required|min:5|max:10',
+            'phone' =>'nullable|min:10|max:10',
+            'email' => 'required|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
+            'DOB' => 'nullable|date'
+        ]);
+     
+        $user->username = ($request-> username);
+        $user->name = ($request->name);
+        $user->phone = ($request->phone);
+        $user->email = ($request->email);
+        $user->DOB = ($request->DOB);
+
+        if($request->gender == "Male" || $request->gender == "Female" || $request->gender =="Other"){
+            $user->gender = $request->gender;
+        };
+        $user->save();
+        return redirect()->route('user.show', ['user' => $user->id]);
+
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
     public function login(User $user)
     {
         return view("login");
@@ -17,7 +124,8 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         if (Auth::logout()) {
-
+            session_start();
+            session_destroy();
             return redirect('/login');
         }
         return redirect('/home');
@@ -63,6 +171,11 @@ class UserController extends Controller
         if (filled($credetail)) {
             // Kiểm tra xem người dùng có hợp lệ hay không
             if (Auth::attempt($credetail)) {
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
+                $user = Auth::user();
+                $_SESSION['user_id'] =  $user->id;
                 return redirect('/home')->with('success', 'Login successfully');
             } else {
                 return back()->with('error', 'Email or Password incorrect');
@@ -125,4 +238,6 @@ class UserController extends Controller
             return back()->withErrors($user->getErrors());
         }
     }
+    
+    
 }
