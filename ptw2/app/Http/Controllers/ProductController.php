@@ -138,7 +138,7 @@ class ProductController extends Controller
     }
     public function getAllProducts()
     {
-        $products = Product::all();
+        $products = Product::paginate(4);
         return view('index', ['products' => $products]);
       
     }
