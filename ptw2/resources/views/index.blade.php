@@ -183,16 +183,18 @@
                     </div>
                     <div class="row mt-30-reverse">
                         <!-- Single Banner -->
-                        @for ($i = 0; $i < 3; $i++)
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-30">
-                                <a href="#" class="tm-banner tm-scrollanim">
-                                    @if (isset($products))
-                                        <img src="{{ asset('images/image-products') }}/{{ $products[$i]->image }}"
-                                            alt="banner image">
-                                    @endif
-                                </a>
-                            </div>
-                        @endfor
+                        @if (count($products) >= 3)
+                            @for ($i = 0; $i < 3; $i++)
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-30">
+                                    <a href="#" class="tm-banner tm-scrollanim">
+                                        @if (isset($products))
+                                            <img src="{{ asset('images/image-products') }}/{{ $products[$i]->image }}"
+                                                alt="banner image">
+                                        @endif
+                                    </a>
+                                </div>
+                            @endfor
+                        @endif
                         <!--// Single Banner -->
                     </div>
                 </div>
