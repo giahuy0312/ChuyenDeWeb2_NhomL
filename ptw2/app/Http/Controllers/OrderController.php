@@ -112,9 +112,9 @@ class OrderController extends Controller
      */
     public function destroy($order, $product, $csrf)
     {
-        if ($csrf = csrf_token()) {
+        if ($csrf == 'token=' . csrf_token()) {
             $order_id = Order::find($order);
-            $order_id->Products()->where('product_id', $product)->delete();
+            $order_id->products()->detach($product);
         }
         return redirect()->back();
     }
