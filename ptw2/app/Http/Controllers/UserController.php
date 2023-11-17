@@ -96,7 +96,7 @@ class UserController extends Controller
       
         $request->validate([
             'name' => 'required|min:5|max:50',
-            'phone' =>'nullable|min:10|max:10',
+            'phone' =>'nullable|min:10|max:10|regex:/^0\d{9}$/',
             'email' => 'required|min:10|max:50|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
             'DOB' => 'nullable|date'
         ]);
