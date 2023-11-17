@@ -115,14 +115,21 @@ class UserController extends Controller
         }
         $user = Auth::user();
         $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-
-        if ($user->save()) {
-            return redirect()->route('login');
+        // Kiểm tra xem email đã có trong dữ liệu hay chưa
+        if (User::where('email', $request->email)->exists()) {
+            // Email đã có trong dữ liệu
+            return back()->with('error', 'Email đã tồn tại');
         } else {
-            return back()->withErrors($user->getErrors());
+            // Email chưa có trong dữ liệu
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+
+            if ($user->save()) {
+                return redirect()->route('login');
+            } else {
+                return back()->withErrors($user->getErrors());
+            }
         }
     }
 }
