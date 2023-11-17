@@ -2,12 +2,132 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
+
+//Unknow
 class ProductController extends Controller
 {
+    public function registrationProduct()
+    {
+        $categories = DB::table('categories')->select('*')->get();
+        // $size = DB::table('sizes')->select('*')->get();
+        return view('admin.content.addproduct', ['categories' => $categories]);
+    }
+
+    public function customProduct(Request $request)
+    {
+       $requied = [
+        'name' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/u', 'min:10', 'max:50'],
+        'description' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/u', 'min:1', 'max:255'],
+        'price' => ['required', 'numeric', 'min:1', 'max:9999999.99'],
+        'size' => ['required', 'numeric', 'min:1', 'max:100'],
+        'material' => ['required', Rule::in(['14k', '18k', 'Platinum'])],
+        'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
+        'category_id' => 'required',
+        ];
+        
+        $messages = [
+            'name.required' => 'Vui lòng nhập tên sản phẩm',
+            'name.min' => 'Tên sản phẩm phải có ít nhất 10 ký tự',
+            'name.max' => 'Tên sản phẩm không được vượt quá 50 ký tự',
+        
+            'description.required' => 'Vui lòng nhập mô tả sản phẩm',
+            'description.min' => 'Mô tả sản phẩm phải có ít nhất 1 ký tự',
+            'description.max' => 'Mô tả sản phẩm không được vượt quá 255 ký tự',
+        
+            'price.required' => 'Vui lòng nhập giá sản phẩm',
+            'price.numeric' => 'Giá sản phẩm phải là một số hợp lệ',
+            'price.min' => 'Giá sản phẩm phải ít nhất là 1',
+            'price.max' => 'Giá sản phẩm không được vượt quá 9,999,999.99',
+        
+            'size.required' => 'Vui lòng nhập kích thước sản phẩm',
+            'size.numeric' => 'Kích thước sản phẩm phải là một số hợp lệ',
+            'size.min' => 'Kích thước sản phẩm phải ít nhất là 1',
+            'size.max' => 'Kích thước sản phẩm không được vượt quá 100',
+        
+            'material.required' => 'Vui lòng chọn chất liệu sản phẩm',
+            'material.in' => 'Chất liệu sản phẩm phải là một trong những lựa chọn sau: 14k, 18k, Platinum',
+        
+            'image.required' => 'Vui lòng tải lên hình ảnh sản phẩm',
+            'image.image' => 'Tệp được tải lên phải là hình ảnh',
+            'image.mimes' => 'Hình ảnh sản phẩm phải ở một trong các định dạng sau: jpeg, png, jpg, gif',
+        
+            'category_id.required' => 'Vui lòng chọn danh mục sản phẩm',
+        ];
+        $validator = Validator::make($request->all(), $requied, $messages);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+        
+        $file = $request->file('image');
+        $path = 'images/image-products';
+        $fileName = $file->getClientOriginalName();
+        $file->move($path, $fileName);
+        $product = new Product($request->all());
+        $product->image = $fileName;
+        $product->save();
+        return redirect("listproduct");
+    }
+
+    public function createProduct(array $data)
+    {
+        return Product::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'price' => $data['price'],
+            'size' => $data['size'],
+            'material' => $data['material'],
+            'category_id' => $data['category_id'],
+            'image' => $data['image'],
+        ]);
+    }
+
+    public function getDataEdit($id)
+    {
+        $getData = DB::table('products')->select('*')->where('id', $id)->get();
+        $categories = DB::table('categories')->select('*')->get();
+        return view('admin.content.editproduct', ['getDataProductById' => $getData, 'categories' => $categories]);
+    }
+
+    public function updateProduct(Request $request)
+    {
+        $file = $request->file('image');
+        $path = 'uploads';
+        $fileName = $file->getClientOriginalName();
+        $file->move($path, $fileName);
+        $updateData = DB::table('products')->where('id', $request->id)->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'size' => $request->size,
+            'material' => $request->material,
+            'category_id' => $request->category_id,
+            'image' => $fileName,
+            
+        ]);
+        
+        //Thực hiện chuyển trang
+        return redirect('listproduct');
+    }
+    public function deleteProduct($id)
+    {
+        $deleteData = DB::table('products')->where('id', '=', $id)->delete();
+        return redirect('listproduct');
+    }
+
+
+    public function listProduct()
+    {
+        $categories = Category::all();
+        $products = DB::table('products')->paginate(4);
+        return view('admin.content.listproduct', ['products' => $products,'categories' => $categories]);
+    }
     /**
      * Display a listing of the resource.
      */
