@@ -6,10 +6,10 @@
 <div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="{{ asset('images') }}/breadcrumb-bg.jpg">
     <div class="container">
         <div class="tm-breadcrumb">
-            <h2>Login & Register</h2>
+            <h2>Register</h2>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li>Login & Register</li>
+                <li>Register</li>
             </ul>
         </div>
     </div>
@@ -30,6 +30,11 @@
                     @if(Session::has('success'))
                     <div class="alert alert-success" role="alert">
                         {{Session::get('success')}}
+                    </div>
+                    @endif
+                    @if(Session::has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{Session::get('error')}}
                     </div>
                     @endif
                     <form action="{{ route('registerpost')}}" class="tm-form tm-register-form" method="POST">

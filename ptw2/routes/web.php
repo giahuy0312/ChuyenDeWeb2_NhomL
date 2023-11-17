@@ -48,7 +48,6 @@ Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEdit
 Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
 
-// Login - register
 route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
     Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -69,7 +68,6 @@ Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 
 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
-
 
 //route User
 Route::resource('user', UserController::class);

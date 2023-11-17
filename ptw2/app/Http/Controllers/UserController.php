@@ -89,10 +89,9 @@ class UserController extends Controller
         // abort(404);
       
         $request->validate([
-            'username' => 'required|min:5|max:10',
-            'name' => 'required|min:5|max:10',
+            'name' => 'required|min:5|max:50',
             'phone' =>'nullable|min:10|max:10',
-            'email' => 'required|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
+            'email' => 'required|min:10|max:50|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
             'DOB' => 'nullable|date'
         ]);
      
@@ -123,9 +122,11 @@ class UserController extends Controller
     }
     public function logout(Request $request)
     {
-        if (Auth::logout()) {
+        if (!isset($_SESSION)) {
             session_start();
-            session_destroy();
+        }
+        session_destroy();
+        if (Auth::logout()) {
             return redirect('/login');
         }
         return redirect('/home');
@@ -228,14 +229,21 @@ class UserController extends Controller
         }
         $user = Auth::user();
         $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-
-        if ($user->save()) {
-            return redirect()->route('login');
+        // Kiểm tra xem email đã có trong dữ liệu hay chưa
+        if (User::where('email', $request->email)->exists()) {
+            // Email đã có trong dữ liệu
+            return back()->with('error', 'Email đã tồn tại');
         } else {
-            return back()->withErrors($user->getErrors());
+            // Email chưa có trong dữ liệu
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+
+            if ($user->save()) {
+                return redirect()->route('login');
+            } else {
+                return back()->withErrors($user->getErrors());
+            }
         }
     }
     
