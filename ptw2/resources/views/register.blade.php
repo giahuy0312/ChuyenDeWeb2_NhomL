@@ -6,10 +6,10 @@
 <div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="{{ asset('images') }}/breadcrumb-bg.jpg">
     <div class="container">
         <div class="tm-breadcrumb">
-            <h2>Login & Register</h2>
+            <h2>Register</h2>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li>Login & Register</li>
+                <li>Register</li>
             </ul>
         </div>
     </div>
@@ -32,6 +32,11 @@
                         {{Session::get('success')}}
                     </div>
                     @endif
+                    @if(Session::has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{Session::get('error')}}
+                    </div>
+                    @endif
                     <form action="{{ route('registerpost')}}" class="tm-form tm-register-form" method="POST">
                         @csrf
                         <h4>Create an account</h4>
@@ -39,20 +44,21 @@
                         <div class="tm-form-inner">
                             <div class="tm-form-field">
                                 <label for="register-username">Username</label>
-                                <input type="text" name="name" id="register-username" required="required"
-                                    value="{{old('name')}}">
+                                <input type="text" name="name" id="register-username" value="{{old('name')}}">
                                 @error('name')
                                 <p style="color: red;">{{$message}}</p>
                                 @enderror
                             </div>
                             <div class="tm-form-field">
                                 <label for="register-email">Email address</label>
-                                <input type="email" name="email" id="register-email" required="required"
-                                    value="{{old('email')}}">
+                                <input type="email" name="email" id="register-email" value="{{old('email')}}">
+                                @error('email')
+                                <p style="color: red;">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="tm-form-field">
                                 <label for="register-password">Password</label>
-                                <input type="password" name="password" id="register-password" required="required"
+                                <input type="password" name="password" id="register-password"
                                     value="{{old('password')}}">
                                 @error('password')
                                 <p style="color: red;">{{$message}}</p>
@@ -61,7 +67,7 @@
                             <div class="tm-form-field">
                                 <label for="register-password">Confirm Password</label>
                                 <input type="password" name="password_confirmation" id="confirm-password"
-                                    required="required" value="{{old('password')}}">
+                                    value="{{old('password')}}">
                                 @error('password_confirmation')
                                 <p style="color: red;">{{$message}}</p>
                                 @enderror

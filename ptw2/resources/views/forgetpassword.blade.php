@@ -2,69 +2,89 @@
 
 @include('layout.header')
 
-<head>
-    <title>Login Form - Brave Coder</title>
-    <!-- Meta tag Keywords -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8" />
-    <meta name="keywords" content="Login Form" />
-    <!-- //Meta tag Keywords -->
+<!-- Breadcrumb Area -->
+<div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="{{ asset('images') }}/breadcrumb-bg.jpg">
+    <div class="container">
+        <div class="tm-breadcrumb">
+            <h2>Login</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Login</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--// Breadcrumb Area -->
+<!-- Page Content -->
+<main class="page-content">
 
-    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!--/Style-CSS -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-    <!--//Style-CSS -->
-
-    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
-
-</head>
-
-<body>
-
-    <!-- form section start -->
-    <section class="w3l-mockup-form">
+    <div class="tm-section tm-login-register-area bg-white tm-padding-section">
         <div class="container">
-            <!-- /form -->
-            <div class="workinghny-form-grid">
-                <div class="main-mockup">
-                    <div class="alert-close">
-                        <span class="fa fa-close"></span>
+            <div class="row">
+                <div class="col-lg-4 ">
+                </div>
+                <div class="col-lg-4 ">
+                    @if(Session::has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{Session::get('error')}}
                     </div>
-                    <div class="w3l_form align-self">
-                        <div class="left_grid_info">
-                            <img src="images/image3.svg" alt="">
-                        </div>
+                    @endif
+                    @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{Session::get('success')}}
                     </div>
-                    <div class="content-wthree">
-                        <h2>Forgot Password</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                    @endif
+                    <!-- /form -->
+                    <h2>Forgot Password</h2>
 
-                        <form action="" method="post">
-                            <input type="email" class="email" name="email" placeholder="Enter Your Email" required>
-                            <button name="submit" class="btn" type="submit">Send Reset Link</button>
-                        </form>
-                        <div class="social-icons">
-                            <p>Back to! <a href="{{route('login')}}">Login</a>.</p>
+                    <form action="{{ route('forget.password.post')}}" method="post">
+                        @csrf
+                        <div class="tm-form-field">
+                            <label for="login-password">Email</label>
+                            <input type="email" name="email" placeholder="Enter Your Email" required="required"
+                                value="{{old('email')}}">
+                            @error('email')
+                            <p style="color: red;">{{$message}}</p>
+                            @enderror
                         </div>
+                        <button name="submit" class="tm-button" type="submit">Send Reset Link</button>
+                    </form>
+                    <div class="social-icons">
+                        <p>Back to! <a href="{{route('login')}}" style="color: #f2ba59;">Login</a>.</p>
                     </div>
+                    <!-- //form -->
+                </div>
+                <div class="col-lg-4 ">
                 </div>
             </div>
-            <!-- //form -->
-        </div>
-    </section>
-    <!-- //form section start -->
 
-    <script src="js/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(c) {
-            $('.alert-close').on('click', function(c) {
-                $('.main-mockup').fadeOut('slow', function(c) {
-                    $('.main-mockup').remove();
-                });
-            });
+        </div>
+
+
+
+
+
+    </div>
+
+
+</main>
+<!--// Page Content -->
+
+
+
+
+
+
+<script>
+$(document).ready(function(c) {
+    $('.alert-close').on('click', function(c) {
+        $('.main-mockup').fadeOut('slow', function(c) {
+            $('.main-mockup').remove();
         });
-    </script>
+    });
+});
+</script>
 
 </body>
 

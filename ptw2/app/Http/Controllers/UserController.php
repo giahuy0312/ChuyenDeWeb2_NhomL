@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -88,10 +89,9 @@ class UserController extends Controller
         // abort(404);
       
         $request->validate([
-            'username' => 'required|min:5|max:10',
-            'name' => 'required|min:5|max:10',
+            'name' => 'required|min:5|max:50',
             'phone' =>'nullable|min:10|max:10',
-            'email' => 'required|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
+            'email' => 'required|min:10|max:50|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
             'DOB' => 'nullable|date'
         ]);
      
@@ -133,26 +133,40 @@ class UserController extends Controller
     //xử lý đăng nhập
     public function loginpost(Request $request)
     {
-        // Kiểm tra xem người dùng có lưu đăng nhập hay không
-        if (isset($_COOKIE['email']) && isset($_COOKIE['password'])) {
-            // Tự động đăng nhập người dùng
-            $credetail = [
-                'email' => $_COOKIE['email'],
-                'password' => $_COOKIE['password'],
-            ];
+        $rules = [
 
-            if (Auth::attempt($credetail)) {
-                return redirect('/index')->with('success', 'Login successfully');
-            } else {
-                return back()->with('error', 'Email or Password incorrect');
-            }
+            'email' => 'required|min:10|max:50|regex:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/',
+            'password' => 'required|regex:/^(?=.*[A-Z])(?=.*[@!#&])[A-Za-z0-9@!#&]{8,50}$/',
+        ];
+        $message = [
+
+            'required' => ':attribute bắt buộc phải nhập.',
+            'min:10' => ':attribute không được nhập dưới 10 ký tự.',
+            'max:50' => ':attribute không được nhập trên 50 ký tự.',
+
+            'email' => [
+                'regex' => ':attribute sai định đạng email'
+            ],
+            'password' => [
+                'regex' => [
+                    'message' => ':attribute phải có ít nhất một ký đặc biệt(!,#,@) và 1 chữ in Hoa(A-Z), tối thiểu 8 ký tự và tối đa 50 ký tự '
+                ]
+            ]
+        ];
+        $attribute = [
+            'email' => 'Email',
+            'password' => 'Mật khẩu',
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message, $attribute);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
         }
-
         $credetail = [
             'email' => $request->input('email'),
             'password' => $request->input('password'),
         ];
-
         if (filled($credetail)) {
             // Kiểm tra xem người dùng có hợp lệ hay không
             if (Auth::attempt($credetail)) {
@@ -181,18 +195,28 @@ class UserController extends Controller
     public function registerpost(Request $request)
     {
         $rules = [
-            'name' => 'required|min:5',
-            'email' => 'required',
+            'name' => 'required|min:5|max:50',
+            'email' => 'required|min:10|max:50|regex:/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/',
             'password' => 'required|regex:/^(?=.*[A-Z])(?=.*[@!#&])[A-Za-z0-9@!#&]{8,50}$/',
             'password_confirmation' => 'required|same:password',
         ];
         $message = [
-            'required' => ':attribute bắt buộc phải nhập',
-            'min' => ':attribute không được nhập dưới 5 ký tự ',
-            'regex' => ':attribute phải có ít nhất một ký đặc biệt(!,#,@) và 1 chữ in Hoa(A-Z), tối thiểu 8 ký tự và tối đa 50 ký tự ',
+
+            'required' => ':attribute bắt buộc phải nhập.',
+            'min:10' => ':attribute không được nhập dưới 5 ký tự.',
+            'max:50' => ':attribute không được nhập trên 50 ký tự.',
             'same' => 'Mật khẩu không khớp',
+            'email' => [
+                'regex' => ':attribute sai định đạng email'
+            ],
+            'password' => [
+                'regex' => [
+                    'message' => ':attribute phải có ít nhất một ký đặc biệt(!,#,@) và 1 chữ in Hoa(A-Z), tối thiểu 8 ký tự và tối đa 50 ký tự '
+                ]
+            ]
         ];
         $attribute = [
+            'email' => 'Email',
             'name' => 'Tên người dùng',
             'password' => 'Mật khẩu',
             'password_confirmation' => 'Mật khẩu',
@@ -203,14 +227,21 @@ class UserController extends Controller
         }
         $user = Auth::user();
         $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-
-        if ($user->save()) {
-            return redirect()->route('login');
+        // Kiểm tra xem email đã có trong dữ liệu hay chưa
+        if (User::where('email', $request->email)->exists()) {
+            // Email đã có trong dữ liệu
+            return back()->with('error', 'Email đã tồn tại');
         } else {
-            return back()->withErrors($user->getErrors());
+            // Email chưa có trong dữ liệu
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+
+            if ($user->save()) {
+                return redirect()->route('login');
+            } else {
+                return back()->withErrors($user->getErrors());
+            }
         }
     }
     

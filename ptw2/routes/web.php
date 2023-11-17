@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ForgetpasswordManager;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,9 @@ if (isset($_SESSION['user_id'])) {
         return view('index');
     });
 }
+Route::get('/home', function () {
+    return view('index');
+});
 route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
     route::get('/login', [UserController::class, 'login'])->name('login');
@@ -37,3 +41,14 @@ Route::resource('user', UserController::class);
 Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 route::get('/logout', [UserController::class, 'logout'])->name('logout');
+//forget password
+route::get('/forgetpassword', [ForgetpasswordManager::class, 'forgetpassword'])
+    ->name('forget.password');
+route::post('/forgetpassword', [ForgetpasswordManager::class, 'forgetpasswordpost'])
+    ->name('forget.password.post');
+//reset password
+Route::get('/resetpasssword/{token}', [ForgetpasswordManager::class, 'resetPasssword'])
+    ->name('reset.passsword');
+// Route::get('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])->name('reset.passsword.post');
+Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])
+    ->name('reset.passsword.post');

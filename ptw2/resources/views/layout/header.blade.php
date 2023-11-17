@@ -80,7 +80,7 @@
             <div class="tm-mobilenav"></div>
             <div class="row align-items-center">
                 <div class="col-lg-3 col-6 order-1 order-lg-1">
-                    <a href="{{ url('/index') }}" class="tm-header-logo">
+                    <a href="{{ url('/home') }}" class="tm-header-logo">
                         <img src="{{ asset('images/logo.png') }}" alt="surose">
                     </a>
                 </div>
@@ -106,7 +106,7 @@
         <div class="container">
             <nav class="tm-header-nav">
                 <ul>
-                    <li><a href="{{ url('/index') }}">Home</a></li>
+                    <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li class="tm-header-nav-dropdown"><a href="products.html">Shop</a>
                         <ul>
