@@ -122,9 +122,11 @@ class UserController extends Controller
     }
     public function logout(Request $request)
     {
-        if (Auth::logout()) {
+        if (!isset($_SESSION)) {
             session_start();
-            session_destroy();
+        }
+        session_destroy();
+        if (Auth::logout()) {
             return redirect('/login');
         }
         return redirect('/home');
