@@ -72,10 +72,6 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/index', [ProductController::class, 'getAllProducts'])->name('index');
 Route::get('/home', [ProductController::class, 'getAllProducts'])->name('index');
 Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
-Route::get('/', function () {
-    return view('index');
-});
-
 
 // Order
 Route::resource('order', OrderController::class);
