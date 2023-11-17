@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PromotionController;
-// use Laravel\Socialite\Facades\Socialite;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ForgetpasswordManager;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,12 +19,15 @@ use App\Http\Controllers\PromotionController;
 |
 */
 
+
 // Home
 // Route::get('/', function () {
 //     return view('index');
 // });
 Route::get('/admin', function () {
     return view('admin.main');
+Route::get('/home', function () {
+    return view('index');
 });
 
 // Product
@@ -72,9 +75,22 @@ Route::get('/', function () {
     return view('index');
 });
 
+
 // Order
 Route::resource('order', OrderController::class);
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
+route::get('/logout', [UserController::class, 'logout'])->name('logout');
+//forget password
+route::get('/forgetpassword', [ForgetpasswordManager::class, 'forgetpassword'])
+    ->name('forget.password');
+route::post('/forgetpassword', [ForgetpasswordManager::class, 'forgetpasswordpost'])
+    ->name('forget.password.post');
+//reset password
+Route::get('/resetpasssword/{token}', [ForgetpasswordManager::class, 'resetPasssword'])
+    ->name('reset.passsword');
+// Route::get('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])->name('reset.passsword.post');
+Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])
+    ->name('reset.passsword.post');
