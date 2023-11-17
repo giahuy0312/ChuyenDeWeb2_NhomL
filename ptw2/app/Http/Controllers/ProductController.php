@@ -28,7 +28,7 @@ class ProductController extends Controller
         'price' => ['required', 'numeric', 'min:1', 'max:9999999.99'],
         'size' => ['required', 'numeric', 'min:1', 'max:100'],
         'material' => ['required', Rule::in(['14k', '18k', 'Platinum'])],
-        'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
+        'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'], 
         'category_id' => 'required',
         ];
         
