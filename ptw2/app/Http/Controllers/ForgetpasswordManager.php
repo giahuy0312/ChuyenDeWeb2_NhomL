@@ -18,7 +18,7 @@ class ForgetpasswordManager extends Controller
     {
         return view("forgetpassword");
     }
-
+    //xử lý quên email bị quên mật khẩu
     public function forgetpasswordpost(Request $request)
     {
         $request->validate([
@@ -27,18 +27,25 @@ class ForgetpasswordManager extends Controller
         $token = Str::random(64);
 
         // Chèn bản ghi mới vào bảng
-        DB::table('password_reset_tokens')->insert([
-            'email' => $request->email,
-            'token' => $token,
-            'created_at' => Carbon::now(),
-        ]);
+        if (DB::table('password_reset_tokens')->where('email', $request->email)->exists()) {
+            // Có dữ liệu
+            return back()->with('error', 'Đã có mã đặt lại mật khẩu cho email này');
+        } else {
+            // Không có dữ liệu
+            DB::table('password_reset_tokens')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => Carbon::now(),
+            ]);
+        }
+
 
         Mail::send('emails.forgetpassword', ['token' => $token], function ($message) use ($request) {
             $message->to($request->email)->subject('Reset Password');
         });
-        return redirect()->to(route('forget.password'))->with('success', 'We have send an email to reset password.');
+        return redirect()->to(route('forget.password'))->with('success', 'Chúng tôi đã gửi mail để lấy lại mật khẩu.');
     }
-
+    // tạo mật khẩu mới 
     function resetPasssword($token)
     {
         return view('newpassword', ['token' => $token]);
@@ -59,7 +66,7 @@ class ForgetpasswordManager extends Controller
 
             ])->first();
         if (!$updatePassword) {
-            return redirect()->to(route('reset.passsword'))->with('error', 'Invalid');
+            return redirect()->back()->with('error', 'email không khớp');
         }
         User::where('email', $request->email)
             ->update(['password' => Hash::make($request->password)]);
