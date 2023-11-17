@@ -6,7 +6,7 @@
 <div class="card shadow mb-12">
   <div class="card-header py-3">
     <h1 class="">Danh Sách Sản Phẩm</h1>
-    <h6 class="btnthem"><a href="{{route('addproduct')}}">Thêm Sản Phẩm</a></h6>
+    <h6 ><a href="{{route('addproduct')}}" class="btn btn-primary">Thêm Sản Phẩm</a></h6>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -34,7 +34,12 @@
             <td>{{$product->description}}</td>
             <td>{{$product->price}}</td>
             <td>{{$product->size}}</td>
-            <td>{{$product->category_id}}</td>
+            @foreach($categories  as $category)
+              @if ($product->category_id == $category->id)
+              <td>{{$category->category_name}}</td>
+              @endif
+            
+            @endforeach
             <td class="btncn">
               <a href="{{route('getdataedt',$product->id)}}" >Edit</a>
               <a href="{{route('deleteproduct',$product->id)}}">Delete</a>
