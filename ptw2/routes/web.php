@@ -49,6 +49,9 @@ Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
 
 // Login - register
+Route::get('/home', function () {
+    return view('index');
+});
 route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
     Route::get('/login', [UserController::class, 'login'])->name('login');

@@ -89,10 +89,9 @@ class UserController extends Controller
         // abort(404);
       
         $request->validate([
-            'username' => 'required|min:5|max:10',
-            'name' => 'required|min:5|max:10',
+            'name' => 'required|min:5|max:50',
             'phone' =>'nullable|min:10|max:10',
-            'email' => 'required|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
+            'email' => 'required|min:10|max:50|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
             'DOB' => 'nullable|date'
         ]);
      
