@@ -6,10 +6,10 @@
 <div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="{{ asset('images') }}/breadcrumb-bg.jpg">
     <div class="container">
         <div class="tm-breadcrumb">
-            <h2>Login & Register</h2>
+            <h2>Register</h2>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li>Login & Register</li>
+                <li>Register</li>
             </ul>
         </div>
     </div>
