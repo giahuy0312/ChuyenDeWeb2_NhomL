@@ -60,7 +60,16 @@ class ProductController extends Controller
         
             'category_id.required' => 'Vui lòng chọn danh mục sản phẩm',
         ];
-        $validator = Validator::make($request->all(), $requied, $messages);
+        $attribute = [
+            'name' => 'Tên sản phẩm',
+            'description' => 'Mô tả sản phẩm',
+            'price' => 'Giá sản phẩm',
+            'size' => 'Kích thước sản phẩm',
+            'material' => 'Chất liệu sản phẩm',
+            'image' => 'Ảnh sản phẩm',
+            'category_id' => 'Danh mục sản phẩm',
+        ];
+        $validator = Validator::make($request->all(), $requied, $messages,$attribute);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
