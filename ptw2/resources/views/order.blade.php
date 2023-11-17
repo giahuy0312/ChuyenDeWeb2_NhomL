@@ -18,8 +18,12 @@
 <!--// Breadcrumb Area -->
 
 <?php $orderDetails = DB::table('order_product')->get(); ?>
+@if (!isset($_SESSION))
+    <?php session_start(); ?>
+@endif
+<?php $order_id = 0 ?>
 @foreach ($orders as $order)
-    @if ($order->user_id == 1)
+    @if ($order->user_id == $_SESSION['user_id'])
         @if ($order->order_status == 0)
             <?php $order_id = $order->id; ?>
         @endif
@@ -69,7 +73,7 @@
                             @csrf
                             @method('PUT')
                             @foreach ($orders as $order)
-                                @if ($order->user_id == 1)
+                                @if ($order->user_id == $_SESSION['user_id'])
                                     @if ($order->order_status == 0)
                                         @foreach ($order->products as $product)
                                             <?php $price = $product->price; ?>
@@ -84,7 +88,7 @@
                                             <tr>
                                                 <td>
                                                     <a href="{{-- {{ route('products.show', $product->id) }} --}}#" class="tm-cart-productimage">
-                                                        <img src="{{ asset('images/products') }}/{{ $product->image }}"
+                                                        <img src="{{ asset('images/image-products') }}/{{ $product->image }}"
                                                             alt="{{ $product->image }}">
                                                     </a>
                                                 </td>

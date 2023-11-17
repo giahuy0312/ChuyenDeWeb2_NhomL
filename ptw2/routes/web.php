@@ -25,9 +25,6 @@ session_start();
 if (isset($_SESSION['user_id'])) {
     //Hien thi san pham trang index
     Route::get('/index', [ProductController::class, 'getAllProducts'])->name('index');
-
-    // Order
-    Route::resource('order', OrderController::class);
 }
 Route::get('/home', [ProductController::class, 'getAllProducts'])->name('index');
 Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
@@ -65,14 +62,14 @@ route::group(['middleware' => 'guest'], function () {
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // Order
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('order', OrderController::class);
+});
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
 
-// Route::group(['middleware' => 'auth'], function () {
-//     route::get('/home', [HomeController::class, 'index'])->name('home');
-// });
 
 //route User
 Route::resource('user', UserController::class);
