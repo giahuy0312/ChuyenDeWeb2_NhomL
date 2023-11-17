@@ -73,7 +73,7 @@
             <div class="col-md-3">
                 <div id="menu">
                     <ul id="sidebar">
-                        <li> <a href=""> <span> Thống kê </span> </a> </li>
+                        <li> <a href="{{ url('admin') }}"> <span> Thống kê </span> </a> </li>
                         <li> <a href=""> <span> Thêm mã giảm giá </span> </a> </li>
                         <li> <a href=""> <span> Lịch sử hàng hóa </span> </a> </li>
                         <li> <a href="{{route('listproduct')}}"> <span> Sản phẩm </span> </a> </li>

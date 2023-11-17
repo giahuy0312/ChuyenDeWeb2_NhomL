@@ -16,7 +16,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 Route::get('/admin', function () {
-    return view('admin.main');
+    return view('admin.content.thongKe');
 });
 
 // Product
