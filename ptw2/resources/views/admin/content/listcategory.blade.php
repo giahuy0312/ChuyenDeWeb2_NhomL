@@ -11,9 +11,11 @@
     <div CLASS="card-body">
       <div CLASS="table-responsive">
         <table CLASS="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          
           <thead>
             <tr>
               <th>Tên danh mục</th>
+              <th>Chức Năng</th>
             </tr>
           </thead>
           <tbody>
