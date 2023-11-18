@@ -23,12 +23,12 @@ class ProductController extends Controller
     public function customProduct(Request $request)
     {
        $requied = [
-        'name' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/u', 'min:10', 'max:50'],
-        'description' => ['required', 'regex:/^[a-zA-Z0-9\s]+$/u', 'min:1', 'max:255'],
+        'name' => ['required', 'regex:/^[\p{L}\s]+$/u', 'min:10', 'max:50'],
+        'description' => ['required', 'min:1', 'max:255'],
         'price' => ['required', 'numeric', 'min:1', 'max:9999999.99'],
         'size' => ['required', 'numeric', 'min:1', 'max:100'],
         'material' => ['required', Rule::in(['14k', '18k', 'Platinum'])],
-        'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'],
+        'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif'], 
         'category_id' => 'required',
         ];
         
@@ -36,7 +36,8 @@ class ProductController extends Controller
             'name.required' => 'Vui lòng nhập tên sản phẩm',
             'name.min' => 'Tên sản phẩm phải có ít nhất 10 ký tự',
             'name.max' => 'Tên sản phẩm không được vượt quá 50 ký tự',
-        
+            'name.regex'=>'Tên không được chứa ký tự đặc biệt',
+
             'description.required' => 'Vui lòng nhập mô tả sản phẩm',
             'description.min' => 'Mô tả sản phẩm phải có ít nhất 1 ký tự',
             'description.max' => 'Mô tả sản phẩm không được vượt quá 255 ký tự',
@@ -60,7 +61,16 @@ class ProductController extends Controller
         
             'category_id.required' => 'Vui lòng chọn danh mục sản phẩm',
         ];
-        $validator = Validator::make($request->all(), $requied, $messages);
+        $attribute = [
+            'name' => 'Tên sản phẩm',
+            'description' => 'Mô tả sản phẩm',
+            'price' => 'Giá sản phẩm',
+            'size' => 'Kích thước sản phẩm',
+            'material' => 'Chất liệu sản phẩm',
+            'image' => 'Ảnh sản phẩm',
+            'category_id' => 'Danh mục sản phẩm', 
+        ];
+        $validator = Validator::make($request->all(), $requied, $messages,$attribute);
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
