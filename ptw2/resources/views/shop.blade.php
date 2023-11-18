@@ -6,131 +6,9 @@
 
     @include('layout.header')
 
-    <!-- Heroslider Area -->
-    <div class="tm-heroslider-area bg-grey">
-        <div class="tm-heroslider-slider">
-
-            <!-- Heroslider Item -->
-            <div class="tm-heroslider" data-bgimage="{{ asset('images') }}/banner.png" style="height: 295px;">
-                <div class="container" style="margin-top: 180px;">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 col-md-8 col-12">
-                            <div class="tm-heroslider-contentwrapper">
-                                <div class="tm-heroslider-content">
-                                    <a href="products.html" class="tm-button">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--// Heroslider Item -->
-
-            <!-- Heroslider Item -->
-            <div class="tm-heroslider" data-bgimage="{{ asset('images') }}/banner1.png" style="height: 295px;">
-                <div class="container" style="margin-top: 180px;">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 col-md-8 col-12">
-                            <div class="tm-heroslider-contentwrapper">
-                                <div class="tm-heroslider-content">
-                                    <a href="products.html" class="tm-button">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--// Heroslider Item -->
-
-        </div>
-    </div>
-    <!--// Heroslider Area -->
 
     <!-- Page Content -->
     <main class="page-content">
-
-        <!-- Popular Products Area -->
-        <div id="tm-popular-products-area" class="tm-section tm-popular-products-area tm-padding-section bg-white">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-12">
-                        <div class="tm-sectiontitle text-center">
-                            <h3>POPULAR PRODUCTS</h3>
-                            <p>Our popular products are so beautyful to see that the shoppers are easily attracted
-                                to them.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row tm-products-slider">
-
-                    <!-- Single Product -->
-                    @foreach($products as $product)
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                        <div class="tm-product tm-scrollanim">
-                            <div class="tm-product-topside">
-                                <div class="tm-product-images">
-                                    <img src="{{ asset('images/image-products') }}/{{$product->image}}"
-                                        alt="product image">
-                                </div>
-                                <ul class="tm-product-actions">
-                                    <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
-                                    <li><button data-fancybox data-src="#tm-product-quickview"><i
-                                                class="ion-eye"></i></button></li>
-                                    <li><a href="#"><i class="ion-heart"></i></a></li>
-                                </ul>
-                                <div class="tm-product-badges">
-                                    <span class="tm-product-badges-new">New</span>
-                                    <span class="tm-product-badges-sale">Sale</span>
-                                </div>
-                            </div>
-                            <div class="tm-product-bottomside">
-                                <h6 class="tm-product-title"><a href="product-details.html">{{$product->name}}</a></h6>
-                                <span class="tm-product-price">{{$product->price}}</span>
-                                <div class="tm-product-content">
-                                    <p></p>
-                                    <ul class="tm-product-actions">
-                                        <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a></li>
-                                        <li><button data-fancybox data-src="#tm-product-quickview"><i
-                                                    class="ion-eye"></i></button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    <!--// Single Product -->
-                    
-                </div>
-            </div>
-        </div>
-        <!--// Popular Products Area -->
-
-        <!-- Banners Area -->
-        <div class="tm-section tm-banners-area">
-            <div class="container">
-            <div class="row justify-content-center">
-                    <div class="col-lg-6 col-12">
-                        <div class="tm-sectiontitle text-center">
-                            <h3>NEW ARRIVAL PRODUCTS</h3>
-                            <p>Our popular products are so beautyful to see that the shoppers are easily attracted
-                                to them.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-30-reverse">
-                    <!-- Single Banner -->
-                    @for ($i = 0; $i < 3; $i++)
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-30">
-                        <a href="#" class="tm-banner tm-scrollanim">
-                            <img src="{{ asset('images/image-products') }}/{{$products[$i]->image}}" alt="banner image">
-                        </a>
-                    </div>
-                    @endfor
-                    <!--// Single Banner -->
-                </div>
-            </div>
-        </div>
-        <!--// Banners Area -->
 
         <!-- Popular Products Area -->
         <div id="tm-latest-products-area" class="tm-section tm-latest-products-area tm-padding-section bg-white">
@@ -184,90 +62,29 @@
                                 </div>
                             </div>
                         </div>
-                    </div>{{ $products->links() }}
+                    </div>
                     @endforeach
                     <!--// Single Product -->
                 </div>
-                <div class="tm-product-loadmore text-center mt-50">
+                <!-- <div class="tm-product-loadmore text-center mt-50">
                     <a href="products.html" class="tm-button">All Products</a>
-                </div>
+                </div> -->
             </div>
         </div>
         <!--// Popular Products Area -->
 
-        <!-- Offer Area -->
+        
 
-        <!--// Offer Area -->
-
-        <!-- Latest Blogs Area -->
-        <div id="tm-news-area" class="tm-section tm-blog-area tm-padding-section bg-pattern-transparent">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-12">
-                        <div class="tm-sectiontitle text-center">
-                            <h3>LATEST BLOGS</h3>
-                            <p>A blog is a discussion or informational website published on the World Wide Web
-                                consisting of discrete</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row tm-blog-slider">
-
-                    <!-- Blog Single Item -->
-                    @foreach($products as $product)
-                    <div class="col-lg-4 col-md-6">
-                        <div class="tm-blog tm-scrollanim">
-                            <div class="tm-blog-topside">
-                                <div class="tm-blog-thumb">
-                                    <img src="{{ asset('images/image-products') }}/{{$product->image}}" alt="blog image">
-                                </div>
-                                <span class="tm-blog-metahighlight"><span>Apr</span>17</span>
-                            </div>
-                            <div class="tm-blog-content">
-                                <h6 class="tm-blog-title"><a href="blog-details.html">Woman wearing gold-colore ring
-                                        pendant necklaces</a></h6>
-                                <ul class="tm-blog-meta">
-                                    <li><a href="blog.html"><i class="ion-android-person"></i> Anderson</a></li>
-                                    <li><a href="blog-details.html"><i class="ion-chatbubbles"></i> 3 Comments</a>
-                                    </li>
-                                </ul>
-                                <a href="blog-details.html" class="tm-readmore">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    <!--// Blog Single Item -->
-
-                </div>
-            </div>
-        </div>
-        <!--// Latest Blogs Area -->
+       
 
         <!-- Brand Logos -->
-        <div class="tm-section tm-brandlogo-area tm-padding-section bg-grey">
-            <div class="container">
-                <div class="row tm-brandlogo-slider" style="height:100px">
-
-                    <!-- Brang Logo Single -->
-                    @foreach($products as $product)
-                    <div class="col-12 tm-brandlogo" style="height: 240px;">
-                        <a href="#">
-                            <img src="{{ asset('images/image-products') }}/{{$product->image}}" alt="brand-logo">
-                        </a>
-                    </div>
-                    @endforeach
-                    <!--// Brang Logo Single -->
-
-                </div>
-            </div>
-        </div>
+       
         <!--// Brand Logos -->
 
     </main>
     <!--// Page Content -->
 
-    @include('layout.footer')
-
+   
     <!-- Product Quickview -->
     <div class="tm-product-quickview" id="tm-product-quickview">
         <div class="container">
@@ -393,18 +210,21 @@
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                         <!--// Product Details -->
-
+                        
                     </div>
                 </div>
             </div>
         </div>
+   
     </div>
+    {{$products->links()}}
     <!--// Product Quickview -->
 
     <button id="back-top-top"><i class="ion-arrow-up-c"></i></button>
-
+    
 </div>
 <!--// Wrapper -->
 @endsection
