@@ -326,7 +326,7 @@
         fancyboxSlick: function () {
             $('[data-fancybox]').fancybox({
                 beforeShow: function () {
-                    $('.tm-product-quickview .tm-prodetails-largeimages').slick('slickNext');
+                    $('.tm-product-quickview .tm-prodetails-largeimages',).slick('slickNext');
                 }
             });
         },

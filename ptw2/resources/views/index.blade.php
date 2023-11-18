@@ -276,96 +276,67 @@
                     <div class="tm-product-quickview-inner">
 
                         <!-- Product Details -->
+                        @for ($i = 0; $i < 1; $i++)
                         <div class="tm-prodetails">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-10 col-12">
                                     <div class="tm-prodetails-images">
                                         <div class="tm-prodetails-largeimages">
                                             <div class="tm-prodetails-largeimage">
-                                                <img src="{{ asset('images/products') }}/product-image-1.jpg"
+                                                <img src="{{ asset('images/image-products') }}/{{$product->image}}"
                                                     alt="product image">
                                             </div>
                                             <div class="tm-prodetails-largeimage">
-                                                <img src="{{ asset('images/products') }}/product-image-2.jpg"
+                                                <img src="{{ asset('images/image-products') }}/{{$product->image}}"
                                                     alt="product image">
                                             </div>
                                             <div class="tm-prodetails-largeimage">
-                                                <img src="{{ asset('images/products') }}/product-image-3.jpg"
+                                                <img src="{{ asset('images/image-products') }}/{{$product->image}}"
                                                     alt="product image">
                                             </div>
                                             <div class="tm-prodetails-largeimage">
-                                                <img src="{{ asset('images/products') }}/product-image-4.jpg"
-                                                    alt="product image">
-                                            </div>
-                                            <div class="tm-prodetails-largeimage">
-                                                <img src="{{ asset('images/products') }}/product-image-6.jpg"
-                                                    alt="product image">
-                                            </div>
-                                            <div class="tm-prodetails-largeimage">
-                                                <img src="{{ asset('images/products') }}/product-image-6.jpg"
+                                                <img src="{{ asset('images/image-products') }}/{{$product->image}}"
                                                     alt="product image">
                                             </div>
                                         </div>
                                         <div class="tm-prodetails-thumbnails">
                                             <div class="tm-prodetails-thumbnail">
-                                                <img src="{{ asset('images/products') }}/product-image-1-thumb.jpg"
+                                                <img src="{{ asset('images/image-products') }}/{{$product->image}}"
                                                     alt="product image">
                                             </div>
                                             <div class="tm-prodetails-thumbnail">
-                                                <img src="{{ asset('images/products') }}/product-image-2-thumb.jpg"
+                                                <img src="{{ asset('images/image-products') }}/{{$product->image}}"
                                                     alt="product image">
                                             </div>
                                             <div class="tm-prodetails-thumbnail">
-                                                <img src="{{ asset('images/products') }}/product-image-3-thumb.jpg"
+                                                <img src="{{ asset('images/image-products') }}/{{$product->image}}"
                                                     alt="product image">
                                             </div>
                                             <div class="tm-prodetails-thumbnail">
-                                                <img src="{{ asset('images/products') }}/product-image-4-thumb.jpg"
+                                                <img src="{{ asset('images/image-products') }}/{{$product->image}}"
                                                     alt="product image">
                                             </div>
-                                            <div class="tm-prodetails-thumbnail">
-                                                <img src="{{ asset('images/products') }}/product-image-5-thumb.jpg"
-                                                    alt="product image">
-                                            </div>
-                                            <div class="tm-prodetails-thumbnail">
-                                                <img src="{{ asset('images/products') }}/product-image-6-thumb.jpg"
-                                                    alt="product image">
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="tm-prodetails-content">
-                                        <h4 class="tm-prodetails-title">Stylist daimond ring</h4>
-                                        <span class="tm-prodetails-price"><del>$75.99</del> $59.99</span>
-                                        <div class="tm-ratingbox">
-                                            <span class="is-active"><i class="ion-android-star-outline"></i></span>
-                                            <span class="is-active"><i class="ion-android-star-outline"></i></span>
-                                            <span class="is-active"><i class="ion-android-star-outline"></i></span>
-                                            <span class="is-active"><i class="ion-android-star-outline"></i></span>
-                                            <span><i class="ion-android-star-outline"></i></span>
-                                        </div>
+                                        <h4 class="tm-prodetails-title">{{$product->name}}</h4>
+                                        <span class="tm-prodetails-price">{{$product->price}}</span>
                                         <div class="tm-prodetails-infos">
                                             <div class="tm-prodetails-singleinfo">
-                                                <b>Product ID : </b>010
+                                                <b>Product ID : </b>{{$product->id}}
                                             </div>
                                             <div class="tm-prodetails-singleinfo">
-                                                <b>Category : </b><a href="#">Ring</a>
+                                                <b>Category : </b><a href="#">{{$product->category}}</a>
                                             </div>
                                             <div class="tm-prodetails-singleinfo tm-prodetails-tags">
-                                                <b>Tags : </b>
-                                                <ul>
-                                                    <li><a href="#">bracelets</a></li>
-                                                    <li><a href="#">diamond</a></li>
-                                                    <li><a href="#">ring</a></li>
-                                                    <li><a href="#">necklaces</a></li>
-                                                </ul>
+                                                <b>material: </b> {{$product->material}}
+                                               
                                             </div>
-                                            <div class="tm-prodetails-singleinfo">
-                                                <b>Available : </b>
-                                                <span class="color-theme">In Stock</span>
-                                            </div>
+                                            
                                             <div class="tm-prodetails-singleinfo tm-prodetails-share">
                                                 <b>Share : </b>
                                                 <ul>
@@ -379,10 +350,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis quemi
-                                            dolor, malesuada id metus a, mattis eleifend elit. Nullam pharetra
-                                            consequat ex in dapibus. Vestibulum ante ipsum primis in faucibus
-                                            orciluctus curae.</p>
+                                        
                                         <div class="tm-prodetails-quantitycart">
                                             <h6>Quantity :</h6>
                                             <div class="tm-quantitybox">
@@ -394,6 +362,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endfor
                         <!--// Product Details -->
 
                     </div>
