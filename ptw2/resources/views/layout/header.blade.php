@@ -19,23 +19,23 @@
                             <button><i class="fa-regular fa-user"></i></button>
                             <ul>
                                 @if (Route::has('login'))
-                                    @auth
-                                        @if (!isset($_SESSION))
-                                            <?php session_start(); ?>
-                                            <li>{{ $_SESSION['user_id'] }}</li>
-                                        @endif
-                                        @if (isset($_SESSION['user_id']))
-                                            <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">My Account</a></li>
-                                            @endif
-                                            <li> <a href="{{ route('logout') }}">
-                                                    Logout
-                                                </a></li>
-                                    @else
-                                        <li><a href="{{ route('login') }}">Login</a></li>
-                                        @if (Route::has('register'))
-                                            <li><a href="{{ route('register') }}">Register</a></li>
-                                        @endif
-                                    @endauth
+                                @auth
+                                @if (!isset($_SESSION))
+                                <?php session_start(); ?>
+                                <li>{{ $_SESSION['user_id'] }}</li>
+                                @endif
+                                @if (isset($_SESSION['user_id']))
+                                <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">My Account</a></li>
+                                @endif
+                                <li> <a href="{{ route('logout') }}">
+                                        Logout
+                                    </a></li>
+                                @else
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                @if (Route::has('register'))
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                                @endif
+                                @endauth
                                 @endif
                                 <li><a href="{{ url('order') }}">Shopping Cart</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
@@ -71,7 +71,24 @@
         </div>
     </div>
     <!--// Header Top Area -->
-
+    <script type="text/javascript">
+    $('#header-search').on('keyup', function() {
+        var search = $(this).serialize();
+        if ($(this).find('.m-input').val() == '') {
+            $('#search-suggest div').hide();
+        } else {
+            $.ajax({
+                    url: '/search',
+                    type: 'POST',
+                    data: search,
+                })
+                .done(function(res) {
+                    $('#search-suggest').html('');
+                    $('#search-suggest').append(res)
+                })
+        };
+    });
+    </script>
     <!-- Header Middle Area -->
     <div class="tm-header-middlearea bg-white">
         <div class="container">
@@ -84,7 +101,7 @@
                 </div>
                 <div class="col-lg-6 col-12 order-3 order-lg-2">
                     <form class="tm-header-search">
-                        <input type="text" placeholder="Search product...">
+                        <input type="text" placeholder="Search product... ">
                         <button><i class="ion-android-search"></i></button>
                     </form>
                 </div>

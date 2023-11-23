@@ -90,3 +90,6 @@ Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost
 
     // shop
 Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
+//search
+Route::get('/search', 'HomeController@search');
+Route::post('/search', 'HomeController@searchFullText')->name('search');

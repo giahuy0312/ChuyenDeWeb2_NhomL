@@ -10,4 +10,8 @@ class HomeController extends Controller
     {
         return view("index");
     }
+    public function search()
+    {
+        return view('search');
+    }
 }

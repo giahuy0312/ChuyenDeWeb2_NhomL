@@ -178,13 +178,13 @@ class DatabaseSeeder extends Seeder
             'amount' => 10000,
         ]);
 
-        DB::table('users')->insert([
-            'id' =>'1',
-            'password' =>Bcrypt('123456789@H'),
-            'username' => 'Nguyen van a',
-            'name' => 'vana',
-            'phone' => '0919191919',
-            'email' => '123456789@gmail.com',
-        ]);
+        // DB::table('users')->insert([
+        //     'id' =>'1',
+        //     'password' =>Bcrypt('123456789@H'),
+        //     'username' => 'Nguyen van a',
+        //     'name' => 'vana',
+        //     'phone' => '0919191919',
+        //     'email' => '123456789@gmail.com',
+        // ]);
     }
 }
