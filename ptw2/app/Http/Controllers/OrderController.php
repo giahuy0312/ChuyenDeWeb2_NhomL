@@ -30,38 +30,56 @@ class OrderController extends Controller
      */
     public function create()
     {
-
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        // unset($_SESSION['order_id']);
+        // echo $_SESSION['order_id'];
+        unset($_SESSION['order_id']);
+        if (isset($_SESSION['order_id'])) {
+            echo '$_SESSION["order_id"] is none unset';
+        } else {
+            echo '$_SESSION["order_id"] is unset';
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store($order, $product)
     {
         if (!isset($_SESSION['user_id'])) {
             return redirect('/home');
         }
-        $orders = Order::all();
-        $product = Product::find($request->product);
-        foreach ($orders as $order) {
-            if ($order->user_id == $_SESSION['user_id']) {
-                if ($order->order_status == 0) {
+        // $orders = Order::all();
+        // $product = Product::find($request->product);
+        // foreach ($orders as $order) {
+        //     if ($order->user_id == $_SESSION['user_id']) {
+        //         if ($order->order_status == 0) {
                     
-                    $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
-                    DB::table('order_product')->where([['product_id', $product->id],['order_id', $order->id]])->update(
-                        ['quality' => +1],[ 'sub_total' => $product->price, 'updated_at' => now()]
-                    );
-                    return redirect()->back();
-                }
-            }
-        }
-        $order = new Order();
-        $order->user_id = $_SESSION['user_id'];
-        $order->order_status = 0;
-        $order->order_total = $product->price;
-        $order->save();
-        $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
-        return redirect()->back();
+        //             $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
+        //             // DB::table('order_product')->where([['product_id', $product->id],['order_id', $order->id]])->update(
+        //             //     ['quality' => +1],[ 'sub_total' => $product->price, 'updated_at' => now()]
+        //             // );
+        //             return redirect()->back();
+        //             // dd($order->products()->get());
+        //         }
+        //     }
+        // }
+        // $order = new Order();
+        // $order->user_id = $_SESSION['user_id'];
+        // $order->order_status = 0;
+        // $order->order_total = $product->price;
+        // $order->save();
+        // $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
+        // return redirect()->back();
+
+        // $orders = Order::find(2);
+        // foreach ($orders->products()->get(['product_id']) as $order) {
+        //     echo $order->product_id;
+        // }
+
+        echo $order, $product;
     }
 
     /**
@@ -86,6 +104,9 @@ class OrderController extends Controller
     public function update(Request $request, Order $order)
     {
         $order = Order::find($order->id);
+        if ($order->user_id != $_SESSION['user_id']) {
+            return redirect()->back()->with('error','Không tồn tại giỏ hàng');
+        } 
         $products = $order->Products()->get();
         $total = 0;
         $subtotal = 0;

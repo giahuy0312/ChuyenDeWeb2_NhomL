@@ -1,11 +1,23 @@
 @extends('layout.main')
 
+@if (isset($_SESSION['user_id']))
+    @foreach ($orders as $order)
+        @if ($order->user_id == $_SESSION['user_id'])
+            @if ($order->order_status == 0)
+                @if (!isset($_SESSION['order_id']))
+                    <?php $_SESSION['order_id'] = $order->id; ?>
+                @endif
+            @endif
+        @endif
+    @endforeach
+@endif
+
 @section('content')
     <!-- Wrapper -->
     <div id="wrapper" class="wrapper">
 
         @include('layout.header')
-        
+
         <!-- Heroslider Area -->
         <div class="tm-heroslider-area bg-grey">
             <div class="tm-heroslider-slider">
@@ -132,13 +144,8 @@
                                                     alt="product image">
                                             </div>
                                             <ul class="tm-product-actions">
-                                                <form action="{{ route('order.store') }}" method="POST"
-                                                    enctype="multipart/form-data" class="d-inline-block">
-                                                    @csrf
-                                                    <input type="hidden" value="{{ $product->id }}" name="product" id="product">
-                                                    <li><button type="submit"><i
-                                                                class="ion-android-cart"></i> Add to cart</button></li>
-                                                </form>
+                                                <li><a href="{{ route('order.add', [$_SESSION['order_id'], $product->id]) }}"><i class="ion-android-cart"></i> Add to cart</a>
+                                                </li>
                                                 <li><button data-fancybox data-src="#tm-product-quickview"><i
                                                             class="ion-eye"></i></button></li>
                                                 <li><a href="#"><i class="ion-heart"></i></a></li>

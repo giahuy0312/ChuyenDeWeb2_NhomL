@@ -21,14 +21,7 @@
 @if (!isset($_SESSION))
     <?php session_start(); ?>
 @endif
-<?php $order_id = 0 ?>
-@foreach ($orders as $order)
-    @if ($order->user_id == $_SESSION['user_id'])
-        @if ($order->order_status == 0)
-            <?php $order_id = $order->id; ?>
-        @endif
-    @endif
-@endforeach
+
 
 <!-- Page Content -->
 <main class="page-content">
@@ -68,61 +61,64 @@
                         $id_order = 0;
                         $promotion_amount = 0;
                         ?>
-                        <form action="{{ url('/order/' . $order_id) }}" method="POST" class="d-inline-block"
-                            id="update-cart" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                            @foreach ($orders as $order)
-                                @if ($order->user_id == $_SESSION['user_id'])
-                                    @if ($order->order_status == 0)
-                                        @foreach ($order->products as $product)
-                                            <?php $price = $product->price; ?>
-                                            <?php $id_order = $order->id; ?>
-                                            @foreach ($orderDetails as $orderdetail)
-                                                @if ($orderdetail->product_id == $product->id && $orderdetail->order_id == $order->id)
-                                                    <?php $quality = $orderdetail->quality; ?>
-                                                    <?php $subtotal = $price * $quality; ?>
-                                                    <?php $total += $subtotal; ?>
-                                                @endif
+                        @if (isset($_SESSION['order_id']))
+                            <form action="{{ url('/order/' . $_SESSION['order_id']) }}" method="POST"
+                                class="d-inline-block" id="update-cart" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                @foreach ($orders as $order)
+                                    @if ($order->user_id == $_SESSION['user_id'])
+                                        @if ($order->order_status == 0)
+                                            @foreach ($order->products as $product)
+                                                <?php $price = $product->price; ?>
+                                                <?php $id_order = $order->id; ?>
+                                                @foreach ($orderDetails as $orderdetail)
+                                                    @if ($orderdetail->product_id == $product->id && $orderdetail->order_id == $order->id)
+                                                        <?php $quality = $orderdetail->quality; ?>
+                                                        <?php $subtotal = $price * $quality; ?>
+                                                        <?php $total += $subtotal; ?>
+                                                    @endif
+                                                @endforeach
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{-- {{ route('products.show', $product->id) }} --}}#" class="tm-cart-productimage">
+                                                            <img src="{{ asset('images/image-products') }}/{{ $product->image }}"
+                                                                alt="{{ $product->image }}">
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{-- {{ route('products.show', $product->id) }} --}}#"
+                                                            class="tm-cart-productname">{{ $product->name }}</a>
+                                                    </td>
+                                                    <td class="tm-cart-price">
+                                                        {{ number_format($product->price, 2, ',', '.') }}
+                                                        ₫</td>
+                                                    <td>
+                                                        <div class="tm-quantitybox">
+                                                            <input type="text" value="{{ $quality }}"
+                                                                id="{{ $product->id }}"
+                                                                name="id_{{ $product->id }}">
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span
+                                                            class="tm-cart-totalprice">{{ number_format($subtotal, 2, ',', '.') }}
+                                                            ₫</span>
+                                                    </td>
+                                                    <td>
+                                                        <a onclick="return confirm('Bạn có muốn xóa hay không?')"
+                                                            href="{{ url('/order/' . $order->id . '/product/' . $product->id . '/token=' . csrf_token()) }}"
+                                                            class="tm-cart-removeproduct"
+                                                            style="padding: 0 30px; color: inherit;"><i
+                                                                class="ion-close"></i></a>
+                                                    </td>
+                                                </tr>
                                             @endforeach
-                                            <tr>
-                                                <td>
-                                                    <a href="{{-- {{ route('products.show', $product->id) }} --}}#" class="tm-cart-productimage">
-                                                        <img src="{{ asset('images/image-products') }}/{{ $product->image }}"
-                                                            alt="{{ $product->image }}">
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="{{-- {{ route('products.show', $product->id) }} --}}#"
-                                                        class="tm-cart-productname">{{ $product->name }}</a>
-                                                </td>
-                                                <td class="tm-cart-price">
-                                                    {{ number_format($product->price, 2, ',', '.') }}
-                                                    ₫</td>
-                                                <td>
-                                                    <div class="tm-quantitybox">
-                                                        <input type="text" value="{{ $quality }}"
-                                                            id="{{ $product->id }}" name="id_{{ $product->id }}">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span
-                                                        class="tm-cart-totalprice">{{ number_format($subtotal, 2, ',', '.') }}
-                                                        ₫</span>
-                                                </td>
-                                                <td>
-                                                    <a onclick="return confirm('Bạn có muốn xóa hay không?')"
-                                                        href="{{ url('/order/' . $order->id . '/product/' . $product->id . '/token=' . csrf_token()) }}"
-                                                        class="tm-cart-removeproduct"
-                                                        style="padding: 0 30px; color: inherit;"><i
-                                                            class="ion-close"></i></a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        @endif
                                     @endif
-                                @endif
-                            @endforeach
-                        </form>
+                                @endforeach
+                            </form>
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -175,7 +171,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="#" class="tm-button">Proceed To Checkout</a>
+                            <a href="{{ route('order.create') }}" class="tm-button">Proceed To Checkout</a>
                         </div>
                     </div>
                 </div>

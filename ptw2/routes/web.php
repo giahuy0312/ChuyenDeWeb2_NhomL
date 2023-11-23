@@ -64,7 +64,9 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('order', OrderController::class);
 });
+Route::get('/order/{order}/product/{product}', [OrderController::class, 'store'])->name('order.add');
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
+// Route::get('/order/{order}/product/{product}', [OrderController::class, 'store']);
 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
