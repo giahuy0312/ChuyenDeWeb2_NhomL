@@ -8,7 +8,6 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
-use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -90,6 +89,3 @@ Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost
 
     // shop
 Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
-//search
-Route::get('/search', 'HomeController@search');
-Route::post('/search', 'HomeController@searchFullText')->name('search');
