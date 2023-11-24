@@ -24,12 +24,12 @@
                 @method('PUT')
                 <div class="row">
                     <div class="info-left col ">
-                        <label for="username">Username</label> <br>
-                        <input type="text" name="username"  maxlength="20" required
+                        <label for="name">Họ tên</label> <br>
+                        <input type="text" name="name"  maxlength="20" required
                             style="background-image: url({{ asset('images/user.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->username }}"> <br> <br>
-                        <label for="name">Họ tên</label> <br>
-                        <input type="fullname" name="name"  maxlength="50" 
+                        <label for="username"> Username</label> <br>
+                        <input type="fullname" name="username"  maxlength="50" 
                             style="background-image: url({{ asset('images/user.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->name }}"><br> <br>
                         <label for="phone">Số điện thoại</label> <br>
