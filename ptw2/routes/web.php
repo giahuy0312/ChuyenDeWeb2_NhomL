@@ -68,6 +68,11 @@ Route::get('/order/{order}/product/{product}', [OrderController::class, 'store']
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
 // Route::get('/order/{order}/product/{product}', [OrderController::class, 'store']);
 
+// Checkout
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
 

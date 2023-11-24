@@ -30,17 +30,18 @@ class OrderController extends Controller
      */
     public function create()
     {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
+        // if (!isset($_SESSION)) {
+        //     session_start();
+        // }
+        // // unset($_SESSION['order_id']);
+        // // echo $_SESSION['order_id'];
         // unset($_SESSION['order_id']);
-        // echo $_SESSION['order_id'];
-        unset($_SESSION['order_id']);
-        if (isset($_SESSION['order_id'])) {
-            echo '$_SESSION["order_id"] is none unset';
-        } else {
-            echo '$_SESSION["order_id"] is unset';
-        }
+        // if (isset($_SESSION['order_id'])) {
+        //     echo '$_SESSION["order_id"] is none unset';
+        // } else {
+        //     echo '$_SESSION["order_id"] is unset';
+        // }
+        // echo date('Y-m-d');
     }
 
     /**

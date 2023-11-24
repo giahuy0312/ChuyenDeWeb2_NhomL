@@ -39,7 +39,7 @@
                                 @endif
                                 <li><a href="{{ url('order') }}">Shopping Cart</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="{{ url('checkout') }}">Checkout</a></li>
                             </ul>
                         </div>
 
