@@ -17,11 +17,10 @@
                     <div class="single-widget widget-info">
                         <a class="widget-info-logo" href="{{ url('index') }}"><img src="{{ asset('images/logo.png') }}"
                                 alt="logo"></a>
-                        <p>Lorem ipsum dolor sit amet, consect etur adipiscing elit.</p>
                         <ul>
-                            <li><b>Address :</b>2726 Avenue Papineau Montreal, QC, Canada</li>
-                            <li><b>Phone :</b><a href="tel:123456789">1-800-915-6270</a></li>
-                            <li><b>Email :</b><a href="mailto:info@example.com">info@example.com</a></li>
+                            <li><b>Address :</b>72 Nguyen Cu Trinh, Pham Ngu Lao Ward, District 1</li>
+                            <li><b>Phone :</b><a href="tel:123456789">1900 111 999</a></li>
+                            <li><b>Email :</b><a href="mailto:info@example.com">luxury@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -30,14 +29,11 @@
                 <!-- Single Widget -->
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="single-widget widget-quicklinks">
-                        <h6 class="widget-title">Useful Link</h6>
+                        <h6 class="widget-title">Về chúng tôi</h6>
                         <ul>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="#">Delivery Info</a></li>
-                            <li><a href="#">Privacy & Policy</a></li>
-                            <li><a href="#">Returns & Refunds</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Câu chuyện luxury</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,12 +58,10 @@
                 <!-- Single Widget -->
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="single-widget widget-newsletter">
-                        <h6 class="widget-title">Join Our Newsletter</h6>
-                        <p>Get Business news, tip and solutions to
-                            your problems from our experts.</p>
+                        <h6 class="widget-title">Phản hồi về chúng tôi</h6>
                         <form id="tm-mailchimp-form" class="widget-newsletter-form">
-                            <input id="mc-email" type="text" placeholder="Enter email address">
-                            <button id="mc-submit" type="submit" class="tm-button">Subscribe Now
+                            <input id="mc-email" type="text" placeholder="Nhap email ngay">
+                            <button id="mc-submit" type="submit" class="tm-button">Gửi
                                 <b></b></button>
                         </form>
                         <!-- Mailchimp Alerts -->

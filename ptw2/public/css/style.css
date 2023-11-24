@@ -438,7 +438,7 @@ textarea {
 }
 
 img {
-  max-width: 100%;
+  max-width: 80%;
 }
 
 html {
@@ -1305,7 +1305,7 @@ input[type=radio]:checked ~ label::before {
 
 /* Section Padding */
 .tm-padding-section {
-  padding-top: 100px;
+  padding-top: 80px;
   padding-bottom: 100px;
 }
 
@@ -1319,7 +1319,7 @@ input[type=radio]:checked ~ label::before {
 
 .tm-padding-section-sm {
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 100px;
 }
 
 .tm-padding-section-sm-top {
