@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
             'size'=>"12",
         ]);
         DB::table('products')->insert([
-            'name'=>"sanpham6",
+            'name'=>"sanpham8",
             'image'=>"product-image-8.jpg",
             'price'=>"19000",
             'description'=>"San pham lam tu....",
@@ -185,6 +185,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'vana',
             'phone' => '0919191919',
             'email' => '123456789@gmail.com',
+        ]);
+        DB::table('users')->insert([
+            'password' =>Bcrypt('123456789@H'),
+            'username' => '1234567890',
+            'name' => '1234567890',
+            'email' => '1234567890@gmail.com',
         ]);
     }
 }

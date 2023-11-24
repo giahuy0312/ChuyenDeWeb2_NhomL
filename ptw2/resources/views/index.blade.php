@@ -1,12 +1,14 @@
 @extends('layout.main')
 
+@if (!isset($_SESSION['order_id']))
+    <?php $_SESSION['order_id'] = 0; ?>
+@endif
+
 @if (isset($_SESSION['user_id']))
     @foreach ($orders as $order)
         @if ($order->user_id == $_SESSION['user_id'])
             @if ($order->order_status == 0)
-                @if (!isset($_SESSION['order_id']))
-                    <?php $_SESSION['order_id'] = $order->id; ?>
-                @endif
+                <?php $_SESSION['order_id'] = $order->id; ?>
             @endif
         @endif
     @endforeach
@@ -144,7 +146,9 @@
                                                     alt="product image">
                                             </div>
                                             <ul class="tm-product-actions">
-                                                <li><a href="{{ route('order.add', [$_SESSION['order_id'], $product->id]) }}"><i class="ion-android-cart"></i> Add to cart</a>
+                                                <li><a
+                                                        href="{{ route('order.add', [$_SESSION['order_id'], $product->id]) }}"><i
+                                                            class="ion-android-cart"></i> Add to cart</a>
                                                 </li>
                                                 <li><button data-fancybox data-src="#tm-product-quickview"><i
                                                             class="ion-eye"></i></button></li>

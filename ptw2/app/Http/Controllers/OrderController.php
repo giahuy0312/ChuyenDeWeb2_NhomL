@@ -51,35 +51,45 @@ class OrderController extends Controller
         if (!isset($_SESSION['user_id'])) {
             return redirect('/home');
         }
-        // $orders = Order::all();
-        // $product = Product::find($request->product);
-        // foreach ($orders as $order) {
-        //     if ($order->user_id == $_SESSION['user_id']) {
-        //         if ($order->order_status == 0) {
-                    
-        //             $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
-        //             // DB::table('order_product')->where([['product_id', $product->id],['order_id', $order->id]])->update(
-        //             //     ['quality' => +1],[ 'sub_total' => $product->price, 'updated_at' => now()]
-        //             // );
-        //             return redirect()->back();
-        //             // dd($order->products()->get());
-        //         }
-        //     }
-        // }
-        // $order = new Order();
-        // $order->user_id = $_SESSION['user_id'];
-        // $order->order_status = 0;
-        // $order->order_total = $product->price;
-        // $order->save();
-        // $order->products()->attach([$request->product], ['quality' => 1, 'unit_price' => $product->price, 'sub_total' => $product->price]);
-        // return redirect()->back();
-
-        // $orders = Order::find(2);
-        // foreach ($orders->products()->get(['product_id']) as $order) {
-        //     echo $order->product_id;
-        // }
-
-        echo $order, $product;
+        $order_id = Order::find($order);
+        $product_id = Product::find($product);
+        if ($order_id == null) {
+            $order = new Order();
+            $order->user_id = $_SESSION['user_id'];
+            $order->order_status = 0;
+            $order->order_total = $product_id->price;
+            $order->save();
+            $order->products()->attach([$product_id->id], ['quality' => 1, 'unit_price' => $product_id->price, 'sub_total' => $product_id->price]);
+            return redirect('/order');
+        }
+        if ($order_id->user_id != $_SESSION['user_id']) {
+            return redirect()->back()->with('error','Không tồn tại giỏ hàng');
+        }
+        if ($product_id == []) {
+            return redirect('/order')->with('error','Không tồn tại sản phẩm');
+        }
+        if ($order_id->order_status == 0) {
+            foreach ($order_id->products()->get(['product_id']) as $order_product) {
+                if ($order_product->product_id == $product) {
+                    $quality = $order_id->products()->where([['product_id', $product],['order_id', $order]])->get(['quality']);
+                    $newquality = $quality[0]->quality + 1;
+                    DB::table('order_product')->where([['product_id', $product],['order_id', $order]])->update(
+                        ['quality' => $newquality],[ 'sub_total' => $product_id->price, 'updated_at' => now()]
+                    );
+                    return redirect('/order');
+                }
+            }
+            DB::table('order_product')->insert(
+                ['product_id' => $product , 
+                'order_id' => $order , 
+                'quality' => 1 , 
+                'unit_price' => $product_id->price, 
+                'sub_total' => $product_id->price, 
+                'created_at' => now()]
+            );
+            return redirect('/order');
+        }
+        return redirect('/home');
     }
 
     /**
