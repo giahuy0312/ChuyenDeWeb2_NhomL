@@ -20,7 +20,10 @@ use Laravel\Socialite\Facades\Socialite;
 Route::get('/admin', function () {
     return view('admin.content.thongKe');
 });
-
+//listUser
+Route::get('/listUser', [UserController::class, 'listUser'])->name('listUser');
+//search User
+//Route::get('/listUser', [UserController::class, 'listUser'])->name('searchUser');
 // Product
 Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
 Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');

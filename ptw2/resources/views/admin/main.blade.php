@@ -77,7 +77,7 @@
                         <li> <a href=""> <span> Thêm mã giảm giá </span> </a> </li>
                         <li> <a href=""> <span> Lịch sử hàng hóa </span> </a> </li>
                         <li> <a href="{{route('listproduct')}}"> <span> Sản phẩm </span> </a> </li>
-                        <li> <a href=""> <span> Khách hàng </span> </a> </li>
+                        <li> <a href="{{route('listUser')}}"> <span> Khách hàng </span> </a> </li>
                         <li> <a href="{{route('listcategory')}}"> <span> Danh mục sản phẩm </span> </a> </li>
                     </ul>
                

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 session_start();
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     /**
@@ -15,7 +15,19 @@ class UserController extends Controller
     {
 
     }
+    public function listUser(){
+        $users = DB::table('users')->paginate(5);
+        return view('admin.content.listUser', ['users' => $users]);
+    }
+    public function searchUser(Request $request) {
+        $search = $request->input('search');
 
+        $users = User::where('name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%')
+                    ->get();
+    
+        return view('admin.content.listUser', ['users' => $users, 'search' => $search]);
+    }
     /**
      * Show the form for creating a new resource.
      */
