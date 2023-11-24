@@ -40,10 +40,10 @@
 
                     <div class="row pt-4">
                         <div class="col info">
-                            <label for="username">Username</label> <br>
+                            <label for="name">Họ tên</label> <br>
                             <p class="border border-dark rounded-pill">
                                 <i class="fa-light fa-user fa-xl"></i>{{ $user->username }} </p>
-                            <label for="name">Họ tên</label> <br>
+                            <label for="username">Username</label> <br>
                             <p class="border border-dark rounded-pill">
                                 <i class="fa-light fa-user fa-xl"></i>{{ $user->name }}</p>
                             <label for="phone">Số điện thoại</label> <br>
