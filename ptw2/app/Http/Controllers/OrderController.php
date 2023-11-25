@@ -119,6 +119,9 @@ class OrderController extends Controller
             return redirect()->back()->with('error','Không tồn tại giỏ hàng');
         } 
         $products = $order->Products()->get();
+        if ($products == '[]') {
+            return redirect()->back()->with('error','Không có sản phẩm trong giỏ hàng');
+        }
         $total = 0;
         $subtotal = 0;
         foreach ($products as $product) {
@@ -135,7 +138,7 @@ class OrderController extends Controller
             );
 
         }
-        // echo $subtotal;
+        // echo($products);
         return redirect()->back()->with('success','Sửa thành công');
     }
 

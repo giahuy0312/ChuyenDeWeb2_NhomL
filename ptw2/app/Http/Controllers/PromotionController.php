@@ -75,6 +75,9 @@ class PromotionController extends Controller
         if ($promotion == '[]') {
             return redirect()->back()->with('error','Bạn đã nhập sai mã ưu đãi');
         }
+        if (!isset($_SESSION['user_id'])) {
+            return redirect('login');
+        }
 
         return view('order',['orders' => $orders, 'promotion' => $promotion]);
     }

@@ -171,6 +171,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <form action="" method="post"></form>
                             <a href="{{ url('checkout') }}" class="tm-button">Proceed To Checkout</a>
                         </div>
                     </div>

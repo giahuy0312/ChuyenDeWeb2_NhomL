@@ -69,9 +69,7 @@ Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 
 // Route::get('/order/{order}/product/{product}', [OrderController::class, 'store']);
 
 // Checkout
-Route::get('/checkout', function () {
-    return view('checkout');
-});
+// Route::get('/checkout' [OrderController::class, ]);
 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
