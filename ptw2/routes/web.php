@@ -23,7 +23,7 @@ Route::get('/admin', function () {
 //listUser
 Route::get('/listUser', [UserController::class, 'listUser'])->name('listUser');
 //search User
-//Route::get('/listUser', [UserController::class, 'listUser'])->name('searchUser');
+Route::get('/listSearchUser', [UserController::class, 'searchUser'])->name('listSearchUser');
 // Product
 Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
 Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');

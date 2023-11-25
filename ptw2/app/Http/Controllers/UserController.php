@@ -20,13 +20,12 @@ class UserController extends Controller
         return view('admin.content.listUser', ['users' => $users]);
     }
     public function searchUser(Request $request) {
-        $search = $request->input('search');
-
-        $users = User::where('name', 'like', '%' . $search . '%')
+        $search = $request->search;
+                $users = User::where('name', 'like', '%' . $search . '%')
                     ->orWhere('email', 'like', '%' . $search . '%')
-                    ->get();
+                    ->paginate(5);
     
-        return view('admin.content.listUser', ['users' => $users, 'search' => $search]);
+        return view('admin.content.listSearchUser', ['users' => $users]);
     }
     /**
      * Show the form for creating a new resource.
