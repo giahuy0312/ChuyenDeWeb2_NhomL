@@ -3,12 +3,12 @@
 @include('layout.header')
 
 <!-- Breadcrumb Area -->
-<div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="assets/images/breadcrumb-bg.jpg">
+<div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="{{ asset('images/breadcrumb-bg.jpg') }}">
     <div class="container">
         <div class="tm-breadcrumb">
             <h2>Checkout</h2>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ url('home') }}">Home</a></li>
                 <li><a href="products.html">Shop</a></li>
                 <li>Checkout</li>
             </ul>
@@ -28,8 +28,7 @@
                     here and enter your code.</a>
                 <div id="checkout-couponform" class="collapse">
                     <form action="#" class="tm-checkout-couponform">
-                        <input type="text" id="coupon-field" placeholder="Enter coupon code"
-                            required="required">
+                        <input type="text" id="coupon-field" placeholder="Enter coupon code" required="required">
                         <button type="submit" class="tm-button">Submit</button>
                     </form>
                 </div>
@@ -87,8 +86,7 @@
                                     <input type="text" id="billingform-zipcode">
                                 </div>
                                 <div class="tm-form-field">
-                                    <input type="checkbox" name="billform-dirrentswitch"
-                                        id="billform-dirrentswitch">
+                                    <input type="checkbox" name="billform-dirrentswitch" id="billform-dirrentswitch">
                                     <label for="billform-dirrentswitch"><b>Ship to another address</b></label>
                                 </div>
                             </div>
@@ -237,8 +235,7 @@
                                     privacy policy.</p>
                                 <div class="tm-form-inner">
                                     <div class="tm-form-field">
-                                        <input type="checkbox" name="checkout-read-terms"
-                                            id="checkout-read-terms">
+                                        <input type="checkbox" name="checkout-read-terms" id="checkout-read-terms">
                                         <label for="checkout-read-terms">I have read and agree to the website
                                             terms and conditions</label>
                                     </div>

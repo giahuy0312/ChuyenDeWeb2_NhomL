@@ -171,7 +171,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="{{ route('order.create') }}" class="tm-button">Proceed To Checkout</a>
+                            <a href="{{ url('checkout') }}" class="tm-button">Proceed To Checkout</a>
                         </div>
                     </div>
                 </div>
