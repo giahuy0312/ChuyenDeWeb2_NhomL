@@ -32,11 +32,10 @@
        
         <tbody>
             <?php 
-                $i = 1;  
                 foreach($users as $user): 
             ?>
             <tr>   
-                <td>{{ $i++ }}</td>
+                <td>{{ $user->id  }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{  $user->phone }}</td>
                 <td>{{  $user->username }}</td>
