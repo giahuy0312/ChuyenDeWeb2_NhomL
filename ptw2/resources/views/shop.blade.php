@@ -83,7 +83,7 @@
 
     </main>
     <!--// Page Content -->
-
+   
    
     <!-- Product Quickview -->
     <div class="tm-product-quickview" id="tm-product-quickview">
@@ -221,6 +221,8 @@
    
     </div>
     {{$products->links()}}
+
+    @include('layout.footer')
     <!--// Product Quickview -->
 
     <button id="back-top-top"><i class="ion-arrow-up-c"></i></button>

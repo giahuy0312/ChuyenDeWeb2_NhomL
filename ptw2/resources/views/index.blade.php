@@ -58,48 +58,26 @@
             <!-- Features Area -->
             <div class="tm-section tm-feature-area bg-grey">
                 <div class="container">
-                    <div class="row mt-30-reverse">
+                    <div class="row mt-20-reverse">
 
                         <!-- Single Feature -->
+                        @if (count($products) >= 3)
+                            @for ($i = 0; $i < 3; $i++)
                         <div class="col-lg-4 mt-30">
                             <div class="tm-feature">
+                            @if (isset($products))
                                 <span class="tm-feature-icon">
-                                    <img src="{{ asset('images/icons/icon-free-shipping.png') }}" alt="free shipping">
+                                    <img src="{{ asset('images/image-products') }}/{{ $products[$i]->image }}" alt="free shipping">
                                 </span>
                                 <div class="tm-feature-content">
                                     <h6>Free Shipping</h6>
                                     <p>We provide free shipping for all order over $200.00</p>
                                 </div>
+                                @endif
                             </div>
                         </div>
-                        <!--// Single Feature -->
-
-                        <!-- Single Feature -->
-                        <div class="col-lg-4 mt-30">
-                            <div class="tm-feature">
-                                <span class="tm-feature-icon">
-                                    <img src="{{ asset('images/icons/icon-fast-delivery.png') }}" alt="fast delivery">
-                                </span>
-                                <div class="tm-feature-content">
-                                    <h6>Fast Delivery</h6>
-                                    <p>We always deliver our customers very quickly.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--// Single Feature -->
-
-                        <!-- Single Feature -->
-                        <div class="col-lg-4 mt-30">
-                            <div class="tm-feature">
-                                <span class="tm-feature-icon">
-                                    <img src="{{ asset('images/icons/icon-247-support.png') }}" alt="24/7 Support">
-                                </span>
-                                <div class="tm-feature-content">
-                                    <h6>24/7 Support</h6>
-                                    <p>We provide support to our customers within 24 hours. </p>
-                                </div>
-                            </div>
-                        </div>
+                        @endfor
+                        @endif
                         <!--// Single Feature -->
 
                     </div>
