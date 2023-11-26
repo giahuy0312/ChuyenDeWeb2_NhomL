@@ -20,6 +20,15 @@ use App\Http\Controllers\ForgetpasswordManager;
 */
 
 
+//change language
+Route::get('/lang/{locale}',function($locale){
+    if(! in_array($locale,['en','vi'])){
+        abort(404);
+    }
+    session()->put('locale',$locale);
+    return redirect()->back();
+});
+
 // Home
 session_start();
 if (isset($_SESSION['user_id'])) {
