@@ -17,10 +17,9 @@
                             <div class="col-lg-7 col-md-8 col-12">
                                 <div class="tm-heroslider-contentwrapper">
                                     <div class="tm-heroslider-content">
-                                        <h1>Woman’s Jewellery Collection</h1>
-                                        <p>Jewellery may be made from a wide range of materials. Jewellery has been
-                                            made to adorn nearly every body part from hairpins to toe.</p>
-                                        <a href="products.html" class="tm-button">Shop Now</a>
+                                        <h1>@lang('lang.heroslider1')</h1>
+                                        <p>@lang('lang.heroslider2')</p>
+                                        <a href="products.html" class="tm-button">@lang('lang.btnmua')</a>
                                     </div>
                                 </div>
                             </div>
@@ -36,10 +35,9 @@
                             <div class="col-lg-7 col-md-8 col-12">
                                 <div class="tm-heroslider-contentwrapper">
                                     <div class="tm-heroslider-content">
-                                        <h1>Woman’s Jewellery Collection</h1>
-                                        <p>Jewellery may be made from a wide range of materials. Jewellery has been
-                                            made to adorn nearly every body part from hairpins to toe.</p>
-                                        <a href="products.html" class="tm-button">Shop Now</a>
+                                        <h1>@lang('lang.heroslider1')</h1>
+                                        <p>@lang('lang.heroslider2')</p>
+                                        <a href="products.html" class="tm-button">@lang('lang.btnmua')</a>
                                     </div>
                                 </div>
                             </div>
@@ -67,8 +65,8 @@
                                     <img src="{{ asset('images/icons/icon-free-shipping.png') }}" alt="free shipping">
                                 </span>
                                 <div class="tm-feature-content">
-                                    <h6>Free Shipping</h6>
-                                    <p>We provide free shipping for all order over $200.00</p>
+                                    <h6>@lang('lang.feature-cont1')</h6>
+                                    <p>@lang('lang.feature-cont1.1')</p>
                                 </div>
                             </div>
                         </div>
@@ -81,8 +79,8 @@
                                     <img src="{{ asset('images/icons/icon-fast-delivery.png') }}" alt="fast delivery">
                                 </span>
                                 <div class="tm-feature-content">
-                                    <h6>Fast Delivery</h6>
-                                    <p>We always deliver our customers very quickly.</p>
+                                    <h6>@lang('lang.feature-cont2')</h6>
+                                    <p>@lang('lang.feature-cont2.1')</p>
                                 </div>
                             </div>
                         </div>
@@ -95,8 +93,8 @@
                                     <img src="{{ asset('images/icons/icon-247-support.png') }}" alt="24/7 Support">
                                 </span>
                                 <div class="tm-feature-content">
-                                    <h6>24/7 Support</h6>
-                                    <p>We provide support to our customers within 24 hours. </p>
+                                    <h6>@lang('lang.feature-cont3')</h6>
+                                    <p>@lang('lang.feature-cont3.1') </p>
                                 </div>
                             </div>
                         </div>
@@ -113,9 +111,8 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-6 col-12">
                             <div class="tm-sectiontitle text-center">
-                                <h3>POPULAR PRODUCTS</h3>
-                                <p>Our popular products are so beautyful to see that the shoppers are easily attracted
-                                    to them.</p>
+                                <h3>@lang('lang.sectiontitle1')</h3>
+                                <p>@lang('lang.sectiontitle')</p>
                             </div>
                         </div>
                     </div>
@@ -137,15 +134,15 @@
                                                     @csrf
                                                     <input type="hidden" value="{{ $product->id }}" name="product" id="product">
                                                     <li><button type="submit"><i
-                                                                class="ion-android-cart"></i> Add to cart</button></li>
+                                                                class="ion-android-cart"></i> @lang('lang.addcart')</button></li>
                                                 </form>
                                                 <li><button data-fancybox data-src="#tm-product-quickview"><i
                                                             class="ion-eye"></i></button></li>
                                                 <li><a href="#"><i class="ion-heart"></i></a></li>
                                             </ul>
                                             <div class="tm-product-badges">
-                                                <span class="tm-product-badges-new">New</span>
-                                                <span class="tm-product-badges-sale">Sale</span>
+                                                <span class="tm-product-badges-new">@lang('lang.moi')</span>
+                                                <span class="tm-product-badges-sale">@lang('lang.sale')</span>
                                             </div>
                                         </div>
                                         <div class="tm-product-bottomside">
@@ -155,7 +152,7 @@
                                             <div class="tm-product-content">
                                                 <p></p>
                                                 <ul class="tm-product-actions">
-                                                    <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a>
+                                                    <li><a href="#"><i class="ion-android-cart"></i> @lang('lang.addcart')</a>
                                                     </li>
                                                     <li><button data-fancybox data-src="#tm-product-quickview"><i
                                                                 class="ion-eye"></i></button></li>
@@ -179,9 +176,8 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-6 col-12">
                             <div class="tm-sectiontitle text-center">
-                                <h3>NEW ARRIVAL PRODUCTS</h3>
-                                <p>Our popular products are so beautyful to see that the shoppers are easily attracted
-                                    to them.</p>
+                                <h3>@lang('lang.sectiontitle2')</h3>
+                                <p>@lang('lang.sectiontitle')</p>
                             </div>
                         </div>
                         <!--// Single Banner -->
@@ -213,9 +209,8 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-6 col-12">
                             <div class="tm-sectiontitle text-center">
-                                <h3>NEW ARRIVAL PRODUCTS</h3>
-                                <p>Our popular products are so beautyful to see that the shoppers are easily attracted
-                                    to them.</p>
+                                <h3>@lang('lang.sectiontitle2')</h3>
+                                <p>@lang('lang.sectiontitle')</p>
                             </div>
                         </div>
                     </div>
@@ -234,14 +229,14 @@
                                                     alt="product image">
                                             </div>
                                             <ul class="tm-product-actions">
-                                                <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a>
+                                                <li><a href="#"><i class="ion-android-cart"></i> @lang('lang.addcart')</a>
                                                 </li>
                                                 <li><button data-fancybox data-src="#tm-product-quickview"><i
                                                             class="ion-eye"></i></button></li>
                                                 <li><a href="#"><i class="ion-heart"></i></a></li>
                                             </ul>
                                             <div class="tm-product-badges">
-                                                <span class="tm-product-badges-new">New</span>
+                                                <span class="tm-product-badges-new">@lang('lang.moi')</span>
                                             </div>
                                         </div>
                                         <div class="tm-product-bottomside">
@@ -258,7 +253,7 @@
                                                     the
                                                     leap into electronic typesetting.</p>
                                                 <ul class="tm-product-actions">
-                                                    <li><a href="#"><i class="ion-android-cart"></i> Add to cart</a>
+                                                    <li><a href="#"><i class="ion-android-cart"></i>@lang('lang.addcart')</a>
                                                     </li>
                                                     <li><button data-fancybox data-src="#tm-product-quickview"><i
                                                                 class="ion-eye"></i></button></li>
@@ -273,7 +268,7 @@
                         <!--// Single Product -->
                     </div>
                     <div class="tm-product-loadmore text-center mt-50">
-                        <a href="products.html" class="tm-button">All Products</a>
+                        <a href="products.html" class="tm-button"> @lang('lang.allproduct')</a>
                     </div>
                 </div>
             </div>
@@ -289,9 +284,8 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-6 col-12">
                             <div class="tm-sectiontitle text-center">
-                                <h3>LATEST BLOGS</h3>
-                                <p>A blog is a discussion or informational website published on the World Wide Web
-                                    consisting of discrete</p>
+                                <h3>@lang('lang.sectiontitle3')</h3>
+                                <p>@lang('lang.sectiontitle3.1')</p>
                             </div>
                         </div>
                     </div>
@@ -310,17 +304,17 @@
                                             <span class="tm-blog-metahighlight"><span>Apr</span>17</span>
                                         </div>
                                         <div class="tm-blog-content">
-                                            <h6 class="tm-blog-title"><a href="blog-details.html">Woman wearing
-                                                    gold-colore ring
-                                                    pendant necklaces</a></h6>
+                                            <h6 class="tm-blog-title"><a href="blog-details.html">
+                                                @lang('lang.blog-title')    
+                                            </a></h6>
                                             <ul class="tm-blog-meta">
-                                                <li><a href="blog.html"><i class="ion-android-person"></i> Anderson</a>
+                                                <li><a href="blog.html"><i class="ion-android-person">@lang( 'lang.blog-meta1')</i> </a>
                                                 </li>
-                                                <li><a href="blog-details.html"><i class="ion-chatbubbles"></i> 3
-                                                        Comments</a>
+                                                <li><a href="blog-details.html"><i class="ion-chatbubbles"></i> 
+                                                    @lang( 'lang.blog-meta2') </a>
                                                 </li>
                                             </ul>
-                                            <a href="blog-details.html" class="tm-readmore">Read more</a>
+                                            <a href="blog-details.html" class="tm-readmore">@lang( 'lang.readmore')</a>
                                         </div>
                                     </div>
                                 </div>
@@ -430,7 +424,7 @@
 
                                     <div class="col-lg-6 col-md-6 col-12">
                                         <div class="tm-prodetails-content">
-                                            <h4 class="tm-prodetails-title">Stylist daimond ring</h4>
+                                            <h4 class="tm-prodetails-title">@lang('lang.prodetails-title')</h4>
                                             <span class="tm-prodetails-price"><del>$75.99</del> $59.99</span>
                                             <div class="tm-ratingbox">
                                                 <span class="is-active"><i class="ion-android-star-outline"></i></span>
@@ -441,26 +435,26 @@
                                             </div>
                                             <div class="tm-prodetails-infos">
                                                 <div class="tm-prodetails-singleinfo">
-                                                    <b>Product ID : </b>010
+                                                    <b> @lang('lang.prodetails-id') </b>010
                                                 </div>
                                                 <div class="tm-prodetails-singleinfo">
-                                                    <b>Category : </b><a href="#">Ring</a>
+                                                    <b>@lang('lang.prodetails-cate') </b><a href="#">@lang('lang.prodetails-cate-name')</a>
                                                 </div>
                                                 <div class="tm-prodetails-singleinfo tm-prodetails-tags">
-                                                    <b>Tags : </b>
+                                                    <b> @lang('lang.prodetails-tags') : </b>
                                                     <ul>
-                                                        <li><a href="#">bracelets</a></li>
-                                                        <li><a href="#">diamond</a></li>
-                                                        <li><a href="#">ring</a></li>
-                                                        <li><a href="#">necklaces</a></li>
+                                                        <li><a href="#"> @lang('lang.prodetails-tags1')</a></li>
+                                                        <li><a href="#"> @lang('lang.prodetails-tags2')</a></li>
+                                                        <li><a href="#"> @lang('lang.prodetails-tags3')</a></li>
+                                                        <li><a href="#"> @lang('lang.prodetails-tags4')</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="tm-prodetails-singleinfo">
-                                                    <b>Available : </b>
-                                                    <span class="color-theme">In Stock</span>
+                                                    <b>@lang('lang.prodetails-avail') : </b>
+                                                    <span class="color-theme">@lang('lang.prodetails-avail1')</span>
                                                 </div>
                                                 <div class="tm-prodetails-singleinfo tm-prodetails-share">
-                                                    <b>Share : </b>
+                                                    <b>@lang('lang.prodetails-share') : </b>
                                                     <ul>
                                                         <li><a href="#"><i class="ion-social-facebook"></i></a></li>
                                                         <li><a href="#"><i
@@ -479,11 +473,11 @@
                                                 consequat ex in dapibus. Vestibulum ante ipsum primis in faucibus
                                                 orciluctus curae.</p>
                                             <div class="tm-prodetails-quantitycart">
-                                                <h6>Quantity :</h6>
+                                                <h6>@lang('lang.prodetails-quantity') :</h6>
                                                 <div class="tm-quantitybox">
                                                     <input type="text" value="1">
                                                 </div>
-                                                <a href="#" class="tm-button tm-button-dark">Add To Cart</a>
+                                                <a href="#" class="tm-button tm-button-dark">@lang('lang.addcart')</a>
                                             </div>
                                         </div>
                                     </div>
