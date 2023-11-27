@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Promotion;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -157,15 +158,19 @@ class OrderController extends Controller
     }
 
     public function checkout($promotion) {
-        // if (isset($request->promotion)) {
-        //     // echo $request->promotion;
-        //     return view('checkout', ['promotion' => $request->promotion]);
-        // } else {
-        //     return view('checkout', ['promotion' => $promotion]);
-        // }
-        // return view('checkout', ['promotion' => $request->promotion]);
-        return view('checkout', ['promotion' => $promotion]);
-        // echo $promotion;
-        // return redirect('checkout');
+        if (!isset($_SESSION['order_id'])) {
+            return redirect()->back();
+        }
+        if (!isset($_SESSION['user_id'])) {
+            return redirect()->back();
+        }
+        if ($promotion != "null") {
+            $promotion = Promotion::where('name', $promotion)->get();
+        }
+        $user = User::find($_SESSION['user_id']);
+        $order = Order::find($_SESSION['order_id']);
+        $orderDetails = DB::table('order_product')->where(['order_id' => $_SESSION['order_id']])->get();
+        $products = $order->Products()->get();
+        return view('checkout', ['user' => $user , 'orderDetails' => $orderDetails , 'products' => $products , 'promotion' => $promotion]);
     }
 }

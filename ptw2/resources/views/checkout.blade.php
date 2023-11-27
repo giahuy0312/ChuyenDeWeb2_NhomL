@@ -34,7 +34,7 @@
                     </form>
                 </div>
             </div> --}}
-            <form action="#" class="tm-form tm-checkout-form">
+            <form action="#" class="tm-form tm-checkout-form" method="POST">
                 <div class="row">
                     <div class="col-lg-6">
                         <h4 class="small-title">BILLING INFORMATION</h4>
@@ -51,18 +51,18 @@
                                     <input type="text" id="billingform-lastname">
                                 </div>
                                 <div class="tm-form-field">
-                                    <label for="billingform-companyname">Company name</label>
-                                    <input type="text" id="billingform-companyname">
+                                    <label for="billingform-companyname">Name</label>
+                                    <input type="text" id="billingform-companyname" value="{{ $user->name }}">
                                 </div>
                                 <div class="tm-form-field">
                                     <label for="billingform-email">Email address</label>
-                                    <input type="email" id="billingform-email">
+                                    <input type="email" id="billingform-email" value="{{ $user->email }}">
                                 </div>
                                 <div class="tm-form-field">
                                     <label for="billingform-phone">Phone (Optional)</label>
-                                    <input type="text" id="billingform-phone">
+                                    <input type="text" id="billingform-phone" value="{{ $user->phone }}">
                                 </div>
-                                <div class="tm-form-field">
+                                {{-- <div class="tm-form-field">
                                     <label for="billingform-country">Country</label>
                                     <select name="billingform-country" id="billingform-country">
                                         <option value="bangladesh">United States</option>
@@ -72,79 +72,15 @@
                                         <option value="bangladesh">Sweden</option>
                                         <option value="bangladesh">France</option>
                                     </select>
-                                </div>
+                                </div> --}}
                                 <div class="tm-form-field">
                                     <label for="billingform-address">Address</label>
                                     <input type="text" id="billingform-address"
-                                        placeholder="Apartment, Street Address">
-                                </div>
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="billingform-streetaddress">State</label>
-                                    <input type="text" id="billingform-streetaddress">
-                                </div>
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="billingform-zipcode">Zip / Postcode</label>
-                                    <input type="text" id="billingform-zipcode">
-                                </div>
-                                <div class="tm-form-field">
-                                    <input type="checkbox" name="billform-dirrentswitch" id="billform-dirrentswitch">
-                                    <label for="billform-dirrentswitch"><b>Ship to another address</b></label>
+                                        placeholder="Apartment, Street Address" value="{{ $user->address }}">
                                 </div>
                             </div>
                         </div>
                         <!--// Billing Form -->
-
-                        <!-- Different Address Form -->
-                        <div class="tm-checkout-differentform">
-                            <div class="tm-form-inner">
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="differentform-firstname">First name*</label>
-                                    <input type="text" id="differentform-firstname">
-                                </div>
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="differentform-lastname">Last name*</label>
-                                    <input type="text" id="differentform-lastname">
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="differentform-companyname">Company name</label>
-                                    <input type="text" id="differentform-companyname">
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="differentform-email">Email address</label>
-                                    <input type="email" id="differentform-email">
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="differentform-phone">Phone (Optional)</label>
-                                    <input type="text" id="differentform-phone">
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="differentform-country">Country</label>
-                                    <select name="differentform-country" id="differentform-country">
-                                        <option value="bangladesh">United States</option>
-                                        <option value="bangladesh">Mexico</option>
-                                        <option value="bangladesh">Australia</option>
-                                        <option value="bangladesh">Germany</option>
-                                        <option value="bangladesh">Sweden</option>
-                                        <option value="bangladesh">France</option>
-                                    </select>
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="differentform-address">Address</label>
-                                    <input type="text" id="differentform-address"
-                                        placeholder="Apartment, Street Address">
-                                </div>
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="differentform-streetaddress">State</label>
-                                    <input type="text" id="differentform-streetaddress">
-                                </div>
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="differentform-zipcode">Zip / Postcode</label>
-                                    <input type="text" id="differentform-zipcode">
-                                </div>
-                            </div>
-                        </div>
-                        <!--// Different Address Form -->
-
                     </div>
                     <div class="col-lg-6">
                         <div class="tm-checkout-orderinfo">
@@ -156,28 +92,42 @@
                                             <th>Total</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                    $subtotal = 0;
+                                    $total = 0;
+                                    ?>
                                     <tbody>
-                                        <tr>
-                                            <td>Cosmetic plastic compact powder * 1</td>
-                                            <td>75.00 ₫</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cosmetics and makeup brushes * 1</td>
-                                            <td>70.50 ₫</td>
-                                        </tr>
+                                        @foreach ($products as $product)
+                                            @foreach ($orderDetails as $orderDetail)
+                                                @if ($orderDetail->product_id == $product->id)
+                                                    <?php $price = $orderDetail->quality * $product->price; ?>
+                                                    <tr>
+                                                        <td>{{ $product->name }} * {{ $orderDetail->quality }}</td>
+                                                        <td>{{ number_format($price, 2, ',', '.') }} ₫</td>
+                                                    </tr>
+                                                    <?php $subtotal += $price; ?>
+                                                @endif
+                                            @endforeach
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr class="tm-checkout-subtotal">
                                             <td>Cart Subtotal</td>
-                                            <td>175.00 ₫</td>
+                                            <td>{{ number_format($subtotal, 2, ',', '.') }} ₫</td>
                                         </tr>
                                         <tr class="tm-checkout-shipping">
                                             <td>(-) Promotion</td>
-                                            <td>15.00 ₫</td>
+                                            @if ($promotion == "null")
+                                                <?php $promotion = 0; ?>
+                                            @else
+                                                <?php $promotion = $promotion[0]->amount; ?>
+                                            @endif
+                                            <td>{{ $promotion }} ₫</td>
                                         </tr>
                                         <tr class="tm-checkout-total">
                                             <td>Total</td>
-                                            <td>190.00 ₫</td>
+                                            <?php $total = $subtotal - $promotion; ?>
+                                            <td>{{ number_format($total, 2, ',', '.') }} ₫</td>
                                         </tr>
                                     </tfoot>
                                 </table>
