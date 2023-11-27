@@ -23,18 +23,7 @@
     <!-- Checkout Area -->
     <div class="tm-section tm-checkout-area bg-white tm-padding-section">
         <div class="container">
-            {{-- <div class="tm-checkout-coupon">
-                <a href="#checkout-couponform" data-toggle="collapse"><span>Have a coupon code?</span> Click
-                    here and enter your code.</a>
-                <div id="checkout-couponform" class="collapse">
-                    <form action="{{ route('order.checkout', $promotion) }}" class="tm-checkout-couponform" method="POST">
-                        @csrf
-                        <input type="text" id="coupon-field" placeholder="Enter coupon code" required="required" name="promotion" id="promotion">
-                        <button type="submit" class="tm-button">Submit</button>
-                    </form>
-                </div>
-            </div> --}}
-            <form action="#" class="tm-form tm-checkout-form" method="POST">
+            <form action="{{ route('order.payment') }}" class="tm-form tm-checkout-form" method="GET">
                 <div class="row">
                     <div class="col-lg-6">
                         <h4 class="small-title">BILLING INFORMATION</h4>
@@ -42,41 +31,26 @@
                         <!-- Billing Form -->
                         <div class="tm-checkout-billingform">
                             <div class="tm-form-inner">
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="billingform-firstname">First name*</label>
-                                    <input type="text" id="billingform-firstname">
-                                </div>
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="billingform-lastname">Last name*</label>
-                                    <input type="text" id="billingform-lastname">
+                                <div class="tm-form-field">
+                                    <label for="billingform-usernamename">User name</label>
+                                    <input type="text" id="billingform-username" value="{{ $user->username }}" name="username">
                                 </div>
                                 <div class="tm-form-field">
                                     <label for="billingform-companyname">Name</label>
-                                    <input type="text" id="billingform-companyname" value="{{ $user->name }}">
+                                    <input type="text" id="billingform-companyname" value="{{ $user->name }}" name="name">
                                 </div>
                                 <div class="tm-form-field">
                                     <label for="billingform-email">Email address</label>
-                                    <input type="email" id="billingform-email" value="{{ $user->email }}">
+                                    <input type="email" id="billingform-email" value="{{ $user->email }}" name="email">
                                 </div>
                                 <div class="tm-form-field">
                                     <label for="billingform-phone">Phone (Optional)</label>
-                                    <input type="text" id="billingform-phone" value="{{ $user->phone }}">
+                                    <input type="text" id="billingform-phone" value="{{ $user->phone }}" name="phone">
                                 </div>
-                                {{-- <div class="tm-form-field">
-                                    <label for="billingform-country">Country</label>
-                                    <select name="billingform-country" id="billingform-country">
-                                        <option value="bangladesh">United States</option>
-                                        <option value="bangladesh">Mexico</option>
-                                        <option value="bangladesh">Australia</option>
-                                        <option value="bangladesh">Germany</option>
-                                        <option value="bangladesh">Sweden</option>
-                                        <option value="bangladesh">France</option>
-                                    </select>
-                                </div> --}}
                                 <div class="tm-form-field">
                                     <label for="billingform-address">Address</label>
                                     <input type="text" id="billingform-address"
-                                        placeholder="Apartment, Street Address" value="{{ $user->address }}">
+                                        placeholder="Enter Address" value="{{ $user->address }}" name="address">
                                 </div>
                             </div>
                         </div>
@@ -132,53 +106,6 @@
                                     </tfoot>
                                 </table>
                             </div>
-
-                            {{-- <div class="tm-checkout-payment">
-                                <h4>Select Payment Method</h4>
-                                <div class="tm-form-inner">
-                                    <div class="tm-form-field">
-                                        <input type="radio" name="checkout-payment-method"
-                                            id="checkout-payment-banktransfer">
-                                        <label for="checkout-payment-banktransfer">Direct Bank Transfer</label>
-                                        <div class="tm-checkout-payment-content">
-                                            <p>Make your payment directly into our bank account.</p>
-                                        </div>
-                                    </div>
-                                    <div class="tm-form-field">
-                                        <input type="radio" name="checkout-payment-method"
-                                            id="checkout-payment-checkpayment" checked="checked">
-                                        <label for="checkout-payment-checkpayment">Check Payments</label>
-                                        <div class="tm-checkout-payment-content">
-                                            <p>Please send a check to Store Name, Store Street, Store Town,
-                                                Store State / County, Store Postcode.</p>
-                                        </div>
-                                    </div>
-                                    <div class="tm-form-field">
-                                        <input type="radio" name="checkout-payment-method"
-                                            id="checkout-payment-cashondelivery">
-                                        <label for="checkout-payment-cashondelivery">Cash On Delivery</label>
-                                        <div class="tm-checkout-payment-content">
-                                            <p>Pay with cash upon delivery.</p>
-                                        </div>
-                                    </div>
-                                    <div class="tm-form-field">
-                                        <input type="radio" name="checkout-payment-method"
-                                            id="checkout-payment-paypal">
-                                        <label for="checkout-payment-paypal">PayPal</label>
-                                        <div class="tm-checkout-payment-content">
-                                            <p>Pay via PayPal.</p>
-                                        </div>
-                                    </div>
-                                    <div class="tm-form-field">
-                                        <input type="radio" name="checkout-payment-method"
-                                            id="checkout-payment-creditcard">
-                                        <label for="checkout-payment-creditcard">Credit Card</label>
-                                        <div class="tm-checkout-payment-content">
-                                            <p>Pay with your credit card via Stripe.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
 
                             <div class="tm-checkout-submit">
                                 <p>Your personal data will be used to process your order, support your

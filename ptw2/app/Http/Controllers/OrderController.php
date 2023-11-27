@@ -20,13 +20,6 @@ class OrderController extends Controller
             return redirect('/home');
         }
         $orders = Order::all();
-        // $products = Product::all();
-        // foreach ($orders as $order) {
-        //     if ($order->order_status == 0) {
-        //         return view('order', ['orders' => $orders, 'products' => $products]);
-        //         echo $order;
-        //     }
-        // }
         $promotion = Promotion::find(0);
         return view('order', ['orders' => $orders, 'promotion' => $promotion]);
     }
@@ -36,18 +29,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        // if (!isset($_SESSION)) {
-        //     session_start();
-        // }
-        // // unset($_SESSION['order_id']);
-        // // echo $_SESSION['order_id'];
-        // unset($_SESSION['order_id']);
-        // if (isset($_SESSION['order_id'])) {
-        //     echo '$_SESSION["order_id"] is none unset';
-        // } else {
-        //     echo '$_SESSION["order_id"] is unset';
-        // }
-        // echo date('Y-m-d');
+        //
     }
 
     /**
@@ -175,5 +157,9 @@ class OrderController extends Controller
         $orderDetails = DB::table('order_product')->where(['order_id' => $_SESSION['order_id']])->get();
         $products = $order->Products()->get();
         return view('checkout', ['user' => $user , 'orderDetails' => $orderDetails , 'products' => $products , 'promotion' => $promotion]);
+    }
+
+    public function payment() {
+        unset($_SESSION['order_id']);
     }
 }
