@@ -5,6 +5,12 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ForgetpasswordManager;
+use App\Http\Controllers\ShopController;
 
 // Login, logout, registration
 Route::get('/admin', [AdminController::class, 'showFormLog'])->name('showFormLog');
@@ -20,6 +26,33 @@ Route::middleware('admin')->group(function () {
 //dasboard
 Route::get('showDasboard', [AdminController::class, 'showDasboard'])->name('showDasboard');
 //product
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+
+// Home
+session_start();
+if (isset($_SESSION['user_id'])) {
+    //Hien thi san pham trang index
+    Route::get('/index', [ProductController::class, 'getAllProducts'])->name('index');
+}
+Route::get('/home', [ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
+
+Route::get('/admin', function () {
+    return view('admin.content.thongKe');
+});
+
+// Product
 Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
 Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
 Route::post('customproduct', [ProductController::class, 'customProduct'])->name('registerproduct.custom');
@@ -46,3 +79,44 @@ Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+route::group(['middleware' => 'guest'], function () {
+    //lấy dũ liệu từ login
+    Route::get('/login', [UserController::class, 'login'])->name('login');
+    Route::post('/login', [UserController::class, 'loginpost'])->name('loginpost');
+    //lấy dữ liệu từ register
+    Route::get('/register', [UserController::class, 'register'])->name('register');
+    Route::post('/register', [UserController::class, 'registerpost'])->name('registerpost');
+});
+
+// Logout
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+// Order
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('order', OrderController::class);
+});
+Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
+
+// Promotion
+Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
+
+//route User
+Route::resource('user', UserController::class);
+Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
+Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+route::get('/logout', [UserController::class, 'logout'])->name('logout');
+//forget password
+route::get('/forgetpassword', [ForgetpasswordManager::class, 'forgetpassword'])
+    ->name('forget.password');
+route::post('/forgetpassword', [ForgetpasswordManager::class, 'forgetpasswordpost'])
+    ->name('forget.password.post');
+//reset password
+Route::get('/resetpasssword/{token}', [ForgetpasswordManager::class, 'resetPasssword'])
+    ->name('reset.passsword');
+// Route::get('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])->name('reset.passsword.post');
+Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])
+    ->name('reset.passsword.post');
+
+    // shop
+Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');

@@ -1,3 +1,5 @@
+<script src="https://kit.fontawesome.com/67ff6e11b9.js" crossorigin="anonymous"></script>
+
 <!-- Footer -->
 <div class="tm-footer">
 
@@ -40,12 +42,16 @@
                 <!-- Single Widget -->
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="single-widget widget-quicklinks">
-                        <h6 class="widget-title">Tài khoản của tôi</h6>
+                        <h6 class="widget-title">My account</h6>
                         <ul>
-                            <li><a href="#">Tài khoản của tôi</a></li>
-                            <li><a href="#">Danh sách yêu thích</a></li>
-                            <li><a href="#">Bản tin</a></li>
-                            <li><a href="#">Thủ tục thanh toán</a></li>
+                            @if (isset($_SESSION['user_id']))           
+                                <li><a href="{{ url('user/'. $_SESSION['user_id']) }}">My account</a></li>
+                            @endif
+                            <li><a href="{{ url('order') }}">Cart</a></li>
+                            <li><a href="wishlist.html">Wishlist</a></li>
+                            <li><a href="#">Newsletter</a></li>
+                            <li><a href="#">Check out</a></li>
+                            <li><a href="#">Frequently Questions</a></li>
                         </ul>
                     </div>
                 </div>
