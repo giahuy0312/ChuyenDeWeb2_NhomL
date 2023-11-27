@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Promotion;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -22,7 +23,8 @@ class OrderController extends Controller
         //         echo $order;
         //     }
         // }
-        return view('order', ['orders' => $orders]);
+        $promotion = Promotion::find(0);
+        return view('order', ['orders' => $orders, 'promotion' => $promotion]);
     }
 
     /**
@@ -152,5 +154,18 @@ class OrderController extends Controller
             $order_id->products()->detach($product);
         }
         return redirect()->back();
+    }
+
+    public function checkout($promotion) {
+        // if (isset($request->promotion)) {
+        //     // echo $request->promotion;
+        //     return view('checkout', ['promotion' => $request->promotion]);
+        // } else {
+        //     return view('checkout', ['promotion' => $promotion]);
+        // }
+        // return view('checkout', ['promotion' => $request->promotion]);
+        return view('checkout', ['promotion' => $promotion]);
+        // echo $promotion;
+        // return redirect('checkout');
     }
 }

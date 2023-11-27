@@ -23,16 +23,17 @@
     <!-- Checkout Area -->
     <div class="tm-section tm-checkout-area bg-white tm-padding-section">
         <div class="container">
-            <div class="tm-checkout-coupon">
+            {{-- <div class="tm-checkout-coupon">
                 <a href="#checkout-couponform" data-toggle="collapse"><span>Have a coupon code?</span> Click
                     here and enter your code.</a>
                 <div id="checkout-couponform" class="collapse">
-                    <form action="#" class="tm-checkout-couponform">
-                        <input type="text" id="coupon-field" placeholder="Enter coupon code" required="required">
+                    <form action="{{ route('order.checkout', $promotion) }}" class="tm-checkout-couponform" method="POST">
+                        @csrf
+                        <input type="text" id="coupon-field" placeholder="Enter coupon code" required="required" name="promotion" id="promotion">
                         <button type="submit" class="tm-button">Submit</button>
                     </form>
                 </div>
-            </div>
+            </div> --}}
             <form action="#" class="tm-form tm-checkout-form">
                 <div class="row">
                     <div class="col-lg-6">
@@ -158,31 +159,31 @@
                                     <tbody>
                                         <tr>
                                             <td>Cosmetic plastic compact powder * 1</td>
-                                            <td>$75.00</td>
+                                            <td>75.00 ₫</td>
                                         </tr>
                                         <tr>
                                             <td>Cosmetics and makeup brushes * 1</td>
-                                            <td>$70.50</td>
+                                            <td>70.50 ₫</td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr class="tm-checkout-subtotal">
                                             <td>Cart Subtotal</td>
-                                            <td>$175.00</td>
+                                            <td>175.00 ₫</td>
                                         </tr>
                                         <tr class="tm-checkout-shipping">
-                                            <td>(+) Shipping Charge</td>
-                                            <td>$15.00</td>
+                                            <td>(-) Promotion</td>
+                                            <td>15.00 ₫</td>
                                         </tr>
                                         <tr class="tm-checkout-total">
                                             <td>Total</td>
-                                            <td>$190.00</td>
+                                            <td>190.00 ₫</td>
                                         </tr>
                                     </tfoot>
                                 </table>
                             </div>
 
-                            <div class="tm-checkout-payment">
+                            {{-- <div class="tm-checkout-payment">
                                 <h4>Select Payment Method</h4>
                                 <div class="tm-form-inner">
                                     <div class="tm-form-field">
@@ -227,7 +228,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="tm-checkout-submit">
                                 <p>Your personal data will be used to process your order, support your
