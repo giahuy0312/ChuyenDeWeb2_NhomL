@@ -16,6 +16,9 @@ class OrderController extends Controller
      */
     public function index()
     {
+        if (!isset($_SESSION['user_id'])) {
+            return redirect('/home');
+        }
         $orders = Order::all();
         // $products = Product::all();
         // foreach ($orders as $order) {
