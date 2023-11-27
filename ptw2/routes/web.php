@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
@@ -35,6 +37,19 @@ Route::get('/admin', function () {
 });
 
 // Product
+
+// Login, logout, registration
+Route::get('/admin', [AdminController::class, 'showFormLog'])->name('showFormLog');
+// Route::get('/admin', [AdminController::class, 'login'])->name('login');
+Route::post('/admin', [AdminController::class, 'postLogin'])->name('postLogin');
+Route::get('/regis', [AdminController::class, 'regis'])->name('regis');
+Route::post('/regis', [AdminController::class, 'postRegis'])->name('postRegis');
+//signout
+Route::get('signOut', [AdminController::class, 'signOut'])->name('signout');
+Route::middleware('admin')->group(function () {
+//dasboard
+Route::get('showDasboard', [AdminController::class, 'showDasboard'])->name('showDasboard');
+//product
 Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
 Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
 Route::post('customproduct', [ProductController::class, 'customProduct'])->name('registerproduct.custom');
@@ -49,7 +64,7 @@ Route::post('customcategory', [CategoryController::class, 'customCategory'])->na
 Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
 Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
-
+});
 route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
     Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -90,3 +105,13 @@ Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost
 
     // shop
 Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
+
+
+//Route::post('login', [AdminController::class, 'login'])->name('login-admin');
+// Product
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
