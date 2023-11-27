@@ -75,6 +75,10 @@ Route::resource('user', UserController::class);
 Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 route::get('/logout', [UserController::class, 'logout'])->name('logout');
+//change pass
+Route::get('/changepass/{user}', [UserController::class, 'changePass'])->name('user.changePass');
+Route::post('/updatepass/{user}', [UserController::class, 'updatePass'])->name('user.updatePass');
+
 //forget password
 route::get('/forgetpassword', [ForgetpasswordManager::class, 'forgetpassword'])
     ->name('forget.password');
