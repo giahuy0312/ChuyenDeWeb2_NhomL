@@ -19,23 +19,23 @@
                             <button><i class="fa-regular fa-user"></i></button>
                             <ul>
                                 @if (Route::has('login'))
-                                    @auth
-                                        @if (!isset($_SESSION))
-                                            <?php session_start(); ?>
-                                            <li>{{ $_SESSION['user_id'] }}</li>
-                                        @endif
-                                        @if (isset($_SESSION['user_id']))
-                                            <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">My Account</a></li>
-                                            @endif
-                                            <li> <a href="{{ route('logout') }}">
-                                                    Logout
-                                                </a></li>
-                                    @else
-                                        <li><a href="{{ route('login') }}">Login</a></li>
-                                        @if (Route::has('register'))
-                                            <li><a href="{{ route('register') }}">Register</a></li>
-                                        @endif
-                                    @endauth
+                                @auth
+                                @if (!isset($_SESSION))
+                                <?php session_start(); ?>
+                                <li>{{ $_SESSION['user_id'] }}</li>
+                                @endif
+                                @if (isset($_SESSION['user_id']))
+                                <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">My Account</a></li>
+                                @endif
+                                <li> <a href="{{ route('logout') }}">
+                                        Logout
+                                    </a></li>
+                                @else
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                @if (Route::has('register'))
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                                @endif
+                                @endauth
                                 @endif
                                 <li><a href="{{ url('order') }}">Shopping Cart</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
@@ -107,6 +107,7 @@
                     <li><a href="{{ url('/home') }}">Trang Chủ</a></li>
                     <li><a href="{{url('/shop') }}">Nhẫn Cưới</a></li>
                     <li><a href="#">Nhẫn Cầu hôn</a></li>
+                    <li><a href="{{url('/contact')}}">Contact</a></li>
                 </ul>
             </nav>
         </div>
