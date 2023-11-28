@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Order;
-use App\Models\Promotion;
 
-class PromotionController extends Controller
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -62,23 +60,5 @@ class PromotionController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function search(Request $request)
-    {
-        $promotion = $request->input('promotion');
-        if (strlen($promotion) != 6) {
-            return redirect()->back()->with('error','Mã giảm giá phải có 6 ký tự');
-        }
-        $orders = Order::all();
-        $promotion = Promotion::query()->where('name','LIKE','%'.$promotion.'%')->get();
-        if ($promotion == '[]') {
-            return redirect()->back()->with('error','Bạn đã nhập sai mã ưu đãi');
-        }
-        if (!isset($_SESSION['user_id'])) {
-            return redirect('login');
-        }
-
-        return view('order',['orders' => $orders, 'promotion' => $promotion]);
     }
 }

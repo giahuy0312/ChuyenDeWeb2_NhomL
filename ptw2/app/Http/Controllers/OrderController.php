@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Promotion;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -14,15 +16,12 @@ class OrderController extends Controller
      */
     public function index()
     {
+        if (!isset($_SESSION['user_id'])) {
+            return redirect('/home');
+        }
         $orders = Order::all();
-        // $products = Product::all();
-        // foreach ($orders as $order) {
-        //     if ($order->order_status == 0) {
-        //         return view('order', ['orders' => $orders, 'products' => $products]);
-        //         echo $order;
-        //     }
-        // }
-        return view('order', ['orders' => $orders]);
+        $promotion = Promotion::find(0);
+        return view('order', ['orders' => $orders, 'promotion' => $promotion]);
     }
 
     /**
@@ -30,17 +29,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        // unset($_SESSION['order_id']);
-        // echo $_SESSION['order_id'];
-        unset($_SESSION['order_id']);
-        if (isset($_SESSION['order_id'])) {
-            echo '$_SESSION["order_id"] is none unset';
-        } else {
-            echo '$_SESSION["order_id"] is unset';
-        }
+        //
     }
 
     /**
@@ -118,6 +107,9 @@ class OrderController extends Controller
             return redirect()->back()->with('error','Không tồn tại giỏ hàng');
         } 
         $products = $order->Products()->get();
+        if ($products == '[]') {
+            return redirect()->back()->with('error','Không có sản phẩm trong giỏ hàng');
+        }
         $total = 0;
         $subtotal = 0;
         foreach ($products as $product) {
@@ -134,7 +126,7 @@ class OrderController extends Controller
             );
 
         }
-        // echo $subtotal;
+        // echo($products);
         return redirect()->back()->with('success','Sửa thành công');
     }
 
@@ -148,5 +140,26 @@ class OrderController extends Controller
             $order_id->products()->detach($product);
         }
         return redirect()->back();
+    }
+
+    public function checkout($promotion) {
+        if (!isset($_SESSION['order_id'])) {
+            return redirect()->back();
+        }
+        if (!isset($_SESSION['user_id'])) {
+            return redirect()->back();
+        }
+        if ($promotion != "null") {
+            $promotion = Promotion::where('name', $promotion)->get();
+        }
+        $user = User::find($_SESSION['user_id']);
+        $order = Order::find($_SESSION['order_id']);
+        $orderDetails = DB::table('order_product')->where(['order_id' => $_SESSION['order_id']])->get();
+        $products = $order->Products()->get();
+        return view('checkout', ['user' => $user , 'orderDetails' => $orderDetails , 'products' => $products , 'promotion' => $promotion]);
+    }
+
+    public function payment() {
+        unset($_SESSION['order_id']);
     }
 }

@@ -8,7 +8,7 @@
         <div class="tm-breadcrumb">
             <h2>Shopping Cart</h2>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="{{ url('home') }}">Home</a></li>
                 <li><a href="products.html">Shop</a></li>
                 <li>Shopping Cart</li>
             </ul>
@@ -60,6 +60,7 @@
                         $quality = 0;
                         $id_order = 0;
                         $promotion_amount = 0;
+                        $promotion_name = "null";
                         ?>
                         @if (isset($_SESSION['order_id']))
                             <form action="{{ url('/order/' . $_SESSION['order_id']) }}" method="POST"
@@ -135,7 +136,7 @@
                         <form action="{{ route('promotion.search') }}" class="tm-cart-coupon">
                             <label for="coupon-field">Have a coupon code?</label>
                             <input type="text" id="coupon-field" placeholder="Enter coupon code" required="required"
-                                maxlength="6" name="keyword" id="keyword">
+                                maxlength="6" name="promotion" id="promotion">
                             <button type="submit" class="tm-button">Submit</button>
                         </form>
                     </div>
@@ -151,17 +152,11 @@
                                         </tr>
                                         <tr class="tm-cart-pricebox-shipping">
                                             <td>(-) Promotion</td>
-                                            @if (url()->current() == 'http://127.0.0.1:8000/order')
-                                                <td>{{ $promotion_amount }} ₫</td>
+                                            @if ($promotion != null)
+                                                <?php $promotion_name = $promotion[0]->name; ?>
+                                                <td>{{ number_format($promotion[0]->amount, 2, ',', '.') }} ₫</td>
                                             @else
-                                                @if ($promotion != '[]')
-                                                    @foreach ($promotion as $item)
-                                                        <?php $promotion_amount = $item->amount; ?>
-                                                        <td>{{ number_format($item->amount, 2, ',', '.') }} ₫</td>
-                                                    @endforeach
-                                                @else
-                                                    <td>{{ $promotion_amount }} ₫</td>
-                                                @endif
+                                                <td>{{ $promotion_amount }} ₫</td>
                                             @endif
                                         </tr>
                                         <tr class="tm-cart-pricebox-total">
@@ -171,7 +166,11 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="{{ route('order.create') }}" class="tm-button">Proceed To Checkout</a>
+                            <form action="{{ route('order.checkout', $promotion_name) }}" method="POST"
+                                id="promotion">
+                                @csrf
+                            </form>
+                            <button class="tm-button" form="promotion">Proceed To Checkout</button>
                         </div>
                     </div>
                 </div>

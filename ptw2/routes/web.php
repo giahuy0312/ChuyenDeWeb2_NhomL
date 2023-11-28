@@ -73,8 +73,14 @@ Route::get('/order/{order}/product/{product}', [OrderController::class, 'store']
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
 // Route::get('/order/{order}/product/{product}', [OrderController::class, 'store']);
 
+// Checkout
+Route::post('/checkout/promotion={promotion}' ,[OrderController::class, 'checkout'])->name('order.checkout');
+
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
+
+// Payment
+Route::get('payment', [OrderController::class, 'payment'])->name('order.payment');
 
 //route User
 Route::resource('user', UserController::class);
