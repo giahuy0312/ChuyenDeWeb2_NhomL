@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
@@ -39,6 +40,8 @@ Route::post('/regis', [AdminController::class, 'postRegis'])->name('postRegis');
 
 //signout
 Route::get('signOut', [AdminController::class, 'signOut'])->name('signout');
+
+//auth
 Route::middleware('admin')->group(function () {
 //dasboard
 Route::get('showDasboard', [AdminController::class, 'showDasboard'])->name('showDasboard');
