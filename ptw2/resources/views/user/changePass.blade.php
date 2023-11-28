@@ -30,12 +30,13 @@
                 <div class="alert alert-danger">
                     {{ session('error') }}
                 </div>
+                @endif
                 @if(session('success'))
                 <div class="alert alert-success">
                     {{session('success')}}
                 </div>
                 @endif
-             @endif
+        
                     <form action="{{route('user.updatePass',$user->id)}}" method="post">
                         @csrf
                     <div class="mb-3">

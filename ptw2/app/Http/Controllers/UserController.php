@@ -117,7 +117,7 @@ class UserController extends Controller
                'password' => \bcrypt($request->newPass)
             ]);
            
-            return redirect()->route('user.show', ['user' => $user->id]);  
+            return back()->with('success' ,'Change password success.'); 
         }
         else{
             return back()->with('error' ,'Old Password not matched.');
