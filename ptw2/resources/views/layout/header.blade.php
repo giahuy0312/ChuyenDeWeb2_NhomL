@@ -120,7 +120,7 @@
                 <ul>
                     <li><a href="{{ url('/home') }}">@lang('lang.trangchu')</a></li>
                     <li><a href="{{url('/shop') }}">@lang('lang.nhancuoi')</a></li>
-                    <li><a href="#">@lang('lang.nhancauhon')</a></li>
+                    <li><a href="{{url('/shopproducts')}}">@lang('lang.nhancauhon')</a></li>
                 </ul>
             </nav>
         </div>

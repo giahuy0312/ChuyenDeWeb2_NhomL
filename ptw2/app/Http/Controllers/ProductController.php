@@ -137,6 +137,8 @@ class ProductController extends Controller
         $categories = Category::all();
         $products = DB::table('products')->paginate(4);
         return view('admin.content.listproduct', ['products' => $products,'categories' => $categories]);
+
+
     }
     /**
      * Display a listing of the resource.
@@ -146,12 +148,37 @@ class ProductController extends Controller
         //
         
     }
+    //Hien thi san pham
     public function getAllProducts()
     {
         $products = Product::all();
         return view('index', ['products' => $products]);
       
     }
+    //Tim kiem san pham
+    public function searchProduct(Request $request)
+    {
+        $keyword = $request->keyword;
+
+        $products = Product::where('name','LIKE', '%' . $keyword . '%')->paginate(16);
+        return view('searchProduct', ['products' => $products]);
+
+
+        // $requied = [
+        // 'keywork'=>['required', 'regex:/^\w/u', 'min:10', 'max:100'],
+        // ];
+        // $messages = [
+        //     'keywork.required' => 'Vui lòng nhập để tìm kiếm sản phẩm',
+        //     'keywork.regex' =>'',
+        //     'keywork.min' => 'Từ khóa tìm kiếm ít nhất là 10',
+        //     'keywork.mã' => 'Từ khóa tìm kiếm nhiều nhất là 100',
+        // ];
+        // $attribute = [
+        //     'keywork' => 'Tìm kiếm sản phẩm',
+        // ];
+
+    }
+
     public function create()
     {
         //
