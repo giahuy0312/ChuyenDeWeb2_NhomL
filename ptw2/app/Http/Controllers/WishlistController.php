@@ -14,6 +14,7 @@ class WishlistController extends Controller
     public function index()
     {
         $wishlist = Wishlist::all();
-        return view('wishlist');
+        // dd($wishlist);
+        return view('wishlist', ['wishlist' => $wishlist]);
     }
 }

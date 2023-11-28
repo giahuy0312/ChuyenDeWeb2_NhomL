@@ -16,7 +16,7 @@
     </div>
 </div>
 <!--// Breadcrumb Area -->
-
+<?php $wishlistDetails = DB::table('products')->get(); ?>
 
 <!-- Page Content -->
 <main class="page-content">
@@ -43,36 +43,37 @@
                             <th class="tm-cart-col-image" scope="col">Image</th>
                             <th class="tm-cart-col-productname" scope="col">Product</th>
                             <th class="tm-cart-col-price" scope="col">Price</th>
-                            <th class="tm-cart-col-quantity" scope="col">Quantity</th>
                             <th class="tm-cart-col-total" scope="col">Add To Cart</th>
                             <th class="tm-cart-col-remove" scope="col">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @if (isset($_SESSION['user_id']))
                         <form action="" method="POST" class="d-inline-block" id="update-cart" enctype="multipart/form-data">
                             @csrf
-
+                            @foreach ($wishlist as $item)
+                            @if ($item->user_id == $_SESSION['user_id'])
+                            @foreach ($wishlistDetails as $wishlistDetail)
+                            @if ($wishlistDetail->id == $item->product_id)
                             <tr>
                                 <td>
-                                    <a href="{{-- {{ route('products.show', $product->id) }} --}}#">
-                                    </a>
-                                    <img src="#" alt="#">
+                                    <img src="{{ asset('images/image-products') }}/{{ $wishlistDetail->image }}">
                                 </td>
                                 <td>
-                                    <a href="{{-- {{ route('products.show', $product->id) }} --}}#" class="tm-cart-productname"></a>
-                                    <p>sản phẩm</p>
+                                    <a href="{{-- {{ route('products.show', $item->$product_id) }} --}}#" class="tm-cart-productname"></a>
+                                    <p>{{ $wishlistDetail->name}}</p>
+
+
                                 </td>
                                 <td class="tm-cart-price">
-                                    <p>Giá tiền</p>
-                                </td>
-                                <td>
-                                    <div class="tm-quantitybox">
-                                        <input type="text" value="{{-- $quality-- }}" id="{{-- $product->id --}}" name="id_{{-- $product->id --}}">
-                                    </div>
+                                    {{ number_format($wishlistDetail->price, 2, ',', '.') }}
+                                    ₫
                                 </td>
                                 <td>
                                     <div class="tm-buttongroup">
-                                        <button type="submit" form="" class="tm-button">Add To Cart</button>
+
+
+                                        <button type="submit" form="" class="tm-button"> <a href="{{ route('order.add', [$_SESSION['order_id'], $wishlistDetail->id]) }}"><i class="ion-android-cart"></i> Add to cart</a></button>
                                     </div>
                                 </td>
                                 <td>
@@ -80,7 +81,15 @@
                                 </td>
                             </tr>
 
+                            @endif
+                            @endforeach
+
+                            @endif
+                            @endforeach
+
+
                         </form>
+                        @endif
                     </tbody>
                 </table>
             </div>
