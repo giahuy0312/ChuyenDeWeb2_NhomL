@@ -78,6 +78,9 @@ Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
 
+// Payment
+Route::get('payment', [OrderController::class, 'payment'])->name('order.payment');
+
 //route User
 Route::resource('user', UserController::class);
 Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
