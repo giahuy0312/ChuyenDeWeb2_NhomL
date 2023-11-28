@@ -9,6 +9,8 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\VoucherController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +44,8 @@ Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name
 Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
 Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
 Route::get('getProducts', [ProductController::class, 'index'])->name('getProducts');
+Route::get('/product/search/name',[ProductController::class,'searchName'])->name('product.search.name');
+Route::get('/product/search/category',[ProductController::class,'searchCategory'])->name('product.search.category');
 // Category
 Route::get('listcategory', [CategoryController::class, 'listCategory'])->name('listcategory');
 Route::get('addcategory', [CategoryController::class, 'addCategory'])->name('addcategory');
@@ -49,6 +53,15 @@ Route::post('customcategory', [CategoryController::class, 'customCategory'])->na
 Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
 Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
+//Voucher
+Route::get('/vouchers', [VoucherController::class, 'index'])->name('voucher.index');
+Route::get('/vouchers/create', [VoucherController::class, 'create'])->name('voucher.create');
+Route::post('/vouchers', [VoucherController::class, 'store'])->name('voucher.store');
+Route::get('/vouchers/{voucher}/edit', [VoucherController::class, 'edit'])->name('voucher.edit');
+Route::put('/vouchers/{voucher}', [VoucherController::class, 'update'])->name('voucher.update');
+Route::get('deletevoucher/id{id}', [VoucherController::class, 'destroy'])->name('voucher.dele');
+Route::get('vouchers/search/discount',[VoucherController::class,'searchDiscount'])->name('voucher.search.discount');
+Route::get('vouchers/search/date',[VoucherController::class,'searchDate'])->name('voucher.search.date');
 
 route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
