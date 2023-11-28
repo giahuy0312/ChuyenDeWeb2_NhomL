@@ -1,11 +1,18 @@
 <?php
 
-use App\Http\Controllers\UserController;
+
 use App\Models\Users;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ForgetpasswordManager;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +33,30 @@ Route::get('/deleteUserAD/{id}', [UserController::class, 'deleteUserAD'])->name(
 //search User
 Route::get('/listSearchUser', [UserController::class, 'searchUser'])->name('listSearchUser');
 // Product
+
+
+// Home
+session_start();
+if (isset($_SESSION['user_id'])) {
+    //Hien thi san pham trang index
+    Route::get('/index', [ProductController::class, 'getAllProducts'])->name('index');
+}
+Route::get('/home', [ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
+
+// Login, logout, registration
+Route::get('/admin', [AdminController::class, 'showFormLog'])->name('showFormLog');
+// Route::get('/admin', [AdminController::class, 'login'])->name('login');
+Route::post('/admin', [AdminController::class, 'postLogin'])->name('postLogin');
+Route::get('/regis', [AdminController::class, 'regis'])->name('regis');
+Route::post('/regis', [AdminController::class, 'postRegis'])->name('postRegis');
+
+//signout
+Route::get('signOut', [AdminController::class, 'signOut'])->name('signout');
+Route::middleware('admin')->group(function () {
+//dasboard
+Route::get('showDasboard', [AdminController::class, 'showDasboard'])->name('showDasboard');
+//product
 Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
 Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
 Route::post('customproduct', [ProductController::class, 'customProduct'])->name('registerproduct.custom');
@@ -40,15 +71,29 @@ Route::post('customcategory', [CategoryController::class, 'customCategory'])->na
 Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
 Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
-
-//---------
-
-// Route::get('/index', function () {
-//     return view('index');
-// });
-Route::get('/login-register', function () {
-    return view('login-register');
 });
+
+route::group(['middleware' => 'guest'], function () {
+    //lấy dũ liệu từ login
+    Route::get('/login', [UserController::class, 'login'])->name('login');
+    Route::post('/login', [UserController::class, 'loginpost'])->name('loginpost');
+    //lấy dữ liệu từ register
+    Route::get('/register', [UserController::class, 'register'])->name('register');
+    Route::post('/register', [UserController::class, 'registerpost'])->name('registerpost');
+});
+
+// Logout
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+// Order
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('order', OrderController::class);
+});
+Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
+
+// Promotion
+Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
+
 //route User
 Route::resource('user', UserController::class);
 Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
@@ -56,3 +101,18 @@ Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edi
 //Hien thi san pham trang index
 Route::get('/index',[ProductController::class, 'getAllProducts'])->name('index');
 Route::get('/',[ProductController::class, 'getAllProducts'])->name('index');
+route::get('/logout', [UserController::class, 'logout'])->name('logout');
+//forget password
+route::get('/forgetpassword', [ForgetpasswordManager::class, 'forgetpassword'])
+    ->name('forget.password');
+route::post('/forgetpassword', [ForgetpasswordManager::class, 'forgetpasswordpost'])
+    ->name('forget.password.post');
+//reset password
+Route::get('/resetpasssword/{token}', [ForgetpasswordManager::class, 'resetPasssword'])
+    ->name('reset.passsword');
+// Route::get('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])->name('reset.passsword.post');
+Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])
+    ->name('reset.passsword.post');
+
+    // shop
+Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');

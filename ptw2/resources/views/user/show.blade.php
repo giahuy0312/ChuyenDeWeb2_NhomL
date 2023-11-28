@@ -18,12 +18,12 @@
                     <p><a href=""> Thông tin tài khoản </a></p>
                     <p><a href=""> Mã giảm giá </a></p>
                     <p><a href=""> Lịch sử mua hàng </a></p>
-                    <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="" style="color:red"> Đăng xuất </a></p>
+                    <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="{{ route('logout') }}" style="color:red"> Đăng xuất </a></p>
                 </div>
             </div>
             <!-- Indexing -->
             <div class="col-9" style="padding-top: 50px;">
-                <div class="title"><a href="{{ url('index')}}">Trang Chủ </a> <span class="px-3 fs-3"> <span class="p-2">></span> Thông
+                <div class="title"><a href="{{ url('home')}}">Trang Chủ </a> <span class="px-3 fs-3"> <span class="p-2">></span> Thông
                         tin tài khoản</span></div>
                 <!-- infoUser basic -->
 
@@ -67,7 +67,7 @@
 
                     <div class="row">
                         <div class="col text-center">
-                            <a href="{{ url('user/edit/'. $_SESSION['userID']) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ url('user/edit/'. $_SESSION['user_id']) }}" class="btn btn-primary">Edit</a>
                         </div>
                     </div>
                     </form>

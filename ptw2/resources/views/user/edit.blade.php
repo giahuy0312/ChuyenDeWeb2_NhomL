@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-9" style="padding-top: 50px;">
             <div class="title">
-                <a href="{{ url('index')}}">Trang Chủ </a> <span class="px-3 fs-3"> Edit User</span>
+                <a href="{{ url('home')}}">Trang Chủ </a> <span class="px-3 fs-3"> Edit User</span>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
                             style="background-image: url({{ asset('images/user.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->name }}"><br> <br>
                         <label for="phone">Số điện thoại</label> <br>
-                        <input type="tel" name="phone" pattern="\d{10}" 
+                        <input type="tel" name="phone" pattern="0\d{9}" 
                             style="background-image: url({{ asset('images/phone.png') }});background-size:32px 45px;"
                             class="border border-dark rounded-pill" value="{{ $user->phone }}"> <br> <br>
                        
@@ -62,7 +62,7 @@
                 <div class="row text-center">
                     <div class="col">
                     <button type="submit" class="btn text-white">Save</button>
-                    <a href="{{ url('user/'. $_SESSION['userID'])}}" class="btn btn-primary text-white"  style="width:100px;">Cancel</a>
+                    <a href="{{ url('user/'. $_SESSION['user_id'])}}" class="btn btn-primary text-white"  style="width:100px;">Cancel</a>
                       </div>
                 </div>
             </form>

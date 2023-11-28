@@ -59,7 +59,7 @@
                             padding: 20px;
                             border-right: 1px solid black;" >admin</strong></li>
                         <li><a href=""><span>Thay đổi mật khẩu</span></a></li>
-                        <li><a href=""><i class="fa-sharp fa-regular fa-arrow-right-from-bracket fa-2xl pe-2"  style="color:red"></i><span>Thoát</span></a></li>
+                        <li><a href="{{ route('signout') }}"><i class="fa-sharp fa-regular fa-arrow-right-from-bracket fa-2xl pe-2"  style="color:red"></i><span>Thoát</span></a></li>
                     </div>
                     </p>
 
