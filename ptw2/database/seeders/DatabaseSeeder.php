@@ -19,14 +19,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        DB::table('users')->inser([
-            'id' =>'1',
-            'password' =>'123456789',
-            'username' => 'Nguyen van a',
-            'name' => 'vana',
-            'phone' => '0919191919',
-            'email' => 'vana@gmail.com',
-        ]);
+       
         DB::table('products')->insert([
             'name'=>"sanpham1",
             'image'=>"product-image-1.jpg",
