@@ -15,7 +15,8 @@
                 <!-- Menu User -->
                 <div class="menuUser">
                     <p><br></p>
-                    <p><a href=""> Thông tin tài khoản </a></p>
+                    <p><a href="{{ url('user/'. $_SESSION['user_id'])}}"> Thông tin tài khoản </a></p>
+                    <p><a href="{{ url('changepass/'. $_SESSION['user_id'])}}"> Thay đổi mật khẩu</a></p>
                     <p><a href=""> Mã giảm giá </a></p>
                     <p><a href=""> Lịch sử mua hàng </a></p>
                     <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="{{ route('logout') }}" style="color:red"> Đăng xuất </a></p>
