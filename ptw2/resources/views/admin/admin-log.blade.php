@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="password" class="form-control" placeholder="Password" name="password">
+                                    <input class="form-control"  id="password" type="password" name="password" placeholder="Password">
                                     <div class="input-group-append">
                                         <div class="input-group-text">
                                             <span>
@@ -72,6 +72,20 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="input-group mb-3">
+                                    <input type="checkbox" onclick="showPassword()">Show Password
+                                    <script>
+                                        function showPassword() {
+                                            var passwordField = document.getElementById("password");
+                                            if (passwordField.type === "password") {
+                                                passwordField.type = "text";
+                                            } else {
+                                                passwordField.type = "password";
+                                            }
+                                        }
+
+                                    </script>
+                                </div> 
                                 <button type="submit" class="btn btn-primary btn-block">Sign In</button>
 
                             </form>
@@ -83,8 +97,6 @@
         </div>
 
     </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
