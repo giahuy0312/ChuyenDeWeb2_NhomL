@@ -70,7 +70,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('order', OrderController::class);
     Route::resource('wishlist', WishlistController::class);
 });
+Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+Route::get('/order/{order}/product/{product}', [OrderController::class, 'store'])->name('order.add');
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
+
 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');

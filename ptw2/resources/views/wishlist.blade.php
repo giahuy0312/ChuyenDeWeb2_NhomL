@@ -44,16 +44,48 @@
                             <th class="tm-cart-col-productname" scope="col">Product</th>
                             <th class="tm-cart-col-price" scope="col">Price</th>
                             <th class="tm-cart-col-quantity" scope="col">Quantity</th>
-                            <th class="tm-cart-col-total" scope="col">Total</th>
+                            <th class="tm-cart-col-total" scope="col">Add To Cart</th>
                             <th class="tm-cart-col-remove" scope="col">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <form action="" method="POST" class="d-inline-block" id="update-cart" enctype="multipart/form-data">
+                            @csrf
 
+                            <tr>
+                                <td>
+                                    <a href="{{-- {{ route('products.show', $product->id) }} --}}#">
+                                    </a>
+                                    <img src="#" alt="#">
+                                </td>
+                                <td>
+                                    <a href="{{-- {{ route('products.show', $product->id) }} --}}#" class="tm-cart-productname"></a>
+                                    <p>sản phẩm</p>
+                                </td>
+                                <td class="tm-cart-price">
+                                    <p>Giá tiền</p>
+                                </td>
+                                <td>
+                                    <div class="tm-quantitybox">
+                                        <input type="text" value="{{-- $quality-- }}" id="{{-- $product->id --}}" name="id_{{-- $product->id --}}">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="tm-buttongroup">
+                                        <button type="submit" form="" class="tm-button">Add To Cart</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a onclick="return confirm('Bạn có muốn xóa hay không?')" href="" class="tm-cart-removeproduct" style="padding: 0 30px; color: inherit;"><i class="ion-close"></i></a>
+                                </td>
+                            </tr>
+
+                        </form>
                     </tbody>
                 </table>
             </div>
             <!--// Shopping Cart Table -->
+
 
 
 
