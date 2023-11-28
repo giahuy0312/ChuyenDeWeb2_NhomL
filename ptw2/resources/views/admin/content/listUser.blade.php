@@ -41,7 +41,7 @@
                 <td>{{  $user->username }}</td>
                 <td>{{  $user->email }}</td>
                 <td class="text-center">
-                    <a href="">Xóa</a>
+                    <a href="{{route('deleteUserAD',$user->id)}}">Xóa</a>
                     <a href="">Khóa</a>
                 </td>
             </tr>

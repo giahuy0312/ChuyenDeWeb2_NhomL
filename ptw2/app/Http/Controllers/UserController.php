@@ -27,6 +27,12 @@ class UserController extends Controller
     
         return view('admin.content.listSearchUser', ['users' => $users]);
     }
+    
+    // delete userAd
+    public function deleteUserAD($id){
+        $deleteData = DB::table('users')->where('id', '=', $id)->delete();
+        return redirect('listUser');
+    }
     /**
      * Show the form for creating a new resource.
      */

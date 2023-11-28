@@ -22,6 +22,7 @@ Route::get('/admin', function () {
 });
 //listUser
 Route::get('/listUser', [UserController::class, 'listUser'])->name('listUser');
+Route::get('/deleteUserAD/{id}', [UserController::class, 'deleteUserAD'])->name('deleteUserAD');
 //search User
 Route::get('/listSearchUser', [UserController::class, 'searchUser'])->name('listSearchUser');
 // Product
