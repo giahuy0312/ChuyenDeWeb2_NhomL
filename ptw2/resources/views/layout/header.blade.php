@@ -110,7 +110,7 @@
                 <ul>
                     <li><a href="{{ url('/home') }}">Trang Chủ</a></li>
                     <li><a href="{{url('/shop') }}">Nhẫn Cưới</a></li>
-                    <li><a href="#">Nhẫn Cầu hôn</a></li>
+                    <li><a href="{{url('/shopproducts')}}">Nhẫn Cầu hôn</a></li>
                 </ul>
             </nav>
         </div>

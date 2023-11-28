@@ -20,4 +20,9 @@ class ShopController extends Controller
         $products = DB::table('products')->paginate(4);
         return view('shop', ['products' => $products]);
 }
+public function getAllShop()
+    {
+        $products = DB::table('products')->paginate(8);
+        return view('shopproducts', ['products' => $products]);
+}
 }
