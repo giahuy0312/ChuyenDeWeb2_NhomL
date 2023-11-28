@@ -10,7 +10,7 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
-
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +68,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // Order
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('order', OrderController::class);
+    Route::resource('wishlist', WishlistController::class);
 });
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
 
@@ -97,3 +98,6 @@ Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop')
 
 route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+//wishlist
+
+//Route::get('/order/{order}/product/{product}/{csrf?}', [WishlistController::class, 'destroy']);

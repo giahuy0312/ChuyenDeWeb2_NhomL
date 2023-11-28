@@ -31,6 +31,10 @@ class Product extends Authenticatable
     {
         return $this->belongsToMany(Order::class);
     }
+    public function wishlist()
+    {
+        return $this->belongsToMany(Wishlist::class);
+    }
     public function promotions()
     {
         return $this->belongsTo(Promotion::class);
@@ -39,5 +43,4 @@ class Product extends Authenticatable
     {
         return $this->belongsTo(Category::class);
     }
-
 }
