@@ -2,17 +2,48 @@
 
 
 @section('content')
-<form action="{{ route('voucher.search') }}" method="GET">
-    <div CLASS="input-group">
-      @csrf
-      <input type="text" name= "keyword" CLASS="form-control bg-light border-2 small " placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-      <div CLASS="input-group-append">
-        <button CLASS="btn btn-primary" type="submit">
-          <i CLASS="fas fa-search fa-sm"></i>
-        </button>
-      </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <form action="{{ route('voucher.search.discount') }}" method="GET">
+                <label for="keyword">Discount</label>
+                <div CLASS="input-group">
+                  @csrf
+                  <select placeholder="" name="keyword" id="keyword" class="form-control custom-select">
+                    <option selected disabled>Select one</option>
+                    @foreach ($vouchers as $voucher)
+                        <option value="{{$voucher->discount}}">{{$voucher->discount}}</option>
+                    @endforeach
+                </select>
+                  <div CLASS="input-group-append">
+                    <button CLASS="btn btn-primary" type="submit">
+                      <i CLASS="fas fa-search fa-sm"></i>
+                    </button>
+                  </div>
+                </div>
+                </form>
+        </div>
+        <div class="col-md-2">
+            <form action="{{ route('voucher.search.date') }}" method="GET">
+                <label for="keyword">Expiration_date</label>
+                <div CLASS="input-group">
+                  @csrf
+                  <select placeholder="" name="keyword" id="keyword" class="form-control custom-select">
+                    <option selected disabled>Select one</option>
+                    @foreach ($vouchers as $voucher)
+                        <option value="{{$voucher->expiration_date}}">{{$voucher->expiration_date}}</option>
+                    @endforeach
+                </select>
+                  <div CLASS="input-group-append">
+                    <button CLASS="btn btn-primary" type="submit">
+                      <i CLASS="fas fa-search fa-sm"></i>
+                    </button>
+                  </div>
+                </div>
+                </form>
+        </div>
     </div>
-    </form>
+</div>
   <!-- DataTales Example -->
   <div CLASS="card shadow mb-12">
     <div CLASS="card-header py-3">
