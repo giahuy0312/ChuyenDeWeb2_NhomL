@@ -15,17 +15,16 @@
                 <!-- Menu User -->
                 <div class="menuUser">
                     <p><br></p>
-                    <p><a href="{{ url('user/'. $_SESSION['user_id'])}}"> Thông tin tài khoản </a></p>
-                    <p><a href="{{ url('changepass/'. $_SESSION['user_id'])}}"> Thay đổi mật khẩu</a></p>
-                    <p><a href=""> Mã giảm giá </a></p>
-                    <p><a href=""> Lịch sử mua hàng </a></p>
-                    <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="{{ route('logout') }}" style="color:red"> Đăng xuất </a></p>
+                    <p><a href="{{ url('user/'. $_SESSION['user_id'])}}"> @lang('lang.accinfo') </a></p>
+                    <p><a href="{{ url('changepass/'. $_SESSION['user_id'])}}">  @lang('lang.changepass')</a></p>
+                    <p><a href="">@lang('lang.discode') </a></p>
+                    <p><a href=""> @lang('lang.purhis')  </a></p>
+                    <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="{{ route('logout') }}" style="color:red">@lang('lang.dangxuat') </a></p>
                 </div>
             </div>
             <!-- Indexing -->
             <div class="col-9" style="padding-top: 50px;">
-                <div class="title"><a href="{{ url('home')}}">Trang Chủ </a> <span class="px-3 fs-3"> <span class="p-2">></span> Thông
-                        tin tài khoản</span></div>
+                <div class="title"><a href="{{ url('home')}}">@lang('lang.trangchu') </a> <span class="px-3 fs-3"> <span class="p-2">></span>@lang('lang.accinfo') </span></div>
                 <!-- infoUser basic -->
 
                 <div class="infoUser row">
@@ -33,7 +32,7 @@
                         <h3 class="pt-4"><img src="{{ asset('images/user.png') }}" alt=""> <span class="ps-4"> {{ $user->name }} </h3></span>
                     </div>
                     <div class="col">
-                        <h3 style="padding-left:80px; padding-top:50px;margin-left:-55px">Mã khách hàng: {{ $user->id }}
+                        <h3 style="padding-left:80px; padding-top:50px;margin-left:-55px"> @lang('lang.cusId'): {{ $user->id }}
                         </h3>
                     </div>
 
@@ -41,25 +40,25 @@
 
                     <div class="row pt-4">
                         <div class="col info">
-                            <label for="name">Họ tên</label> <br>
+                            <label for="name"> @lang('lang.name')</label> <br>
                             <p class="border border-dark rounded-pill">
                                 <i class="fa-light fa-user fa-xl"></i>{{ $user->username }} </p>
-                            <label for="username">Username</label> <br>
+                            <label for="username"> @lang('lang.username')</label> <br>
                             <p class="border border-dark rounded-pill">
                                 <i class="fa-light fa-user fa-xl"></i>{{ $user->name }}</p>
-                            <label for="phone">Số điện thoại</label> <br>
+                            <label for="phone">@lang('lang.phone')</label> <br>
                             <p class="border border-dark rounded-pill">
                                 <i class="fa-light fa-phone-volume fa-lg"></i>{{ $user->phone }} </p>
                         </div>
 
                         <div class="col info">
-                            <label for="email">Email</label> <br>
+                            <label for="email"> @lang('lang.email')</label> <br>
                             <p class="border border-dark rounded-pill">
                                 <i class="fa-light fa-envelope fa-xl"></i>{{ $user->email }} </p>
-                            <label for="DOB">Ngày sinh</label> <br>
+                            <label for="DOB">@lang('lang.DOB')</label> <br>
                             <p class="border border-dark rounded-pill">
                                 <i class="fa-light fa-calendar-days fa-xl"></i>{{ $user->DOB }} </p>
-                            <label for="gender">Giới tính</label> <br>
+                            <label for="gender">@lang('lang.gender')</label> <br>
                             <p class="border border-dark rounded-pill" >
                                 <i class="fa-light fa-venus-mars fa-lg"></i>{{ $user->gender }} </p>
                         </div>
@@ -68,7 +67,7 @@
 
                     <div class="row">
                         <div class="col text-center">
-                            <a href="{{ url('user/edit/'. $_SESSION['user_id']) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ url('user/edit/'. $_SESSION['user_id']) }}" class="btn btn-primary">@lang('lang.edit')</a>
                         </div>
                     </div>
                     </form>

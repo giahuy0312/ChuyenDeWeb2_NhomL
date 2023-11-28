@@ -62,4 +62,29 @@ return [
     'prodetails-share' => 'Share',
     'prodetails-quantity' => 'Quantity',
 
+    //trans User
+    'accinfo' => ' Account information',
+    'changepass' => 'Change the password',
+    'discode' => ' Discount code',
+    'purhis'=>'Purchase history',
+    'cusId' =>'Customer ID',
+    'name' => 'Username',
+    'username' => 'Name',
+    'phone' => 'Phone Number',
+    'DOB' => 'Date Of Birth',
+    'gender' => 'Gender',
+    'edit' => 'Edit',
+    'editUser'=>'Edit User',
+    'male' => 'Male',
+    'female' => 'Female',
+    'other' => 'Other',
+    'save' => 'Save',
+    'cancel' => 'Cancel',
+    
+    //trans changePass
+    'oldpass' => 'Old Password',
+    'newpass' => 'New Password',
+    'comfirmpass' => 'Comfirm Password',
+    'showPass' => 'Show Password',
+    'submit' => 'Submit',
 ];

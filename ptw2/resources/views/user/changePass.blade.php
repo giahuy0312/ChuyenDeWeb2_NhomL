@@ -15,16 +15,16 @@
                 <!-- Menu User -->
                 <div class="menuUser">
                     <p><br></p>
-                    <p><a href="{{ url('user/'. $_SESSION['user_id'])}}"> Thông tin tài khoản </a></p>
-                    <p><a href=""> Thay đổi mật khẩu</a></p>
-                    <p><a href=""> Mã giảm giá </a></p>
-                    <p><a href=""> Lịch sử mua hàng </a></p>
-                    <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="{{ route('logout') }}" style="color:red"> Đăng xuất </a></p>
+                    <p><a href="{{ url('user/'. $_SESSION['user_id'])}}"> @lang('lang.accinfo') </a></p>
+                    <p><a href="{{ url('changepass/'. $_SESSION['user_id'])}}">  @lang('lang.changepass')</a></p>
+                    <p><a href="">@lang('lang.discode') </a></p>
+                    <p><a href=""> @lang('lang.purhis')  </a></p>
+                    <p> <img src="{{ asset('images/logout.png') }}" alt=""><a href="{{ route('logout') }}" style="color:red">@lang('lang.dangxuat') </a></p>
                 </div>
             </div>
             <!-- Indexing -->
             <div class="col-9" style="padding-top: 50px;">
-                <div class="title mb-3"><a href="{{ url('home')}}">Trang Chủ </a> <span class="px-3 fs-3"> <span class="p-2">></span>Thay đổi mật khẩu</span></div>
+                <div class="title mb-3"><a href="{{ url('home')}}"> @lang('lang.trangchu')  </a> <span class="px-3 fs-3"> <span class="p-2">></span> @lang('lang.changepass') </span></div>
           
                 @if(session('error'))
                 <div class="alert alert-danger">
@@ -40,21 +40,21 @@
                     <form action="{{route('user.updatePass',$user->id)}}" method="post">
                         @csrf
                     <div class="mb-3">
-                        <label for="oldPass" class="form-label">Old Password</label>
+                        <label for="oldPass" class="form-label">@lang('lang.oldpass')</label>
                         <input type="password" class="form-control" id="oldPass" name="oldPass">
                         @if($errors->any('oldPass'))
                         <span class="text-danger">{{$errors->first('oldPass')}}</span>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="newPass" class="form-label">New Password</label>
+                        <label for="newPass" class="form-label">@lang('lang.newpass')</label>
                         <input type="password" class="form-control" id="newPass" name="newPass">
                         @if($errors->any('newPass'))
                         <span class="text-danger">{{$errors->first('newPass')}}</span>
                         @endif
                     </div>
                     <div class="mb-3ck">
-                    <label class="form-label" for="comfirmPass">Comfirm Password</label>
+                    <label class="form-label" for="comfirmPass">@lang('lang.comfirmpass')</label>
                         <input type="password" class="form-control" id="comfirmPass" name="comfirmPass"> <br>
                         @if($errors->any('comfirmPass'))
                         <span class="text-danger">{{$errors->first('comfirmPass')}}</span>
@@ -63,10 +63,10 @@
                     <div class="tm-form-field">
                         <div>
                             <input type="checkbox" id="changepass-show" name="changepass-show">
-                            <label for="changepass-show">Show Password</label>
+                            <label for="changepass-show">@lang('lang.showPass')</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">@lang('lang.submit')</button>
                     </form>
   
                 </div>

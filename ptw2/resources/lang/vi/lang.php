@@ -64,4 +64,29 @@ return [
     'prodetails-share' => 'Chia sẻ',
     'prodetails-quantity' => 'Số lượng',
 
+    //trans User
+    'accinfo' => 'Thông tin tài khoản',
+    'changepass' => 'Thay đổi mật khẩu',
+    'discode' => 'Mã giảm giá',
+    'purhis'=>'Lịch sử mua hàng',
+    'cusId' =>'Mã khách hàng',
+    'name' => 'Tên tài khoản',
+    'username' => 'Họ Tên',
+    'phone' => 'Số điện thoại',
+    'DOB' => 'Ngày sinh',
+    'gender' => 'Giới tính',
+    'edit' => 'Chỉnh sửa',
+    'editUser'=>'Chỉnh sửa người dùng',
+    'male' => 'Nam',
+    'female' => 'Nữ',
+    'other' => 'Khác',
+    'save' => 'Lưu',
+    'cancel' => 'Hủy',
+    
+    //trans changePass
+    'oldpass' => 'Mật khẩu cũ',
+    'newpass' => 'Mật khẩu mới',
+    'comfirmpass' => 'Nhập lại mật khẩu',
+    'showPass' => 'Hiện mật khẩu',
+    'submit' => 'Gửi',
 ];
