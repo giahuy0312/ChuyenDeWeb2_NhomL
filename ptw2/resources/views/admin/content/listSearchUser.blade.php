@@ -16,9 +16,9 @@
         <thead>
            <tr>
             <th>STT</th>
-            <th>Họ Tên</th>
-            <th>Số điện thoại</th>
             <th>Username</th>
+            <th>Số điện thoại</th>
+            <th>Họ Tên </th>
             <th>Email</th>
             <th>Chức Năng</th>
            </tr>
