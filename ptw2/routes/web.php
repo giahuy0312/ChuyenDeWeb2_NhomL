@@ -59,7 +59,7 @@ Route::post('customcategory', [CategoryController::class, 'customCategory'])->na
 Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
 Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
-
+});
 route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
     Route::get('/login', [UserController::class, 'login'])->name('login');
