@@ -27,10 +27,12 @@
                                 @if (isset($_SESSION['user_id']))
                                 <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">My Account</a></li>
                                 @endif
+                                <?php $wishlist = DB::table('wishlists')->where('user_id', [$_SESSION['user_id']])->get(); ?>
                                 <li> <a href="{{ route('logout') }}">
                                         Logout
                                     </a></li>
                                 @else
+                                <?php $wishlist = []; ?>
                                 <li><a href="{{ route('login') }}">Login</a></li>
                                 @if (Route::has('register'))
                                 <li><a href="{{ route('register') }}">Register</a></li>
@@ -55,10 +57,14 @@
                         <div class="tm-dropdown tm-header-language">
                             <button><img src="{{ asset('images/flag-english.png') }}" alt="language">English</button>
                             <ul>
-                                <li><a href="#"><img src="{{ asset('images/flag-english.png') }}" alt="language">English</a></li>
-                                <li><a href="#"><img src="{{ asset('images/flag-spain.png') }}" alt="language">Spanish</a></li>
-                                <li><a href="#"><img src="{{ asset('images/flag-russian.png') }}" alt="language">Russian</a></li>
-                                <li><a href="#"><img src="{{ asset('images/flag-french.png') }}" alt="language">French</a></li>
+                                <li><a href="#"><img src="{{ asset('images/flag-english.png') }}"
+                                            alt="language">English</a></li>
+                                <li><a href="#"><img src="{{ asset('images/flag-spain.png') }}"
+                                            alt="language">Spanish</a></li>
+                                <li><a href="#"><img src="{{ asset('images/flag-russian.png') }}"
+                                            alt="language">Russian</a></li>
+                                <li><a href="#"><img src="{{ asset('images/flag-french.png') }}"
+                                            alt="language">French</a></li>
                             </ul>
                         </div>
                     </div>
@@ -68,23 +74,24 @@
     </div>
     <!--// Header Top Area -->
     <script type="text/javascript">
-        $('#header-search').on('keyup', function() {
-            var search = $(this).serialize();
-            if ($(this).find('.m-input').val() == '') {
-                $('#search-suggest div').hide();
-            } else {
-                $.ajax({
-                        url: '/search',
-                        type: 'POST',
-                        data: search,
-                    })
-                    .done(function(res) {
-                        $('#search-suggest').html('');
-                        $('#search-suggest').append(res)
-                    })
-            };
-        });
+    $('#header-search').on('keyup', function() {
+        var search = $(this).serialize();
+        if ($(this).find('.m-input').val() == '') {
+            $('#search-suggest div').hide();
+        } else {
+            $.ajax({
+                    url: '/search',
+                    type: 'POST',
+                    data: search,
+                })
+                .done(function(res) {
+                    $('#search-suggest').html('');
+                    $('#search-suggest').append(res)
+                })
+        };
+    });
     </script>
+
     <!-- Header Middle Area -->
     <div class="tm-header-middlearea bg-white">
         <div class="container">
@@ -103,9 +110,14 @@
                 </div>
                 <div class="col-lg-3 col-6 order-2 order-lg-3">
                     <ul class="tm-header-icons">
-                        <li><a href="{{url('wishlist')}}"><i class="ion-android-favorite-outline"></i><span>0</span></a>
+
+                        <li><a href="{{url('wishlist')}}"><i
+                                    class="ion-android-favorite-outline"></i><span>{{count($wishlist)}}</span></a>
                         </li>
-                        <li><a href="{{ url('order') }}"><i class="ion-bag"></i><span>0</span></a></li>
+
+
+                        <li><a href="{{ url('order') }}"><i class="ion-bag"></i><span>0</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -129,4 +141,5 @@
     <!--// Header Bottom Area -->
 
 </div>
+
 <!--// Header -->

@@ -52,6 +52,7 @@
                         <form action="" method="POST" class="d-inline-block" id="update-cart" enctype="multipart/form-data">
                             @csrf
                             @foreach ($wishlist as $item)
+                            @if($item->count() > 0)
                             @if ($item->user_id == $_SESSION['user_id'])
                             @foreach ($wishlistDetails as $wishlistDetail)
                             @if ($wishlistDetail->id == $item->product_id)
@@ -62,8 +63,6 @@
                                 <td>
                                     <a href="{{-- {{ route('products.show', $item->$product_id) }} --}}#" class="tm-cart-productname"></a>
                                     <p>{{ $wishlistDetail->name}}</p>
-
-
                                 </td>
                                 <td class="tm-cart-price">
                                     {{ number_format($wishlistDetail->price, 2, ',', '.') }}
@@ -71,13 +70,11 @@
                                 </td>
                                 <td>
                                     <div class="tm-buttongroup">
-
-
                                         <button type="submit" form="" class="tm-button"> <a href="{{ route('order.add', [$_SESSION['order_id'], $wishlistDetail->id]) }}"><i class="ion-android-cart"></i> Add to cart</a></button>
                                     </div>
                                 </td>
                                 <td>
-                                    <a onclick="return confirm('Bạn có muốn xóa hay không?')" href="" class="tm-cart-removeproduct" style="padding: 0 30px; color: inherit;"><i class="ion-close"></i></a>
+                                    <a onclick="return confirm('Bạn có muốn xóa hay không?')" href="{{ url('/addwishlist/product/' . $wishlistDetail->id . '/token=' . csrf_token()) }}" class="tm-cart-removeproduct" style="padding: 0 30px; color: inherit;"><i class="ion-close"></i></a>
                                 </td>
                             </tr>
 
@@ -85,8 +82,8 @@
                             @endforeach
 
                             @endif
+                            @endif
                             @endforeach
-
 
                         </form>
                         @endif

@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\WishlistController;
+use App\Models\Wishlist;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +75,8 @@ Route::group(['middleware' => 'auth'], function () {
 Route::post('/checkout/promotion={promotion}', [OrderController::class, 'checkout'])->name('order.checkout');
 
 // Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+Route::get('/addwishlist/{user}/product/{product}', [WishlistController::class, 'addwishlist'])->name('addwishlist');
+Route::get('/addwishlist/product/{product}/{csrf?}', [WishlistController::class, 'destroy']);
 Route::get('/order/{order}/product/{product}', [OrderController::class, 'store'])->name('order.add');
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
 
