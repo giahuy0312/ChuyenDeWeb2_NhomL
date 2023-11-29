@@ -121,6 +121,29 @@ return [
      'ipphone' => 'Nhập số điện thoại của bạn ở đây',
      'ipsubject' => 'Nhập vấn đề của bạn ở đây',
 
+     //trans checkout
+   
+    //trans checkout
+    'checkout' => 'Thủ tục thanh toán',
+     'shop' => 'Cửa hàng',
+     'billinfo' => 'THÔNG TIN THANH TOÁN',
+     'user-name' => 'Tên tài khoản',
+     'enterusername' => '
+     Vui lòng nhập tên người dùng',
+     'emailaddress' => 'Địa chỉ email',
+     'plhenteraddr' => 'Nhập địa chỉ',
+     'enterphone' => ' 
+     Vui lòng nhập số điện thoại',
+     'enteraddress' => 'Vui lòng nhập địa chỉ',
+     'product' => 'Sản phẩm',
+     'checkout-submit-title' => 'Dữ liệu cá nhân của bạn sẽ được sử dụng để xử lý đơn đặt hàng của bạn, hỗ trợ bạn
+     trải nghiệm trên toàn bộ trang web này và cho các mục đích khác được mô tả trong
+     Chính sách bảo mật.',
+     'checkout-read-terms' => 'Tôi đã đọc và đồng ý
+     đến trang web
+     các điều khoản và điều kiện',
+     'checkout-invalid' => ' Bạn phải kiểm tra để đọc các điều khoản',
+     'placeOrder' => 'Đặt hàng',
     //bo sung
     'search' => 'Tìm kiếm sản phẩm',
     'contact' => 'Liên hệ',

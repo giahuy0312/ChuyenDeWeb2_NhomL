@@ -6,11 +6,11 @@
 <div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="{{ asset('images') }}/breadcrumb-bg.jpg">
     <div class="container">
         <div class="tm-breadcrumb">
-            <h2>Shopping Cart</h2>
+            <h2>@lang('lang.giohang1')</h2>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Shop</a></li>
-                <li>Shopping Cart</li>
+                <li><a href="{{ url('home') }}">@lang('lang.trangchu')</a></li>
+                <li><a href="products.html">@lang('lang.shop')</a></li>
+                <li>@lang('lang.giohang1')</li>
             </ul>
         </div>
     </div>
@@ -40,11 +40,11 @@
                     @endif
                     <thead>
                         <tr>
-                            <th class="tm-cart-col-image" scope="col">Image</th>
-                            <th class="tm-cart-col-productname" scope="col">Product</th>
-                            <th class="tm-cart-col-price" scope="col">Price</th>
-                            <th class="tm-cart-col-total" scope="col">Add To Cart</th>
-                            <th class="tm-cart-col-remove" scope="col">Remove</th>
+                            <th class="tm-cart-col-image" scope="col">@lang('lang.image')</th>
+                            <th class="tm-cart-col-productname" scope="col">@lang('lang.productname')</th>
+                            <th class="tm-cart-col-price" scope="col">@lang('lang.price')</th>
+                            <th class="tm-cart-col-total" scope="col">@lang('lang.addcart')</th>
+                            <th class="tm-cart-col-remove" scope="col">@lang('lang.remove')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,7 +70,7 @@
                                 </td>
                                 <td>
                                     <div class="tm-buttongroup">
-                                        <button type="submit" form="" class="tm-button"> <a href="{{ route('order.add', [$_SESSION['order_id'], $wishlistDetail->id]) }}"><i class="ion-android-cart"></i> Add to cart</a></button>
+                                        <button type="submit" form="" class="tm-button"> <a href="{{ route('order.add', [$_SESSION['order_id'], $wishlistDetail->id]) }}"><i class="ion-android-cart"></i> @lang('lang.addcart')</a></button>
                                     </div>
                                 </td>
                                 <td>

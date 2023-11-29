@@ -6,11 +6,11 @@
 <div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="{{ asset('images/breadcrumb-bg.jpg') }}">
     <div class="container">
         <div class="tm-breadcrumb">
-            <h2>Checkout</h2>
+            <h2>@lang('lang.checkout')</h2>
             <ul>
-                <li><a href="{{ url('home') }}">Home</a></li>
-                <li><a href="products.html">Shop</a></li>
-                <li>Checkout</li>
+                <li><a href="{{ url('home') }}">@lang('lang.trangchu')</a></li>
+                <li><a href="products.html">@lang('lang.shop')</a></li>
+                <li>@lang('lang.checkout')</li>
             </ul>
         </div>
     </div>
@@ -27,44 +27,44 @@
                 novalidate>
                 <div class="row">
                     <div class="col-lg-6">
-                        <h4 class="small-title">BILLING INFORMATION</h4>
+                        <h4 class="small-title">@lang('lang.billinfo')</h4>
 
                         <!-- Billing Form -->
                         <div class="tm-checkout-billingform">
                             <div class="tm-form-inner">
                                 <div class="tm-form-field">
-                                    <label for="billingform-usernamename">User name</label>
+                                    <label for="billingform-usernamename">@lang('lang.user-name')</label>
                                     <input class="form-control" type="text" id="billingform-username"
                                         value="{{ $user->username }}" maxlength="50" name="username" required>
                                     <div class="invalid-feedback">
-                                        Please enter user name
+                                        @lang('lang.enterusername')
                                     </div>
                                 </div>
                                 <div class="tm-form-field">
-                                    <label for="billingform-companyname">Name</label>
+                                    <label for="billingform-companyname">@lang('lang.username')</label>
                                     <input class="form-control" type="text" id="billingform-companyname"
                                         value="{{ $user->name }}" maxlength="50" name="name">
                                 </div>
                                 <div class="tm-form-field">
-                                    <label for="billingform-email">Email address</label>
+                                    <label for="billingform-email">@lang('lang.emailaddress')</label>
                                     <input class="form-control" type="email" id="billingform-email"
                                         value="{{ $user->email }}" name="email" readonly>
                                 </div>
                                 <div class="tm-form-field">
-                                    <label for="billingform-phone">Phone (Optional)</label>
+                                    <label for="billingform-phone">@lang('lang.phone') (Optional)</label>
                                     <input class="form-control" maxlength="10" type="text" id="billingform-phone"
                                         value="{{ $user->phone }}" name="phone">
                                     <div class="invalid-feedback">
-                                        Please enter phone number
+                                        @lang('lang.enterphone')
                                     </div>
                                 </div>
                                 <div class="tm-form-field">
-                                    <label for="billingform-address">Address</label>
+                                    <label for="billingform-address">@lang('lang.diachi')</label>
                                     <input class="form-control" type="text" id="billingform-address"
-                                        placeholder="Enter Address" value="{{ $user->address }}" maxlength="100" name="address"
+                                        placeholder="@lang('lang.plhenteraddr')" value="{{ $user->address }}" maxlength="100" name="address"
                                         required>
                                     <div class="invalid-feedback">
-                                        Please enter address
+                                        @lang('lang.enteraddress')
                                     </div>
                                 </div>
                             </div>
@@ -77,8 +77,8 @@
                                 <table class="table table-borderless tm-checkout-ordertable">
                                     <thead>
                                         <tr>
-                                            <th>Product</th>
-                                            <th>Total</th>
+                                            <th>@lang('lang.product')</th>
+                                            <th>@lang('lang.total')</th>
                                         </tr>
                                     </thead>
                                     <?php
@@ -101,11 +101,11 @@
                                     </tbody>
                                     <tfoot>
                                         <tr class="tm-checkout-subtotal">
-                                            <td>Cart Subtotal</td>
+                                            <td>@lang('lang.cartsubtotal')</td>
                                             <td>{{ number_format($subtotal, 2, ',', '.') }} ₫</td>
                                         </tr>
                                         <tr class="tm-checkout-shipping">
-                                            <td>(-) Promotion</td>
+                                            <td>(-)  @lang('lang.promot')</td>
                                             @if ($promotion == 'null')
                                                 <?php $promotion = 0; ?>
                                             @else
@@ -114,7 +114,7 @@
                                             <td>{{ $promotion }} ₫</td>
                                         </tr>
                                         <tr class="tm-checkout-total">
-                                            <td>Total</td>
+                                            <td>@lang('lang.total')</td>
                                             <?php $total = $subtotal - $promotion; ?>
                                             <td>{{ number_format($total, 2, ',', '.') }} ₫</td>
                                         </tr>
@@ -123,23 +123,18 @@
                             </div>
 
                             <div class="tm-checkout-submit">
-                                <p>Your personal data will be used to process your order, support your
-                                    experience throughout this website, and for other purposes described in our
-                                    privacy policy.</p>
+                                <p>@lang('lang.checkout-submit-title')</p>
                                 <div class="tm-form-inner">
                                     <div class="tm-form-field">
                                         <input class="form-check-input" type="checkbox" name="checkout_read_terms"
                                             id="checkout_read_terms" required>
-                                        <label class="form-check-label" for="checkout_read_terms">I have read and agree
-                                            to the website
-                                            terms and conditions</label>
+                                        <label class="form-check-label" for="checkout_read_terms">@lang('lang.checkout-read-terms')</label>
                                         <div class="invalid-feedback">
-                                            You have to check to read terms
+                                            @lang('lang.checkout-invalid')
                                         </div>
                                     </div>
                                     <div class="tm-form-field">
-                                        <button type="submit" class="tm-button ml-auto" id="place_order">Place
-                                            Order</button>
+                                        <button type="submit" class="tm-button ml-auto" id="place_order">@lang('lang.placeOrder')</button>
                                     </div>
                                     <script>
                                         // Example starter JavaScript for disabling form submissions if there are invalid fields

@@ -121,6 +121,28 @@ return [
     'ipname' => 'Your name here',
     'ipphone' => 'Your phone number here',
     'ipsubject' => 'Your subject',
+
+    //trans checkout
+    'checkout' => 'Checkout',
+     'shop' => 'Shop',
+     'billinfo' => 'BILLING INFORMATION',
+     'user-name' => 'User name',
+     'enterusername' => '  Please enter user name',
+     'emailaddress' => 'Email address',
+     'plhenteraddr' => 'Enter Address',
+
+     'enterphone' => ' Please enter phone number',
+     'enteraddress' => 'Please enter address',
+     'product' => 'Product',
+     'checkout-submit-title' => 'Your personal data will be used to process your order, support your
+     experience throughout this website, and for other purposes described in our
+     privacy policy.',
+     'checkout-read-terms' => 'I have read and agree
+     to the website
+     terms and conditions',
+     'checkout-invalid' => ' You have to check to read terms',
+     'placeOrder' => 'Place Order',
+   
     //bo sung
     'search' => 'Search product',
     'contact' => 'Contact',
