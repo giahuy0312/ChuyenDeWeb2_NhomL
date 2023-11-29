@@ -24,6 +24,15 @@ use App\Http\Controllers\ShopController;
 */
 
 
+//change language
+Route::get('/lang/{locale}',function($locale){
+    if(! in_array($locale,['en','vi'])){
+        abort(404);
+    }
+    session()->put('locale',$locale);
+    return redirect()->back();
+});
+
 // Home
 session_start();
 if (isset($_SESSION['user_id'])) {
@@ -87,6 +96,10 @@ Route::resource('user', UserController::class);
 Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 route::get('/logout', [UserController::class, 'logout'])->name('logout');
+//change pass
+Route::get('/changepass/{user}', [UserController::class, 'changePass'])->name('user.changePass');
+Route::post('/updatepass/{user}', [UserController::class, 'updatePass'])->name('user.updatePass');
+
 //forget password
 route::get('/forgetpassword', [ForgetpasswordManager::class, 'forgetpassword'])
     ->name('forget.password');
@@ -99,9 +112,14 @@ Route::get('/resetpasssword/{token}', [ForgetpasswordManager::class, 'resetPasss
 Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])
     ->name('reset.passsword.post');
 
-// shop
-Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
+
 //contact
 
 route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+// shop(trang nhan cuoi)
+Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
+//shopproducta(trang nhan cau hon)
+Route::get('/shopproducts', [ShopController::class, 'getAllShop'])->name('shopproducts');
+//Search
+Route::get('/searchProduct', [ProductController::class, 'searchProduct'])->name('searchProduct');

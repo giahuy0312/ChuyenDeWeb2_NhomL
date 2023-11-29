@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-9" style="padding-top: 50px;">
             <div class="title">
-                <a href="{{ url('home')}}">Trang Chủ </a> <span class="px-3 fs-3"> Edit User</span>
+                <a href="{{ url('home')}}">@lang('lang.trangchu') </a> <span class="px-3 fs-3">@lang('lang.editUser')</span>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
                     <h3 style="padding-left:240px"><img src="{{ asset('images/user.png') }}" alt=""> {{ $user->name }}  </h3> 
                 </div>
                 <div class="col pt-4">
-                   <h3>Mã khách hàng: {{ $user->id }} </h3>
+                   <h3>@lang('lang.cusId'): {{ $user->id }} </h3>
                 </div>
             </div>
             <!-- form info detail -->
@@ -24,15 +24,15 @@
                 @method('PUT')
                 <div class="row">
                     <div class="info-left col ">
-                        <label for="name">Họ tên</label> <br>
+                        <label for="name">@lang('lang.username')</label> <br>
                         <input type="text" name="name"  maxlength="20" required
                             style="background-image: url({{ asset('images/user.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->username }}"> <br> <br>
-                        <label for="username"> Username</label> <br>
+                        <label for="username"> @lang('lang.name')</label> <br>
                         <input type="fullname" name="username"  maxlength="50" 
                             style="background-image: url({{ asset('images/user.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->name }}"><br> <br>
-                        <label for="phone">Số điện thoại</label> <br>
+                        <label for="phone">@lang('lang.phone')</label> <br>
                         <input type="tel" name="phone" pattern="0\d{9}" 
                             style="background-image: url({{ asset('images/phone.png') }});background-size:32px 45px;"
                             class="border border-dark rounded-pill" value="{{ $user->phone }}"> <br> <br>
@@ -40,29 +40,29 @@
                     </div>
 
                     <div class="info-right col ">
-                        <label for="email">Email</label> <br>
+                        <label for="email">@lang('lang.email')</label> <br>
                         <input type="email" name="email"  maxlength="50" required
                             style="background-image: url({{ asset('images/email.png') }});background-size:23px 25px;"
                             class="border border-dark rounded-pill" value="{{ $user->email }}"> <br> <br>
-                        <label for="DOB">Ngày sinh</label> <br>
+                        <label for="DOB">@lang('lang.DOB')</label> <br>
                         <input type="date" name="DOB" style="background-image: url({{ asset('images/DOB.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->DOB }}"> <br> <br>
-                        <label for="gender">Giới tính</label> <br>
+                        <label for="gender">@lang('lang.gender')</label> <br>
 
                         <select name="gender" style="background-image: url({{ asset('images/gender.png') }});background-size:23px 25px;"
                              class="border border-dark rounded-pill">
                             <option value="{{ $user->gender }}">{{ $user->gender }}</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
+                            <option value="Male">@lang('lang.male')</option>
+                            <option value="Female">@lang('lang.female')</option>
+                            <option value="Other">@lang('lang.other')</option>
                         </select>
 
                     </div>
                 </div>
                 <div class="row text-center">
                     <div class="col">
-                    <button type="submit" class="btn text-white">Save</button>
-                    <a href="{{ url('user/'. $_SESSION['user_id'])}}" class="btn btn-primary text-white"  style="width:100px;">Cancel</a>
+                    <button type="submit" class="btn text-white">@lang('lang.save')</button>
+                    <a href="{{ url('user/'. $_SESSION['user_id'])}}" class="btn btn-primary text-white"  style="width:100px;">@lang('lang.cancel')</a>
                       </div>
                 </div>
             </form>
