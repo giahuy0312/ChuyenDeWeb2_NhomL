@@ -173,23 +173,10 @@ class ProductController extends Controller
     public function searchProduct(Request $request)
     {
         $keyword = $request->keyword;
-
-        $products = Product::where('name','LIKE', '%' . $keyword . '%')->paginate(16);
+        
+        $products = Product::where('name','LIKE', '%' . $keyword . '%')->paginate(8);
         return view('searchProduct', ['products' => $products]);
-
-
-        // $requied = [
-        // 'keywork'=>['required', 'regex:/^\w/u', 'min:10', 'max:100'],
-        // ];
-        // $messages = [
-        //     'keywork.required' => 'Vui lòng nhập để tìm kiếm sản phẩm',
-        //     'keywork.regex' =>'',
-        //     'keywork.min' => 'Từ khóa tìm kiếm ít nhất là 10',
-        //     'keywork.mã' => 'Từ khóa tìm kiếm nhiều nhất là 100',
-        // ];
-        // $attribute = [
-        //     'keywork' => 'Tìm kiếm sản phẩm',
-        // ];
+        
 
     }
 

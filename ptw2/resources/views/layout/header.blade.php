@@ -107,7 +107,7 @@
                 <div class="col-lg-6 col-12 order-3 order-lg-2">
                     <form class="tm-header-search" action="{{ url('/searchProduct') }}" method="GET">
                         @csrf
-                        <input type="text" name="keyword" placeholder="@lang('lang.search')">
+                         <input type="text" name="keyword" placeholder="@lang('lang.search')" required> 
                         <button><i class="ion-android-search"></i></button>
                     </form>
                 </div>
