@@ -216,9 +216,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
                         <div class="tm-sectiontitle text-center">
-                            <h3>NEW ARRIVAL PRODUCTS</h3>
-                            <p>Our popular products are so beautyful to see that the shoppers are easily attracted
-                                to them.</p>
+                            <h3>@lang('lang.sectiontitle2')</h3>
+                            <p>@lang('lang.sectiontitle')</p>
                         </div>
                     </div>
                     <!--// Single Banner -->

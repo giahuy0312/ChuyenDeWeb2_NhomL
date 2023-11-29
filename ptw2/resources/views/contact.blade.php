@@ -13,10 +13,10 @@
 <div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="{{ asset('images') }}/breadcrumb-bg.jpg">
     <div class="container">
         <div class="tm-breadcrumb">
-            <h2>Contact Us</h2>
+            <h2>@lang('lang.contactus')</h2>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li>About</li>
+                    <li><a href="index.html">@lang('lang.trangchu')</a></li>
+                    <li>@lang('lang.about')</li>
             </ul>
         </div>
     </div>
@@ -36,10 +36,9 @@
                     <div class="col-lg-4 col-md-6  mt-30">
                         <div class="tm-contact-block text-center">
                             <i class="ion-android-call"></i>
-                            <h6>Call Us</h6>
-                            <p>Phone : <a href="tel:+1900 111 999">1900 111 999</a></p>
-                            <p>Phone : <a href="tel:+1900 111 999">1900 111 999</a></p>
-
+                            <h6>@lang('lang.callus')</h6>
+                            <p>@lang('lang.phone') : <a href="tel:+1900 111 999">1900 111 999</a></p>
+                            <p>@lang('lang.phone') : <a href="tel:+1900 111 999">1900 111 999</a></p>
                         </div>
                     </div>
                     <!--// Contact block -->
@@ -48,7 +47,7 @@
                     <div class="col-lg-4 col-md-6  mt-30">
                         <div class="tm-contact-block text-center">
                             <i class="ion-location"></i>
-                            <h6>Our Location</h6>
+                            <h6>@lang('lang.ourlocat')</h6>
                             <p>7415 Transcanadienne, Suite 100 St. Laurent, Quebec, Canada H45T 1Z22</p>
                         </div>
                     </div>
@@ -58,7 +57,7 @@
                     <div class="col-lg-4 col-md-6  mt-30">
                         <div class="tm-contact-block text-center">
                             <i class="ion-email"></i>
-                            <h6>Email</h6>
+                            <h6>@lang('lang.email')</h6>
                             <p><a href="mailto:thangvipprolk301@gmail.com">thangvipprolk301@gmail.com</a></p>
                             <p><a href="mailto:tranquangthang3160@gmail.com">tranquangthang3160@gmail.com</a></p>
                         </div>
@@ -71,8 +70,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
                         <div class="tm-sectiontitle text-center">
-                            <h3>SEND US A MESSAGE</h3>
-                            <p>You can contact us for any of your requirements. We’ll help you meet your needs.
+                            <h3>@lang('lang.sendusmess')</h3>
+                            <p>@lang('lang.sendusmess1')
                             </p>
                         </div>
                     </div>
@@ -89,15 +88,15 @@
                             @csrf
                             <div class="tm-form-inner">
                                 <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="contact-form-name">Name</label>
-                                    <input type="text" id="contact-form-name" placeholder="Your name here" name="name"
+                                    <label for="contact-form-name">@lang('lang.username')</label>
+                                    <input type="text" id="contact-form-name" placeholder="@lang('lang.ipname')" name="name"
                                         required>
                                     @error('name')
                                     <p style="color: red;">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="contact-form-email">Email</label>
+                                    <label for="contact-form-email">@lang('lang.email')</label>
                                     <input type="email" id="contact-form-email" placeholder="surose@example.com"
                                         name="email" required>
                                     @error('email')
@@ -105,28 +104,28 @@
                                     @enderror
                                 </div>
                                 <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="contact-form-phone">Phone</label>
-                                    <input type="text" id="contact-form-phone" placeholder="Your phone number here"
+                                    <label for="contact-form-phone">@lang('lang.phone')</label>
+                                    <input type="text" id="contact-form-phone" placeholder="@lang('lang.ipphone')"
                                         name="phone" required>
                                     @error('phone')
                                     <p style="color: red;">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="contact-form-subject">Subject</label>
-                                    <input type="text" id="contact-form-subject" placeholder="Your subject"
+                                    <label for="contact-form-subject">@lang('lang.subject')</label>
+                                    <input type="text" id="contact-form-subject" placeholder="@lang('lang.ipsubject')"
                                         name="subject" required>
                                     @error('subject')
                                     <p style="color: red;">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="tm-form-field">
-                                    <label for="contact-form-message">Message</label>
+                                    <label for="contact-form-message">@lang('lang.mess')</label>
                                     <textarea cols="30" rows="5" id="contact-form-message"
                                         placeholder="Write your message" name="message" required> </textarea>
                                 </div>
                                 <div class="tm-form-field text-center">
-                                    <button name="submit" class="tm-button" type="submit">Send Message</button>
+                                    <button name="submit" class="tm-button" type="submit">@lang('lang.sendmess')</button>
                                 </div>
                             </div>
                         </form>
