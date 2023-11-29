@@ -128,7 +128,7 @@
                                         </div>
                                         <div class="tm-product-bottomside">
                                             <h6 class="tm-product-title"><a
-                                                    href="product-details.html">{{ $product->name }}</a></h6>
+                                                    href="{{route('productDetails', $product->id)}}">{{ $product->name }}</a></h6>
                                             <span class="tm-product-price">{{ $product->price }}</span>
                                             <div class="tm-product-content">
                                                 <p></p>
@@ -224,7 +224,7 @@
                                         </div>
                                         <div class="tm-product-bottomside">
                                             <h6 class="tm-product-title"><a
-                                                    href="product-details.html">{{ $product->name }}</a></h6>
+                                                    href="{{route('productDetails', $product->id)}}">{{ $product->name }}</a></h6>
                                             <span class="tm-product-price">{{ $product->price }}</span>
                                             <div class="tm-product-content">
                                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting

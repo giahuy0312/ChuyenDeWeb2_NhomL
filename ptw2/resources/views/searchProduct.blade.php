@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="tm-product-bottomside">
-                                    <h6 class="tm-product-title"><a href="product-details.html">{{ $product->name }}</a></h6>
+                                    <h6 class="tm-product-title"><a href="{{route('productDetails', $product->id)}}">{{ $product->name }}</a></h6>
                                     <div class="tm-ratingbox">
                                         <span class="is-active"><i class="ion-android-star-outline"></i></span>
                                         <span class="is-active"><i class="ion-android-star-outline"></i></span>
