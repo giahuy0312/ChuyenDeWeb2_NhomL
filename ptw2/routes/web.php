@@ -14,6 +14,7 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
