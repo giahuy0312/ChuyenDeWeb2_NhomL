@@ -40,10 +40,6 @@
                     </div>
 
                     <div class="info-right col ">
-                        <label for="email">@lang('lang.email')</label> <br>
-                        <input type="email" name="email"  maxlength="50" required
-                            style="background-image: url({{ asset('images/email.png') }});background-size:23px 25px;"
-                            class="border border-dark rounded-pill" value="{{ $user->email }}"> <br> <br>
                         <label for="DOB">@lang('lang.DOB')</label> <br>
                         <input type="date" name="DOB" style="background-image: url({{ asset('images/DOB.png') }}) ;background-size:30px 30px;"
                             class="border border-dark rounded-pill" value="{{ $user->DOB }}"> <br> <br>
