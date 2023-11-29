@@ -29,28 +29,31 @@
         <!-- Products Wrapper -->
         <div class="tm-products-area tm-section tm-padding-section bg-white">
             <div class="container">
-                <form action="#" class="tm-shop-header">
+                <form action="#" class="tm-shop-header" >
                     <div class="tm-shop-productview">
                         <span>View:</span>
                         <button data-view="grid" class="active"><i class="ion-android-apps"></i></button>
                         <button data-view="list"><i class="ion-android-menu"></i></button>
                     </div>
                     <p class="tm-shop-countview">Showing 1 to 9 of 16 </p>
-                    <select>
-                        <option value="value">Default Sorting</option>
+                    <select name="sortProduct" id="sortProduct" >
                         <option value="value">Name A-Z</option>
-                        <option value="value">Date</option>
-                        <option value="value">Best Sellers</option>
-                        <option value="value">Trending</option>
+                        <option value="value">Name Z-A</option>
+                        
                     </select>
                 </form>
 
                 <div class="tm-shop-products">
                     <div class="row mt-30-reverse">
-
                         <!-- Single Product -->
                         @if (isset($products))
+                        @if($products[0] == [])
+                        <div class="test" style = "color:red;">
+                            <p>Tên sản phẩm không tồn tại vui lòng nhập lại từ khóa tìm kiếm</p>
+                        </div>
+                        @endif
                         @foreach ($products as $product)
+                        	
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mt-50">
                             <div class="tm-product tm-scrollanim">
                                 <div class="tm-product-topside">
