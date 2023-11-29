@@ -31,13 +31,13 @@ class Product extends Authenticatable
     {
         return $this->belongsToMany(Order::class);
     }
-    public function promotions()
+    public function wishlist()
     {
-        return $this->belongsTo(Promotion::class);
+        return $this->belongsToMany(Wishlist::class);
     }
+    
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-
 }

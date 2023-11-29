@@ -9,7 +9,7 @@ class Promotion extends Model
 {
     use HasFactory;
 
-    public function products()
+    public function orders()
     {
         return $this->hasMany(Product::class);
     }

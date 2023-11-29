@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash as FacadesHash;
+
+use function Laravel\Prompts\alert;
 
 class UserController extends Controller
 {
@@ -17,7 +22,24 @@ class UserController extends Controller
     {
 
     }
-
+    public function listUser(){
+        $users = DB::table('users')->paginate(5);
+        return view('admin.content.listUser', ['users' => $users]);
+    }
+    public function searchUser(Request $request) {
+        $search = $request->search;
+                $users = User::where('name', 'like', '%' . htmlspecialchars($search) . '%')
+                    ->orWhere('email', 'like', '%' . htmlspecialchars($search) . '%')
+                    ->paginate(5);
+    
+        return view('admin.content.listSearchUser', ['users' => $users]);
+    }
+    
+    // delete userAd
+    public function deleteUserAD($id){
+        $deleteData = DB::table('users')->where('id', '=', $id)->delete();
+        return redirect('listUser');
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -75,7 +97,50 @@ class UserController extends Controller
         
         // return view('user.edit', ['user' => $user]);
     }
+    //change pass
+    public function changePass($id){
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['user_id'] == $id) {
+                $user = User::find($_SESSION['user_id']);
+                if(!$user){
+                    abort(404);  
+                }
+                return view('user.changePass' ,['user' => $user]);
+            }
+        }
+     
+        abort(404);
+       
+    }
 
+
+    public function updatePass(Request $request, User $user){
+       $user;
+        if (isset($_SESSION['user_id'])) {
+            if ($_SESSION['user_id'] == $user->id) {
+                $user = User::find($_SESSION['user_id']);
+            }
+        }
+       
+        else  {
+            abort(404);
+        }
+        $request ->validate([
+            'oldPass' =>'required|min:1|max:100',
+              'newPass' => 'required|regex:/^(?=.*[A-Z])(?=.*[@!#&])[A-Za-z0-9@!#&]{8,50}$/',
+            'comfirmPass' =>'required|same:newPass'
+        ]);
+        if(Hash::check($request->oldPass,$user->password)){
+            $user->update([
+               'password' => \bcrypt($request->newPass)
+            ]);
+           
+            return back()->with('success' ,'Change password success.'); 
+        }
+        else{
+            return back()->with('error' ,'Old Password not matched.');
+        }
+    }
     /**
      * Update the specified resource in storage.
      */

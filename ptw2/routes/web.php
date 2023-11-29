@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Models\Users;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
@@ -13,7 +15,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,22 @@ use App\Http\Controllers\ShopController;
 |
 */
 
+//listUser
+Route::get('/listUser', [UserController::class, 'listUser'])->name('listUser');
+Route::get('/deleteUserAD/{id}', [UserController::class, 'deleteUserAD'])->name('deleteUserAD');
+//search User
+Route::get('/listSearchUser', [UserController::class, 'searchUser'])->name('listSearchUser');
+// Product
+
+
+//change language
+Route::get('/lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'vi'])) {
+        abort(404);
+    }
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
 
 // Home
 session_start();
@@ -93,19 +110,36 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // Order
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('order', OrderController::class);
+    Route::resource('wishlist', WishlistController::class);
 });
+// Checkout
+Route::post('/checkout/promotion={promotion}', [OrderController::class, 'checkout'])->name('order.checkout');
+
+// Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+Route::get('/addwishlist/{user}/product/{product}', [WishlistController::class, 'addwishlist'])->name('addwishlist');
+Route::get('/addwishlist/product/{product}/{csrf?}', [WishlistController::class, 'destroy']);
 Route::get('/order/{order}/product/{product}', [OrderController::class, 'store'])->name('order.add');
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
-// Route::get('/order/{order}/product/{product}', [OrderController::class, 'store']);
+
 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
+
+// Payment
+Route::get('payment', [OrderController::class, 'payment'])->name('order.payment');
 
 //route User
 Route::resource('user', UserController::class);
 Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
+//Hien thi san pham trang index
+Route::get('/index', [ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
 route::get('/logout', [UserController::class, 'logout'])->name('logout');
+//change pass
+Route::get('/changepass/{user}', [UserController::class, 'changePass'])->name('user.changePass');
+Route::post('/updatepass/{user}', [UserController::class, 'updatePass'])->name('user.updatePass');
+
 //forget password
 route::get('/forgetpassword', [ForgetpasswordManager::class, 'forgetpassword'])
     ->name('forget.password');
@@ -118,9 +152,14 @@ Route::get('/resetpasssword/{token}', [ForgetpasswordManager::class, 'resetPasss
 Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])
     ->name('reset.passsword.post');
 
-// shop
-Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
+
 //contact
 
 route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+// shop (trang nhan cuoi)
+Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
+//shopproducta(trang nhan cau hon)
+Route::get('/shopproducts', [ShopController::class, 'getAllShop'])->name('shopproducts');
+//Search
+Route::get('/searchProduct', [ProductController::class, 'searchProduct'])->name('searchProduct');

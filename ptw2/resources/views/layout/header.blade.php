@@ -25,21 +25,23 @@
                                 <li>{{ $_SESSION['user_id'] }}</li>
                                 @endif
                                 @if (isset($_SESSION['user_id']))
-                                <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">My Account</a></li>
+                                <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">@lang('lang.tkcuatoi')</a></li>
                                 @endif
+                                <?php $wishlist = DB::table('wishlists')->where('user_id', [$_SESSION['user_id']])->get(); ?>
                                 <li> <a href="{{ route('logout') }}">
-                                        Logout
+                                        @lang('lang.dangxuat')
                                     </a></li>
                                 @else
-                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <?php $wishlist = []; ?>
+                                <li><a href="{{ route('login') }}"> @lang('lang.dangnhap')</a></li>
                                 @if (Route::has('register'))
-                                <li><a href="{{ route('register') }}">Register</a></li>
+                                <li><a href="{{ route('register') }}"> @lang('lang.dangky')</a></li>
                                 @endif
                                 @endauth
                                 @endif
-                                <li><a href="{{ url('order') }}">Shopping Cart</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="{{ url('order') }}"> @lang('lang.giohang')</a></li>
+                                <li><a href="{{ url('wishlist   ') }}"> @lang('lang.dsyeuthich')</a></li>
+                                <li><a href="{{ url('checkout') }}"> @lang('lang.thutucthanhtoan')</a></li>
                             </ul>
                         </div>
 
@@ -53,42 +55,33 @@
                             </ul>
                         </div>
                         <div class="tm-dropdown tm-header-language">
-                            <button><img src="{{ asset('images/flag-english.png') }}" alt="language">English</button>
+                            <button id="languageButton"><img src="{{ asset('images/flag-english.png') }}" alt="language">English</button>
                             <ul>
-                                <li><a href="#"><img src="{{ asset('images/flag-english.png') }}"
-                                            alt="language">English</a></li>
-                                <li><a href="#"><img src="{{ asset('images/flag-spain.png') }}"
-                                            alt="language">Spanish</a></li>
-                                <li><a href="#"><img src="{{ asset('images/flag-russian.png') }}"
-                                            alt="language">Russian</a></li>
-                                <li><a href="#"><img src="{{ asset('images/flag-french.png') }}"
-                                            alt="language">French</a></li>
+                                <li><a href="{{url('lang/en')}}"><img src="{{ asset('images/flag-english.png') }}" alt="language" id="language">English</a></li>
+                                <li><a href="{{url('lang/vi')}}"><img src="{{ asset('images/flag-vietnam.png') }}" alt="language" width=16px; id="language">Tiếng Việt</a></li>
                             </ul>
                         </div>
+
+                        <script>
+                            const languageButton = document.getElementById('languageButton');
+                            const languageLinks = document.querySelectorAll('.tm-header-language ul li a');
+
+                            languageLinks.forEach(link => {
+                                link.addEventListener('click', () => {
+
+                                    const selectedLanguage = link.innerText;
+
+                                    languageButton.innerHTML = link.innerHTML;
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!--// Header Top Area -->
-    <script type="text/javascript">
-    $('#header-search').on('keyup', function() {
-        var search = $(this).serialize();
-        if ($(this).find('.m-input').val() == '') {
-            $('#search-suggest div').hide();
-        } else {
-            $.ajax({
-                    url: '/search',
-                    type: 'POST',
-                    data: search,
-                })
-                .done(function(res) {
-                    $('#search-suggest').html('');
-                    $('#search-suggest').append(res)
-                })
-        };
-    });
-    </script>
+
     <!-- Header Middle Area -->
     <div class="tm-header-middlearea bg-white">
         <div class="container">
@@ -100,15 +93,24 @@
                     </a>
                 </div>
                 <div class="col-lg-6 col-12 order-3 order-lg-2">
-                    <form class="tm-header-search">
-                        <input type="text" placeholder="Search product... ">
+                    <form class="tm-header-search" action="{{url('/searchProduct')}}" method="GET">
+                        @csrf
+                        <input type="text" name="keyword" placeholder="@lang('lang.search')">
+                        <!-- @error('keyword') 
+                         <p style="color: red;">{{$message}}</p>
+                        @enderror -->
                         <button><i class="ion-android-search"></i></button>
                     </form>
                 </div>
                 <div class="col-lg-3 col-6 order-2 order-lg-3">
                     <ul class="tm-header-icons">
-                        <li><a href="wishlist.html"><i class="ion-android-favorite-outline"></i><span>0</span></a></li>
-                        <li><a href="{{ url('order') }}"><i class="ion-bag"></i><span>0</span></a></li>
+
+                        <li><a href="{{url('wishlist')}}"><i class="ion-android-favorite-outline"></i><span>{{count($wishlist)}}</span></a>
+                        </li>
+
+
+                        <li><a href="{{ url('order') }}"><i class="ion-bag"></i><span>0</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -121,10 +123,10 @@
         <div class="container">
             <nav class="tm-header-nav">
                 <ul>
-                    <li><a href="{{ url('/home') }}">Trang Chủ</a></li>
-                    <li><a href="#">Nhẫn Cưới</a></li>
-                    <li><a href="#">Nhẫn Cầu hôn</a></li>
-                    <li><a href="{{url('/contact')}}">Contact</a></li>
+                    <li><a href="{{ url('/home') }}">@lang('lang.trangchu')</a></li>
+                    <li><a href="{{url('/shop') }}">@lang('lang.nhancuoi')</a></li>
+                    <li><a href="{{url('/shopproducts')}}">@lang('lang.nhancauhon')</a></li>
+                    <li><a href="{{url('/contact')}}">@lang('lang.contact')</a></li>
                 </ul>
             </nav>
         </div>
@@ -132,4 +134,5 @@
     <!--// Header Bottom Area -->
 
 </div>
+
 <!--// Header -->
