@@ -1,17 +1,17 @@
 @extends('layout.main')
 
 @if (!isset($_SESSION['order_id']))
-    <?php $_SESSION['order_id'] = 0; ?>
+<?php $_SESSION['order_id'] = 0; ?>
 @endif
 
 @if (isset($_SESSION['user_id']))
-    @foreach ($orders as $order)
-        @if ($order->user_id == $_SESSION['user_id'])
-            @if ($order->order_status == 0)
-                <?php $_SESSION['order_id'] = $order->id; ?>
-            @endif
-        @endif
-    @endforeach
+@foreach ($orders as $order)
+@if ($order->user_id == $_SESSION['user_id'])
+@if ($order->order_status == 0)
+<?php $_SESSION['order_id'] = $order->id; ?>
+@endif
+@endif
+@endforeach
 @endif
 
 @section('content')
@@ -115,6 +115,11 @@
                             </div>
                         </div>
                         @endfor
+                    </div>
+                    <!--// Single Feature -->
+
+                </div>
+            </div>
                         @endif
                         <!--// Single Feature -->
 
@@ -186,6 +191,35 @@
             <!--// Popular Products Area -->
 
             <!-- Banners Area -->
+
+        <!-- Banners Area -->
+        <div class="tm-section tm-banners-area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-12">
+                        <div class="tm-sectiontitle text-center">
+                            <h3>NEW ARRIVAL PRODUCTS</h3>
+                            <p>Our popular products are so beautyful to see that the shoppers are easily attracted
+                                to them.</p>
+                        </div>
+                    </div>
+                    <!--// Single Banner -->
+
+                </div>
+                <div class="row mt-30-reverse">
+                    <!-- Single Banner -->
+                    @if (count($products) >= 3)
+                    @for ($i = 0; $i < 3; $i++) <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-30">
+                        <a href="#" class="tm-banner tm-scrollanim">
+                            @if (isset($products))
+                            <img src="{{ asset('images/image-products') }}/{{ $products[$i]->image }}" alt="banner image">
+                            @endif
+                        </a>
+                </div>
+                @endfor
+                @endif
+                <!--// Single Banner -->
+            </div>
             <div class="tm-section tm-banners-area">
                 <div class="container">
                     <div class="row justify-content-center">

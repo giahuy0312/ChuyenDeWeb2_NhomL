@@ -12,9 +12,10 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
-
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\WishlistController;
+use App\Models\Wishlist;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/admin', function () {
     return view('admin.content.thongKe');
 });
@@ -38,11 +40,11 @@ Route::get('/listSearchUser', [UserController::class, 'searchUser'])->name('list
 
 
 //change language
-Route::get('/lang/{locale}',function($locale){
-    if(! in_array($locale,['en','vi'])){
+Route::get('/lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'vi'])) {
         abort(404);
     }
-    session()->put('locale',$locale);
+    session()->put('locale', $locale);
     return redirect()->back();
 });
 
@@ -65,23 +67,23 @@ Route::post('/regis', [AdminController::class, 'postRegis'])->name('postRegis');
 //signout
 Route::get('signOut', [AdminController::class, 'signOut'])->name('signout');
 Route::middleware('admin')->group(function () {
-//dasboard
-Route::get('showDasboard', [AdminController::class, 'showDasboard'])->name('showDasboard');
-//product
-Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
-Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
-Route::post('customproduct', [ProductController::class, 'customProduct'])->name('registerproduct.custom');
-Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name('getdataedt');
-Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
-Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
-Route::get('getProducts', [ProductController::class, 'index'])->name('getProducts');
-// Category
-Route::get('listcategory', [CategoryController::class, 'listCategory'])->name('listcategory');
-Route::get('addcategory', [CategoryController::class, 'addCategory'])->name('addcategory');
-Route::post('customcategory', [CategoryController::class, 'customCategory'])->name('customcategory.custom');
-Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
-Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
-Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
+    //dasboard
+    Route::get('showDasboard', [AdminController::class, 'showDasboard'])->name('showDasboard');
+    //product
+    Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
+    Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
+    Route::post('customproduct', [ProductController::class, 'customProduct'])->name('registerproduct.custom');
+    Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name('getdataedt');
+    Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
+    Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
+    Route::get('getProducts', [ProductController::class, 'index'])->name('getProducts');
+    // Category
+    Route::get('listcategory', [CategoryController::class, 'listCategory'])->name('listcategory');
+    Route::get('addcategory', [CategoryController::class, 'addCategory'])->name('addcategory');
+    Route::post('customcategory', [CategoryController::class, 'customCategory'])->name('customcategory.custom');
+    Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
+    Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
+    Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
 });
 
 route::group(['middleware' => 'guest'], function () {
@@ -99,13 +101,17 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // Order
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('order', OrderController::class);
+    Route::resource('wishlist', WishlistController::class);
 });
+// Checkout
+Route::post('/checkout/promotion={promotion}', [OrderController::class, 'checkout'])->name('order.checkout');
+
+// Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist');
+Route::get('/addwishlist/{user}/product/{product}', [WishlistController::class, 'addwishlist'])->name('addwishlist');
+Route::get('/addwishlist/product/{product}/{csrf?}', [WishlistController::class, 'destroy']);
 Route::get('/order/{order}/product/{product}', [OrderController::class, 'store'])->name('order.add');
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
-// Route::get('/order/{order}/product/{product}', [OrderController::class, 'store']);
 
-// Checkout
-Route::post('/checkout/promotion={promotion}' ,[OrderController::class, 'checkout'])->name('order.checkout');
 
 // Promotion
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
@@ -118,8 +124,8 @@ Route::resource('user', UserController::class);
 Route::get('user/{user}', [UserController::class, 'show'])->name('user.show');
 Route::get('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 //Hien thi san pham trang index
-Route::get('/index',[ProductController::class, 'getAllProducts'])->name('index');
-Route::get('/',[ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/index', [ProductController::class, 'getAllProducts'])->name('index');
+Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
 route::get('/logout', [UserController::class, 'logout'])->name('logout');
 //change pass
 Route::get('/changepass/{user}', [UserController::class, 'changePass'])->name('user.changePass');
@@ -142,10 +148,9 @@ Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost
 
 route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
 route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
-// shop(trang nhan cuoi)
+// shop (trang nhan cuoi)
 Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
 //shopproducta(trang nhan cau hon)
 Route::get('/shopproducts', [ShopController::class, 'getAllShop'])->name('shopproducts');
 //Search
 Route::get('/searchProduct', [ProductController::class, 'searchProduct'])->name('searchProduct');
-
