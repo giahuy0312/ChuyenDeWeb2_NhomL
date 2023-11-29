@@ -82,13 +82,13 @@
                                                 @endforeach
                                                 <tr>
                                                     <td>
-                                                        <a href="{{-- {{ route('products.show', $product->id) }} --}}#" class="tm-cart-productimage">
+                                                        <a href="{{ route('productDetails', $product->id) }}" class="tm-cart-productimage">
                                                             <img src="{{ asset('images/image-products') }}/{{ $product->image }}"
                                                                 alt="{{ $product->image }}">
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <a href="{{-- {{ route('products.show', $product->id) }} --}}#"
+                                                        <a href="{{ route('productDetails', $product->id) }}"
                                                             class="tm-cart-productname">{{ $product->name }}</a>
                                                     </td>
                                                     <td class="tm-cart-price">

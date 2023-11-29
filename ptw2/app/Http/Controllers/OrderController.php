@@ -149,22 +149,41 @@ class OrderController extends Controller
         if (!isset($_SESSION['user_id'])) {
             return redirect()->back();
         }
+        $promotion_id = null;
         if ($promotion != "null") {
             $promotion = Promotion::where('name', $promotion)->get();
+            $promotion_id = $promotion[0]->id;
         }
         $user = User::find($_SESSION['user_id']);
         $order = Order::find($_SESSION['order_id']);
         $orderDetails = DB::table('order_product')->where(['order_id' => $_SESSION['order_id']])->get();
+        if ($orderDetails == '[]') {
+            return redirect()->back()->with('error','Không có sản phẩm trong giỏ hàng');
+        }
         $total = 0;
         foreach ($orderDetails as $orderDetail) {
             $total += $orderDetail->sub_total;
         }
         // dd($order);
-        $order->update(['order_total' => $total]);
-        if ($orderDetails == '[]') {
-            return redirect()->back()->with('error','Không có sản phẩm trong giỏ hàng');
-        }
+        $order->update(['promotion_id' => $promotion_id, 'order_total' => $total]);
         $products = $order->Products()->get();
         return view('checkout', ['user' => $user , 'orderDetails' => $orderDetails , 'products' => $products , 'promotion' => $promotion]);
+    }
+
+    public function purchase()
+    {
+        $orders = Order::where(['user_id' => $_SESSION['user_id']])->get();
+        $user = User::find($_SESSION['user_id']);
+        return view('purchase', ['orders' => $orders, 'user' => $user]);
+    }
+
+    public function purchaseDetail($order_id)
+    {
+        $order = Order::find($order_id);
+        if ($order->user_id == $_SESSION['user_id']) {
+            $order_product = $order->products()->get();
+            return view('purchaseDetail', ['products' => $order_product, 'order_id' => $order_id]);
+        }
+        return redirect('home');
     }
 }
