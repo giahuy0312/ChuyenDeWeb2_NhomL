@@ -78,4 +78,5 @@
       </div>
     </div>
   </div>
+  {{ $vouchers->links() }}
   @endsection

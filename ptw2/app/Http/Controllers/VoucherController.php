@@ -34,7 +34,7 @@ class VoucherController extends Controller
         $voucher->expiration_date = $request->input('expiration_date');
         $voucher->save();
 
-        return redirect()->route('voucher.index');
+        return redirect()->route('listvoucher');
     }
 
    
@@ -58,7 +58,7 @@ class VoucherController extends Controller
         $voucher->expiration_date = $request->input('expiration_date');
         $voucher->save();
 
-        return redirect()->route('voucher.index');
+        return redirect()->route('listvoucher');
     }
 
     public function destroy($id)
@@ -66,7 +66,7 @@ class VoucherController extends Controller
         $product = Voucher::findOrFail($id);
         $product->delete();
     
-        return redirect()->route('voucher.index')->with('success', 'Product deleted successfully');
+        return redirect()->route('listvoucher')->with('success', 'Product deleted successfully');
     }
     public function searchDiscount(Request $request) {
         $keyword = $request->keyword;
@@ -77,5 +77,13 @@ class VoucherController extends Controller
         $keyword = $request->keyword;
         $vouchers = Voucher::where('expiration_date', 'LIKE', '%' . $keyword . '%')->paginate(4);
         return view('admin.content.listSearchVoucher', compact('vouchers'));
+    }
+    public function listVoucher()
+    {
+        $vouchers = Voucher::paginate(5);
+
+        return view('admin.content.listVoucher', [
+            'vouchers' => $vouchers,
+        ]);
     }
 }
