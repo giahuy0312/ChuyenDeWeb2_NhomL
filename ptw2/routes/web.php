@@ -126,7 +126,7 @@ Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 
 Route::get('promotion', [PromotionController::class, 'search'])->name('promotion.search');
 
 // Payment
-Route::get('payment', [OrderController::class, 'payment'])->name('order.payment');
+Route::get('payment', [UserController::class, 'payment'])->name('order.payment');
 
 //route User
 Route::resource('user', UserController::class);

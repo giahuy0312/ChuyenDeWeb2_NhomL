@@ -3,13 +3,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Order;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Hash as FacadesHash;
 
 use function Laravel\Prompts\alert;
 
@@ -318,5 +318,26 @@ class UserController extends Controller
         }
     }
     
-    
+    public function payment(Request $request) {
+        if (!isset($_SESSION['user_id'])) {
+            return redirect('login');
+        }
+        if ($request->checkout_read_terms == null) {
+            return redirect('order')->with('error','Có lỗi xãy ra vui lòng thanh toán lại!');
+        }
+        // dd($request);
+        // unset($_SESSION['order_id']);
+        $user = User::find($_SESSION['user_id']);
+     
+        $user->username = ($request-> username);
+        $user->name = ($request->name);
+        $user->phone = ($request->phone);
+        $user->address = ($request->address);
+        $user->save();
+
+        DB::table('orders')->where('id', $_SESSION['order_id'])->update(['order_date' => date("Y-m-d"), 'order_status' => 1]);
+        unset($_SESSION['order_id']);
+
+        return redirect('home');
+    }
 }
