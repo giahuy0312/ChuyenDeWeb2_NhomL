@@ -3,41 +3,42 @@
 
 @section('content')
 <div class="container">
-  <div class="row">
-      <div class="col-md-10">
-          <form action="{{ route('product.search.name') }}" method="GET">
-  <div CLASS="input-group">
-    @csrf
-    <input type="text" name= "keyword" CLASS="form-control bg-light border-2 small " placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-    <div CLASS="input-group-append">
-      <button CLASS="btn btn-primary" type="submit">
-        <i CLASS="fas fa-search fa-sm"></i>
-      </button>
+    <div class="row">
+        <div class="col-md-10">
+            <form action="{{ route('product.search.name') }}" method="GET">
+    <div CLASS="input-group">
+      @csrf
+      <input type="text" name= "keyword" CLASS="form-control bg-light border-2 small " placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+      <div CLASS="input-group-append">
+        <button CLASS="btn btn-primary" type="submit">
+          <i CLASS="fas fa-search fa-sm"></i>
+        </button>
+      </div>
     </div>
-  </div>
-  </form>
-      </div>
-      <div class="col-md-2">
-          <form action="{{ route('product.search.category') }}" method="GET">
-              <div CLASS="input-group">
-                @csrf
-                <select placeholder="" name="keyword" id="keyword" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  @foreach ($categories as $value)
-                      <option value="{{$value->id}}">{{$value->category_name}}</option>
-                  @endforeach
-              </select>
-                <div CLASS="input-group-append">
-                  <button CLASS="btn btn-primary" type="submit">
-                    <i CLASS="fas fa-search fa-sm"></i>
-                  </button>
+    </form>
+        </div>
+        <div class="col-md-2">
+            <form action="{{ route('product.search.category') }}" method="GET">
+                <div CLASS="input-group">
+                  @csrf
+                  <select placeholder="" name="keyword" id="keyword" class="form-control custom-select">
+                    <option selected disabled>Select one</option>
+                    @foreach ($categories as $value)
+                        <option value="{{$value->id}}">{{$value->category_name}}</option>
+                    @endforeach
+                </select>
+                  <div CLASS="input-group-append">
+                    <button CLASS="btn btn-primary" type="submit">
+                      <i CLASS="fas fa-search fa-sm"></i>
+                    </button>
+                  </div>
                 </div>
-              </div>
-              </form>
-      </div>
-  </div>
+                </form>
+        </div>
+    </div>
 </div>
-  </form>
+
+    
 <!-- DataTales Example -->
 <div class="card shadow mb-12">
   <div class="card-header py-3">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -15,16 +16,15 @@ use Illuminate\Validation\Rule;
 class ProductController extends Controller
 {
     public function registrationProduct()
-    {
+    { 
         $categories = DB::table('categories')->select('*')->get();
-        // $size = DB::table('sizes')->select('*')->get();
         return view('admin.content.addproduct', ['categories' => $categories]);
     }
 
     public function customProduct(Request $request)
     {
        $requied = [
-        'name' => ['required', 'regex:/^[\p{L}\s]+$/u', 'min:10', 'max:50'],
+        'name' => ['required', 'regex:"/^[0-9a-zA-Z\s]+$/"', 'min:10', 'max:50'],
         'description' => ['required', 'min:1', 'max:255'],
         'price' => ['required', 'numeric', 'min:1', 'max:9999999.99'],
         'size' => ['required', 'numeric', 'min:1', 'max:100'],
@@ -153,6 +153,18 @@ class ProductController extends Controller
         $orders = Order::all();
         return view('index', ['products' => $products, 'orders' => $orders]);
       
+    }
+    public function searchName(Request $request) {
+        $keyword = $request->keyword;
+        $categories = Category::all();
+        $products = Product::where('name', 'LIKE', '%' . $keyword . '%')->paginate(4);
+        return view('admin.content.listSearchProduct', ['products' => $products,'categories' => $categories]);
+    }
+    public function searchCategory(Request $request) {
+        $keyword = $request->keyword;
+        $categories = Category::all();
+        $products = Product::where('category_id', 'LIKE', '%' . $keyword . '%')->paginate(4);
+        return view('admin.content.listSearchProduct', ['products' => $products,'categories' => $categories]);
     }
     public function create()
     {

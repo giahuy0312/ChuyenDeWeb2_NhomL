@@ -5,6 +5,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
@@ -33,11 +35,21 @@ if (isset($_SESSION['user_id'])) {
 Route::get('/home', [ProductController::class, 'getAllProducts'])->name('index');
 Route::get('/', [ProductController::class, 'getAllProducts'])->name('index');
 
-Route::get('/admin', function () {
-    return view('admin.content.thongKe');
-});
+// Login, logout, registration
+Route::get('/admin', [AdminController::class, 'showFormLog'])->name('showFormLog');
+// Route::get('/admin', [AdminController::class, 'login'])->name('login');
+Route::post('/admin', [AdminController::class, 'postLogin'])->name('postLogin');
+Route::get('/regis', [AdminController::class, 'regis'])->name('regis');
+Route::post('/regis', [AdminController::class, 'postRegis'])->name('postRegis');
 
-// Product
+//signout
+Route::get('signOut', [AdminController::class, 'signOut'])->name('signout');
+
+//auth
+Route::middleware('admin')->group(function () {
+//dasboard
+Route::get('showDasboard', [AdminController::class, 'showDasboard'])->name('showDasboard');
+//product
 Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
 Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
 Route::post('customproduct', [ProductController::class, 'customProduct'])->name('registerproduct.custom');
@@ -45,6 +57,8 @@ Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name
 Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
 Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
 Route::get('getProducts', [ProductController::class, 'index'])->name('getProducts');
+Route::get('/product/search/name',[ProductController::class,'searchName'])->name('product.search.name');
+Route::get('/product/search/category',[ProductController::class,'searchCategory'])->name('product.search.category');
 // Category
 Route::get('listcategory', [CategoryController::class, 'listCategory'])->name('listcategory');
 Route::get('addcategory', [CategoryController::class, 'addCategory'])->name('addcategory');
@@ -52,6 +66,17 @@ Route::post('customcategory', [CategoryController::class, 'customCategory'])->na
 Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
 Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
+
+//Voucher
+Route::get('/vouchers', [VoucherController::class, 'index'])->name('voucher.index');
+Route::get('/vouchers/create', [VoucherController::class, 'create'])->name('voucher.create');
+Route::post('/vouchers', [VoucherController::class, 'store'])->name('voucher.store');
+Route::get('/vouchers/{voucher}/edit', [VoucherController::class, 'edit'])->name('voucher.edit');
+Route::put('/vouchers/{voucher}', [VoucherController::class, 'update'])->name('voucher.update');
+Route::get('deletevoucher/id{id}', [VoucherController::class, 'destroy'])->name('voucher.dele');
+Route::get('vouchers/search/discount',[VoucherController::class,'searchDiscount'])->name('voucher.search.discount');
+Route::get('vouchers/search/date',[VoucherController::class,'searchDate'])->name('voucher.search.date');
+});
 
 route::group(['middleware' => 'guest'], function () {
     //lấy dũ liệu từ login
