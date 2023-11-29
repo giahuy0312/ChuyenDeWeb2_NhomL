@@ -29,8 +29,8 @@
                         <div class="tm-product tm-scrollanim">
                             <div class="tm-product-topside">
                                 <div class="tm-product-images">
-                                    <img src="{{ asset('images/image-products') }}/{{$product->image}}" alt="product image">
-                                    <img src="{{ asset('images/image-products') }}/{{$product->image}}" alt="product image">
+                                    <img src="{{ asset('images/image-products0') }}/{{$product->image}}" alt="product image">
+                                    <img src="{{ asset('images/image-products0') }}/{{$product->image}}" alt="product image">
                                 </div>
                                 <ul class="tm-product-actions">
                                     <li><a href="#"><i class="ion-android-cart"></i>@lang('lang.addcart')</a></li>

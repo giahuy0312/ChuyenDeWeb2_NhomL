@@ -100,8 +100,6 @@ Route::get('/resetpasssword/{token}', [ForgetpasswordManager::class, 'resetPasss
 Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost'])
     ->name('reset.passsword.post');
 
-    // shop
-Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
 // shop(trang nhan cuoi)
 Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
 //shopproducta(trang nhan cau hon)
