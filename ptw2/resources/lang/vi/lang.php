@@ -89,4 +89,5 @@ return [
     'comfirmpass' => 'Nhập lại mật khẩu',
     'showPass' => 'Hiện mật khẩu',
     'submit' => 'Gửi',
+    'search' => 'Tìm kiếm sản phẩm'
 ];

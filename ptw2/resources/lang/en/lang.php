@@ -87,4 +87,5 @@ return [
     'comfirmpass' => 'Comfirm Password',
     'showPass' => 'Show Password',
     'submit' => 'Submit',
+    'search' => 'Search product'
 ];
