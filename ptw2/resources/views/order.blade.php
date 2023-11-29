@@ -130,7 +130,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="tm-buttongroup">
-                            <a href="#" class="tm-button">Continue Shopping</a>
+                            <a href="{{ url('home') }}" class="tm-button">Continue Shopping</a>
                             <button type="submit" form="update-cart" class="tm-button">Update Cart</button>
                         </div>
                         <form action="{{ route('promotion.search') }}" class="tm-cart-coupon">

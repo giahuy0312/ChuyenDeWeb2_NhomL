@@ -49,7 +49,7 @@ class OrderController extends Controller
             $order->order_total = $product_id->price;
             $order->save();
             $order->products()->attach([$product_id->id], ['quality' => 1, 'unit_price' => $product_id->price, 'sub_total' => $product_id->price]);
-            return redirect('/order');
+            return redirect('/home');
         }
         if ($order_id->user_id != $_SESSION['user_id']) {
             return redirect()->back()->with('error','Không tồn tại giỏ hàng');
@@ -65,7 +65,7 @@ class OrderController extends Controller
                     DB::table('order_product')->where([['product_id', $product],['order_id', $order]])->update(
                         ['quality' => $newquality],[ 'sub_total' => $product_id->price, 'updated_at' => now()]
                     );
-                    return redirect('/order');
+                    return redirect('/home');
                 }
             }
             DB::table('order_product')->insert(
@@ -76,7 +76,7 @@ class OrderController extends Controller
                 'sub_total' => $product_id->price, 
                 'created_at' => now()]
             );
-            return redirect('/order');
+            return redirect('/home');
         }
         return redirect('/home');
     }
@@ -144,7 +144,7 @@ class OrderController extends Controller
 
     public function checkout($promotion) {
         if (!isset($_SESSION['order_id'])) {
-            return redirect()->back();
+            return redirect()->back()->with('error','Không có sản phẩm trong giỏ hàng');
         }
         if (!isset($_SESSION['user_id'])) {
             return redirect()->back();
@@ -155,11 +155,16 @@ class OrderController extends Controller
         $user = User::find($_SESSION['user_id']);
         $order = Order::find($_SESSION['order_id']);
         $orderDetails = DB::table('order_product')->where(['order_id' => $_SESSION['order_id']])->get();
+        $total = 0;
+        foreach ($orderDetails as $orderDetail) {
+            $total += $orderDetail->sub_total;
+        }
+        // dd($order);
+        $order->update(['order_total' => $total]);
+        if ($orderDetails == '[]') {
+            return redirect()->back()->with('error','Không có sản phẩm trong giỏ hàng');
+        }
         $products = $order->Products()->get();
         return view('checkout', ['user' => $user , 'orderDetails' => $orderDetails , 'products' => $products , 'promotion' => $promotion]);
-    }
-
-    public function payment() {
-        unset($_SESSION['order_id']);
     }
 }

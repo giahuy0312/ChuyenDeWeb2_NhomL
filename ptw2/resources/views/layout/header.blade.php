@@ -26,11 +26,17 @@
                                         @endif
                                         @if (isset($_SESSION['user_id']))
                                             <li><a href="{{ url('user/' . $_SESSION['user_id']) }}">My Account</a></li>
-                                            @endif
-                                            <li> <a href="{{ route('logout') }}">
-                                                    Logout
-                                                </a></li>
+                                            <?php $order = DB::table('orders')
+                                                ->join('order_product', 'orders.id', '=', 'order_product.order_id')
+                                                ->where('order_status', 0)
+                                                ->where('user_id', $_SESSION['user_id'])
+                                                ->get(); ?>
+                                        @endif
+                                        <li> <a href="{{ route('logout') }}">
+                                                Logout
+                                            </a></li>
                                     @else
+                                        <?php $order = []; ?>
                                         <li><a href="{{ route('login') }}">Login</a></li>
                                         @if (Route::has('register'))
                                             <li><a href="{{ route('register') }}">Register</a></li>
@@ -91,7 +97,8 @@
                 <div class="col-lg-3 col-6 order-2 order-lg-3">
                     <ul class="tm-header-icons">
                         <li><a href="wishlist.html"><i class="ion-android-favorite-outline"></i><span>0</span></a></li>
-                        <li><a href="{{ url('order') }}"><i class="ion-bag"></i><span>0</span></a></li>
+                        <li><a href="{{ url('order') }}"><i class="ion-bag"></i><span>{{ count($order) }}</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
