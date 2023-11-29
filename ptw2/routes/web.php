@@ -164,3 +164,5 @@ Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop')
 Route::get('/shopproducts', [ShopController::class, 'getAllShop'])->name('shopproducts');
 //Search
 Route::get('/searchProduct', [ProductController::class, 'searchProduct'])->name('searchProduct');
+
+Route::get('/productDetails/{product}', [ProductController::class, 'productDetails'])->name('productDetails');

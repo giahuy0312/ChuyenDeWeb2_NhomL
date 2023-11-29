@@ -179,7 +179,11 @@ class ProductController extends Controller
         
 
     }
-
+   public function productDetails($product)
+   {
+    $product = Product::find($product);
+    return view('productDetails', ['product' => $product]);
+   }
     public function create()
     {
         //
