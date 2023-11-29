@@ -14,6 +14,8 @@ return [
     'dangnhap' => 'Login',
     'dangky' => 'Register',
     'giohang' => 'Cart',
+    'giohang1' => 'Shopping Cart',
+    'shop' => 'Shop',
     'dsyeuthich' => 'Wishlist',
     'thutucthanhtoan' =>'Checkout',
     'diachi' => 'Address',
@@ -87,7 +89,39 @@ return [
     'comfirmpass' => 'Comfirm Password',
     'showPass' => 'Show Password',
     'submit' => 'Submit',
+
+    //trans oder
+    'image' => 'Image',
+    'productname' => 'Product',
+    'price' => 'Price',
+    'remove' => 'Remove',
+    'quantity' => 'Quantity',
+    'total' => 'Total',
+    'conshop' => 'Continue Shopping',
+    'updcart' => 'Update Cart',
+    'havecoupon' => 'Have a coupon code?',
+    'entercoupon' => 'Enter coupon code',
+     'carttotal' => 'Cart Totals',
+    'cartsubtotal' => 'Cart Subtotal',
+    'promot' => 'Promotion',
+    'proccheck' => 'Proceed To Checkout',
+    
+    //trans contact
+    'contactus' => 'Contact Us',
+    'about' => 'About',
+    'callus' => 'Call Us',
+    'ourlocat' => 'Our Location',
+    'sendusmess' => 'SEND US A MESSAGE',
+    'sendusmess1' => 'You can contact us for any of your requirements. We’ll help you meet your needs.',
+    'subject' => 'Subject',
+    'mess' => 'Message',
+    'sendmess' => 'Send Message',
+    'phone' => 'Phone',
+    'ipname' => 'Your name here',
+    'ipphone' => 'Your phone number here',
+    'ipsubject' => 'Your subject',
     //bo sung
     'search' => 'Search product',
     'contact' => 'Contact',
+
 ];

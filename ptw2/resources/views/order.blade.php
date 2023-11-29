@@ -6,11 +6,11 @@
 <div class="tm-breadcrumb-area tm-padding-section bg-grey" data-bgimage="{{ asset('images') }}/breadcrumb-bg.jpg">
     <div class="container">
         <div class="tm-breadcrumb">
-            <h2>Shopping Cart</h2>
+            <h2>@lang('lang.giohang1')</h2>
             <ul>
-                <li><a href="{{ url('home') }}">Home</a></li>
-                <li><a href="products.html">Shop</a></li>
-                <li>Shopping Cart</li>
+                <li><a href="{{ url('home') }}">@lang('lang.trangchu')</a></li>
+                <li><a href="products.html">@lang('lang.shop')</a></li>
+                <li>@lang('lang.giohang1')</li>
             </ul>
         </div>
     </div>
@@ -45,12 +45,12 @@
                     @endif
                     <thead>
                         <tr>
-                            <th class="tm-cart-col-image" scope="col">Image</th>
-                            <th class="tm-cart-col-productname" scope="col">Product</th>
-                            <th class="tm-cart-col-price" scope="col">Price</th>
-                            <th class="tm-cart-col-quantity" scope="col">Quantity</th>
-                            <th class="tm-cart-col-total" scope="col">Total</th>
-                            <th class="tm-cart-col-remove" scope="col">Remove</th>
+                            <th class="tm-cart-col-image" scope="col">@lang('lang.image')</th>
+                            <th class="tm-cart-col-productname" scope="col">@lang('lang.productname')</th>
+                            <th class="tm-cart-col-price" scope="col">@lang('lang.price')</th>
+                            <th class="tm-cart-col-quantity" scope="col">@lang('lang.quantity')</th>
+                            <th class="tm-cart-col-total" scope="col">@lang('lang.total')</th>
+                            <th class="tm-cart-col-remove" scope="col">@lang('lang.remove')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -130,28 +130,28 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="tm-buttongroup">
-                            <a href="#" class="tm-button">Continue Shopping</a>
-                            <button type="submit" form="update-cart" class="tm-button">Update Cart</button>
+                            <a href="#" class="tm-button">@lang('lang.conshop')</a>
+                            <button type="submit" form="update-cart" class="tm-button">@lang('lang.updcart')</button>
                         </div>
                         <form action="{{ route('promotion.search') }}" class="tm-cart-coupon">
-                            <label for="coupon-field">Have a coupon code?</label>
-                            <input type="text" id="coupon-field" placeholder="Enter coupon code" required="required"
+                            <label for="coupon-field">@lang('lang.havecoupon')</label>
+                            <input type="text" id="coupon-field" placeholder="@lang('lang.entercoupon')" required="required"
                                 maxlength="6" name="promotion" id="promotion">
-                            <button type="submit" class="tm-button">Submit</button>
+                            <button type="submit" class="tm-button">@lang('lang.gui')</button>
                         </form>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="tm-cart-pricebox">
-                            <h2>Cart Totals</h2>
+                            <h2>@lang('lang.carttotal')</h2>
                             <div class="table-responsive">
                                 <table class="table table-borderless">
                                     <tbody>
                                         <tr class="tm-cart-pricebox-subtotal">
-                                            <td>Cart Subtotal</td>
+                                            <td>@lang('lang.cartsubtotal')</td>
                                             <td>{{ number_format($total, 2, ',', '.') }} ₫</td>
                                         </tr>
                                         <tr class="tm-cart-pricebox-shipping">
-                                            <td>(-) Promotion</td>
+                                            <td>(-) @lang('lang.promot')</td>
                                             @if ($promotion != null)
                                                 <?php $promotion_name = $promotion[0]->name; ?>
                                                 <td>{{ number_format($promotion[0]->amount, 2, ',', '.') }} ₫</td>
@@ -160,7 +160,7 @@
                                             @endif
                                         </tr>
                                         <tr class="tm-cart-pricebox-total">
-                                            <td>Total</td>
+                                            <td>@lang('lang.total')</td>
                                             <td>{{ number_format($total - $promotion_amount, 2, ',', '.') }} ₫</td>
                                         </tr>
                                     </tbody>
@@ -170,7 +170,7 @@
                                 id="promotion">
                                 @csrf
                             </form>
-                            <button class="tm-button" form="promotion">Proceed To Checkout</button>
+                            <button class="tm-button" form="promotion">@lang('lang.proccheck')</button>
                         </div>
                     </div>
                 </div>
