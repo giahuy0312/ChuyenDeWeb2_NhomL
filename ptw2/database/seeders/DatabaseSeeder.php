@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-       
+
         DB::table('products')->insert([
             'name' => "sanpham1",
             'image' => "product-image-1.jpg",
@@ -193,6 +193,13 @@ class DatabaseSeeder extends Seeder
             'username' => '1234567890',
             'name' => '1234567890',
             'email' => '1234567890@gmail.com',
+        ]);
+        DB::table('users')->insert([
+            'password' => Bcrypt('admin@H'),
+            'username' => 'admin',
+            'name' => 'admin',
+            'admin' => 1,
+            'email' => 'admin@gmail.com',
         ]);
     }
 }

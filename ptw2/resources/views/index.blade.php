@@ -147,14 +147,19 @@
                     <div class="tm-product tm-scrollanim">
                         <div class="tm-product-topside">
                             <div class="tm-product-images">
-                                <img src="{{ asset('images/image-products') }}/{{ $product->image }}" alt="product image">
+                                <img src="{{ asset('images/image-products') }}/{{ $product->image }}"
+                                    alt="product image">
                             </div>
                             <ul class="tm-product-actions">
-                                <li><a href="{{ route('order.add', [$_SESSION['order_id'], $product->id]) }}"><i class="ion-android-cart"></i> @lang('lang.addcart')</a>
+                                <li><a href="{{ route('order.add', [$_SESSION['order_id'], $product->id]) }}"><i
+                                            class="ion-android-cart"></i> @lang('lang.addcart')</a>
                                 </li>
-                                <li><button data-fancybox data-src="#tm-product-quickview"><i class="ion-eye"></i></button></li>
+                                <li><button data-fancybox data-src="#tm-product-quickview"><i
+                                            class="ion-eye"></i></button></li>
                                 @if(isset($_SESSION['user_id']))
-                                <li><button><a href="{{ route('addwishlist', [$_SESSION['user_id'], $product->id]) }}"><i class="ion-heart"></i></a></button>
+                                <li><button><a
+                                            href="{{ route('addwishlist', [$_SESSION['user_id'], $product->id]) }}"><i
+                                                class="ion-heart"></i></a></button>
                                 </li>
                                 @else
                                 <li><button><a href="{{ route('login') }}"><i class="ion-heart"></i></a></button>
@@ -174,7 +179,8 @@
                                 <ul class="tm-product-actions">
                                     <li><a href="#"><i class="ion-android-cart"></i> @lang('lang.addcart')</a>
                                     </li>
-                                    <li><button data-fancybox data-src="#tm-product-quickview"><i class="ion-eye"></i></button></li>
+                                    <li><button data-fancybox data-src="#tm-product-quickview"><i
+                                                class="ion-eye"></i></button></li>
                                 </ul>
                             </div>
                         </div>
@@ -237,7 +243,8 @@
                     @for ($i = 0; $i < 3; $i++) <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt-30">
                         <a href="#" class="tm-banner tm-scrollanim">
                             @if (isset($products))
-                            <img src="{{ asset('images/image-products') }}/{{ $products[$i]->image }}" alt="banner image">
+                            <img src="{{ asset('images/image-products') }}/{{ $products[$i]->image }}"
+                                alt="banner image">
                             @endif
                         </a>
                 </div>
@@ -269,13 +276,16 @@
                     <div class="tm-product tm-scrollanim">
                         <div class="tm-product-topside">
                             <div class="tm-product-images">
-                                <img src="{{ asset('images/image-products') }}/{{ $product->image }}" alt="product image">
-                                <img src="{{ asset('images/image-products') }}/{{ $product->image }}" alt="product image">
+                                <img src="{{ asset('images/image-products') }}/{{ $product->image }}"
+                                    alt="product image">
+                                <img src="{{ asset('images/image-products') }}/{{ $product->image }}"
+                                    alt="product image">
                             </div>
                             <ul class="tm-product-actions">
                                 <li><a href="#"><i class="ion-android-cart"></i> @lang('lang.addcart')</a>
                                 </li>
-                                <li><button data-fancybox data-src="#tm-product-quickview"><i class="ion-eye"></i></button></li>
+                                <li><button data-fancybox data-src="#tm-product-quickview"><i
+                                            class="ion-eye"></i></button></li>
                                 <li><a href="#"><i class="ion-heart"></i></a></li>
                             </ul>
                             <div class="tm-product-badges">
@@ -297,7 +307,8 @@
                                 <ul class="tm-product-actions">
                                     <li><a href="#"><i class="ion-android-cart"></i>@lang('lang.addcart')</a>
                                     </li>
-                                    <li><button data-fancybox data-src="#tm-product-quickview"><i class="ion-eye"></i></button></li>
+                                    <li><button data-fancybox data-src="#tm-product-quickview"><i
+                                                class="ion-eye"></i></button></li>
                                     <li><a href="#"><i class="ion-heart"></i></a></li>
                                 </ul>
                             </div>
@@ -408,42 +419,54 @@
                                 <div class="tm-prodetails-images">
                                     <div class="tm-prodetails-largeimages">
                                         <div class="tm-prodetails-largeimage">
-                                            <img src="{{ asset('images/products') }}/product-image-1.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-1.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-largeimage">
-                                            <img src="{{ asset('images/products') }}/product-image-2.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-2.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-largeimage">
-                                            <img src="{{ asset('images/products') }}/product-image-3.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-3.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-largeimage">
-                                            <img src="{{ asset('images/products') }}/product-image-4.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-4.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-largeimage">
-                                            <img src="{{ asset('images/products') }}/product-image-6.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-6.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-largeimage">
-                                            <img src="{{ asset('images/products') }}/product-image-6.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-6.jpg"
+                                                alt="product image">
                                         </div>
                                     </div>
                                     <div class="tm-prodetails-thumbnails">
                                         <div class="tm-prodetails-thumbnail">
-                                            <img src="{{ asset('images/products') }}/product-image-1-thumb.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-1-thumb.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-thumbnail">
-                                            <img src="{{ asset('images/products') }}/product-image-2-thumb.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-2-thumb.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-thumbnail">
-                                            <img src="{{ asset('images/products') }}/product-image-3-thumb.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-3-thumb.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-thumbnail">
-                                            <img src="{{ asset('images/products') }}/product-image-4-thumb.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-4-thumb.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-thumbnail">
-                                            <img src="{{ asset('images/products') }}/product-image-5-thumb.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-5-thumb.jpg"
+                                                alt="product image">
                                         </div>
                                         <div class="tm-prodetails-thumbnail">
-                                            <img src="{{ asset('images/products') }}/product-image-6-thumb.jpg" alt="product image">
+                                            <img src="{{ asset('images/products') }}/product-image-6-thumb.jpg"
+                                                alt="product image">
                                         </div>
                                     </div>
                                 </div>
@@ -465,7 +488,8 @@
                                             <b> @lang('lang.prodetails-id') </b>010
                                         </div>
                                         <div class="tm-prodetails-singleinfo">
-                                            <b>@lang('lang.prodetails-cate') </b><a href="#">@lang('lang.prodetails-cate-name')</a>
+                                            <b>@lang('lang.prodetails-cate') </b><a
+                                                href="#">@lang('lang.prodetails-cate-name')</a>
                                         </div>
                                         <div class="tm-prodetails-singleinfo tm-prodetails-tags">
                                             <b> @lang('lang.prodetails-tags') : </b>

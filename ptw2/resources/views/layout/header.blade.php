@@ -40,7 +40,7 @@
                                 @endauth
                                 @endif
                                 <li><a href="{{ url('order') }}"> @lang('lang.giohang')</a></li>
-                                <li><a href="wishlist.html"> @lang('lang.dsyeuthich')</a></li>
+                                <li><a href="{{ url('wishlist   ') }}"> @lang('lang.dsyeuthich')</a></li>
                                 <li><a href="{{ url('checkout') }}"> @lang('lang.thutucthanhtoan')</a></li>
                             </ul>
                         </div>
@@ -57,25 +57,23 @@
                         <div class="tm-dropdown tm-header-language">
                             <button id="languageButton"><img src="{{ asset('images/flag-english.png') }}" alt="language">English</button>
                             <ul>
-                                <li><a href="{{url('lang/en')}}"><img src="{{ asset('images/flag-english.png') }}"
-                                            alt="language" id="language">English</a></li>
-                                <li><a href="{{url('lang/vi')}}"><img src="{{ asset('images/flag-vietnam.png') }}"
-                                            alt="language" width=16px; id="language">Tiếng Việt</a></li>
+                                <li><a href="{{url('lang/en')}}"><img src="{{ asset('images/flag-english.png') }}" alt="language" id="language">English</a></li>
+                                <li><a href="{{url('lang/vi')}}"><img src="{{ asset('images/flag-vietnam.png') }}" alt="language" width=16px; id="language">Tiếng Việt</a></li>
                             </ul>
                         </div>
 
                         <script>
-                        const languageButton = document.getElementById('languageButton');
-                        const languageLinks = document.querySelectorAll('.tm-header-language ul li a');
+                            const languageButton = document.getElementById('languageButton');
+                            const languageLinks = document.querySelectorAll('.tm-header-language ul li a');
 
-                        languageLinks.forEach(link => {
-                            link.addEventListener('click', () => {
+                            languageLinks.forEach(link => {
+                                link.addEventListener('click', () => {
 
-                                const selectedLanguage = link.innerText;
+                                    const selectedLanguage = link.innerText;
 
-                                languageButton.innerHTML = link.innerHTML;
+                                    languageButton.innerHTML = link.innerHTML;
+                                });
                             });
-                        });
                         </script>
                     </div>
                 </div>
@@ -107,8 +105,7 @@
                 <div class="col-lg-3 col-6 order-2 order-lg-3">
                     <ul class="tm-header-icons">
 
-                        <li><a href="{{url('wishlist')}}"><i
-                                    class="ion-android-favorite-outline"></i><span>{{count($wishlist)}}</span></a>
+                        <li><a href="{{url('wishlist')}}"><i class="ion-android-favorite-outline"></i><span>{{count($wishlist)}}</span></a>
                         </li>
 
 
