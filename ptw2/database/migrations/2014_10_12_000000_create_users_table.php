@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('DOB')->nullable();
             $table->string('gender')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('admin')->default(false)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

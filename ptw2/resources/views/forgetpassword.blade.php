@@ -42,8 +42,7 @@
                         @csrf
                         <div class="tm-form-field">
                             <label for="login-password">Email</label>
-                            <input type="email" name="email" placeholder="Enter Your Email" required="required"
-                                value="{{old('email')}}">
+                            <input type="email" name="email" placeholder="Enter Your Email" required="required" value="{{old('email')}}">
                             @error('email')
                             <p style="color: red;">{{$message}}</p>
                             @enderror
@@ -77,13 +76,13 @@
 
 
 <script>
-$(document).ready(function(c) {
-    $('.alert-close').on('click', function(c) {
-        $('.main-mockup').fadeOut('slow', function(c) {
-            $('.main-mockup').remove();
+    $(document).ready(function(c) {
+        $('.alert-close').on('click', function(c) {
+            $('.main-mockup').fadeOut('slow', function(c) {
+                $('.main-mockup').remove();
+            });
         });
     });
-});
 </script>
 
 </body>

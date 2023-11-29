@@ -39,7 +39,7 @@
                                 @endif
                                 <li><a href="{{ url('order') }}"> @lang('lang.giohang')</a></li>
                                 <li><a href="wishlist.html"> @lang('lang.dsyeuthich')</a></li>
-                                <li><a href="checkout.html">    @lang('lang.thutucthanhtoan')</a></li>
+                                <li><a href="{{ url('checkout') }}">    @lang('lang.thutucthanhtoan')</a></li>
                             </ul>
                         </div>
 
@@ -121,6 +121,7 @@
                     <li><a href="{{ url('/home') }}">@lang('lang.trangchu')</a></li>
                     <li><a href="{{url('/shop') }}">@lang('lang.nhancuoi')</a></li>
                     <li><a href="{{url('/shopproducts')}}">@lang('lang.nhancauhon')</a></li>
+                    <li><a href="{{url('/contact')}}">@lang('lang.contact')</a></li>
                 </ul>
             </nav>
         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +22,24 @@ class UserController extends Controller
     {
 
     }
-
+    public function listUser(){
+        $users = DB::table('users')->paginate(5);
+        return view('admin.content.listUser', ['users' => $users]);
+    }
+    public function searchUser(Request $request) {
+        $search = $request->search;
+                $users = User::where('name', 'like', '%' . htmlspecialchars($search) . '%')
+                    ->orWhere('email', 'like', '%' . htmlspecialchars($search) . '%')
+                    ->paginate(5);
+    
+        return view('admin.content.listSearchUser', ['users' => $users]);
+    }
+    
+    // delete userAd
+    public function deleteUserAD($id){
+        $deleteData = DB::table('users')->where('id', '=', $id)->delete();
+        return redirect('listUser');
+    }
     /**
      * Show the form for creating a new resource.
      */

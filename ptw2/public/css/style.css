@@ -52,7 +52,7 @@
     32. Shopping Cart
     33. Checkout
     34. My Account
-
+  
 =>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>
     END TABLE OF CONTENTS
 =>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>
@@ -7142,6 +7142,7 @@ button.tm-videobutton img {
   border-radius: 3px;
   margin-top: 5px;
 }
+
 
 @media only screen and (max-width: 575px) {
   .tm-myaccount-dashboard, .tm-myaccount-address {
