@@ -112,6 +112,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('order', OrderController::class);
     Route::resource('wishlist', WishlistController::class);
+    Route::get('purchase', [OrderController::class, 'purchase']);
 });
 // Checkout
 Route::post('/checkout/promotion={promotion}', [OrderController::class, 'checkout'])->name('order.checkout');
@@ -121,6 +122,7 @@ Route::get('/addwishlist/{user}/product/{product}', [WishlistController::class, 
 Route::get('/addwishlist/product/{product}/{csrf?}', [WishlistController::class, 'destroy']);
 Route::get('/order/{order}/product/{product}', [OrderController::class, 'store'])->name('order.add');
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
+Route::get('/purchase/{order}', [OrderController::class, 'purchaseDetail'])->name('purchase.detail');
 
 
 // Promotion

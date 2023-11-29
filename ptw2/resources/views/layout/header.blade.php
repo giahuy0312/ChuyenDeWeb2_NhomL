@@ -50,7 +50,7 @@
                                 @endif
                                 <li><a href="{{ url('order') }}"> @lang('lang.giohang')</a></li>
                                 <li><a href="{{ url('wishlist   ') }}"> @lang('lang.dsyeuthich')</a></li>
-                                <li><a href="{{ url('checkout') }}"> @lang('lang.thutucthanhtoan')</a></li>
+                                <li><a href="{{ url('purchase') }}">Purchase history</a></li>
                             </ul>
                         </div>
 
