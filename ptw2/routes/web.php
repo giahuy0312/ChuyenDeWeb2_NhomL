@@ -65,7 +65,7 @@ Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name
 Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
 
 //Voucher
-Route::get('/vouchers', [VoucherController::class, 'index'])->name('voucher.index');
+Route::get('/vouchers', [VoucherController::class, 'listVoucher'])->name('listvoucher');
 Route::get('/vouchers/create', [VoucherController::class, 'create'])->name('voucher.create');
 Route::post('/vouchers', [VoucherController::class, 'store'])->name('voucher.store');
 Route::get('/vouchers/{voucher}/edit', [VoucherController::class, 'edit'])->name('voucher.edit');
