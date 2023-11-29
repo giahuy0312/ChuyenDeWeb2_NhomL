@@ -153,9 +153,16 @@
                                                 alt="product image">
                                         </div>
                                         <ul class="tm-product-actions">
+                                            @if (isset($_SESSION['user_id']))
                                             <li><a href="{{ route('order.add', [$_SESSION['order_id'], $product->id]) }}"><i
-                                                        class="ion-android-cart"></i> @lang('lang.addcart')</a>
-                                            </li>
+                                                class="ion-android-cart"></i> @lang('lang.addcart')</a>
+                                    </li>
+                                            @else
+                                            <li><a href="{{ route('login') }}"><i
+                                                class="ion-android-cart"></i> @lang('lang.addcart')</a>
+                                    </li>
+                                            @endif
+                                           
                                             <li><button data-fancybox data-src="#tm-product-quickview"><i
                                                         class="ion-eye"></i></button></li>
                                             @if (isset($_SESSION['user_id']))
