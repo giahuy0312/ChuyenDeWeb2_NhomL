@@ -15,8 +15,6 @@
 @endif
 
 @section('content')
-    <!-- Wrapper -->
-    <div id="wrapper" class="wrapper">
 
         @include('layout.header')
 
