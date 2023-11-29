@@ -90,37 +90,6 @@ return [
     'showPass' => 'Hiện mật khẩu',
     'submit' => 'Gửi',
 
-    //trans oder
-    'image' => 'Ảnh',
-    'productname' => 'Sản phẩm',
-    'price' => 'Giá',
-    'remove' => 'Xóa',
-    'quantity' => 'Số lượng',
-    'total' => 'Tổng',
-    'conshop' => 'Tiếp tục mua sắm',
-    'updcart' => 'Cập nhật giỏ hàng',
-    'havecoupon' => 'Bạn có mã giảm giá chứ?',
-    'entercoupon' => 'Nhập mã giảm giá',
-    'carttotal' => 'Tổng giỏ hàng',
-    'cartsubtotal' => 'Tổng phụ giỏ hàng',
-    'promot' => 'Khuyến mãi',
-    'proccheck' => 'Tiến hành kiểm tra',
-
-     //trans contact
-     'contactus' => 'Liên hệ chúng tôi',
-     'about' => 'Về chúng tôi',
-     'callus' => 'Gọi cho chúng tôi',
-     'ourlocat' => 'Địa điểm của chúng tôi',
-     'sendusmess' => 'GỬI TIN NHẮN CHO CHÚNG TÔI',
-     'sendusmess1' => 'Bạn có thể liên hệ với chúng tôi cho bất kỳ yêu cầu của bạn. Chúng tôi sẽ giúp bạn đáp ứng nhu cầu của bạn.',
-     'subject' => 'Vấn đề',
-     'mess' => ' Tin nhắn',
-     'sendmess' => 'Gửi tin nhắn',
-     'phone' => 'Số điện thoại',
-     'ipname' => 'Nhập tên của bạn ở đây',
-     'ipphone' => 'Nhập số điện thoại của bạn ở đây',
-     'ipsubject' => 'Nhập vấn đề của bạn ở đây',
-
     //bo sung
     'search' => 'Tìm kiếm sản phẩm',
     'contact' => 'Liên hệ',
