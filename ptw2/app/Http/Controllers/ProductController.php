@@ -176,7 +176,6 @@ class ProductController extends Controller
         
         $products = Product::where('name','LIKE', '%' . $keyword . '%')->paginate(8);
         return view('searchProduct', ['products' => $products]);
-        
 
     }
    public function productDetails($product)

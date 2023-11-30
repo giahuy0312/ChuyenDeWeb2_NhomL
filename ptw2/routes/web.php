@@ -15,7 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\WishlistController;
-
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -115,6 +115,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('order', OrderController::class);
     Route::resource('wishlist', WishlistController::class);
     Route::get('purchase', [OrderController::class, 'purchase']);
+    Route::post('comments', [CommentController::class,'store'])->name('addcomments');
 });
 // Checkout
 Route::post('/checkout/promotion={promotion}', [OrderController::class, 'checkout'])->name('order.checkout');
@@ -170,3 +171,8 @@ Route::get('/shopproducts', [ShopController::class, 'getAllShop'])->name('shoppr
 Route::get('/searchProduct', [ProductController::class, 'searchProduct'])->name('searchProduct');
 
 Route::get('/productDetails/{product}', [ProductController::class, 'productDetails'])->name('productDetails');
+
+// //Comments
+// Route::get('comments', CommentController::class,'index')->name('comment');
+//  Route::get('comments', CommentController::class,'store')->name('comments');
+// Route::resource('comments', CommentController::class);
