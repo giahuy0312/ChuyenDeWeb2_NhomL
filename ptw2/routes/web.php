@@ -15,6 +15,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\CommentController;
+use App\Models\Contact;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,42 +62,54 @@ Route::get('signOut', [AdminController::class, 'signOut'])->name('signout');
 
 //auth
 Route::middleware('admin')->group(function () {
-    
-//listUser
-Route::get('/listUser', [UserController::class, 'listUser'])->name('listUser');
-Route::get('/deleteUserAD/{id}', [UserController::class, 'deleteUserAD'])->name('deleteUserAD');
-//search User
-Route::get('/listSearchUser', [UserController::class, 'searchUser'])->name('listSearchUser');
 
-//dasboard
-Route::get('showDasboard', [AdminController::class, 'showDasboard'])->name('showDasboard');
-//product
-Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
-Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
-Route::post('customproduct', [ProductController::class, 'customProduct'])->name('registerproduct.custom');
-Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name('getdataedt');
-Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
-Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
-Route::get('getProducts', [ProductController::class, 'index'])->name('getProducts');
-Route::get('/product/search/name',[ProductController::class,'searchName'])->name('product.search.name');
-Route::get('/product/search/category',[ProductController::class,'searchCategory'])->name('product.search.category');
-// Category
-Route::get('listcategory', [CategoryController::class, 'listCategory'])->name('listcategory');
-Route::get('addcategory', [CategoryController::class, 'addCategory'])->name('addcategory');
-Route::post('customcategory', [CategoryController::class, 'customCategory'])->name('customcategory.custom');
-Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
-Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
-Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
+    //listUser
+    Route::get('/listUser', [UserController::class, 'listUser'])->name('listUser');
+    Route::get('/deleteUserAD/{id}', [UserController::class, 'deleteUserAD'])->name('deleteUserAD');
+    //listcontact
+    route::get('/listcontact', [ContactController::class, 'listcontact'])->name('listcontact');
+    route::get('/contact/{id}', [ContactController::class, 'detroy'])->name('contact.detroy');
+    route::get('/send/{id}', [ContactController::class, 'gui'])->name('contact.send');
+    //search
+    Route::get('/searchlistcontact', [ContactController::class, 'searchContact'])->name('searchContact');
+    Route::get('/listcontactsortaz', [ContactController::class, 'sapxepA_Z'])->name('contact.sapxepaz');
+    Route::get('/listcontactsortza', [ContactController::class, 'sapxepZ_A'])->name('contact.sapxepza');
+    Route::get('/listcontactsortidaz', [ContactController::class, 'sapxepIDA_Z'])->name('contact.sapxepidaz');
+    Route::get('/listcontactsortidza', [ContactController::class, 'sapxepIDZ_A'])->name('contact.sapxepidza');
 
-//Voucher
-Route::get('/vouchers', [VoucherController::class, 'listVoucher'])->name('listvoucher');
-Route::get('/vouchers/create', [VoucherController::class, 'create'])->name('voucher.create');
-Route::post('/vouchers', [VoucherController::class, 'store'])->name('voucher.store');
-Route::get('/vouchers/{voucher}/edit', [VoucherController::class, 'edit'])->name('voucher.edit');
-Route::put('/vouchers/{voucher}', [VoucherController::class, 'update'])->name('voucher.update');
-Route::get('deletevoucher/id{id}', [VoucherController::class, 'destroy'])->name('voucher.dele');
-Route::get('vouchers/search/discount',[VoucherController::class,'searchDiscount'])->name('voucher.search.discount');
-Route::get('vouchers/search/date',[VoucherController::class,'searchDate'])->name('voucher.search.date');
+
+    //search User
+    Route::get('/listSearchUser', [UserController::class, 'searchUser'])->name('listSearchUser');
+
+    //dasboard
+    Route::get('showDasboard', [AdminController::class, 'showDasboard'])->name('showDasboard');
+    //product
+    Route::get('listproduct', [ProductController::class, 'listProduct'])->name('listproduct');
+    Route::get('addproduct', [ProductController::class, 'registrationProduct'])->name('addproduct');
+    Route::post('customproduct', [ProductController::class, 'customProduct'])->name('registerproduct.custom');
+    Route::get('getdataedt/id{id}', [ProductController::class, 'getDataEdit'])->name('getdataedt');
+    Route::post('editproduct', [ProductController::class, 'updateProduct'])->name('editproduct');
+    Route::get('deleteproduct/id{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
+    Route::get('getProducts', [ProductController::class, 'index'])->name('getProducts');
+    Route::get('/product/search/name', [ProductController::class, 'searchName'])->name('product.search.name');
+    Route::get('/product/search/category', [ProductController::class, 'searchCategory'])->name('product.search.category');
+    // Category
+    Route::get('listcategory', [CategoryController::class, 'listCategory'])->name('listcategory');
+    Route::get('addcategory', [CategoryController::class, 'addCategory'])->name('addcategory');
+    Route::post('customcategory', [CategoryController::class, 'customCategory'])->name('customcategory.custom');
+    Route::get('getdataedtcategory/id{id}', [CategoryController::class, 'getDataEditCategory'])->name('getdataedtcategory');
+    Route::post('editcategory', [CategoryController::class, 'updateCategory'])->name('editcategory');
+    Route::get('deletecategory/id{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
+
+    //Voucher
+    Route::get('/vouchers', [VoucherController::class, 'listVoucher'])->name('listvoucher');
+    Route::get('/vouchers/create', [VoucherController::class, 'create'])->name('voucher.create');
+    Route::post('/vouchers', [VoucherController::class, 'store'])->name('voucher.store');
+    Route::get('/vouchers/{voucher}/edit', [VoucherController::class, 'edit'])->name('voucher.edit');
+    Route::put('/vouchers/{voucher}', [VoucherController::class, 'update'])->name('voucher.update');
+    Route::get('deletevoucher/id{id}', [VoucherController::class, 'destroy'])->name('voucher.dele');
+    Route::get('vouchers/search/discount', [VoucherController::class, 'searchDiscount'])->name('voucher.search.discount');
+    Route::get('vouchers/search/date', [VoucherController::class, 'searchDate'])->name('voucher.search.date');
 });
 
 route::group(['middleware' => 'guest'], function () {
@@ -115,6 +129,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('order', OrderController::class);
     Route::resource('wishlist', WishlistController::class);
     Route::get('purchase', [OrderController::class, 'purchase']);
+    Route::post('comments', [CommentController::class, 'store'])->name('addcomments');
 });
 // Checkout
 Route::post('/checkout/promotion={promotion}', [OrderController::class, 'checkout'])->name('order.checkout');
@@ -158,10 +173,10 @@ Route::post('/resetpassword', [ForgetpasswordManager::class, 'resetPassswordPost
     ->name('reset.passsword.post');
 
 
-//contact
-
+//Contact
 route::get('/contact', [ContactController::class, 'show'])->name('contact.show');
-route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+//route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+route::post('/contact', [ContactController::class, 'test'])->name('contact.send');
 // shop (trang nhan cuoi)
 Route::get('/shop', [ShopController::class, 'getAllShopProducts'])->name('shop');
 //shopproducta(trang nhan cau hon)
@@ -170,3 +185,8 @@ Route::get('/shopproducts', [ShopController::class, 'getAllShop'])->name('shoppr
 Route::get('/searchProduct', [ProductController::class, 'searchProduct'])->name('searchProduct');
 
 Route::get('/productDetails/{product}', [ProductController::class, 'productDetails'])->name('productDetails');
+
+
+Route::get('export-csv', [ContactController::class, 'export_csv']);
+Route::post('/export-csv', [ContactController::class, 'export_csv']);
+Route::post('/import-csv', [ContactController::class, 'import_csv']);

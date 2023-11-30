@@ -3,7 +3,7 @@
     Name: {{$data['name']}}
 </p>
 <p>
-    Email: {{$data['email']}}
+    Địa chỉ email: {{$data['email']}}
 </p>
 <p>
     Phone: {{$data['phone']}}

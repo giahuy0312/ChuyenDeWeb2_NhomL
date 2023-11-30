@@ -15,8 +15,8 @@
         <div class="tm-breadcrumb">
             <h2>@lang('lang.contactus')</h2>
             <ul>
-                    <li><a href="index.html">@lang('lang.trangchu')</a></li>
-                    <li>@lang('lang.about')</li>
+                <li><a href="index.html">@lang('lang.trangchu')</a></li>
+                <li>@lang('lang.about')</li>
             </ul>
         </div>
     </div>
@@ -83,14 +83,14 @@
                             {{Session::get('success')}}
                         </div>
                         @endif
-                        <form id="tm-contactform" action="{{route('contact.send')}}"
-                            class="tm-contact-forminner tm-form" method="POST">
+                        <form action="{{route('contact.send')}}" method="POST">
                             @csrf
+
                             <div class="tm-form-inner">
                                 <div class="tm-form-field tm-form-fieldhalf">
                                     <label for="contact-form-name">@lang('lang.username')</label>
-                                    <input type="text" id="contact-form-name" placeholder="@lang('lang.ipname')" name="name"
-                                        required>
+                                    <input type="text" id="contact-form-name" placeholder="@lang('lang.ipname')"
+                                        name="name" required>
                                     @error('name')
                                     <p style="color: red;">{{$message}}</p>
                                     @enderror
@@ -125,11 +125,13 @@
                                         placeholder="Write your message" name="message" required> </textarea>
                                 </div>
                                 <div class="tm-form-field text-center">
-                                    <button name="submit" class="tm-button" type="submit">@lang('lang.sendmess')</button>
+                                    <button name="submit" class="tm-button"
+                                        type="submit">@lang('lang.sendmess')</button>
                                 </div>
                             </div>
                         </form>
-                        <p class="form-messages" hidden></p>
+
+
                     </div>
                 </div>
 

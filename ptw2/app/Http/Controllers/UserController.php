@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use App\Models\Order;
 use Illuminate\Contracts\Session\Session;
@@ -20,23 +21,25 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
     }
-    public function listUser(){
+    public function listUser()
+    {
         $users = DB::table('users')->paginate(5);
         return view('admin.content.listUser', ['users' => $users]);
     }
-    public function searchUser(Request $request) {
+    public function searchUser(Request $request)
+    {
         $search = $request->search;
-                $users = User::where('name', 'like', '%' . htmlspecialchars($search) . '%')
-                    ->orWhere('email', 'like', '%' . htmlspecialchars($search) . '%')
-                    ->paginate(5);
-    
+        $users = User::where('name', 'like', '%' . htmlspecialchars($search) . '%')
+            ->orWhere('email', 'like', '%' . htmlspecialchars($search) . '%')
+            ->paginate(5);
+
         return view('admin.content.listSearchUser', ['users' => $users]);
     }
-    
+
     // delete userAd
-    public function deleteUserAD($id){
+    public function deleteUserAD($id)
+    {
         $deleteData = DB::table('users')->where('id', '=', $id)->delete();
         return redirect('listUser');
     }
@@ -66,15 +69,14 @@ class UserController extends Controller
         if (isset($_SESSION['user_id'])) {
             if ($_SESSION['user_id'] == $id) {
                 $user = User::find($_SESSION['user_id']);
-                if(!$user){
-                    abort(404);  
+                if (!$user) {
+                    abort(404);
                 }
                 return view('user.show', ['user' => $user]);
             }
         }
-     
+
         abort(404);
-        
     }
 
     /**
@@ -86,59 +88,57 @@ class UserController extends Controller
         if (isset($_SESSION['user_id'])) {
             if ($_SESSION['user_id'] == $user->id) {
                 $user = User::find($_SESSION['user_id']);
-                if(!$user){
-                    abort(404);  
+                if (!$user) {
+                    abort(404);
                 }
                 return view('user.edit', ['user' => $user]);
             }
         }
-       
-            abort(404);
-        
+
+        abort(404);
+
         // return view('user.edit', ['user' => $user]);
     }
     //change pass
-    public function changePass($id){
+    public function changePass($id)
+    {
         if (isset($_SESSION['user_id'])) {
             if ($_SESSION['user_id'] == $id) {
                 $user = User::find($_SESSION['user_id']);
-                if(!$user){
-                    abort(404);  
+                if (!$user) {
+                    abort(404);
                 }
-                return view('user.changePass' ,['user' => $user]);
+                return view('user.changePass', ['user' => $user]);
             }
         }
-     
+
         abort(404);
-       
     }
 
 
-    public function updatePass(Request $request, User $user){
-       $user;
+    public function updatePass(Request $request, User $user)
+    {
+        $user;
         if (isset($_SESSION['user_id'])) {
             if ($_SESSION['user_id'] == $user->id) {
                 $user = User::find($_SESSION['user_id']);
             }
-        }
-       
-        else  {
+        } else {
             abort(404);
         }
-        $request ->validate([
-            'oldPass' =>'required|min:1|max:100',
-              'newPass' => 'required|regex:/^(?=.*[A-Z])(?=.*[@!#&])[A-Za-z0-9@!#&]{8,50}$/',
-            'comfirmPass' =>'required|same:newPass'
+        $request->validate([
+            'oldPass' => 'required|min:1|max:100',
+            'newPass' => 'required|regex:/^(?=.*[A-Z])(?=.*[@!#&])[A-Za-z0-9@!#&]{8,50}$/',
+            'comfirmPass' => 'required|same:newPass'
         ]);
-        if(Hash::check($request->oldPass,$user->password)){
+        if (Hash::check($request->oldPass, $user->password)) {
             $user->update([
-               'password' => \bcrypt($request->newPass)
+                'password' => \bcrypt($request->newPass)
             ]);
-           
-            return back()->with('success' ,'Change password success.'); 
-        }
-        else{
-            return back()->with('error' ,'Old Password not matched.');
+
+            return back()->with('success', 'Change password success.');
+        } else {
+            return back()->with('error', 'Old Password not matched.');
         }
     }
     /**
@@ -152,32 +152,29 @@ class UserController extends Controller
                 $user = User::find($_SESSION['user_id']);
                 // return view('user.show', ['user' => $user]);
             }
-        }
-       
-        else  {
+        } else {
             abort(404);
         }
         // abort(404);
-      
+
         $request->validate([
             'name' => 'required|min:5|max:50',
-            'phone' =>'nullable|min:10|max:10|regex:/^0\d{9}$/',
+            'phone' => 'nullable|min:10|max:10|regex:/^0\d{9}$/',
             'email' => 'required|min:10|max:50|regex:/^([a-zA-Z0-9]+)([\_\.\-{1}])?([a-zA-Z0-9]+)\@([a-zA-Z0-9]+)([\.])([a-zA-Z\.]+)$/',
             'DOB' => 'nullable|date'
         ]);
-     
-        $user->username = ($request-> username);
+
+        $user->username = ($request->username);
         $user->name = ($request->name);
         $user->phone = ($request->phone);
         $user->email = ($request->email);
         $user->DOB = ($request->DOB);
 
-        if($request->gender == "Male" || $request->gender == "Female" || $request->gender =="Other"){
+        if ($request->gender == "Male" || $request->gender == "Female" || $request->gender == "Other") {
             $user->gender = $request->gender;
         };
         $user->save();
         return redirect()->route('user.show', ['user' => $user->id]);
-
     }
 
     /**
@@ -317,19 +314,20 @@ class UserController extends Controller
             }
         }
     }
-    
-    public function payment(Request $request) {
+
+    public function payment(Request $request)
+    {
         if (!isset($_SESSION['user_id'])) {
             return redirect('login');
         }
         if ($request->checkout_read_terms == null) {
-            return redirect('order')->with('error','Có lỗi xãy ra vui lòng thanh toán lại!');
+            return redirect('order')->with('error', 'Có lỗi xãy ra vui lòng thanh toán lại!');
         }
-        // dd($request);
+        dd($request);
         // unset($_SESSION['order_id']);
         $user = User::find($_SESSION['user_id']);
-     
-        $user->username = ($request-> username);
+
+        $user->username = ($request->username);
         $user->name = ($request->name);
         $user->phone = ($request->phone);
         $user->address = ($request->address);
