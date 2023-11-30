@@ -180,7 +180,7 @@ class OrderController extends Controller
     public function purchaseDetail($order_id)
     {
         $order = Order::find($order_id);
-        if ($order->user_id == $_SESSION['user_id']) {
+        if ($order->user_id == $_SESSION['user_id'] && $order->order_status == 1) {
             $order_product = $order->products()->get();
             return view('purchaseDetail', ['products' => $order_product, 'order_id' => $order_id]);
         }
