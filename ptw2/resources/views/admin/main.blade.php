@@ -61,7 +61,7 @@
                     <ul id="sidebar">
                         <li> <a href=""> <span> Thống kê </span> </a> </li>
                         <li> <a href="{{route('listvoucher')}}"> <span> Mã giảm giá </span> </a> </li>
-                        <li> <a href=""> <span> Lịch sử hàng hóa </span> </a> </li>
+                        <li> <a href="{{ route('listpurchase') }}"> <span> Lịch sử mua hàng </span> </a> </li>
                         <li> <a href="{{route('listproduct')}}"> <span> Sản phẩm </span> </a> </li>
                         <li> <a href="{{route('listUser')}}"> <span> Khách hàng </span> </a> </li>
                         <li> <a href="{{route('listcategory')}}"> <span> Danh mục sản phẩm </span> </a> </li>

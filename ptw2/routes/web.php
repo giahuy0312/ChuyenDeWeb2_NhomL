@@ -15,6 +15,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +95,8 @@ Route::put('/vouchers/{voucher}', [VoucherController::class, 'update'])->name('v
 Route::get('deletevoucher/id{id}', [VoucherController::class, 'destroy'])->name('voucher.dele');
 Route::get('vouchers/search/discount',[VoucherController::class,'searchDiscount'])->name('voucher.search.discount');
 Route::get('vouchers/search/date',[VoucherController::class,'searchDate'])->name('voucher.search.date');
+
+Route::get('listpurchase', [PurchaseController::class, 'index'])->name('listpurchase');
 });
 
 route::group(['middleware' => 'guest'], function () {
