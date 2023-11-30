@@ -9,6 +9,7 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ForgetpasswordManager;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,6 +66,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 // Order
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('order', OrderController::class);
+    Route::post('comments', [CommentController::class,'store'])->name('addcomments');
 });
 Route::get('/order/{order}/product/{product}/{csrf?}', [OrderController::class, 'destroy']);
 
@@ -96,3 +98,8 @@ Route::get('/shopproducts', [ShopController::class, 'getAllShop'])->name('shoppr
 Route::get('/searchProduct', [ProductController::class, 'searchProduct'])->name('searchProduct');
 
 Route::get('/productDetails/{product}', [ProductController::class, 'productDetails'])->name('productDetails');
+
+// //Comments
+// Route::get('comments', CommentController::class,'index')->name('comment');
+//  Route::get('comments', CommentController::class,'store')->name('comments');
+// Route::resource('comments', CommentController::class);
