@@ -33,7 +33,6 @@ class ContactController extends Controller
     {
         $contact = DB::table('contacts')->paginate(5);
         return view('admin.content.listcontact', ['contacts' => $contact]);
-
         // $contact = Contact::orderBy('id', 'asc')->paginate(5);
         // return view('admin.content.listcontact', ['contacts' => $contact]);
     }
@@ -60,7 +59,7 @@ class ContactController extends Controller
     public function test()
     {
         $data = request()->validate([
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|max:50',
             'email' => 'required|email',
             'phone' => 'required|min:10|max:10',
             'subject' => 'required|min:3|max:50',
@@ -108,7 +107,6 @@ class ContactController extends Controller
     {
         $path = $request->file('file')->getRealPath();
         Excel::import(new ExcelImport, $path);
-        
         return back();
     }
 }
